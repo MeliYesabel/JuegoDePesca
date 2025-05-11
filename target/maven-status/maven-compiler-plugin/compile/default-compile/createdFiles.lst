@@ -4,6 +4,7 @@ com\tallerwebi\dominio\ServicioLogin.class
 com\tallerwebi\presentacion\ControladorTienda.class
 com\tallerwebi\MyServletInitializer.class
 com\tallerwebi\presentacion\ControladorLoginEjemplo.class
+com\tallerwebi\presentacion\ControladorLibroDeColeccion.class
 com\tallerwebi\presentacion\DatosLogin.class
 com\tallerwebi\dominio\excepcion\UsuarioExistente.class
 com\tallerwebi\presentacion\ControladorMapa.class
