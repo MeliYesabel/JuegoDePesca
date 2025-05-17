@@ -9,7 +9,7 @@ public class Pez {
     public Pez(String nombre) {
         this.nombre = nombre;
     }
-    public Pez(String nombre, Rareza rareza, Number precio) {
+    public Pez(String nombre, Rareza rareza) {
         this.nombre = nombre;
         this.rareza = rareza;
         this.precio = precio;
@@ -32,7 +32,7 @@ public class Pez {
         return precio;
      }
      public void setPrecio(Number precio) {
-        this.precio = precio;
+        this.precio = rareza.getValorBase();
      }
 
      public Mar getMar() {

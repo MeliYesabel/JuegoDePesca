@@ -12,16 +12,18 @@ public class ServicioRunTest {
 
     private ServicioRun servicioRun;
     private List<Pez> pecesGenerados;
-
+    private Run run;
     @BeforeEach
-    public void setUp() {
+    public void cofiguracionDeDatosNecesarios() {
         Mar mar = new Mar();
         mar.setPeces(List.of(
-                new Pez("Pez1"), new Pez("Pez2"), new Pez("Pez3"), new Pez("Pez4"), new Pez("Pez5"),
-                new Pez("Pez6"), new Pez("Pez7"), new Pez("Pez8"), new Pez("Pez9"), new Pez("Pez10")
+                new Pez("Pez1", Rareza.NORMAL), new Pez("Pez2", Rareza.NORMAL), new Pez("Pez3", Rareza.NORMAL), new Pez("Pez4", Rareza.NORMAL), new Pez("Pez5", Rareza.NORMAL),
+                new Pez("Pez6", Rareza.NORMAL), new Pez("Pez7", Rareza.NORMAL), new Pez("Pez8", Rareza.NORMAL), new Pez("Pez9", Rareza.NORMAL), new Pez("Pez10", Rareza.NORMAL)
         ));
         servicioRun = new ServicioRunImpl(mar);
+        run = new Run(mar);
     }
+
 
     @Test
     public void deberiaGenerarTresPecesParaElTurno() {
@@ -41,6 +43,13 @@ public class ServicioRunTest {
     private void thenSeObtienenTresPeces() {
         assertNotNull(pecesGenerados);
         assertEquals(3, pecesGenerados.size());
+    }
+
+    @Test
+    public void deberiaRestarCeboEnRun() {
+        run.setCebo(3); // se elegin 3 cebos para la partida
+        servicioRun.jugarTurno(run); // se juega el turno, aparecen 3 peces, se elige uno, se sabe si si o no, !! se resta 1 cebo !!
+        assertEquals(2, run.getCebo());
     }
 
 }
