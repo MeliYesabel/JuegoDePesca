@@ -1,50 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Mapa</title>
 </head>
-<body>
-
+<style>
+    body {
+        background-color: #1e3a8a;;
+        color: white;
+    }
+</style>
+<body >
 <header>
-    <a href="mapa">Mapa</a>
-    <a href="tienda"> Tienda</a>
-    <a href="logros"> Logros</a>
+    <div class="container">
+        <ul class="nav justify-content-end mt-3 " >
+            <li class="nav-item">
+                <a class="btn btn-outline-primary me-2" th:href="@{/vistaLogros}">Libro de Coleccion</a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-outline-primary me-2"  th:href="@{/vistaTienda}">Tienda</a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-outline-primary me-2" href="#">Usuario</a><!-- cual es la vista del usuario y si vista logros sera asi o libro de colecciones -->
+            </li>
+        </ul>
+    </div>
+
 </header>
-<div>
-
-    <p th:text=" ${marUno}">  </p>
-</div>
-
-<div>
-
-    <p th:text=" ${marDos}">  </p>
-</div>
-
-<div>
-
-    <p th:text=" ${marTres}">  </p>
-</div>
-
-<div>
-
-    <p th:text=" ${marCuatro}">  </p>
-</div>
-
-<div>
-
-    <p th:text=" ${marCinco}">  </p>
-</div>
-
-<div>
-
-    <p th:text=" ${marSeis}">  </p>
-</div>
-
-<div>
-
-    <p th:text=" ${marSiete}">  </p>
-</div>
 
 
 </body>

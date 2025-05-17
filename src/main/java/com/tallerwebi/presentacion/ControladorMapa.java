@@ -8,16 +8,23 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class ControladorMapa {
 
-    @RequestMapping("/mapa")
-    public ModelAndView irMapa(){
-        ModelMap model = new ModelMap();
-        model.put("marUno","Mitología Griega");
-        model.put("marDos","Mitología Nórdica");
-        model.put("marTres","Mitología Japonesa");
-        model.put("marCuatro","Mitología Yoruba");
-        model.put("marCinco","Mitología Indú");
-        model.put("marSeis","Mitología Asteca");
-        model.put("marSiete","Mitología China");
-        return new ModelAndView("vistaMapa", model);
+
+    @RequestMapping("/vistaMapa")
+    public ModelAndView irVistaMapa(){
+        return new ModelAndView("vistaMapa");
     }
+
+    @RequestMapping("/vistaLogros")
+    public ModelAndView irVistaLogros(){
+        return new ModelAndView("vistaLogros");
+    }
+
+    @RequestMapping("/vistaTienda")
+    public ModelAndView irVistaTienda(){
+        return new ModelAndView("vistaTienda");
+    }
+
+
+
+
 }
