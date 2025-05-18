@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Objeto Comprado</title>
+</head>
+<body>
+
+<header>
+  <a href="/mapa">Mapa</a>
+  <a href="/tienda">Tienda</a>
+  <a href="/logros">Logros</a>
+</header>
+
+<h1>¡Compra Erronea!</h1>
+
+<!-- Mensaje de éxito -->
+<div th:if="${error}" style="color:red;">
+  <p th:text="${error}"></p>
+</div>
+
+<!-- Mostrar monedas actuales -->
+<p><strong>Monedas actuales:</strong> <span th:text="${jugador.monedas}">0</span></p>
+
+<!-- Volver a la tienda -->
+<form th:action="@{/tienda}" method="get">
+  <button type="submit">Volver a la Tienda</button>
+</form>
+
+</body>
+</html>

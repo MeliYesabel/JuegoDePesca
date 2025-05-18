@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- <p th:text=" ${calculadora}">  </p>
+<form action="/calculadora" method="get">
+  <p th:text=" ${valorUno}">  </p>
+  <p th:text=" ${valorDos}">  </p>
+  <p th:text=" ${resultado}">  </p>
+
+</form> -->
+<form th:action="@{calcular}" method="get">
+    <p> Numero 1:</p>
+   <input type="number" name="numeroUno" required>
+    <p> Numero 2:</p>
+    <input type="number" name="numeroDos" required>
+    <select name="operacion" id="" required>
+        <option value="sumar" name="sumar">Sumar</option>
+        <option value="restar" name="restar">Restar</option>
+        <option value="multiplicar" name="multiplicar">Multiplicar</option>
+        <option value="dividir" name="dividir">Dividir</option>
+    </select>
+
+<button type="submit"> Enviar </button>
+</form>
+<p th:text="resultado"> </p>
+</body>
+</html>
