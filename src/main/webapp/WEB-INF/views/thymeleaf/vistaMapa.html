@@ -1,33 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <meta charset="UTF-8">
     <title>Mapa</title>
-</head>
-<style>
-    body {
-        background-color: #1e3a8a;;
-        color: white;
-    }
-</style>
-<body >
-<header>
-    <div class="container">
-        <ul class="nav justify-content-end mt-3 " >
-            <li class="nav-item">
-                <a class="btn btn-outline-primary me-2" th:href="@{/vistaLogros}">Libro de Coleccion</a>
-            </li>
-            <li class="nav-item">
-                <a class="btn btn-outline-primary me-2"  th:href="@{/vistaTienda}">Tienda</a>
-            </li>
-            <li class="nav-item">
-                <a class="btn btn-outline-primary me-2" href="#">Usuario</a><!-- cual es la vista del usuario y si vista logros sera asi o libro de colecciones -->
-            </li>
-        </ul>
-    </div>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+        }
 
+        body {
+            background-image: url("el_mejor.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .row {
+            flex: 1; /* Ocupa el mismo alto por fila */
+        }
+
+        .mapa-container {
+            height: calc(100vh - 80px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .col-2 {
+            border: 1px solid rgba(255,255,255,0.4);
+            text-align: center;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.3); /* fondo semitransparente */
+            height: 100%; /* hace que ocupe toda la altura de la fila */
+        }
+    </style>
+</head>
+<body>
+
+<header class="container-fluid">
+    <ul class="nav justify-content-end mt-2 p-4">
+        <li class="nav-item">
+            <a class="btn btn-primary me-2" th:href="@{/vistaLogros}">Libro de Coleccion</a>
+        </li>
+        <li class="nav-item">
+            <a class="btn btn-primary me-2"  th:href="@{/vistaTienda}">Tienda</a>
+        </li>
+        <li class="nav-item">
+            <a class="btn btn-primary me-2" href="#">Usuario</a><!-- cual es la vista del usuario y si vista logros sera asi o libro de colecciones -->
+        </li>
+    </ul>
 </header>
+
+<div class="container-fluid mapa-container">
+    <div class="row">
+        <div class="col-2">1.1</div>
+        <div class="col-2">1.2</div>
+        <div class="col-2"><a th:href="@{/marUno}">"njorock"</a></div>
+        <div class="col-2">1.4</div>
+        <div class="col-2">1.5</div>
+        <div class="col-2"><a th:href="@{/marUno}">"njorock"</a></div>
+    </div>
+    <div class="row">
+        <div class="col-2">1.1</div>
+        <div class="col-2"><a th:href="@{/marUno}">"njorock"</a></div>
+        <div class="col-2">1.3</div>
+        <div class="col-2">1.4</div>
+        <div class="col-2"><a th:href="@{/marUno}">"njorock"</a></div>
+        <div class="col-2"></div>
+    </div>
+    <div class="row">
+        <div class="col-2"><a th:href="@{/marUno}">"njorock"</a></div>
+        <div class="col-2">1.2</div>
+        <div class="col-2"><a th:href="@{/marUno}">"njorock"</a></div>
+        <div class="col-2">1.4</div>
+        <div class="col-2">1.5</div>
+        <div class="col-2"><a th:href="@{/marUno}">"njorock"</a></div>
+    </div>
+</div>
+
 
 
 </body>
