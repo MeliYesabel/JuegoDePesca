@@ -26,7 +26,7 @@ public class ControladorTienda {
     @RequestMapping("/inicio")
     public ModelAndView iniciarSesion(HttpSession session) {
         Jugador jugador = new Jugador();
-       // jugador.setNombre("Jugador de prueba");
+
         jugador.setMonedas(200.0);
         session.setAttribute("jugador", jugador);
         return new ModelAndView("redirect:/tienda");
@@ -43,34 +43,19 @@ public class ControladorTienda {
         model.put("claveTienda","Esta es la tienda");
         model.put("jugador", jugador);
         model.put("objetosDisponibles", servicioTienda.getListaObjetos());
-        // También deberías mostrar los objetos en pantalla
 
-
-       /* Jugador jugador = (Jugador) session.getAttribute("jugador");
-        if (jugador != null) {
-            model.put("jugador", jugador);
-        }*/
 
 
         return new ModelAndView("vistaTienda.html", model);
     }
 
-   /* @RequestMapping("/comprarObjeto")
-    public ModelAndView comprarObjeto(Jugador jugador, Integer idObjeto) {
 
-      if(servicioTienda.comprarObjeto(jugador,idObjeto)) {
-          return new ModelAndView("vistaObjeto.html");
-      }
-
-      return new ModelAndView("vistaTienda.html");
-
-    }*/
 
     @RequestMapping(value = "/comprarObjeto", method = RequestMethod.POST)
     public ModelAndView comprarObjeto(HttpSession session,@RequestParam Integer idObjeto) {
         ModelMap model = new ModelMap();
 
-        // Recuperás el jugador desde la sesión (que ya debería estar guardado)
+        // Recupero el jugador desde la sesión (que ya debería estar guardado)
         Jugador jugador = (Jugador) session.getAttribute("jugador");
 
         if(jugador == null){
@@ -90,9 +75,7 @@ public class ControladorTienda {
             return new ModelAndView("vistaCompraSinExito.html", model);
         }
 
-       /* model.put("jugador",jugador);
-        model.put("objetosDisponibles", servicioTienda.getListaObjetos());
-          //  model.put("jugador", jugador); // para mantener info */
+
 
 
     }

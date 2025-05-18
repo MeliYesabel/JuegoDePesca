@@ -23,7 +23,7 @@ public class ServicioTiendaImpl implements ServicioTienda {
 
         if (jugador == null || idObjeto == null) {
             throw new ParametroInvalidoException("El jugador o el id del objeto no pueden ser nulos");
-            // return Boolean.FALSE;
+
         }
 
         Objeto objeto = buscarObjeto(idObjeto);
@@ -35,17 +35,11 @@ public class ServicioTiendaImpl implements ServicioTienda {
         if(jugador.getMonedas() < objeto.getPrecioObjeto()){
             throw new MonedasInsuficientesException("monedas insuficientes");
         }
-                //if (jugador.getMonedas() >= objeto.getPrecioObjeto()) {
+
                     jugador.setMonedas(jugador.getMonedas() - objeto.getPrecioObjeto());
-                    // jugador.agregarObjeto(objeto); // si querés agregarlo al inventario
+
                     return Boolean.TRUE;
-             //   } else {
-               //     return Boolean.FALSE; // no tiene suficiente dinero
-              //  }
 
-
-
-        //return Boolean.FALSE; // objeto no encontrado en la tienda
     }
 
     public Objeto buscarObjeto(Integer idObjeto) {

@@ -25,14 +25,7 @@ public Jugador(){
 
 
 
-      /*  public Objeto buscarObjeto(Integer idObjeto) {
-            for (Objeto objeto : listaObjetos) {
-                if (objeto.getIdObjeto() == idObjeto) {
-                    return objeto;
-                }
-            }
-            return null;
-        }*/
+
 
 
     }
