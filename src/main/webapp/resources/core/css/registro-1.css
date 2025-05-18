@@ -1,0 +1,36 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: "Pixelify Sans", sans-serif !important;
+    /*Piso por defecto la fuente de bootswatch*/
+
+    background-image: url("../img/background-sea2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-body {
+    width: 35rem;
+    background: rgba(110, 110, 110, 0.1);
+    /* Fondo semi-transparente */
+    border-radius: 0.7rem;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    /* Sombra suave */
+    backdrop-filter: blur(10px);
+    /* Desenfoque del fondo */
+    -webkit-backdrop-filter: blur(10px);
+    /*Soporte Safari */
+}
+
+.titulo-form{
+    text-shadow: 2px 2px 4px black  !important;
+}

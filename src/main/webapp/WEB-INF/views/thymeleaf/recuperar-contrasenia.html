@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
-    <title>Registro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recupero de contraseña</title>
 
     <!-- -Bootstrap y bootwatch--->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.3.3/vapor/bootstrap.min.css"
@@ -16,32 +17,32 @@
 
     <link rel="stylesheet" th:href="@{/css/registro-1.css}">
 
-
-
 </head>
 
 <body>
+    <a href="*">
+        <div>
+            <img th:src="@{img/tsunami.png}" alt="logo-juego" />
+            <p>SEVEN SEAS</p>
+        </div>
+    </a>
+
     <div class="card border-primary rounded-4">
         <div class="card-body">
-            <h3 class="card-title text-center mb-4 titulo-form">Registro</h3>
+            <h3 class="card-title text-center mb-4 titulo-form">Recuperación de contraseña</h3>
 
             <form>
+                <div class="mb-3">
+                    <p>Introduce su correo electrónico para recuperar su contraseña</p>
+                </div>
+
                 <div class="mb-3">
                     <label for="email" class="form-label">Correo electrónico</label>
                     <input type="email" class="form-control" id="email" placeholder="tucorreo@ejemplo.com" required>
                 </div>
 
-                <div class="mb-3">
-                    <label for="password" class="form-label">Contraseña</label>
-                    <input type="password" class="form-control" id="password" placeholder="Contraseña" required>
-                </div>
-
-                <div class="mb-3">
-                    <label for="password" class="form-label">Repetir contraseña</label>
-                    <input type="password" class="form-control" id="password" placeholder="Repetir contraseña" required>
-                </div>
-
-                <button type="submit" class="btn btn-primary w-100">Registrarse</button>
+                <button type="submit" class="btn btn-primary w-100">Enviar</button>
+                <button class="btn btn-primary w-100"><a href="">Cancelar</a></button>
                 <p class="text-center mt-3">¿Ya tienes una cuenta? <a href="#">Logueate aqui</a></p>
             </form>
 

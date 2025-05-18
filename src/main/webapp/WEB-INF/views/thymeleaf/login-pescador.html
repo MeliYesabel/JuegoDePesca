@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es"  xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login-Seven-Seas</title>
+
+  <!--Bootstrap y bootwatch-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.3.3/vapor/bootstrap.min.css"
+    integrity="sha512-9LoG2EQdcmuEQpzkslqa3whcL8LM+7GGPsW2MK1gRlmiML0G7M5ZPj2aZaW2DyixslBfZoy4kANfP/MYWDCSiw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!--Fuente Pixelify-->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+
+
+  <link rel="stylesheet" th:href="@{/css/login-pescador.css}">
+</head>
+
+<body>
+  <div class="fondo">
+    <img th:src="@{img/background-sea2.jpg}" alt="Fondo difuminado" />
+    <div class="contenido">
+      <div class="card-login">
+        <div class="form-section">
+          <h2>Bienvenido a Seven Seas!</h2>
+
+          <form>
+            <div class="mb-3">
+              <label for="email" class="form-label">Correo electrónico</label>
+              <input type="email" id="email" class="form-control" placeholder="Ingrese su correo electrónico">
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Contraseña</label>
+              <input type="password" id="password" class="form-control" placeholder="Ingrese su Contraseña">
+            </div>
+            <div class="mb-3">
+              <a href="#" class="form-text">¿Olvidaste tu contraseña?</a>
+            </div>
+            <button class="btn btn-primary w-100 mb-2">Iniciar sesión</button>
+            <button class="btn btn-social w-100 mb-2">Iniciar sesión con Google</button>
+            <p class="text-center mt-3">¿No tienes una cuenta aún? <a href="#">Registraté aqui</a></p>
+          </form>
+        </div>
+        <div class="side-image"></div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
