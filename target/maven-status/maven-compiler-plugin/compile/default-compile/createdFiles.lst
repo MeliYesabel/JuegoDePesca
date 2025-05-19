@@ -11,8 +11,6 @@ com\tallerwebi\presentacion\ControladorMapa.class
 com\tallerwebi\presentacion\ControladorLogros.class
 com\tallerwebi\config\SpringWebConfig.class
 com\tallerwebi\config\HibernateConfig.class
-com\tallerwebi\presentacion\ControladorLogin.class
 com\tallerwebi\dominio\RepositorioUsuario.class
-com\tallerwebi\presentacion\ControladorRegistro.class
 com\tallerwebi\infraestructura\RepositorioUsuarioImpl.class
 com\tallerwebi\dominio\Usuario.class

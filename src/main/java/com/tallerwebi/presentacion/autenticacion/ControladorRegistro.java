@@ -1,4 +1,4 @@
-package com.tallerwebi.presentacion;
+package com.tallerwebi.presentacion.autenticacion;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -10,10 +10,9 @@ import org.springframework.web.servlet.ModelAndView;
 public class ControladorRegistro {
 
     @RequestMapping(value = "/registro", method = RequestMethod.GET)
-    public ModelAndView irARegistro() {
+    public ModelAndView mostrarRegistro() {
         ModelMap modeloRegistro = new ModelMap();
-        modeloRegistro.put("exito","estas en registro");
-
+        modeloRegistro.put("usuarioDto", new UsuarioDto());
         return new ModelAndView("registro", modeloRegistro);
     }
 }
