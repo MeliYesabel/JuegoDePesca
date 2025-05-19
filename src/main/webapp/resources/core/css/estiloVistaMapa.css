@@ -1,0 +1,38 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    /*th:href="@{/css/estiloVistaMapa.css}*/
+    background-image: url("../img/el_mejor (1).png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.row {
+    flex: 1; /* Ocupa el mismo alto por fila */
+}
+
+.mapa-container {
+    height: calc(100vh - 80px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.col-2 {
+    border: 1px solid rgba(255,255,255,0.4);
+    text-align: center;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: rgba(0, 0, 0, 0.3);  fondo semitransparente */
+    height: 100%; /* hace que ocupe toda la altura de la fila */
+}

@@ -8,23 +8,20 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class ControladorMapa {
 
-
-    @RequestMapping("/vistaMapa")
-    public ModelAndView irVistaMapa(){
-        return new ModelAndView("vistaMapa");
-    }
-
     @RequestMapping("/vistaLogros")
-    public ModelAndView irVistaLogros(){
+    public ModelAndView irAVistaLogros(){
         return new ModelAndView("vistaLogros");
     }
 
     @RequestMapping("/vistaTienda")
-    public ModelAndView irVistaTienda(){
+    public ModelAndView irAVistaTienda(){
         return new ModelAndView("vistaTienda");
     }
 
-
+    @RequestMapping("/vistaSeleccion")
+    public ModelAndView irAVistaSeleccion() {
+        return new ModelAndView("vistaSeleccion");
+    }
 
 
 }
