@@ -8,6 +8,18 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class ControladorMapa {
 
+    /*mas adelante agregar las vistas de los distintos mares*/
+
+    @RequestMapping("/vistaMapa")
+    public ModelAndView vistaMapa() {
+        return new ModelAndView("vistaMapa");
+    }
+
+    @RequestMapping("/vistaMarDesbloqueado")
+    public ModelAndView vistaMarDesbloqueado() {
+        return new ModelAndView("vistaMarDesbloqueado");
+    }
+
     @RequestMapping("/vistaLogros")
     public ModelAndView irAVistaLogros(){
         return new ModelAndView("vistaLogros");

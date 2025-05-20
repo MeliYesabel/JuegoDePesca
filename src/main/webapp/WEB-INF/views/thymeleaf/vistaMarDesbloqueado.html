@@ -2,16 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
     <title>Mapa</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
+    <link rel="stylesheet" th:href="@{/css/estiloVistaMapa.css}" />
+   <!-- <style>
         *{
             margin: 0;
             padding: 0;
@@ -23,7 +17,7 @@
         }
 
         body {
-            background-image: url('../../../resources/core/img/el_mejor (1).png');
+            background-image: url('../../../resources/core/img/fondoVIstaMapa.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -50,11 +44,11 @@
             background-color: rgba(0, 0, 0, 0.3); /* fondo semitransparente */
             height: 100%; /* hace que ocupe toda la altura de la fila */
         }
-    </style>
+    </style>-->
 </head>
 <body>
 
-<header class="container-fluid">
+  <header class="container-fluid">
     <ul class="nav justify-content-end mt-2 p-4">
         <li class="nav-item">
             <a class="btn btn-primary me-2" th:href="@{/vistaLogros}">Libro de Coleccion</a>
@@ -66,9 +60,9 @@
             <a class="btn btn-primary me-2" href="#">Usuario</a><!-- cual es la vista del usuario y si vista logros sera asi o libro de colecciones -->
         </li>
     </ul>
-</header>
+  </header>
 
-<div class="container mapa-container ">
+  <div class="container mar-desbloqueado-container ">
     <div class="row fondo">
         <div >
             <h2>Mitologia Griega</h2>
@@ -85,15 +79,8 @@
         <div>
             <button type="submit" class="btn btn-primary" >Empezar</button>
         </div>
-
     </div>
-
-</div>
-
-
-
-</body>
-</html>
+  </div>
 
 
 

@@ -9,16 +9,15 @@ html, body {
 }
 
 body {
-    /*th:href="@{/css/estiloVistaMapa.css}*/
-    background-image: url("../img/el_mejor (1).png");
+    background-image: url('../../../resources/core/img/fondoVIstaMapa.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 .row {
-    flex: 1; /* Ocupa el mismo alto por fila */
+    flex: 1;
 }
-
+/*VISTA MAPA*/
 .mapa-container {
     height: calc(100vh - 80px);
     display: flex;
@@ -33,6 +32,26 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background-color: rgba(0, 0, 0, 0.3);  fondo semitransparente */
+    background-color: rgba(0, 0, 0, 0.3);
+    height: 100%; /* hace que ocupe toda la altura de la fila */
+}
+
+/*VISTA MAR DESBLOQUEADO*/
+.mar-desbloqueado-container {
+    height: calc(90vh - 70px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+}
+.fondo {
+    border: 1px solid rgba(255,255,255,0.4);
+    text-align: center;
+    color: white;
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.3); /* fondo semitransparente */
     height: 100%; /* hace que ocupe toda la altura de la fila */
 }
