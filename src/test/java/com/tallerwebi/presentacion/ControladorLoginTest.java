@@ -1,6 +1,6 @@
 package com.tallerwebi.presentacion;
 
-import com.tallerwebi.dominio.ServicioLogin;
+import com.tallerwebi.dominio.ServicioLoginEjem;
 import com.tallerwebi.dominio.Usuario;
 import com.tallerwebi.dominio.excepcion.UsuarioExistente;
 import org.junit.jupiter.api.BeforeEach;
@@ -21,7 +21,7 @@ public class ControladorLoginTest {
 	private DatosLogin datosLoginMock;
 	private HttpServletRequest requestMock;
 	private HttpSession sessionMock;
-	private ServicioLogin servicioLoginMock;
+	private ServicioLoginEjem servicioLoginMock;
 
 
 	@BeforeEach
@@ -31,7 +31,7 @@ public class ControladorLoginTest {
 		when(usuarioMock.getEmail()).thenReturn("dami@unlam.com");
 		requestMock = mock(HttpServletRequest.class);
 		sessionMock = mock(HttpSession.class);
-		servicioLoginMock = mock(ServicioLogin.class);
+		servicioLoginMock = mock(ServicioLoginEjem.class);
 		controladorLogin = new ControladorLoginEjemplo(servicioLoginMock);
 	}
 

@@ -1,6 +1,6 @@
 package com.tallerwebi.presentacion;
 
-import com.tallerwebi.dominio.ServicioLogin;
+import com.tallerwebi.dominio.ServicioLoginEjem;
 import com.tallerwebi.dominio.Usuario;
 import com.tallerwebi.dominio.excepcion.UsuarioExistente;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +16,10 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class ControladorLoginEjemplo {
 
-    private ServicioLogin servicioLogin;
+    private ServicioLoginEjem servicioLogin;
 
     @Autowired
-    public ControladorLoginEjemplo(ServicioLogin servicioLogin){
+    public ControladorLoginEjemplo(ServicioLoginEjem servicioLogin){
         this.servicioLogin = servicioLogin;
     }
 

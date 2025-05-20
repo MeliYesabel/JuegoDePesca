@@ -1,3 +1,4 @@
+C:\Users\belen\Documents\Jesica\Unlam\EspacioDeTrabajo-Intellij\JuegoDePesca\src\main\java\com\tallerwebi\dominio\ServicioLoginEjemImpl.java
 C:\Users\belen\Documents\Jesica\Unlam\EspacioDeTrabajo-Intellij\JuegoDePesca\src\main\java\com\tallerwebi\presentacion\ControladorMapa.java
 C:\Users\belen\Documents\Jesica\Unlam\EspacioDeTrabajo-Intellij\JuegoDePesca\src\main\java\com\tallerwebi\config\SpringWebConfig.java
 C:\Users\belen\Documents\Jesica\Unlam\EspacioDeTrabajo-Intellij\JuegoDePesca\src\main\java\com\tallerwebi\presentacion\autenticacion\UsuarioDto.java
@@ -6,15 +7,18 @@ C:\Users\belen\Documents\Jesica\Unlam\EspacioDeTrabajo-Intellij\JuegoDePesca\src
 C:\Users\belen\Documents\Jesica\Unlam\EspacioDeTrabajo-Intellij\JuegoDePesca\src\main\java\com\tallerwebi\infraestructura\RepositorioUsuarioImpl.java
 C:\Users\belen\Documents\Jesica\Unlam\EspacioDeTrabajo-Intellij\JuegoDePesca\src\main\java\com\tallerwebi\presentacion\DatosLogin.java
 C:\Users\belen\Documents\Jesica\Unlam\EspacioDeTrabajo-Intellij\JuegoDePesca\src\main\java\com\tallerwebi\presentacion\autenticacion\ControladorLogin.java
+C:\Users\belen\Documents\Jesica\Unlam\EspacioDeTrabajo-Intellij\JuegoDePesca\src\main\java\com\tallerwebi\dominio\autenticacion\ServicioUsuarioI.java
+C:\Users\belen\Documents\Jesica\Unlam\EspacioDeTrabajo-Intellij\JuegoDePesca\src\main\java\com\tallerwebi\dominio\excepcion\UsuarioInexistenteException.java
+C:\Users\belen\Documents\Jesica\Unlam\EspacioDeTrabajo-Intellij\JuegoDePesca\src\main\java\com\tallerwebi\dominio\autenticacion\UsuarioAuth.java
 C:\Users\belen\Documents\Jesica\Unlam\EspacioDeTrabajo-Intellij\JuegoDePesca\src\main\java\com\tallerwebi\dominio\Usuario.java
-C:\Users\belen\Documents\Jesica\Unlam\EspacioDeTrabajo-Intellij\JuegoDePesca\src\main\java\com\tallerwebi\dominio\ServicioLoginImpl.java
 C:\Users\belen\Documents\Jesica\Unlam\EspacioDeTrabajo-Intellij\JuegoDePesca\src\main\java\com\tallerwebi\presentacion\ControladorLoginEjemplo.java
 C:\Users\belen\Documents\Jesica\Unlam\EspacioDeTrabajo-Intellij\JuegoDePesca\src\main\java\com\tallerwebi\presentacion\ControladorMar.java
 C:\Users\belen\Documents\Jesica\Unlam\EspacioDeTrabajo-Intellij\JuegoDePesca\src\main\java\com\tallerwebi\config\DatabaseInitializationConfig.java
 C:\Users\belen\Documents\Jesica\Unlam\EspacioDeTrabajo-Intellij\JuegoDePesca\src\main\java\com\tallerwebi\dominio\RepositorioUsuario.java
 C:\Users\belen\Documents\Jesica\Unlam\EspacioDeTrabajo-Intellij\JuegoDePesca\src\main\java\com\tallerwebi\presentacion\ControladorTienda.java
+C:\Users\belen\Documents\Jesica\Unlam\EspacioDeTrabajo-Intellij\JuegoDePesca\src\main\java\com\tallerwebi\dominio\autenticacion\ServicioUsuarioImpl.java
+C:\Users\belen\Documents\Jesica\Unlam\EspacioDeTrabajo-Intellij\JuegoDePesca\src\main\java\com\tallerwebi\dominio\ServicioLoginEjem.java
 C:\Users\belen\Documents\Jesica\Unlam\EspacioDeTrabajo-Intellij\JuegoDePesca\src\main\java\com\tallerwebi\dominio\excepcion\UsuarioExistente.java
-C:\Users\belen\Documents\Jesica\Unlam\EspacioDeTrabajo-Intellij\JuegoDePesca\src\main\java\com\tallerwebi\dominio\ServicioLogin.java
 C:\Users\belen\Documents\Jesica\Unlam\EspacioDeTrabajo-Intellij\JuegoDePesca\src\main\java\com\tallerwebi\config\HibernateConfig.java
 C:\Users\belen\Documents\Jesica\Unlam\EspacioDeTrabajo-Intellij\JuegoDePesca\src\main\java\com\tallerwebi\presentacion\autenticacion\ControladorRecuperoContrasenia.java
 C:\Users\belen\Documents\Jesica\Unlam\EspacioDeTrabajo-Intellij\JuegoDePesca\src\main\java\com\tallerwebi\MyServletInitializer.java

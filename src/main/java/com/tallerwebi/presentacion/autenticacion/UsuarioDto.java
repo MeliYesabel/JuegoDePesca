@@ -3,13 +3,22 @@ package com.tallerwebi.presentacion.autenticacion;
 public class UsuarioDto {
     private String email;
     private String contrasenia;
+    private String contraseniaRepetida;
 
     public UsuarioDto() {
     }
 
-    public UsuarioDto(String contrasenia, String email) {
+    
+    public UsuarioDto(String email, String contrasenia) {
+        this.email = email;
+        this.contrasenia = contrasenia;
+    }
+
+
+    public UsuarioDto(String contrasenia, String email, String contraseniaRepetida) {
         this.contrasenia = contrasenia;
         this.email = email;
+        this.contraseniaRepetida = contraseniaRepetida;
     }
 
     public String getEmail() {
@@ -27,4 +36,14 @@ public class UsuarioDto {
     public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
     }
+
+    public String getContraseniaRepetida() {
+        return contraseniaRepetida;
+    }
+
+    public void setContraseniaRepetida(String contraseniaRepetida) {
+        this.contraseniaRepetida = contraseniaRepetida;
+    }
+
+    
 }
