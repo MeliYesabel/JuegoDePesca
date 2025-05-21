@@ -15,7 +15,7 @@ public class UsuarioDto {
     }
 
 
-    public UsuarioDto(String contrasenia, String email, String contraseniaRepetida) {
+    public UsuarioDto(String email,String contrasenia, String contraseniaRepetida) {
         this.contrasenia = contrasenia;
         this.email = email;
         this.contraseniaRepetida = contraseniaRepetida;

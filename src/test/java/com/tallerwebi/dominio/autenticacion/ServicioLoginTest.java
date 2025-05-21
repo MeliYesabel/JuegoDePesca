@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.ArrayList;
 
-import org.hamcrest.Matcher.*;
+
 import org.junit.jupiter.api.Test;
 
 import com.tallerwebi.dominio.excepcion.UsuarioInexistenteException;

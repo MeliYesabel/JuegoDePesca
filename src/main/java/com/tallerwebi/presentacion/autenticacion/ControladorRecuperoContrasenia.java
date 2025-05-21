@@ -1,7 +1,6 @@
 package com.tallerwebi.presentacion.autenticacion;
 
 import com.tallerwebi.dominio.autenticacion.ServicioUsuarioI;
-import com.tallerwebi.dominio.autenticacion.UsuarioAuth;
 import com.tallerwebi.dominio.excepcion.UsuarioInexistenteException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

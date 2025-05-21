@@ -1,4 +1,5 @@
 com\tallerwebi\config\DatabaseInitializationConfig.class
+com\tallerwebi\dominio\excepcion\ContraseniaInvalidaExcepcion.class
 com\tallerwebi\dominio\ServicioLoginEjem.class
 com\tallerwebi\presentacion\ControladorTienda.class
 com\tallerwebi\MyServletInitializer.class
@@ -19,6 +20,7 @@ com\tallerwebi\presentacion\ControladorMapa.class
 com\tallerwebi\dominio\autenticacion\ServicioUsuarioImpl.class
 com\tallerwebi\config\SpringWebConfig.class
 com\tallerwebi\dominio\excepcion\UsuarioInexistenteException.class
+com\tallerwebi\dominio\excepcion\UserExistenteExcepcion.class
 com\tallerwebi\presentacion\autenticacion\UsuarioDto.class
 com\tallerwebi\dominio\autenticacion\ServicioUsuarioI.class
 com\tallerwebi\dominio\Usuario.class

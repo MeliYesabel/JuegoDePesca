@@ -1,9 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.tallerwebi.presentacion.autenticacion.ControladorRecuperacionContraseniaTest
--------------------------------------------------------------------------------
-Tests run: 4, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.105 s <<< FAILURE! - in com.tallerwebi.presentacion.autenticacion.ControladorRecuperacionContraseniaTest
-com.tallerwebi.presentacion.autenticacion.ControladorRecuperacionContraseniaTest.queSePuedaCrearFormRecuperacionContrasenia  Time elapsed: 0.051 s  <<< FAILURE!
-org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
-	at com.tallerwebi.presentacion.autenticacion.ControladorRecuperacionContraseniaTest.thenSePuedeRecuperarContrasenia(ControladorRecuperacionContraseniaTest.java:90)
-	at com.tallerwebi.presentacion.autenticacion.ControladorRecuperacionContraseniaTest.queSePuedaCrearFormRecuperacionContrasenia(ControladorRecuperacionContraseniaTest.java:24)
-
