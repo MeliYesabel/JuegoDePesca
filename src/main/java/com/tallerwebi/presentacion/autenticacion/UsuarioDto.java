@@ -21,6 +21,11 @@ public class UsuarioDto {
         this.contraseniaRepetida = contraseniaRepetida;
     }
 
+    public UsuarioDto(String mail) {
+        this.email = mail;
+    }
+
+
     public String getEmail() {
         return email;
     }

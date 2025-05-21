@@ -51,7 +51,7 @@ public class ControladorLogin {
 
                 return new ModelAndView("vistaMapa", datosMapeados);
             }catch(UsuarioInexistenteException excepcion){
-                datosMapeados.put("error_not_exist", "El email ingresado no se encuentra registrado.");
+                datosMapeados.put("error_not_exist", "El usuario no se encuentra registrado.");
                 return new ModelAndView("login-pescador",datosMapeados); 
             }
         }else{
@@ -64,7 +64,7 @@ public class ControladorLogin {
 
 
     private boolean emailTieneUnFormatoValido(String emailIngresado) {
-        return(emailTieneUnArroba(emailIngresado) && emailTieneMinTresCharsAntesYDespuesDelArroba(emailIngresado))? true: false;
+        return emailTieneUnArroba(emailIngresado) && emailTieneMinTresCharsAntesYDespuesDelArroba(emailIngresado);
     }
 
     private boolean emailTieneMinTresCharsAntesYDespuesDelArroba(String email) {

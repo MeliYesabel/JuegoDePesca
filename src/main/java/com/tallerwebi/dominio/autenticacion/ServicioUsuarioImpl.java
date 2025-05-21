@@ -1,7 +1,6 @@
 package com.tallerwebi.dominio.autenticacion;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -28,15 +27,20 @@ public class ServicioUsuarioImpl implements ServicioUsuarioI{
 
     @Override
     public void registrarUsuario(UsuarioAuth user) {
-        UsuarioAuth usuarioExistente = buscarUsuarioPorEmail(user.getEmail());
-        if(usuarioExistente==null){
+        Boolean seEncontroUsuario = buscarUsuarioPorEmail(user.getEmail());
+        if(seEncontroUsuario){
 
         }
     
     }
 
-    private UsuarioAuth buscarUsuarioPorEmail(String email) {
-        return null;
+    public boolean buscarUsuarioPorEmail(String email) {
+        for(UsuarioAuth usuario : usuariosRegistradosDB){
+            if(usuario.getEmail().equals(email)){
+                return true;
+            }
+        }
+        throw new UsuarioInexistenteException();
     }
 
     public ArrayList<UsuarioAuth> obtenerUsuariosRegistradosDB(){

@@ -31,22 +31,29 @@
         <div class="card-body">
             <h3 class="card-title text-center mb-4 text">Recuperación de contraseña</h3>
 
-            <form>
+            <form th:action="@{/recuperar-contrasenia}" method="post">
                 <div class="mb-3 text">
                     <p>Introduce su correo electrónico para recuperar su contraseña</p>
                 </div>
 
                 <div class="mb-3">
                     <label for="email" class="form-label text">Correo electrónico</label>
-                    <input type="email" class="form-control" id="email" placeholder="tucorreo@ejemplo.com" required>
+                    <input type="email" name="email" class="form-control" id="email" placeholder="tucorreo@ejemplo.com" >
+                    <p class="text-danger mt-3" th:if="${email_vacio !=null}" th:text="${email_vacio}"></p>
+
+                    <p class="text-danger mt-3" th:if="${email_invalido !=null}" th:text="${email_invalido}">
+                    </p>
                 </div>
 
                 <div class="botones">
                     <button type="submit" class="btn btn-primary">Enviar</button>
-                <button class="btn btn-secondary"><a class="cancelar" th:href="@{/login-pescador}">Cancelar</a></button>
+                    <button class="btn btn-secondary"><a class="cancelar"
+                            th:href="@{/login-pescador}">Cancelar</a></button>
 
                 </div>
-                
+                <p class="text-danger mt-3" th:if="${no_existe !=null}" th:text="${no_existe}">
+            </p>
+
             </form>
 
         </div>

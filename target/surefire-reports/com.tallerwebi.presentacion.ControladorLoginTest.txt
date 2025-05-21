@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: com.tallerwebi.presentacion.ControladorLoginTest
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 5, Skipped: 0, Time elapsed: 0.708 s <<< FAILURE! - in com.tallerwebi.presentacion.ControladorLoginTest
-com.tallerwebi.presentacion.ControladorLoginTest.errorEnRegistrarmeDeberiaVolverAFormularioYMostrarError  Time elapsed: 0.278 s  <<< ERROR!
+Tests run: 5, Failures: 0, Errors: 5, Skipped: 0, Time elapsed: 1.05 s <<< FAILURE! - in com.tallerwebi.presentacion.ControladorLoginTest
+com.tallerwebi.presentacion.ControladorLoginTest.errorEnRegistrarmeDeberiaVolverAFormularioYMostrarError  Time elapsed: 0.184 s  <<< ERROR!
 org.mockito.exceptions.base.MockitoException: 
 
 Mockito cannot mock this class: class com.tallerwebi.dominio.Usuario.
@@ -38,7 +38,7 @@ This problem should never occur for javac-compiled classes. This problem has bee
 Caused by: java.lang.IllegalArgumentException: Java 23 (67) is not supported by the current version of Byte Buddy which officially supports Java 21 (65) - update Byte Buddy or set net.bytebuddy.experimental as a VM property
 	at com.tallerwebi.presentacion.ControladorLoginTest.init(ControladorLoginTest.java:30)
 
-com.tallerwebi.presentacion.ControladorLoginTest.loginConUsuarioYPasswordCorrectosDeberiaLLevarAHome  Time elapsed: 0.128 s  <<< ERROR!
+com.tallerwebi.presentacion.ControladorLoginTest.loginConUsuarioYPasswordCorrectosDeberiaLLevarAHome  Time elapsed: 0.32 s  <<< ERROR!
 org.mockito.exceptions.base.MockitoException: 
 
 Mockito cannot mock this class: class com.tallerwebi.dominio.Usuario.
@@ -74,7 +74,7 @@ This problem should never occur for javac-compiled classes. This problem has bee
 Caused by: java.lang.IllegalArgumentException: Java 23 (67) is not supported by the current version of Byte Buddy which officially supports Java 21 (65) - update Byte Buddy or set net.bytebuddy.experimental as a VM property
 	at com.tallerwebi.presentacion.ControladorLoginTest.init(ControladorLoginTest.java:30)
 
-com.tallerwebi.presentacion.ControladorLoginTest.registrarmeSiUsuarioExisteDeberiaVolverAFormularioYMostrarError  Time elapsed: 0.109 s  <<< ERROR!
+com.tallerwebi.presentacion.ControladorLoginTest.registrarmeSiUsuarioExisteDeberiaVolverAFormularioYMostrarError  Time elapsed: 0.225 s  <<< ERROR!
 org.mockito.exceptions.base.MockitoException: 
 
 Mockito cannot mock this class: class com.tallerwebi.dominio.Usuario.
@@ -110,7 +110,7 @@ This problem should never occur for javac-compiled classes. This problem has bee
 Caused by: java.lang.IllegalArgumentException: Java 23 (67) is not supported by the current version of Byte Buddy which officially supports Java 21 (65) - update Byte Buddy or set net.bytebuddy.experimental as a VM property
 	at com.tallerwebi.presentacion.ControladorLoginTest.init(ControladorLoginTest.java:30)
 
-com.tallerwebi.presentacion.ControladorLoginTest.loginConUsuarioYPasswordInorrectosDeberiaLlevarALoginNuevamente  Time elapsed: 0.079 s  <<< ERROR!
+com.tallerwebi.presentacion.ControladorLoginTest.loginConUsuarioYPasswordInorrectosDeberiaLlevarALoginNuevamente  Time elapsed: 0.113 s  <<< ERROR!
 org.mockito.exceptions.base.MockitoException: 
 
 Mockito cannot mock this class: class com.tallerwebi.dominio.Usuario.
@@ -146,7 +146,7 @@ This problem should never occur for javac-compiled classes. This problem has bee
 Caused by: java.lang.IllegalArgumentException: Java 23 (67) is not supported by the current version of Byte Buddy which officially supports Java 21 (65) - update Byte Buddy or set net.bytebuddy.experimental as a VM property
 	at com.tallerwebi.presentacion.ControladorLoginTest.init(ControladorLoginTest.java:30)
 
-com.tallerwebi.presentacion.ControladorLoginTest.registrameSiUsuarioNoExisteDeberiaCrearUsuarioYVolverAlLogin  Time elapsed: 0.096 s  <<< ERROR!
+com.tallerwebi.presentacion.ControladorLoginTest.registrameSiUsuarioNoExisteDeberiaCrearUsuarioYVolverAlLogin  Time elapsed: 0.109 s  <<< ERROR!
 org.mockito.exceptions.base.MockitoException: 
 
 Mockito cannot mock this class: class com.tallerwebi.dominio.Usuario.

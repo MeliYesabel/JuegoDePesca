@@ -68,7 +68,7 @@ public class ControladorLoginJugadorTest {
         String vistaObtenida = mav.getViewName();
 
         String mensajeDeErrorObtenido = mav.getModel().get("error_not_exist").toString();
-        String mensajeDeErrorEsperado = "El email ingresado no se encuentra registrado.";
+        String mensajeDeErrorEsperado = "El usuario no se encuentra registrado.";
 
         assertThat(vistaObtenida,equalTo(vistaEsperada));
         assertThat(mensajeDeErrorObtenido, equalTo(mensajeDeErrorEsperado));
