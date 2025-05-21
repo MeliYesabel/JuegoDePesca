@@ -36,6 +36,10 @@ public class Run {
     }
 
     public void restarCebo() {
-        this.cebo = this.cebo -1;
+        if (cebo == 0) {
+            throw new IllegalStateException("Se acabo la pesca, no hay mas cebos disponibles.");
+        } else {
+            cebo--;
+        }
     }
 }

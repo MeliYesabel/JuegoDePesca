@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Turno de Pesca</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .pez-card {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px;
+            width: 200px;
+            display: inline-block;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Peces generados en este turno</h1>
+
+<div th:if="${pecesGenerados != null}">
+    <div th:each="pez, iter : ${pecesGenerados}" class="pez-card">
+        <h3 th:text="'#' + ${iter.index + 1} + ' - ' + ${pez.nombre}"></h3>
+        <p><strong>Rareza:</strong> <span th:text="${pez.rareza}"></span></p>
+        <p><strong>Precio:</strong> <span th:text="${pez.precio}"></span> monedas</p>
+        <p><strong>Mar:</strong> <span th:text="${pez.mar.nombre}"></span></p>
+    </div>
+</div>
+
+<div th:if="${pecesGenerados == null}">
+    <p>No se han generado peces aún.</p>
+</div>
+
+</body>
+</html>

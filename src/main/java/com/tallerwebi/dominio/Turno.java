@@ -9,15 +9,10 @@ public class Turno {
     private Integer ceboRestante;
     private Integer monedasGanadas;
 
-    public Turno(
-            List<Pez> pecesGenerados, Integer ceboRestante, Integer monedasGanadas
-    ) {
-        this.pecesGenerados = pecesGenerados;
-        this.ceboRestante = ceboRestante;
-        this.monedasGanadas = monedasGanadas;
-    }
+    public Turno() {}
 
-    public Integer getCeboRestante() {
-        return ceboRestante;
+
+    public void setPecesGenerados(List<Pez> pecesGenerados) {
+        this.pecesGenerados = pecesGenerados;
     }
 }
