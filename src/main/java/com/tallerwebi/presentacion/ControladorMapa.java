@@ -15,21 +15,26 @@ public class ControladorMapa {
         return new ModelAndView("vistaMapa");
     }
 
-    @RequestMapping("/vistaMarDesbloqueado")
-    public ModelAndView vistaMarDesbloqueado() {
-        return new ModelAndView("vistaMarDesbloqueado");
+    @RequestMapping("/vistaTienda")
+    public ModelAndView irAVistaTienda(){
+        return new ModelAndView("vistaTienda");
     }
+
 
     @RequestMapping("/vistaLogros")
     public ModelAndView irAVistaLogros(){
         return new ModelAndView("vistaLogros");
     }
 
-    @RequestMapping("/vistaTienda")
-    public ModelAndView irAVistaTienda(){
-        return new ModelAndView("vistaTienda");
-    }
+    /*si debe buscar los datos de otro clase de deberia llamar a la clase y dspues usarlo el controllador para que el asigne
+    * como va a ser destinado. A menos que el controller no tenga un alogica muy completo no va a ser necesario usar
+    * de un servicio(no todos los test van a necesitar e estos)*/
 
+
+    @RequestMapping("/vistaMarDesbloqueado")
+    public ModelAndView vistaMarDesbloqueado() {
+        return new ModelAndView("vistaMarDesbloqueado");
+    }
     @RequestMapping("/vistaSeleccion")
     public ModelAndView irAVistaSeleccion() {
         return new ModelAndView("vistaSeleccion");
