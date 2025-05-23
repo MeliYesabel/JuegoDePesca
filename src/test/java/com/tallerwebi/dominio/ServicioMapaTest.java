@@ -1,5 +1,7 @@
 package com.tallerwebi.dominio;
 
+import org.junit.jupiter.api.Test;
+
 public class ServicioMapaTest {
 
     /*para crear un test de servicio*/
@@ -7,4 +9,8 @@ public class ServicioMapaTest {
 
     ServicioMapa sm = new ServicioMapaImplement();
 
+    @Test
+    public void siElMarEstaBloqueadoMostarUnMensajeDePagoParaDesbloquearloConException() {
+
+    }
 }

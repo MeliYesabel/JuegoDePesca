@@ -1,12 +1,23 @@
 package com.tallerwebi.presentacion;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import com.tallerwebi.dominio.ServicioMapa;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class ControladorMapa {
+
+    /*agrego la interfaz que conecta con los test*/
+    private ServicioMapa servicioMapa;
+    /*creo el constructor*/
+    @Autowired
+    public ControladorMapa(ServicioMapa servicioMapa) {
+        this.servicioMapa = servicioMapa;
+    }
+
 
     /*mas adelante agregar las vistas de los distintos mares*/
 
@@ -41,4 +52,14 @@ public class ControladorMapa {
     }
 
 
+    public ModelAndView redireccionDeVistasDependiendoDelUsuario(String aliasJugador, Double monedasJuntadas) {
+        ModelMap modelMap = new ModelMap();
+        if (monedasJuntadas == 0.0 ) {
+            modelMap.put("mensajeDeVistaError", "El Usuario no cuenta con Monedas");
+            return new ModelAndView("vistaMapa", modelMap);
+        }
+
+
+        return new ModelAndView("vistaSeleccion");
+    }
 }
