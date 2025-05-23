@@ -25,6 +25,12 @@ public class ControladorMapaTest {
     }
 
     @Test
+    public void ssiElJugadorTieneMonedasSuficientesParaDesbloquearElMarDebeCambiarDePaginaApaginaSeleccion() {
+        ModelAndView mav = controladorMapa.redireccionDeVistasDependiendoDelUsuario("alias_jugador",100.0);
+        thenLaVistaFueRedirigidaExitosamente(mav,"vistaSeleccion");
+    }
+
+    @Test
     public void siElJugadorNoTieneMonedasParaDesbloquearElMarDebeMostarMensajeError(){
         ModelAndView mav = controladorMapa.redireccionDeVistasDependiendoDelUsuario("alias_jugador",0.0);
         thenNoSePuedoHacerElCambioDePagMensajeError(mav,"El Usuario no cuenta con Monedas");
