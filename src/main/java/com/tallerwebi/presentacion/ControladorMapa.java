@@ -1,5 +1,6 @@
 package com.tallerwebi.presentacion;
 
+import com.tallerwebi.dominio.MonedasInsuficientesException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import com.tallerwebi.dominio.ServicioMapa;
@@ -54,16 +55,20 @@ public class ControladorMapa {
 
     public ModelAndView redireccionDeVistasDependiendoDelUsuario(String aliasJugador, Double monedasJuntadas) {
         ModelMap modelMap = new ModelMap();
-        Double precioMarGriego = 100.0;
+        Double precioMarGriego = 90.0;
+
         if (monedasJuntadas == 0.0 ) {
             modelMap.put("mensajeDeVistaError", "El Usuario no cuenta con Monedas");
             return new ModelAndView("vistaMapa", modelMap);
         }
-        if (monedasJuntadas < precioMarGriego) {
+
+        /*agregue una exception -> try catch*/
+        try {
+            servicioMapa.calcularSiSePuedeDesbloquearUnMar(aliasJugador, precioMarGriego);
+        }catch (MonedasInsuficientesException e) {
             modelMap.put("mensajeErrorMonedas", "El Usuario no tiene suficientes monedas para desbloquear el mar");
             return new ModelAndView("vistaMapa", modelMap);
         }
-
         return new ModelAndView("vistaSeleccion");
     }
 }

@@ -1,5 +1,6 @@
 package com.tallerwebi.presentacion;
 
+import com.tallerwebi.dominio.MonedasInsuficientesException;
 import com.tallerwebi.dominio.ServicioMapa;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -8,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.equalToIgnoringCase;
-import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.*;
 
 /*POR AHORA: NO NECESITA MOCKITO YA QUE NO TIENE LOGICAS NI DEPENDENCIAS EXTERNAS.
 * solo son test que te muestran vistas nada de logica*/
@@ -23,6 +24,19 @@ public class ControladorMapaTest {
     public void init() {
         controladorMapa = new ControladorMapa(servicioMapa);
     }
+    /*segundo sprint
+    * PREGUNTa : es redundante hacer un test dond eme lanze un aexcepcion y otro test me testee las redirecciones */
+
+    /*servicio(agregue logica) + exception*/
+    @Test
+    public void siElJugadorNOTieneSuficientesMonedasParaDesbloquearElMarDebeLanzarMonedasInsuficientesException() {
+        /*test con exception mas mock xq usa logica del test servicio */
+        doThrow(MonedasInsuficientesException.class).when(servicioMapa).calcularSiSePuedeDesbloquearUnMar("alias_jugador",90.0);
+        ModelAndView mav = controladorMapa.redireccionDeVistasDependiendoDelUsuario("alias_jugador",90.0);
+
+        thenNoSePuedoHacerElCambioDePagMensajeError(mav,"mensajeErrorMonedas","El Usuario no tiene suficientes monedas para desbloquear el mar");
+    }
+
     @Test
     public void siElJugadorTieneSuficientesMonedasParaDesbloquearElMarDebeCambiardePaginaAVistaSeleccion() {
         ModelAndView mav = controladorMapa.redireccionDeVistasDependiendoDelUsuario("alias_jugador",150.0);
@@ -54,7 +68,7 @@ public class ControladorMapaTest {
 
     }
 
-
+/*primer sprint*/
     @Test
     public void alClickearVistaLogrosMeRedirigeAVistaLogros() {
         ModelAndView cm = controladorMapa.irAVistaLogros();
