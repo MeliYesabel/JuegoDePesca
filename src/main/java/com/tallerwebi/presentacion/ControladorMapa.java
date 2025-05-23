@@ -54,11 +54,15 @@ public class ControladorMapa {
 
     public ModelAndView redireccionDeVistasDependiendoDelUsuario(String aliasJugador, Double monedasJuntadas) {
         ModelMap modelMap = new ModelMap();
+        Double precioMarGriego = 100.0;
         if (monedasJuntadas == 0.0 ) {
             modelMap.put("mensajeDeVistaError", "El Usuario no cuenta con Monedas");
             return new ModelAndView("vistaMapa", modelMap);
         }
-
+        if (monedasJuntadas < precioMarGriego) {
+            modelMap.put("mensajeErrorMonedas", "El Usuario no tiene suficientes monedas para desbloquear el mar");
+            return new ModelAndView("vistaMapa", modelMap);
+        }
 
         return new ModelAndView("vistaSeleccion");
     }

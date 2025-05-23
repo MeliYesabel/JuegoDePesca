@@ -9,4 +9,17 @@ import javax.transaction.Transactional;
 @Transactional /*que sea mas raapido ? */
 
 public class ServicioMapaImplement implements ServicioMapa {
+
+    @Override
+    public Boolean calcularSiSePuedeDesbloquearUnMar(String aliasJugador, Double monedas) {
+        Double marSetteado = 150.0;
+        Boolean siSePuede =false;
+
+        if (!aliasJugador.isEmpty() && monedas >= marSetteado) {
+            siSePuede = true;
+        }
+        return siSePuede;
+    }
+
+
 }

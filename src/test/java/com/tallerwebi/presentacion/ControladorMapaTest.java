@@ -23,9 +23,20 @@ public class ControladorMapaTest {
     public void init() {
         controladorMapa = new ControladorMapa(servicioMapa);
     }
+    @Test
+    public void siElJugadorTieneSuficientesMonedasParaDesbloquearElMarDebeCambiardePaginaAVistaSeleccion() {
+        ModelAndView mav = controladorMapa.redireccionDeVistasDependiendoDelUsuario("alias_jugador",150.0);
+        thenLaVistaFueRedirigidaExitosamente(mav,"vistaSeleccion");
+    }
 
     @Test
-    public void ssiElJugadorTieneMonedasSuficientesParaDesbloquearElMarDebeCambiarDePaginaApaginaSeleccion() {
+    public void siElJugadorNOTieneSuficientesMonedasParaDesbloquearElMarDebeCambiardePaginaAVistaSeleccion() {
+        ModelAndView mav = controladorMapa.redireccionDeVistasDependiendoDelUsuario("alias_jugador",90.0);
+        thenNoSePuedoHacerElCambioDePagMensajeError(mav,"mensajeErrorMonedas","El Usuario no tiene suficientes monedas para desbloquear el mar");
+    }
+
+    @Test
+    public void siElJugadorTieneMonedasSuficientesParaDesbloquearElMarDebeCambiarDePaginaAVistaSeleccion() {
         ModelAndView mav = controladorMapa.redireccionDeVistasDependiendoDelUsuario("alias_jugador",100.0);
         thenLaVistaFueRedirigidaExitosamente(mav,"vistaSeleccion");
     }
@@ -33,13 +44,13 @@ public class ControladorMapaTest {
     @Test
     public void siElJugadorNoTieneMonedasParaDesbloquearElMarDebeMostarMensajeError(){
         ModelAndView mav = controladorMapa.redireccionDeVistasDependiendoDelUsuario("alias_jugador",0.0);
-        thenNoSePuedoHacerElCambioDePagMensajeError(mav,"El Usuario no cuenta con Monedas");
+        thenNoSePuedoHacerElCambioDePagMensajeError(mav,"mensajeDeVistaError","El Usuario no cuenta con Monedas");
 
     }
 
-    private void thenNoSePuedoHacerElCambioDePagMensajeError(ModelAndView mav, String mensajeError) {
+    private void thenNoSePuedoHacerElCambioDePagMensajeError(ModelAndView mav, String claveMensaje,String valorMensaje) {
         assertThat(mav.getViewName(),equalToIgnoringCase("vistaMapa"));
-        assertThat(mav.getModel().get("mensajeDeVistaError"),equalTo(mensajeError));
+        assertThat(mav.getModel().get(claveMensaje),equalTo(valorMensaje));
 
     }
 
