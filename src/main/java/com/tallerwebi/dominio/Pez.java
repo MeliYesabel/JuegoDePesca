@@ -3,7 +3,6 @@ package com.tallerwebi.dominio;
 public class Pez {
     private String nombre;
     private Rareza rareza;
-    private Number precio;
     private Mar mar;
 
     public Pez(String nombre) {
@@ -12,7 +11,6 @@ public class Pez {
     public Pez(String nombre, Rareza rareza) {
         this.nombre = nombre;
         this.rareza = rareza;
-        this.precio = precio;
     }
 
     public String getNombre() {
@@ -28,12 +26,6 @@ public class Pez {
      public void setRareza(Rareza rareza) {
         this.rareza = rareza;
      }
-     public Number getPrecio() {
-        return precio;
-     }
-     public void setPrecio(Number precio) {
-        this.precio = rareza.getValorBase();
-     }
 
      public Mar getMar() {
         return mar;
@@ -47,7 +39,6 @@ public class Pez {
         return "Pez{" +
                 "nombre='" + nombre + '\'' +
                 ", rareza=" + rareza +
-                ", precio=" + precio +
                 '}';
     }
 }

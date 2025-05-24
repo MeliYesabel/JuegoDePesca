@@ -1,24 +1,42 @@
 package com.tallerwebi.dominio;
 
-public enum Rareza {
-    NORMAL(0.5, 10),
-    RARO(0.3, 25),
-    EPICO(0.05, 100); //modificable, lo puse por tener algo por el momento
+public class Rareza {
 
-    private final double probabilidadAtrapado;
-    private final int valorBase;
+    private String nombre;
+    private Double probabilidadAtrapar;
+    private Integer valor;
 
-    Rareza(double probabilidadAtrapado, int valorBase) {
-        this.probabilidadAtrapado = probabilidadAtrapado;
-        this.valorBase = valorBase;
+    public Rareza(String nombre, Double probabilidadAtrapar, Integer valor) {
+        this.nombre = nombre;
+        this.probabilidadAtrapar = probabilidadAtrapar;
+        this.valor = valor;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Double getProbabilidadAtrapar() {
+        return probabilidadAtrapar;
+    }
+
+    public void setProbabilidadAtrapar(Double probabilidadAtrapar) {
+        this.probabilidadAtrapar = probabilidadAtrapar;
+    }
+
+    public Integer getValor() {
+        return valor;
+    }
+
+    public void setValor(Integer valor) {
+        this.valor = valor;
     }
 
     public double getProbabilidadAtrapado() {
-        return probabilidadAtrapado;
-    }
-
-    public int getValorBase() {
-        return valorBase;
+        return probabilidadAtrapar;
     }
 }
-
