@@ -2,14 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Mapa</title>
+    <title>Title</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/estiloVistaMapa.css}" />
-
 </head>
 <body>
-
-  <header class="container-fluid">
+<header class="container-fluid">
     <ul class="nav justify-content-end mt-2 p-4">
         <li class="nav-item">
             <a class="btn btn-primary me-2" th:href="@{/vistaLogros}">Libro de Coleccion</a>
@@ -21,29 +22,26 @@
             <a class="btn btn-primary me-2" href="#">Usuario</a><!-- cual es la vista del usuario y si vista logros sera asi o libro de colecciones -->
         </li>
     </ul>
-  </header>
+</header>
 
-  <div class="container mar-desbloqueado-container ">
+<div class="container mar-desbloqueado-container ">
     <div class="row fondo">
         <div >
-            <h2>Mitologia Griega</h2>
+            <h2>Mar Bloqueado</h2>
         </div>
         <div >
-            <p>Cantidad de Carnada : 3</p>
-        </div>
-        <div >
-            <p>Elige el jugador</p>
-        </div>
-        <div >
-            <p>Meta : alcanzar la cantidad minima de 500 monedas. Pescando los distintos peces</p>
+            <!-- aca tendria que haber un th que me diga la cantidad de monedas que tengo y si me alcanza comparar
+            el mar lo pueda comprar y si no me redirija a la vista mapa-->
+            <p>Para desbloquear el mar necesitas 150 monedas</p>
         </div>
         <div>
-            <button type="submit" class="btn btn-primary" >Empezar</button>
+            <p>¿Deseas desbloquear este mar?</p>
+            <button type="submit" class="btn btn-primary" >Si</button>
+            <button type="submit" class="btn btn-primary" >No</button>
         </div>
     </div>
-  </div>
-
-
+</div>
 
 </body>
 </html>
+

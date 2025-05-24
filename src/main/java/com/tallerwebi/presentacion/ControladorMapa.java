@@ -43,9 +43,9 @@ public class ControladorMapa {
     * de un servicio(no todos los test van a necesitar e estos)*/
 
 
-    @RequestMapping("/vistaMarDesbloqueado")
+    @RequestMapping("/vistaMarBloqueado")
     public ModelAndView vistaMarDesbloqueado() {
-        return new ModelAndView("vistaMarDesbloqueado");
+        return new ModelAndView("vistaMarBloqueado");
     }
     @RequestMapping("/vistaSeleccion")
     public ModelAndView irAVistaSeleccion() {
@@ -53,6 +53,7 @@ public class ControladorMapa {
     }
 
 
+    /*DUDA:  @RequestMapping("/vistaMarDesbloqueado") aca hiria esto */
     public ModelAndView redireccionDeVistasDependiendoDelUsuario(String aliasJugador, Double monedasJuntadas) {
         ModelMap modelMap = new ModelMap();
         Double precioMarGriego = 90.0;
