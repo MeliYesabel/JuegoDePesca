@@ -12,7 +12,6 @@ com\tallerwebi\presentacion\DatosLogin.class
 com\tallerwebi\dominio\excepcion\UsuarioExistente.class
 com\tallerwebi\presentacion\ControladorMapa.class
 com\tallerwebi\config\SpringWebConfig.class
-com\tallerwebi\presentacion\ControladorCalculadora.class
 com\tallerwebi\presentacion\ControladorLogin.class
 com\tallerwebi\presentacion\ControladorRegistro.class
 com\tallerwebi\dominio\Usuario.class
