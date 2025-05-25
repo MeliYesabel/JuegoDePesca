@@ -36,7 +36,7 @@ public class ControladorTiendaTest {
 
 
     @Test
-public void dadoQueCunadoComproUnObjetoYMeDevuelveTrueQueMeDevulevaLaVistaObjetoHtml(){
+public void dadoQueCuandoComproUnObjetoYMeDevuelveTrueQueMeDevulevaLaVistaObjetoHtml(){
 
         when(servicioTienda.comprarObjeto(jugador,(int)objeto.getIdObjeto())).thenReturn(true);
         ModelAndView modelAndView = controladorTienda.comprarObjeto(session,1);
@@ -46,11 +46,11 @@ public void dadoQueCunadoComproUnObjetoYMeDevuelveTrueQueMeDevulevaLaVistaObjeto
     }
 
     @Test
-    public void dadoQueCuandoComproUnObjetoYMeDevuelveFalseQueMeDevuelvaLaVistaTiendaHtml(){
+    public void dadoQueCuandoComproUnObjetoYMeDevuelveFalseQueMeDevuelvaLaVistaTiendaHtml(){//si falla la compra de un objeto vuelva a la tienda
         when(servicioTienda.comprarObjeto(jugador,objeto.getIdObjeto())).thenThrow(new MonedasInsuficientesException("No hay monedas"));
                 //.thenReturn(false);
         ModelAndView modelAndView = controladorTienda.comprarObjeto(session,1);
-        assertThat(modelAndView.getViewName(), equalToIgnoringCase("vistaTienda.html"));
+        assertThat(modelAndView.getViewName(), equalToIgnoringCase("vistaTienda.html"));// en realidad seria vista compra sin exito
     }
  /*  @Test
     public void queElUsuarioPuedaComprarMonedas() {

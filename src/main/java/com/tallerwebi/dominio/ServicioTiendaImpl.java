@@ -57,6 +57,7 @@ public class ServicioTiendaImpl implements ServicioTienda {
     }
 
     public List<Objeto> getListaObjetos() {
+        //agregar objetos si esta vacio y sacarla del controlador tienda
         return listaObjetos;
     }
 }

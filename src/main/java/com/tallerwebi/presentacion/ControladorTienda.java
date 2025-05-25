@@ -46,7 +46,7 @@ public class ControladorTienda {
 
 
 
-        return new ModelAndView("vistaTienda.html", model);
+        return new ModelAndView("vistaTienda.html", model);//no poner html al final
     }
 
 
@@ -60,7 +60,7 @@ public class ControladorTienda {
 
         if(jugador == null){
             model.put("error","No hay sesiones activas para este jugador");
-            return new ModelAndView("vistaTienda.html", model);
+            return new ModelAndView("vistaTienda.html", model);// en vez de dirigirte a tienda que lo haga a login
         }
 
         try {

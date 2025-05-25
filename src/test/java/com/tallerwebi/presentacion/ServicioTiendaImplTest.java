@@ -57,7 +57,7 @@ public class ServicioTiendaImplTest {
     public void queNoSePuedaComprarUnObjetoQueNoExiste() {
         jugador.setMonedas(150.0); // monedas suficientes
 
-        // No agregamos el objeto a la tienda
+        // No agrego el objeto a la tienda
         assertThrows(ObjetoInexistenteException.class, () -> {
             servicioTienda.comprarObjeto(jugador, objeto.getIdObjeto()); // objeto no agregado
         });
