@@ -46,7 +46,7 @@ public class ControladorTienda {
 
 
 
-        return new ModelAndView("vistaTienda.html", model);//no poner html al final
+        return new ModelAndView("vistaTienda", model);
     }
 
 

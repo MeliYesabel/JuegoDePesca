@@ -10,6 +10,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class ControladorRun {
+    /*RUN tienen la logica que se fija que si la cantidad de carnadas es myor a cero
+    * si la pasiva es distinta de null
+    * si da verdadero te redirige a vista->  "Run"*/
 
     private ServicioRun servicioRun;
 

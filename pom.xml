@@ -161,6 +161,7 @@
                 <configuration>
                     <scanIntervalSeconds>2</scanIntervalSeconds>
                     <httpConnector>
+                        <!-- ruta 9090 xq ya esta ocupado el 8080(para anahi) solo cambia la ruta-->
                         <port>9090</port>
                     </httpConnector>
                     <webApp>
