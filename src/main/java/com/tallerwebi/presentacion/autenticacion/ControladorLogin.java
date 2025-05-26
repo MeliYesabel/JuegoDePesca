@@ -1,5 +1,7 @@
 package com.tallerwebi.presentacion.autenticacion;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -29,7 +31,7 @@ public class ControladorLogin {
     }
 
     @PostMapping("/login-pescador")
-    public ModelAndView procesarFormularioLogin(@ModelAttribute("usuarioDto")UsuarioDto usuarioDto){
+    public ModelAndView procesarFormularioLogin(@ModelAttribute("usuarioDto")UsuarioDto usuarioDto, HttpServletRequest request){
         ModelMap datosMapeados = new ModelMap();
         String emailIngresado = usuarioDto.getEmail();
         String contraseniaIngresada = usuarioDto.getContrasenia();
@@ -47,9 +49,10 @@ public class ControladorLogin {
 
             try{
                 UsuarioAuth usuarioBuscado = servicioUsuarioI.buscarUsuario(emailIngresado, contraseniaIngresada);
-                datosMapeados.put("usuarioLogueado", usuarioBuscado);
-
-                return new ModelAndView("vistaMapa", datosMapeados);
+                datosMapeados.put("usuarioLogueado", usuarioBuscado);//oki profe ! gracias
+//seria algo asi?
+                request.getSession().setAttribute("username", usuarioBuscado.getEmail());//seteo en session y luego se lo manda a mapa
+                return new ModelAndView("redirect:/mapa");//redirecciona otra action controller si profe ja como eso de sesion
             }catch(UsuarioInexistenteException excepcion){
                 datosMapeados.put("error_not_exist", "El usuario no se encuentra registrado.");
                 return new ModelAndView("login-pescador",datosMapeados); 

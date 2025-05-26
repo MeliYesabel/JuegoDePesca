@@ -37,9 +37,10 @@ public class ControladorLoginEjemplo {
 
         Usuario usuarioBuscado = servicioLogin.consultarUsuario(datosLogin.getEmail(), datosLogin.getPassword());
         if (usuarioBuscado != null) {
-            request.getSession().setAttribute("ROL", usuarioBuscado.getRol());
-            return new ModelAndView("redirect:/home");
-        } else {
+            request.getSession().setAttribute("ROL", usuarioBuscado.getRol());//nombreUsuario se ouede inyecta httpreqest
+            return new ModelAndView("redirect:/home");// ysi es el id eso se puede hacer ver?
+//return new ModelAndView("redirect:/mapa"); claro 
+        } else {//estaba del profe
             model.put("error", "Usuario o clave incorrecta");
         }
         return new ModelAndView("login", model);
