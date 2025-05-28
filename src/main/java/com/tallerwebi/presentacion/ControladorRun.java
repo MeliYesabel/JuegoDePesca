@@ -20,8 +20,8 @@ public class ControladorRun {
 
     // PRIMER INGRESO a /Run: se muestra pantalla de inicio
     @RequestMapping("/Run")
-    public ModelAndView mostrarInicio(ModelMap model) {
-        return new ModelAndView("vistaRun", model); //
+    public ModelAndView iniciarPartida(ModelMap model) {
+        return new ModelAndView("vistaRun", model);
     }
 
     // DESPUÉS DE UN TURNO: consulta si hay más cebos
