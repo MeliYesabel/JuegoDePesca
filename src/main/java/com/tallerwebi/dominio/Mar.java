@@ -6,6 +6,10 @@ public class Mar {
     private String nombre;
     private List<Pez> peces;
 
+    public Mar(String nombre) { //Creado momentanemente para poder seguir con el test
+        this.nombre = nombre;
+    }
+
     public String getNombre() {
         return nombre;
     }
