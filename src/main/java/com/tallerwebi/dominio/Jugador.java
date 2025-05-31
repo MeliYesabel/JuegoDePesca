@@ -2,12 +2,18 @@ package com.tallerwebi.dominio;
 
 import com.tallerwebi.dominio.excepcion.Objeto;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+//@Entity
 public class Jugador {
-private double monedas;
-private List<Objeto> listaObjetos;
+
+   // @Id
+   // @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id_jugador;
+    private double monedas;
+    private List<Objeto> listaObjetos;
 
 public Jugador(){
     this.monedas = 0.0;

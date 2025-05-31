@@ -2,6 +2,7 @@ package com.tallerwebi.presentacion;
 
 import com.tallerwebi.dominio.MonedasInsuficientesException;
 import com.tallerwebi.dominio.ServicioMapa;
+import org.dom4j.rule.Mode;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.web.servlet.ModelAndView;
@@ -26,6 +27,19 @@ public class ControladorMapaTest {
     }
     /*segundo sprint
     * PREGUNTa : es redundante hacer un test dond eme lanze un aexcepcion y otro test me testee las redirecciones */
+
+    /*31/05 agregue
+    @Test
+    public void fijarseSiElJugadorTieneElMarDESBLOQUEADOExito() {
+        ModelAndView mv = controladorMapa.redireccionDeVistasDependiendoDelUsuario("alias_jugador",4.0);
+        thenLaVistaFueRedirigidaExitosamente(mv,"vistaSeleccion");
+    } */
+
+    @Test
+    public void fijarseSiElJugadorTieneElMarBloqueadoLanzarUnError(){
+        ModelAndView mv = controladorMapa.redireccionDeVistasDependiendoDelUsuario("alias_jugador",4.0);
+        thenNoSePuedoHacerElCambioDePagMensajeError(mv,"mensajeDeVistaError","El mar se encuentra en estado BLOQUEADO");
+    }
 
     /*servicio(agregue logica) + exception*/
     @Test

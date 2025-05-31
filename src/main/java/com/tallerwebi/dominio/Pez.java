@@ -10,10 +10,8 @@ public class Pez {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_pez;
     private String nombre;
-
     @OneToOne
     private Rareza rareza;
-
     /*segun la explicacion del prof es mejor tener manyto one q onetoone*/
     @ManyToOne
     @JoinColumn(name = "id_mar")
