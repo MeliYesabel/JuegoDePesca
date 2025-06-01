@@ -12,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class ControladorMapa {
 
-    /*agrego la interfaz que conecta con los test*/
+    /*agrego la interfaz que conecta con los test de servicio(logica de negocio)*/
     private ServicioMapa servicioMapa;
     /*creo el constructor*/
     @Autowired
@@ -56,6 +56,7 @@ public class ControladorMapa {
         ModelMap modelMap = new ModelMap();
         Mar marFalse = new Mar("mar sett",0.0,"pueba",false );
         Mar marTrue = new Mar("mar sett",0.0,"pueba",true );
+
         if (monedasJuntadas == 0.0 ) {
             modelMap.put("mensajeDeVistaError", "El Usuario no cuenta con Monedas");
             return new ModelAndView("vistaMapa", modelMap);
