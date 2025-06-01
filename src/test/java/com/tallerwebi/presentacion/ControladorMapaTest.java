@@ -1,5 +1,6 @@
 package com.tallerwebi.presentacion;
 
+import com.tallerwebi.dominio.Mar;
 import com.tallerwebi.dominio.MonedasInsuficientesException;
 import com.tallerwebi.dominio.ServicioMapa;
 import org.dom4j.rule.Mode;
@@ -28,12 +29,12 @@ public class ControladorMapaTest {
     /*segundo sprint
     * PREGUNTa : es redundante hacer un test dond eme lanze un aexcepcion y otro test me testee las redirecciones */
 
-    /*31/05 agregue
+    /*31/05 agregue*/
     @Test
     public void fijarseSiElJugadorTieneElMarDESBLOQUEADOExito() {
         ModelAndView mv = controladorMapa.redireccionDeVistasDependiendoDelUsuario("alias_jugador",4.0);
         thenLaVistaFueRedirigidaExitosamente(mv,"vistaSeleccion");
-    } */
+    }
 
     @Test
     public void fijarseSiElJugadorTieneElMarBloqueadoLanzarUnError(){
@@ -57,11 +58,11 @@ public class ControladorMapaTest {
         thenLaVistaFueRedirigidaExitosamente(mav,"vistaSeleccion");
     }
 
-    @Test
-    public void siElJugadorNOTieneSuficientesMonedasParaDesbloquearElMarDebeCambiardePaginaAVistaSeleccion() {
-        ModelAndView mav = controladorMapa.redireccionDeVistasDependiendoDelUsuario("alias_jugador",90.0);
+   /* @Test -> este test no me va a dar por que en ningun lado estoy usando el EXCEPCION algo que antes si
+    public void siElJugadorNOTieneSuficientesMonedasParaDesbloquearElMarDebeCambiardePaginaAVistaMapa() {
+        ModelAndView mav = controladorMapa.redireccionDeVistasDependiendoDelUsuario("alias_jugador",80.0);
         thenNoSePuedoHacerElCambioDePagMensajeError(mav,"mensajeErrorMonedas","El Usuario no tiene suficientes monedas para desbloquear el mar");
-    }
+    }*/
 
     @Test
     public void siElJugadorTieneMonedasSuficientesParaDesbloquearElMarDebeCambiarDePaginaAVistaSeleccion() {

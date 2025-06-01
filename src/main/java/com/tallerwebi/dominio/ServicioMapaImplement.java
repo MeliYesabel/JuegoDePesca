@@ -12,7 +12,8 @@ public class ServicioMapaImplement implements ServicioMapa {
 
     @Override
     public Boolean calcularSiSePuedeDesbloquearUnMar(String aliasJugador, Double monedas) {
-        Double marSetteado = 150.0;
+        /*mas adelante debo instanciar el mar */
+        Double marSetteado = 100.0;
         Boolean siSePuede =false;
 
         if (!aliasJugador.isEmpty() && monedas >= marSetteado) {

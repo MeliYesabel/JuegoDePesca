@@ -15,12 +15,20 @@ public class Mar {
     private String nombre;
     private Double precio;
     private String descripcion;
-    private Boolean estado = false;/*esto deberia estar en la base de dat0s?*/
+    private Boolean estado ;/*esto deberia estar en la base de dat0s?*/
     /*ya que hicimoe @manyToOne en pez esto puede ser opcional*/
     @OneToMany
     private List<Pez> peces;
 
     public Mar() {}
+
+    /*Solo para probar los test */
+    public Mar(String nombre, Double precio, String descripcion, Boolean estado) {
+        this.nombre = nombre;
+        this.precio = precio;
+        this.descripcion = descripcion;
+        this.estado = estado;
+    }
 
     public Long getId_mar() {
         return id_mar;
