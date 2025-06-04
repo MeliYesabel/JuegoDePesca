@@ -22,16 +22,16 @@ public class ControladorMapa {
 
     /*mas adelante agregar las vistas de los distintos mares*/
 
-    @RequestMapping("/vistaMapa")
+    @RequestMapping("/mapa")
     public ModelAndView vistaMapa() {
         return new ModelAndView("vistaMapa");
     }
 
-    @RequestMapping("/vistaTienda")
+    /*@RequestMapping("/vistaTienda")
     public ModelAndView irAVistaTienda(){
         return new ModelAndView("vistaTienda");
     }
-
+*/
 
     @RequestMapping("/vistaLogros")
     public ModelAndView irAVistaLogros(){
