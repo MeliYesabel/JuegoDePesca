@@ -16,4 +16,39 @@ public class Turno {
         this.pecesGenerados = pecesGenerados;
     }
 
+    public Integer getMonedasGanadas() {
+        return monedasGanadas;
+    }
+
+    public void setMonedasGanadas(Integer monedasGanadas) {
+        this.monedasGanadas = monedasGanadas;
+    }
+
+    public Integer getCeboRestante() {
+        return ceboRestante;
+    }
+
+    public void setCeboRestante(Integer ceboRestante) {
+        this.ceboRestante = ceboRestante;
+    }
+
+    public Boolean getFuePescado() {
+        return fuePescado;
+    }
+
+    public void setFuePescado(Boolean fuePescado) {
+        this.fuePescado = fuePescado;
+    }
+
+    public Pez getSeleccionado() {
+        return seleccionado;
+    }
+
+    public void setSeleccionado(Pez seleccionado) {
+        this.seleccionado = seleccionado;
+    }
+
+    public List<Pez> getPecesGenerados() {
+        return pecesGenerados;
+    }
 }

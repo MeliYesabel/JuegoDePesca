@@ -1,5 +1,9 @@
 package com.tallerwebi.dominio;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+
 public class ServicioTurnoImpl implements ServicioTurno {
     @Override
     public Turno crearUnTurno(Run run) {
@@ -10,4 +14,16 @@ public class ServicioTurnoImpl implements ServicioTurno {
 
        return new Turno();
     }
+
+    @Override
+    public List<Pez> tomarTresPecesParaElTurno(Run run) {
+
+        List<Pez> todosLosPecesDelMar = run.getMar().getPeces();
+
+        Collections.shuffle(todosLosPecesDelMar); // se mesclan
+
+        return todosLosPecesDelMar.subList(0, 3);
+    }
+
+
 }

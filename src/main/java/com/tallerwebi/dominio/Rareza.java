@@ -5,6 +5,8 @@ public class Rareza {
     private Double probabilidadAtrapar;
     private Integer valor;
 
+    public Rareza() {}
+
     public Rareza(String nombre, Double probabilidadAtrapar, Integer valor) {
         this.nombre = nombre;
         this.probabilidadAtrapar = probabilidadAtrapar;

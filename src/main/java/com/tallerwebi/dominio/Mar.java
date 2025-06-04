@@ -1,10 +1,11 @@
 package com.tallerwebi.dominio;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Mar {
     private String nombre;
-    private List<Pez> peces;
+    private List<Pez> peces = new ArrayList<>();
 
     public Mar(String nombre) { //Creado momentanemente para poder seguir con el test
         this.nombre = nombre;
