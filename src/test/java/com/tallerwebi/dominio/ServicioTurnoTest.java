@@ -72,6 +72,42 @@ public class ServicioTurnoTest {
         assertNotNull(testTresPeces);
         assertEquals(3, tr.getPecesGenerados().size());
     }
+    @Test
+    public void obtenerParaPescarElPezEnlaPosicionCero(){
+        mar = new Mar("Nombre");
+        agregarPeceslaLista(mar);
+        int cantidadDeCebo = 1;
+        run = new Run(mar, cantidadDeCebo);
+        Turno tr = st.crearUnTurno(run);
+
+        tr.setPecesGenerados(st.tomarTresPecesParaElTurno(run));
+
+        List<Pez> testTresPeces = tr.getPecesGenerados();
+
+        Pez pezSeleccionado = st.seleccionarUnPez(testTresPeces, 0);
+
+        assertEquals(testTresPeces.get(0), pezSeleccionado);
+    }
+
+    @Test
+    public void noPoderObtenerParaPescarElPezEnlaPosicionCuatro() {
+        mar = new Mar("Nombre");
+        agregarPeceslaLista(mar);
+        int cantidadDeCebo = 1;
+        run = new Run(mar, cantidadDeCebo);
+        Turno tr = st.crearUnTurno(run);
+
+        tr.setPecesGenerados(st.tomarTresPecesParaElTurno(run));
+        List<Pez> testTresPeces = tr.getPecesGenerados();
+
+        assertThrows(ObjetoInexistenteException.class, () -> {
+            st.seleccionarUnPez(testTresPeces, 4);
+        });
+    }
+
+
+
+
 
     public void agregarPeceslaLista(Mar mar){
         List<Pez> peces = new ArrayList<>();

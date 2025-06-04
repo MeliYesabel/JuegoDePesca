@@ -17,12 +17,23 @@ public class ServicioTurnoImpl implements ServicioTurno {
 
     @Override
     public List<Pez> tomarTresPecesParaElTurno(Run run) {
-
         List<Pez> todosLosPecesDelMar = run.getMar().getPeces();
-
         Collections.shuffle(todosLosPecesDelMar); // se mesclan
-
         return todosLosPecesDelMar.subList(0, 3);
+    }
+
+    @Override
+    public List<Pez> guardarLosTresPecesParaElTurno(Run run) {
+        return List.of();
+    }
+
+    @Override
+    public Pez seleccionarUnPez(List<Pez> pecesGenerados, Integer posicionDelPez) {
+
+        if (posicionDelPez <= 3) {
+            return pecesGenerados.get(posicionDelPez);
+        }
+        throw new ObjetoInexistenteException("No existe");
     }
 
 
