@@ -59,4 +59,28 @@ public class RepositorioMarImpl implements RepositorioMar {
                 .add(Restrictions.eq("nombre", nombreMar))
                 .uniqueResult();
     }
+
+    /*select *
+    * from mar
+    * where nombre = 'nombre' && estadoBloqueado = false*/
+    @Override
+    public Mar obtenerMarPorNombreSiEsteEstaDesbloqeuado(String nombre) {
+        var session = sessionFactory.getCurrentSession();
+        return (Mar)session.createCriteria(Mar.class)
+                .add(Restrictions.eq("nombre", nombre))
+                .add(Restrictions.eq("estadoBloqueado",false))
+                .uniqueResult();
+    }
+
+    /*select mar.precio
+    * from mar
+    * where nombre = 'nombre' && estadoBloqueado = true */
+    @Override
+    public Mar obtenerElPrecioDeUnMarBloqueado(String marBloqueado) {
+        var session = sessionFactory.getCurrentSession();
+        return (Mar) session.createCriteria(Mar.class)
+                .add(Restrictions.eq("nombre", marBloqueado))
+                .add(Restrictions.eq("estadoBloqueado",true))
+                .uniqueResult();
+    }
 }

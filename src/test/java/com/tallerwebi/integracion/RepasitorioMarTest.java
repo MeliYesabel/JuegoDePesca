@@ -35,7 +35,50 @@ public class RepasitorioMarTest {
     @Autowired
     private RepositorioMar repo;
 
-    /*test ----------------------------------- */
+    /*test : mares y peces*/
+
+    /*test : solo mares  -----------------------------------*/
+
+    @Test
+    @Transactional
+    @Rollback
+    public void queSePuedaObtenerUnMarSiEstaBloqueadoElPrecioParaDesbloqueralo(){
+        givenTodosLosMaresAgregadosDeAUnoUsandoOtroMetodo();
+        Mar mar = whenObtenerUnMarSiEstbloqueadoElPrecio("Njoror");
+        thenQueMeDevuelvaLacantDeMonedas(mar,100.0);
+    }
+
+    private Mar whenObtenerUnMarSiEstbloqueadoElPrecio(String marBloqueado) {
+        return repo.obtenerElPrecioDeUnMarBloqueado(marBloqueado);
+    }
+
+    private void thenQueMeDevuelvaLacantDeMonedas(Mar mar, Double precio ) {
+        assertThat(mar.getPrecio(), equalTo(precio));
+    }
+
+    @Test
+    @Transactional
+    @Rollback
+    public void queMeDeVerdeSiElMarBuscadoEstaDesbloqueado(){
+        givenTodosLosMaresAgregadosDeAUnoUsandoOtroMetodo();
+        Mar mar = whenObtenerUnMarPorNombreSiEstaDesbloqueado("Poseidon");
+        thenComprobarTestExitosoConMAREstadoBloqueado(mar,false);
+    }
+
+    private Mar whenObtenerUnMarPorNombreSiEstaDesbloqueado(String nombre) {
+        return repo.obtenerMarPorNombreSiEsteEstaDesbloqeuado(nombre);
+    }
+
+    private void thenComprobarTestExitosoConMAREstadoBloqueado(Mar mar, Boolean estadoBloqueado) {
+        assertThat(mar.getEstadoBloqueado(), equalTo(estadoBloqueado));
+    }
+
+   /* @Test  -> practicar con excepcion
+    @Transactional
+    @Rollback
+    public void queNOSePuedaTraerUnMarSiElNivelEstaBoqueado(){
+
+    }*/
 
     @Test
     @Transactional
@@ -43,7 +86,7 @@ public class RepasitorioMarTest {
     public void queSePuedaTraerUnMarPorNombre() {
         givenTodosLosMaresAgregadosDeAUnoUsandoOtroMetodo();
         Mar marSolicitado = whenObtenerUnMarPorNombre("Poseidon");
-        thenComprobarTestExitosoConMAR(marSolicitado);
+        thenComprobarTestExitosoConMAR(marSolicitado,"Poseidon");
 
     }
 
@@ -51,7 +94,7 @@ public class RepasitorioMarTest {
         return  repo.obtenerMarPorNombre(nombreMar);
     }
 
-    private void thenComprobarTestExitosoConMAR(Mar marSolicitado) {
+    private void thenComprobarTestExitosoConMAR(Mar marSolicitado,String nombreMarABuscar) {
         assertThat(marSolicitado.getNombre(), equalTo("Poseidon"));
     }
 

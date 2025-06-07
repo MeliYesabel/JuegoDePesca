@@ -11,4 +11,8 @@ public interface RepositorioMar  {
     List<Mar> obtenerListaDeMaresBloqueados();
 
     Mar obtenerMarPorNombre(String nombreMar);
+
+    Mar obtenerMarPorNombreSiEsteEstaDesbloqeuado(String nombre);
+
+    Mar obtenerElPrecioDeUnMarBloqueado(String marBloqueado);
 }
