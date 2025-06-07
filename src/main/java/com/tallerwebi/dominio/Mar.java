@@ -1,9 +1,6 @@
 package com.tallerwebi.dominio;
 
-import net.bytebuddy.asm.Advice;
-
 import javax.persistence.*;
-import java.util.List;
 
 /**/
 @Entity
@@ -15,10 +12,10 @@ public class Mar {
     private String nombre;
     private Double precio;
     private String descripcion;
-    private Boolean estado ;/*esto deberia estar en la base de dat0s?*/
-    /*ya que hicimoe @manyToOne en pez esto puede ser opcional*/
+    private Boolean estadoBloqueado;/*esto deberia estar en la base de dat0s?*/
+    /*ya que hicimoe @manyToOne en pez esto puede ser opcional
     @OneToMany
-    private List<Pez> peces;
+    private List<Pez> peces;*/
 
     public Mar() {}
 
@@ -27,7 +24,7 @@ public class Mar {
         this.nombre = nombre;
         this.precio = precio;
         this.descripcion = descripcion;
-        this.estado = estado;
+        this.estadoBloqueado = estado;
     }
 
     public Long getId_mar() {
@@ -54,20 +51,11 @@ public class Mar {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    public Boolean getEstado() {
-        return estado;
+    public Boolean getEstadoBloqueado() {
+        return estadoBloqueado;
     }
-    public void setEstado(Boolean estado) {
-        this.estado = estado;
+    public void setEstadoBloqueado(Boolean estadoBloqueado) {
+        this.estadoBloqueado = estadoBloqueado;
     }
 
-    public List<Pez> getPeces() {
-        return peces;
-    }
-    public void setPeces(List<Pez> peces) {
-        this.peces = peces;
-    }
-    public void agregarPezAlMar(Pez pez) {
-        peces.add(pez);
-    }
 }

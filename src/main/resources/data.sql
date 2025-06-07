@@ -1,6 +1,6 @@
 INSERT INTO Usuario(id, email, password, rol, activo)VALUES(null, 'test@unlam.edu.ar', 'test', 'ADMIN', true);
 
-INSERT INTO Mar (nombre,precio,descripcion,estado) VALUES
+INSERT INTO Mar (nombre,precio,descripcion,estadoBloqueado) VALUES
        ("Mitologia griego",0.0,"mar uno ", TRUE),
        ("Mitologia Nordica" , 150.0,"mar dos",FALSE),
        ("Mitologia Japonesa", 200.0,"mar tres",FALSE),
