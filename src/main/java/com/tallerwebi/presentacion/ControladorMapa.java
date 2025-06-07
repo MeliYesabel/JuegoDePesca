@@ -1,5 +1,6 @@
 package com.tallerwebi.presentacion;
 
+import com.tallerwebi.dominio.Mar;
 import com.tallerwebi.dominio.MonedasInsuficientesException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class ControladorMapa {
 
-    /*agrego la interfaz que conecta con los test*/
+    /*agrego la interfaz que conecta con los test de servicio(logica de negocio)*/
     private ServicioMapa servicioMapa;
     /*creo el constructor*/
     @Autowired
@@ -19,19 +20,16 @@ public class ControladorMapa {
         this.servicioMapa = servicioMapa;
     }
 
-
-    /*mas adelante agregar las vistas de los distintos mares*/
-
-    @RequestMapping("/mapa")
+    @RequestMapping("/vistaMapa")
     public ModelAndView vistaMapa() {
         return new ModelAndView("vistaMapa");
     }
 
-    /*@RequestMapping("/vistaTienda")
+    @RequestMapping("/vistaTienda")
     public ModelAndView irAVistaTienda(){
         return new ModelAndView("vistaTienda");
     }
-*/
+
 
     @RequestMapping("/vistaLogros")
     public ModelAndView irAVistaLogros(){
@@ -56,20 +54,35 @@ public class ControladorMapa {
     /*DUDA:  @RequestMapping("/vistaMarDesbloqueado") aca hiria esto */
     public ModelAndView redireccionDeVistasDependiendoDelUsuario(String aliasJugador, Double monedasJuntadas) {
         ModelMap modelMap = new ModelMap();
-        Double precioMarGriego = 90.0;
+        Mar marFalse = new Mar("mar sett",0.0,"pueba",false );
+        Mar marTrue = new Mar("mar sett",0.0,"pueba",true );
 
         if (monedasJuntadas == 0.0 ) {
             modelMap.put("mensajeDeVistaError", "El Usuario no cuenta con Monedas");
             return new ModelAndView("vistaMapa", modelMap);
         }
 
-        /*agregue una exception -> try catch*/
+        /*agregue 31/05 ->
+        * hasta que no cree una clase me va a dar null xq no esta llamando a uno
+        * asi que por ahora lo sett para hacer los test  */
+        if (marFalse.getEstado().equals(false)) {
+            modelMap.put("mensajeDeVistaError", "El mar se encuentra en estado BLOQUEADO");
+            return new ModelAndView("vistaMapa", modelMap);
+        }else if (marTrue.getEstado().equals(true)) {
+            return new ModelAndView("vistaSeleccion", modelMap);
+        }
+
+        /*agregue una exception -> try catch DUDA: esto deberia ir a vistaMapa o vistaMarBloqueado?*/
         try {
-            servicioMapa.calcularSiSePuedeDesbloquearUnMar(aliasJugador, precioMarGriego);
+            servicioMapa.calcularSiSePuedeDesbloquearUnMar(aliasJugador, monedasJuntadas);
         }catch (MonedasInsuficientesException e) {
             modelMap.put("mensajeErrorMonedas", "El Usuario no tiene suficientes monedas para desbloquear el mar");
             return new ModelAndView("vistaMapa", modelMap);
         }
+
+
         return new ModelAndView("vistaSeleccion");
     }
+
+
 }
