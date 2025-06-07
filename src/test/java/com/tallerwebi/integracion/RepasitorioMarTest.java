@@ -39,6 +39,20 @@ public class RepasitorioMarTest {
     @Test
     @Transactional
     @Rollback
+    public void queSePuedaObtenerListaDeMaresBloqueados() {
+        givenTodosLosMaresAgregadosDeAUnoUsandoOtroMetodo();
+        List<Mar> maresBloqueados = whenObtenerListaDeMaresBloqueados();
+        thenComprobarSiElTestFueExitoso(maresBloqueados,6);
+    }
+
+    private List<Mar> whenObtenerListaDeMaresBloqueados() {
+        return repo.obtenerListaDeMaresBloqueados();
+    }
+
+
+    @Test
+    @Transactional
+    @Rollback
     public void queSePuedaObtenerLaListaDeMaresDesbloqueado() {
         givenTodosLosMaresAgregadosDeAUnoUsandoOtroMetodo();
         List<Mar> maresDesbloqueados = whenObtenerListaDeMaresDesbloqueados();

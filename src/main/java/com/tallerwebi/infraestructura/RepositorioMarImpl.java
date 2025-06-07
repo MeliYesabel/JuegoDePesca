@@ -38,4 +38,12 @@ public class RepositorioMarImpl implements RepositorioMar {
                 .add(Restrictions.eq("estadoBloqueado",false))
                 .list();
     }
+
+    @Override
+    public List<Mar> obtenerListaDeMaresBloqueados() {
+        var session = sessionFactory.getCurrentSession();
+        return session.createCriteria(Mar.class)
+                .add(Restrictions.eq("estadoBloqueado",true))
+                .list();
+    }
 }
