@@ -46,4 +46,17 @@ public class RepositorioMarImpl implements RepositorioMar {
                 .add(Restrictions.eq("estadoBloqueado",true))
                 .list();
     }
+
+
+    /* select *
+    * from mar
+    * where nombre = 'nombreMar'*/
+
+    @Override
+    public Mar obtenerMarPorNombre(String nombreMar) {
+        var session = sessionFactory.getCurrentSession();
+        return (Mar)session.createCriteria(Mar.class)
+                .add(Restrictions.eq("nombre", nombreMar))
+                .uniqueResult();
+    }
 }

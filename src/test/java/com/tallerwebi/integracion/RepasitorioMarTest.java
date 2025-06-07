@@ -36,13 +36,33 @@ public class RepasitorioMarTest {
     private RepositorioMar repo;
 
     /*test ----------------------------------- */
+
+    @Test
+    @Transactional
+    @Rollback
+    public void queSePuedaTraerUnMarPorNombre() {
+        givenTodosLosMaresAgregadosDeAUnoUsandoOtroMetodo();
+        Mar marSolicitado = whenObtenerUnMarPorNombre("Poseidon");
+        thenComprobarTestExitosoConMAR(marSolicitado);
+
+    }
+
+    private Mar whenObtenerUnMarPorNombre(String nombreMar) {
+        return  repo.obtenerMarPorNombre(nombreMar);
+    }
+
+    private void thenComprobarTestExitosoConMAR(Mar marSolicitado) {
+        assertThat(marSolicitado.getNombre(), equalTo("Poseidon"));
+    }
+
+
     @Test
     @Transactional
     @Rollback
     public void queSePuedaObtenerListaDeMaresBloqueados() {
         givenTodosLosMaresAgregadosDeAUnoUsandoOtroMetodo();
         List<Mar> maresBloqueados = whenObtenerListaDeMaresBloqueados();
-        thenComprobarSiElTestFueExitoso(maresBloqueados,6);
+        thenComprobarSiElTestFueExitosoConLista(maresBloqueados,6);
     }
 
     private List<Mar> whenObtenerListaDeMaresBloqueados() {
@@ -56,7 +76,7 @@ public class RepasitorioMarTest {
     public void queSePuedaObtenerLaListaDeMaresDesbloqueado() {
         givenTodosLosMaresAgregadosDeAUnoUsandoOtroMetodo();
         List<Mar> maresDesbloqueados = whenObtenerListaDeMaresDesbloqueados();
-        thenComprobarSiElTestFueExitoso(maresDesbloqueados,1);
+        thenComprobarSiElTestFueExitosoConLista(maresDesbloqueados,1);
 
     }
 
@@ -71,12 +91,12 @@ public class RepasitorioMarTest {
     public void queSePuedaobtenerLaListaCompletaDeTodosLosMaresQueExtanEnElMapa(){
         givenTodosLosMaresAgregadosDeAUnoUsandoOtroMetodo();
         List<Mar> mares =  whenObtenerLaListaCompletaDeTodosLosMares();
-        thenComprobarSiElTestFueExitoso(mares,7);
+        thenComprobarSiElTestFueExitosoConLista(mares,7);
     }
 
     private void givenTodosLosMaresAgregadosDeAUnoUsandoOtroMetodo(){
         /*String nombre, Double precio, String descripcion, Boolean estado*/
-        givenAgregarMaresALista("Poseison",0.0,"Mitologia Grega",false);
+        givenAgregarMaresALista("Poseidon",0.0,"Mitologia Grega",false);
         givenAgregarMaresALista("Njoror",100.0,"Mitologia Nordica",true);
         givenAgregarMaresALista("Susanoo",150.0,"Mitologia Japonesa",true);
         givenAgregarMaresALista("Yemaya",200.0,"Mitologia Yoriba",true);
@@ -94,7 +114,7 @@ public class RepasitorioMarTest {
         return repo.obtenerLaListaCompletaDeTodosLosMares();
     }
 
-    private void thenComprobarSiElTestFueExitoso(List<Mar> mares, Integer cant_total) {
+    private void thenComprobarSiElTestFueExitosoConLista(List<Mar> mares, Integer cant_total) {
         assertThat(mares.size(),equalTo(cant_total));
     }
 
