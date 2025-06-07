@@ -35,7 +35,7 @@ public class RepasitorioMarTest {
     @Autowired
     private RepositorioMar repo;
 
-    /*test : mares y peces*/
+    /*test : mares y peces   -------------------------------*/
 
     /*test : solo mares  -----------------------------------*/
 
