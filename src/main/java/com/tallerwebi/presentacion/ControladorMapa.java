@@ -1,7 +1,7 @@
 package com.tallerwebi.presentacion;
 
 import com.tallerwebi.dominio.Mar;
-import com.tallerwebi.dominio.MonedasInsuficientesException;
+import com.tallerwebi.dominio.excepcion.MonedasInsuficientesException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import com.tallerwebi.dominio.ServicioMapa;

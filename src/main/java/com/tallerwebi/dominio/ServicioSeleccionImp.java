@@ -1,5 +1,8 @@
 package com.tallerwebi.dominio;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class ServicioSeleccionImp implements ServicioSeleccion {
 
     @Override

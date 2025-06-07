@@ -29,6 +29,10 @@ public class Mar {
         this.descripcion = descripcion;
         this.estado = estado;
     }
+    /*Solo para probar los test */
+    public Mar(String nombre) {
+        this.nombre = nombre;
+    }
 
     public Long getId_mar() {
         return id_mar;

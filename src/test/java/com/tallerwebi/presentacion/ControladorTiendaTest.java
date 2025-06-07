@@ -1,7 +1,7 @@
 package com.tallerwebi.presentacion;
 
 import com.tallerwebi.dominio.Jugador;
-import com.tallerwebi.dominio.MonedasInsuficientesException;
+import com.tallerwebi.dominio.excepcion.MonedasInsuficientesException;
 import com.tallerwebi.dominio.ServicioTienda;
 import com.tallerwebi.dominio.excepcion.Objeto;
 import org.junit.jupiter.api.BeforeEach;

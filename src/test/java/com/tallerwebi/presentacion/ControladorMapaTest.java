@@ -1,9 +1,7 @@
 package com.tallerwebi.presentacion;
 
-import com.tallerwebi.dominio.Mar;
-import com.tallerwebi.dominio.MonedasInsuficientesException;
+import com.tallerwebi.dominio.excepcion.MonedasInsuficientesException;
 import com.tallerwebi.dominio.ServicioMapa;
-import org.dom4j.rule.Mode;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.web.servlet.ModelAndView;
