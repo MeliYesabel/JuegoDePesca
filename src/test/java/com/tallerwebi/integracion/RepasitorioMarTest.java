@@ -37,9 +37,30 @@ public class RepasitorioMarTest {
 
     /*test ----------------------------------- */
     @Test
+    @Transactional
+    @Rollback
+    public void queSePuedaObtenerLaListaDeMaresDesbloqueado() {
+        givenTodosLosMaresAgregadosDeAUnoUsandoOtroMetodo();
+        List<Mar> maresDesbloqueados = whenObtenerListaDeMaresDesbloqueados();
+        thenComprobarSiElTestFueExitoso(maresDesbloqueados,1);
+
+    }
+
+    private List<Mar> whenObtenerListaDeMaresDesbloqueados() {
+        return repo.obtenerListaDeMaresDesbloqueados();
+    }
+
+
+    @Test
     @Transactional/*-> para que sepa que va a estar en la base de datos*/
     @Rollback /*-> para que todo_lo creado(instancias) solo sea es este test*/
     public void queSePuedaobtenerLaListaCompletaDeTodosLosMaresQueExtanEnElMapa(){
+        givenTodosLosMaresAgregadosDeAUnoUsandoOtroMetodo();
+        List<Mar> mares =  whenObtenerLaListaCompletaDeTodosLosMares();
+        thenComprobarSiElTestFueExitoso(mares,7);
+    }
+
+    private void givenTodosLosMaresAgregadosDeAUnoUsandoOtroMetodo(){
         /*String nombre, Double precio, String descripcion, Boolean estado*/
         givenAgregarMaresALista("Poseison",0.0,"Mitologia Grega",false);
         givenAgregarMaresALista("Njoror",100.0,"Mitologia Nordica",true);
@@ -48,9 +69,6 @@ public class RepasitorioMarTest {
         givenAgregarMaresALista("Tlaloc",250.0,"Mitologia Azteca",true);
         givenAgregarMaresALista("Varuna",300.0,"Mitologia Hindu ",true);
         givenAgregarMaresALista("Nuwa",400.0,"Mitologia China",true);
-
-        List<Mar> mares =  whenObtenerLaListaCompletaDeTodosLosMares();
-        thenComprobarSiElTestFueExitoso(mares);
     }
 
     private void givenAgregarMaresALista(String marNombre, Double precio, String descripcion, Boolean estadoBloqueado){
@@ -62,8 +80,8 @@ public class RepasitorioMarTest {
         return repo.obtenerLaListaCompletaDeTodosLosMares();
     }
 
-    private void thenComprobarSiElTestFueExitoso(List<Mar> mares) {
-        assertThat(mares.size(),equalTo(7));
+    private void thenComprobarSiElTestFueExitoso(List<Mar> mares, Integer cant_total) {
+        assertThat(mares.size(),equalTo(cant_total));
     }
 
 

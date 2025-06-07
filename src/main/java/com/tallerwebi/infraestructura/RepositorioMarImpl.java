@@ -3,6 +3,7 @@ package com.tallerwebi.infraestructura;
 import com.tallerwebi.dominio.Mar;
 import com.tallerwebi.dominio.RepositorioMar;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -23,5 +24,18 @@ public class RepositorioMarImpl implements RepositorioMar {
         /*mas esto para que se realice completamente con la base de datos*/
         var session = sessionFactory.getCurrentSession();
        return session.createCriteria(Mar.class).list();
+    }
+
+    /*
+    * select *
+    * from mar
+    * where estadoBloqueado = 'false'*/
+
+    @Override
+    public List<Mar> obtenerListaDeMaresDesbloqueados() {
+        var session = sessionFactory.getCurrentSession();
+        return session.createCriteria(Mar.class)
+                .add(Restrictions.eq("estadoBloqueado",false))
+                .list();
     }
 }
