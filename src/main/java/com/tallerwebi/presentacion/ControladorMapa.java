@@ -11,7 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class ControladorMapa {
 
-    @RequestMapping("/mapa")//no me deja entrar a team jaaj dios mio 
+    @RequestMapping("/mapa")
     public ModelAndView irMapa(HttpServletRequest request){
         ModelMap model = new ModelMap();
         model.put("marUno","Mitología Griega");
@@ -23,7 +23,7 @@ public class ControladorMapa {
         model.put("marSiete","Mitología China");
         String username = request.getSession().getAttribute("username").toString(); //
 
-        model.put("username", username); //ahh ya entendi
+        model.put("username", username);
         return new ModelAndView("vistaMapa", model);
     }
 }
