@@ -3,6 +3,7 @@ package com.tallerwebi.presentacion;
 import com.tallerwebi.dominio.MonedasInsuficientesException;
 import com.tallerwebi.dominio.ServicioMapa;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -43,6 +44,7 @@ public class ControladorMapaTest {
         thenLaVistaFueRedirigidaExitosamente(mav,"vistaSeleccion");
     }
 
+    //@Disabled
     @Test
     public void siElJugadorNOTieneSuficientesMonedasParaDesbloquearElMarDebeCambiardePaginaAVistaSeleccion() {
         ModelAndView mav = controladorMapa.redireccionDeVistasDependiendoDelUsuario("alias_jugador",90.0);

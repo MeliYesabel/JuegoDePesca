@@ -1,6 +1,6 @@
 package com.tallerwebi.dominio;
 
-import com.tallerwebi.dominio.excepcion.Objeto;
+import com.tallerwebi.infraestructura.RepositorioObjeto;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -12,8 +12,10 @@ import java.util.List;
 public class ServicioTiendaImpl implements ServicioTienda {
 
     private List<Objeto> listaObjetos;
+    private RepositorioObjeto repositorioObjeto;
 
-    public ServicioTiendaImpl() {
+    public ServicioTiendaImpl( RepositorioObjeto repositorioObjeto ) {
+        this.repositorioObjeto = repositorioObjeto;
         listaObjetos = new ArrayList<Objeto>();
     }
 
@@ -26,7 +28,7 @@ public class ServicioTiendaImpl implements ServicioTienda {
 
         }
 
-        Objeto objeto = buscarObjeto(idObjeto);
+        Objeto objeto = repositorioObjeto.buscarObjeto(idObjeto);
 
         if (objeto == null) {
             throw new ObjetoInexistenteException("El objeto no existe");
@@ -42,6 +44,8 @@ public class ServicioTiendaImpl implements ServicioTienda {
 
     }
 
+
+
     public Objeto buscarObjeto(Integer idObjeto) {
         for (Objeto objeto : listaObjetos) {
             if (objeto != null && objeto.getIdObjeto().equals(idObjeto)) {
@@ -53,6 +57,14 @@ public class ServicioTiendaImpl implements ServicioTienda {
     }
 
     public void agregarObjetoDisponible(Objeto objeto) {
+        this.listaObjetos.add(objeto);
+    }
+
+    public void agregarYGuardarObjeto(Objeto objeto) {
+        // Guardás el objeto en la base de datos
+        repositorioObjeto.guardarObjeto(objeto);
+
+        // Lo agregás a la lista interna para tenerlo disponible en el servicio
         this.listaObjetos.add(objeto);
     }
 

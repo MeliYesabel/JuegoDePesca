@@ -1,7 +1,8 @@
 package com.tallerwebi.presentacion;
 
 import com.tallerwebi.dominio.*;
-import com.tallerwebi.dominio.excepcion.Objeto;
+import com.tallerwebi.dominio.Objeto;
+import com.tallerwebi.infraestructura.RepositorioObjeto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -16,11 +17,12 @@ import javax.servlet.http.HttpSession;
 public class ControladorTienda {
 
     private ServicioTienda servicioTienda;
+    private RepositorioObjeto repositorioObjeto;
 
     @Autowired
-    public ControladorTienda(ServicioTienda servicioTienda) {
-
+    public ControladorTienda(ServicioTienda servicioTienda,RepositorioObjeto repositorioObjeto) {
         this.servicioTienda = servicioTienda;
+        this.repositorioObjeto = repositorioObjeto;
     }
 
     @RequestMapping("/inicio")
@@ -36,8 +38,23 @@ public class ControladorTienda {
     public ModelAndView irTienda(HttpSession session) {
         ModelMap model = new ModelMap();
         if(servicioTienda.getListaObjetos().isEmpty()){
-            servicioTienda.agregarObjetoDisponible(new Objeto(1, 100.0));
-            servicioTienda.agregarObjetoDisponible(new Objeto(2, 150.0));
+           Objeto objeto1 = new Objeto( 100.0,"caña");
+           Objeto objeto2 = new Objeto( 150.0,"caña");
+
+
+            servicioTienda.agregarYGuardarObjeto(objeto1);
+            servicioTienda.agregarYGuardarObjeto(objeto2);
+           /* //aca los agrego a la base de datos para que tengan id
+            repositorioObjeto.guardarObjeto(objeto1);
+            repositorioObjeto.guardarObjeto(objeto2);
+
+            //  aca los agrego al servicio
+           servicioTienda.agregarObjetoDisponible(objeto1);
+            servicioTienda.agregarObjetoDisponible(objeto2); */
+
+
+
+
         }
         Jugador jugador = (Jugador) session.getAttribute("jugador");
         model.put("claveTienda","Esta es la tienda");

@@ -1,14 +1,32 @@
-package com.tallerwebi.dominio.excepcion;
+package com.tallerwebi.dominio;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Objeto {
-    private Double precioObjeto;
+
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idObjeto;
+    private Double precioObjeto;
+
+    private String nombre;
     private Boolean estaComprado = false;
 
-    public Objeto(Integer idObjeto, Double precioObjeto) {
-        this.precioObjeto = precioObjeto;
-        this.idObjeto = idObjeto;
+    public Objeto(){
+
     }
+    public Objeto( Double precioObjeto, String nombre) {
+        this.precioObjeto = precioObjeto;
+
+        this.nombre = nombre;
+    }
+
+
 
 
     public Double getPrecioObjeto() {

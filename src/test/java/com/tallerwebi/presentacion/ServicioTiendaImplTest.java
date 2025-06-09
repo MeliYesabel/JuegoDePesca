@@ -1,12 +1,12 @@
 package com.tallerwebi.presentacion;
 
 import com.tallerwebi.dominio.*;
-import com.tallerwebi.dominio.excepcion.Objeto;
+import com.tallerwebi.dominio.Objeto;
+import com.tallerwebi.infraestructura.RepositorioObjeto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalToIgnoringCase;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ServicioTiendaImplTest {
@@ -14,12 +14,13 @@ public class ServicioTiendaImplTest {
     private Jugador jugador;
     private Objeto objeto;
     private ServicioTiendaImpl servicioTienda;
+    private RepositorioObjeto repositorioObjeto;
 
     @BeforeEach
     public void init(){
         jugador = new Jugador();
-        objeto = new Objeto(1,100.0);
-        servicioTienda = new ServicioTiendaImpl();
+        objeto = new Objeto(100.0,"caña metal");
+        servicioTienda = new ServicioTiendaImpl(repositorioObjeto);
     }
 
 

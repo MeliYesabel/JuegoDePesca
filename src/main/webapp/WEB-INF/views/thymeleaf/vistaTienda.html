@@ -40,7 +40,7 @@
             Objeto ID: <span th:text="${objeto.idObjeto}">1</span> -
             Precio: <span th:text="${objeto.precioObjeto}">100.0</span>
             <form th:action="@{/comprarObjeto}" method="post">
-                <input type="hidden" name="idObjeto" th:value="${objeto.idObjeto}" />
+                <input type="hidden" name="idObjeto" th:value="${objeto.idObjeto}" /> <!-- "${1}"-->
                 <button type="submit">Comprar</button>
             </form>
         </li>
