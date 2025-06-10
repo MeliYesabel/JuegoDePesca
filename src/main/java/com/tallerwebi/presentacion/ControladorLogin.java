@@ -13,7 +13,7 @@ public class ControladorLogin {
         ModelMap modeloLogin = new ModelMap();
         modeloLogin.put("exito","estas en login");
 
-        return new ModelAndView("mapa", modeloLogin);
+        return new ModelAndView("loginPescador", modeloLogin);
     }
 
 }
