@@ -8,8 +8,9 @@ public class Run {
     private List<Pez> pecesPescados;
     private List<Turno> historialTurnos;
 
-    public Run(Mar mar) {
+    public Run(Mar mar, Integer cebo) {
         this.mar = mar;
+        this.cebo = cebo;
     }
 
     public Integer getCebo() {

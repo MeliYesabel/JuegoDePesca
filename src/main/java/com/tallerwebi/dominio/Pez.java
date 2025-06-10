@@ -31,6 +31,10 @@ public class Pez {
         this.rareza = rareza;
     }
 
+    public Pez() {
+
+    }
+
     public String getNombre() {
         return nombre;
     }

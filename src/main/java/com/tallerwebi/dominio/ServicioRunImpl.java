@@ -10,7 +10,7 @@ import javax.transaction.Transactional;
 public class ServicioRunImpl implements ServicioRun {
     @Override
     public boolean hayCebo(Integer cebos) {
-        return false;
+        return cebos != null && cebos > 0;
     }
 
     @Override

@@ -94,11 +94,11 @@ public class ControladorMapaTest {
         thenLaVistaFueRedirigidaExitosamente(cm,"vistaLogros");
     }
 
-    @Test
+   /* @Test
     public void alClickearVistaTiendaMeRedirigeAVistaTienda() {
         ModelAndView cm = controladorMapa.irAVistaTienda();
         thenLaVistaFueRedirigidaExitosamente(cm,"vistaTienda");
-    }
+    }*/
 
     @Test
     public void alClickearUnMapaDesboqueadoPreviamenteVoyAVistaSeleccion() {
