@@ -1,6 +1,7 @@
 package com.tallerwebi.dominio;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**/
 @Entity
@@ -13,18 +14,18 @@ public class Mar {
     private Double precio;
     private String descripcion;
     private Boolean estadoBloqueado;/*esto deberia estar en la base de dat0s?*/
-    /*ya que hicimoe @manyToOne en pez esto puede ser opcional
+    /*ya que hicimoe @manyToOne en pez esto puede ser opcional*/
     @OneToMany
-    private List<Pez> peces;*/
+    private List<Pez> peces;
 
     public Mar() {}
 
     /*Solo para probar los test */
-    public Mar(String nombre, Double precio, String descripcion, Boolean estado) {
+    public Mar(String nombre, Double precio, String descripcion, Boolean estadoBloqueado) {
         this.nombre = nombre;
         this.precio = precio;
         this.descripcion = descripcion;
-        this.estadoBloqueado = estado;
+        this.estadoBloqueado = estadoBloqueado;
     }
 
     public Long getId_mar() {
@@ -56,6 +57,10 @@ public class Mar {
     }
     public void setEstadoBloqueado(Boolean estadoBloqueado) {
         this.estadoBloqueado = estadoBloqueado;
+    }
+
+    public List<Pez> getPeces() {
+        return peces;
     }
 
 }

@@ -167,6 +167,7 @@
                     <webApp>
                         <contextPath>/spring</contextPath>
                     </webApp>
+                    <webAppSourceDirectory>${project.basedir}/src/main/webapp</webAppSourceDirectory>
                 </configuration>
             </plugin>
 

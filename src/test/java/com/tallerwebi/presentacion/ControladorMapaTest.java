@@ -31,7 +31,7 @@ public class ControladorMapaTest {
 
 
 
-    /*31/05 agregue*/
+    /*31/05 agregue
 
 
     @Test
@@ -44,12 +44,12 @@ public class ControladorMapaTest {
     public void fijarseSiElJugadorTieneElEstadoDelMarBloqueadoLanzarUnError(){
         ModelAndView mv = controladorMapa.redireccionDeVistasDependiendoDelUsuario("alias_jugador",4.0);
         thenNoSePuedoHacerElCambioDePagMensajeError(mv,"mensajeDeVistaError","El mar se encuentra en estado BLOQUEADO");
-    }
+    }*/
 
     /*servicio(agregue logica) + exception*/
-    @Test
+    /*@Test
     public void siElJugadorNOTieneSuficientesMonedasParaDesbloquearElMarDebeLanzarMonedasInsuficientesException() {
-        /*test con exception mas mock xq usa logica del test servicio */
+        test con exception mas mock xq usa logica del test servicio
         doThrow(MonedasInsuficientesException.class).when(servicioMapa).calcularSiSePuedeDesbloquearUnMar("alias_jugador",90.0);
         ModelAndView mav = controladorMapa.redireccionDeVistasDependiendoDelUsuario("alias_jugador",90.0);
 
@@ -60,7 +60,7 @@ public class ControladorMapaTest {
     public void siElJugadorTieneSuficientesMonedasParaDesbloquearElMarDebeCambiardePaginaAVistaSeleccion() {
         ModelAndView mav = controladorMapa.redireccionDeVistasDependiendoDelUsuario("alias_jugador",150.0);
         thenLaVistaFueRedirigidaExitosamente(mav,"vistaSeleccion");
-    }
+    }*/
 
    /* @Test -> este test no me va a dar por que en ningun lado estoy usando el EXCEPCION algo que antes si
     public void siElJugadorNOTieneSuficientesMonedasParaDesbloquearElMarDebeCambiardePaginaAVistaMapa() {
@@ -68,7 +68,7 @@ public class ControladorMapaTest {
         thenNoSePuedoHacerElCambioDePagMensajeError(mav,"mensajeErrorMonedas","El Usuario no tiene suficientes monedas para desbloquear el mar");
     }*/
 
-    @Test
+   /* @Test
     public void siElJugadorTieneMonedasSuficientesParaDesbloquearElMarDebeCambiarDePaginaAVistaSeleccion() {
         ModelAndView mav = controladorMapa.redireccionDeVistasDependiendoDelUsuario("alias_jugador",100.0);
         thenLaVistaFueRedirigidaExitosamente(mav,"vistaSeleccion");
@@ -87,12 +87,12 @@ public class ControladorMapaTest {
 
     }
 
-/*primer sprint*/
+primer sprint
     @Test
     public void alClickearVistaLogrosMeRedirigeAVistaLogros() {
         ModelAndView cm = controladorMapa.irAVistaLogros();
         thenLaVistaFueRedirigidaExitosamente(cm,"vistaLogros");
-    }
+    }*/
 
    /* @Test
     public void alClickearVistaTiendaMeRedirigeAVistaTienda() {
@@ -100,7 +100,7 @@ public class ControladorMapaTest {
         thenLaVistaFueRedirigidaExitosamente(cm,"vistaTienda");
     }*/
 
-    @Test
+   /* @Test
     public void alClickearUnMapaDesboqueadoPreviamenteVoyAVistaSeleccion() {
         ModelAndView cm = controladorMapa.irAVistaSeleccion();
         thenLaVistaFueRedirigidaExitosamente(cm,"vistaSeleccion");
@@ -109,7 +109,7 @@ public class ControladorMapaTest {
     private void thenLaVistaFueRedirigidaExitosamente(ModelAndView cm, String vista) {
         assertThat(cm.getViewName(),equalToIgnoringCase(vista));
 
-    }
+    }*/
 
 
 

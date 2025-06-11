@@ -20,8 +20,8 @@ public class Pez {
     /*si o si se necesita un costructor vacio para poder crear instancias
     * y luego hiberate carga los datos desde a base de datos para luego inyectar
     * los valores setter. OJO eso no quiere decri que invalide a los demas*/
-    public Pez() {}
-
+   // public Pez() {}
+    public Pez() { }
     public Pez(String nombre) {
         this.nombre = nombre;
     }
@@ -31,9 +31,7 @@ public class Pez {
         this.rareza = rareza;
     }
 
-    public Pez() {
 
-    }
 
     public String getNombre() {
         return nombre;

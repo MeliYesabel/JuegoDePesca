@@ -20,7 +20,9 @@ C:\Users\angie\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\presentaci
 C:\Users\angie\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\config\SpringWebConfig.java
 C:\Users\angie\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\dominio\MonedasInsuficientesException.java
 C:\Users\angie\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\presentacion\DatosLogin.java
+C:\Users\angie\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\dominio\ServicioTurnoImpl.java
 C:\Users\angie\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\dominio\RepositorioMar.java
+C:\Users\angie\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\dominio\ServicioTurno.java
 C:\Users\angie\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\dominio\Pez.java
 C:\Users\angie\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\dominio\ServicioMapaImplement.java
 C:\Users\angie\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\config\HibernateConfig.java
