@@ -1,12 +1,11 @@
 package com.tallerwebi.presentacion;
 
 import com.tallerwebi.dominio.Jugador;
-import com.tallerwebi.dominio.MonedasInsuficientesException;
+import com.tallerwebi.dominio.excepcion.MonedasInsuficientesException;
 import com.tallerwebi.dominio.ServicioTienda;
 import com.tallerwebi.dominio.Objeto;
-import com.tallerwebi.infraestructura.RepositorioObjeto;
+import com.tallerwebi.dominio.RepositorioObjeto;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.web.servlet.ModelAndView;
 

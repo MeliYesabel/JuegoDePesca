@@ -1,5 +1,6 @@
 com\tallerwebi\config\DatabaseInitializationConfig.class
 com\tallerwebi\dominio\Turno.class
+com\tallerwebi\dominio\RepositorioJugador.class
 com\tallerwebi\dominio\ServicioRun.class
 com\tallerwebi\dominio\ServicioTurnoImpl.class
 com\tallerwebi\dominio\ServicioLogin.class
@@ -9,7 +10,7 @@ com\tallerwebi\dominio\ServicioTienda.class
 com\tallerwebi\presentacion\ControladorRun.class
 com\tallerwebi\dominio\ServicioMapaImplement.class
 com\tallerwebi\dominio\Jugador.class
-com\tallerwebi\dominio\ObjetoInexistenteException.class
+com\tallerwebi\dominio\RepositorioObjeto.class
 com\tallerwebi\presentacion\ControladorLogros.class
 com\tallerwebi\dominio\Run.class
 com\tallerwebi\dominio\ServicioRunImpl.class
@@ -20,7 +21,7 @@ com\tallerwebi\dominio\Objeto.class
 com\tallerwebi\dominio\ServicioTiendaImpl.class
 com\tallerwebi\dominio\RepositorioUsuario.class
 com\tallerwebi\infraestructura\RepositorioUsuarioImpl.class
-com\tallerwebi\infraestructura\RepositorioObjeto.class
+com\tallerwebi\dominio\excepcion\ParametroInvalidoException.class
 com\tallerwebi\dominio\ServicioLoginImpl.class
 com\tallerwebi\dominio\ServicioMapa.class
 com\tallerwebi\dominio\ServicioTurno.class
@@ -31,9 +32,9 @@ com\tallerwebi\presentacion\DatosLogin.class
 com\tallerwebi\dominio\excepcion\UsuarioExistente.class
 com\tallerwebi\presentacion\ControladorMapa.class
 com\tallerwebi\infraestructura\RepositorioObjetoImpl.class
-com\tallerwebi\dominio\MonedasInsuficientesException.class
 com\tallerwebi\config\SpringWebConfig.class
-com\tallerwebi\dominio\ParametroInvalidoException.class
 com\tallerwebi\presentacion\ControladorLogin.class
+com\tallerwebi\dominio\excepcion\MonedasInsuficientesException.class
 com\tallerwebi\presentacion\ControladorRegistro.class
+com\tallerwebi\dominio\excepcion\ObjetoInexistenteException.class
 com\tallerwebi\dominio\Usuario.class

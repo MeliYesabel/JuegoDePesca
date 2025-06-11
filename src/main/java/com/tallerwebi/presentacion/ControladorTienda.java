@@ -2,7 +2,10 @@ package com.tallerwebi.presentacion;
 
 import com.tallerwebi.dominio.*;
 import com.tallerwebi.dominio.Objeto;
-import com.tallerwebi.infraestructura.RepositorioObjeto;
+import com.tallerwebi.dominio.excepcion.MonedasInsuficientesException;
+import com.tallerwebi.dominio.excepcion.ObjetoInexistenteException;
+import com.tallerwebi.dominio.excepcion.ParametroInvalidoException;
+import com.tallerwebi.dominio.RepositorioObjeto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

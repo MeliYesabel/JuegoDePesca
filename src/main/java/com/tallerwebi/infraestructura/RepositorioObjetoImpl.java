@@ -2,8 +2,8 @@ package com.tallerwebi.infraestructura;
 
 /*import com.mysql.cj.xdevapi.SessionFactory;*/
 import com.tallerwebi.dominio.Objeto;
+import com.tallerwebi.dominio.RepositorioObjeto;
 import org.hibernate.criterion.Restrictions;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.hibernate.SessionFactory; // ✅
 

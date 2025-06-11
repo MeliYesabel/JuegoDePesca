@@ -2,7 +2,10 @@ package com.tallerwebi.presentacion;
 
 import com.tallerwebi.dominio.*;
 import com.tallerwebi.dominio.Objeto;
-import com.tallerwebi.infraestructura.RepositorioObjeto;
+import com.tallerwebi.dominio.excepcion.MonedasInsuficientesException;
+import com.tallerwebi.dominio.excepcion.ObjetoInexistenteException;
+import com.tallerwebi.dominio.excepcion.ParametroInvalidoException;
+import com.tallerwebi.dominio.RepositorioObjeto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

@@ -1,6 +1,8 @@
 package com.tallerwebi.dominio;
 
-import com.tallerwebi.infraestructura.RepositorioObjeto;
+import com.tallerwebi.dominio.excepcion.MonedasInsuficientesException;
+import com.tallerwebi.dominio.excepcion.ObjetoInexistenteException;
+import com.tallerwebi.dominio.excepcion.ParametroInvalidoException;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
