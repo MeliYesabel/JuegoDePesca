@@ -2,49 +2,62 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Mapa</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/estiloVistaMapa.css}" />
+
 </head>
 <body>
 
-<header>
-    <a href="mapa">Mapa</a>
-    <a href="tienda"> Tienda</a>
-    <a href="logros"> Logros</a>
-</header>
-<div>
+  <header class="container-fluid">
+    <ul class="nav justify-content-end mt-2 p-4">
+        <li class="nav-item">
+            <a class="btn btn-primary me-2" th:href="@{/logros}">Libro de Coleccion</a>
+        </li>
+        <li class="nav-item">
+            <a class="btn btn-primary me-2"  th:href="@{/tienda}">Tienda</a>
+        </li>
+        <li class="nav-item">
+            <a class="btn btn-primary me-2" href="#">Usuario</a><!-- cual es la vista del usuario y si vista logros sera asi o libro de colecciones -->
+        </li>
+    </ul>
+  </header>
 
-    <p th:text=" ${marUno}">  </p>
-</div>
+  <div class="container-fluid mapa-container">
+    <div class="row">
+        <div class="col-2">1.1</div>
+        <div class="col-2">1.2</div>
+        <div class="col-2"><a th:href="@{/vistaMarDesbloqueado}">"dka"</a></div>
+        <div class="col-2">1.4</div>
+        <div class="col-2">1.5</div>
+       <!-- <div class="col-2">
+            <form th:action="@{/irAVistaSeleccion}" method="post">
+                <input type="hidden" name="idObjeto" th:value="${objeto.idObjeto}" />
+                <button type="submit">"Mar Griego"</button>
+            </form>
+        </div>-->
+    </div>
+    <div class="row">
+        <div class="col-2">1.1</div>
+        <div class="col-2"><a th:href="@{/marUno}">"njorock"</a></div>
+        <div class="col-2">1.3</div>
+        <div class="col-2">1.4</div>
+        <div class="col-2"><a th:href="@{/marUno}">"njorock"</a></div>
+        <div class="col-2"></div>
+    </div>
+    <div class="row">
+        <div class="col-2"><a th:href="@{/marUno}">"njorock"</a></div>
+        <div class="col-2">1.2</div>
+        <div class="col-2"><a th:href="@{/marUno}">"njorock"</a></div>
+        <div class="col-2">1.4</div>
+        <div class="col-2">1.5</div>
+        <div class="col-2"><a th:href="@{/marUno}">"njorock"</a></div>
+    </div>
+  </div>
 
-<div>
-
-    <p th:text=" ${marDos}">  </p>
-</div>
-
-<div>
-
-    <p th:text=" ${marTres}">  </p>
-</div>
-
-<div>
-
-    <p th:text=" ${marCuatro}">  </p>
-</div>
-
-<div>
-
-    <p th:text=" ${marCinco}">  </p>
-</div>
-
-<div>
-
-    <p th:text=" ${marSeis}">  </p>
-</div>
-
-<div>
-
-    <p th:text=" ${marSiete}">  </p>
-</div>
 
 
 </body>
