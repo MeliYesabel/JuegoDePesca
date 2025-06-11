@@ -28,6 +28,7 @@ public class ServicioMapaTest {
        thenElCalculofueExitoso(sePuedoComprar);
     }
 
+    /**/
     private Boolean whenCalcularSiSePuedeComprarElDesbloqueoDelMar(String aliasJugador, Double monedas) {
           return sm.calcularSiSePuedeDesbloquearUnMar(aliasJugador,monedas);
     }

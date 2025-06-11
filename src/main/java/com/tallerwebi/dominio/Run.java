@@ -1,12 +1,22 @@
 package com.tallerwebi.dominio;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.util.List;
-
+@Entity
 public class Run {
+    @Id
+    private Long id;
     private Integer cebo;
+    @ManyToOne
     private Mar mar;
     private List<Pez> pecesPescados;
     private List<Turno> historialTurnos;
+
+    public Run() {
+    }
 
     public Run(Mar mar, Integer cebo) {
         this.mar = mar;
@@ -44,4 +54,11 @@ public class Run {
         }
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
+    }
 }
