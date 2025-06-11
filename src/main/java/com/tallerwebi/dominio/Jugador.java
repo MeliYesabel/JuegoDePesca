@@ -11,16 +11,22 @@ public class Jugador {
     private int id;
 
 private double monedas;
+private String nombre;
 
 @OneToMany
 private List<Objeto> listaObjetos;
 
 
-public Jugador(){
+public Jugador(String nombre){
     this.monedas = 0.0;
     listaObjetos = new ArrayList<>();
+    this.nombre = nombre;
 
 }
+
+    public Jugador() {
+
+    }
 
     public double getMonedas() {
     return monedas;

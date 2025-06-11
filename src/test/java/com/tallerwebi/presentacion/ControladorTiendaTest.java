@@ -30,6 +30,7 @@ public class ControladorTiendaTest {
         repositorioObjeto = mock(RepositorioObjeto.class);
         jugador = new Jugador();
          objeto = new Objeto(100.0,"caña metal");
+         objeto.setIdObjeto(1);
         servicioTienda = mock(ServicioTienda.class);
         Integer idObjeto = (int) objeto.getIdObjeto();
         controladorTienda = new ControladorTienda(servicioTienda,repositorioObjeto);

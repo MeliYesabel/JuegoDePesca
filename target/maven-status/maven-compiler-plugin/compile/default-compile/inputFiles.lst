@@ -1,6 +1,7 @@
 C:\Users\usuario\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\presentacion\ControladorLogros.java
 C:\Users\usuario\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\dominio\ServicioTiendaImpl.java
 C:\Users\usuario\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\config\HibernateConfig.java
+C:\Users\usuario\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\infraestructura\RepositorioObjetoImpl.java
 C:\Users\usuario\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\dominio\ServicioTurno.java
 C:\Users\usuario\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\presentacion\DatosLogin.java
 C:\Users\usuario\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\dominio\ServicioRunImpl.java
@@ -16,7 +17,6 @@ C:\Users\usuario\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\presenta
 C:\Users\usuario\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\dominio\ServicioMapa.java
 C:\Users\usuario\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\dominio\excepcion\UsuarioExistente.java
 C:\Users\usuario\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\infraestructura\RepositorioUsuarioImpl.java
-C:\Users\usuario\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\dominio\excepcion\Objeto.java
 C:\Users\usuario\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\presentacion\ControladorLogin.java
 C:\Users\usuario\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\presentacion\ControladorTurno.java
 C:\Users\usuario\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\dominio\ObjetoInexistenteException.java
@@ -24,6 +24,7 @@ C:\Users\usuario\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\dominio\
 C:\Users\usuario\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\dominio\Mar.java
 C:\Users\usuario\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\dominio\RepositorioUsuario.java
 C:\Users\usuario\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\dominio\Pez.java
+C:\Users\usuario\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\infraestructura\RepositorioJugadorImpl.java
 C:\Users\usuario\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\config\SpringWebConfig.java
 C:\Users\usuario\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\dominio\ServicioLoginImpl.java
 C:\Users\usuario\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\dominio\ServicioMapaImplement.java
@@ -32,6 +33,9 @@ C:\Users\usuario\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\dominio\
 C:\Users\usuario\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\dominio\Rareza.java
 C:\Users\usuario\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\dominio\ServicioLogin.java
 C:\Users\usuario\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\dominio\Jugador.java
+C:\Users\usuario\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\infraestructura\RepositorioJugador.java
+C:\Users\usuario\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\infraestructura\RepositorioObjeto.java
+C:\Users\usuario\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\dominio\Objeto.java
 C:\Users\usuario\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\presentacion\ControladorRegistro.java
 C:\Users\usuario\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\dominio\Turno.java
 C:\Users\usuario\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\MyServletInitializer.java

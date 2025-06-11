@@ -2,18 +2,25 @@ package com.tallerwebi.infraestructura;
 
 /*import com.mysql.cj.xdevapi.SessionFactory;*/
 import com.tallerwebi.dominio.Objeto;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.hibernate.SessionFactory; // ✅
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 
 @Repository
+@Transactional
 public class RepositorioObjetoImpl implements RepositorioObjeto {
 
-   @Autowired
+  // @Autowired
    SessionFactory sessionFactory;
+
+    public RepositorioObjetoImpl(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     @Override
     public Objeto buscarObjeto(int id) {
@@ -27,7 +34,8 @@ public class RepositorioObjetoImpl implements RepositorioObjeto {
     }
 
     @Override
-    public List<Objeto> buscarListaObjetosPorNombreLike() {
-        return List.of();
+    public List<Objeto> buscarListaObjetosPorNombreLike(String nombre) {
+        var session = sessionFactory.getCurrentSession();
+        return session.createCriteria(Objeto.class).add(Restrictions.like("nombre",nombre +"%")).list();
     }
 }
