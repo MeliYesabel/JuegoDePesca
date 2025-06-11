@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Resumen de la Partida</h2>
+<p>Turnos jugados: <span th:text="${resumen.turnosJugados}"></span></p>
+<p>Total ganado: $<span th:text="${resumen.totalGanado}"></span></p>
+
+<h3>Peces pescados:</h3>
+<ul>
+    <li th:each="pez : ${resumen.pecesPescados}" th:text="${pez.nombre} + ' - $' + ${pez.precio}"></li>
+</ul>
+
+
+</body>
+</html>

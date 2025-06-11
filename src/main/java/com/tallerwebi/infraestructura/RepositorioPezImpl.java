@@ -1,6 +1,5 @@
 package com.tallerwebi.infraestructura;
 import com.tallerwebi.dominio.Pez;
-import com.tallerwebi.dominio.RepositorioPez;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
-package com.tallerwebi.dominio;
+package com.tallerwebi.infraestructura;
 
-import org.hibernate.SessionFactory;
+import com.tallerwebi.dominio.Pez;
 
 import java.util.List;
 
