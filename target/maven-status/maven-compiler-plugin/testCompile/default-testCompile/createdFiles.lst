@@ -1,9 +1,11 @@
 com\tallerwebi\presentacion\ControladorRegistroTest.class
 com\tallerwebi\integracion\config\SpringWebTestConfig.class
+com\tallerwebi\dominio\RepositorioObjetoTest.class
 com\tallerwebi\integracion\ControladorLoginTest.class
 com\tallerwebi\punta_a_punta\VistaLoginE2E.class
 com\tallerwebi\presentacion\ControladorMapaTest.class
 com\tallerwebi\punta_a_punta\vistas\VistaWeb.class
+com\tallerwebi\infraestructura\RepositorioRunTest.class
 com\tallerwebi\presentacion\ControladorTiendaTest.class
 com\tallerwebi\presentacion\ServicioTiendaImplTest.class
 com\tallerwebi\dominio\ServicioMapaTest.class

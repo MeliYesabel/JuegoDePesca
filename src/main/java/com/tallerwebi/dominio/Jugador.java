@@ -1,6 +1,6 @@
 package com.tallerwebi.dominio;
 
-import com.tallerwebi.dominio.excepcion.Objeto;
+//import com.tallerwebi.dominio.excepcion.Objeto;
 
 import javax.persistence.*;
 import java.util.ArrayList;

@@ -15,7 +15,7 @@ public class Mar {
     private String nombre;
     private Double precio;
     private String descripcion;
-    private Boolean estado ;/*esto deberia estar en la base de dat0s?*/
+    private Boolean estadoBloqueado ;/*esto deberia estar en la base de dat0s?*/
     /*ya que hicimoe @manyToOne en pez esto puede ser opcional*/
     @OneToMany
     private List<Pez> peces;
@@ -23,11 +23,11 @@ public class Mar {
     public Mar() {}
 
     /*Solo para probar los test */
-    public Mar(String nombre, Double precio, String descripcion, Boolean estado) {
+    public Mar(String nombre, Double precio, String descripcion, Boolean estadoBloqueado) {
         this.nombre = nombre;
         this.precio = precio;
         this.descripcion = descripcion;
-        this.estado = estado;
+        this.estadoBloqueado = estadoBloqueado;
     }
     /*Solo para probar los test */
     public Mar(String nombre) {
@@ -58,11 +58,11 @@ public class Mar {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    public Boolean getEstado() {
-        return estado;
+    public Boolean getEstadoBloqueado() {
+        return estadoBloqueado;
     }
-    public void setEstado(Boolean estado) {
-        this.estado = estado;
+    public void setEstadoBloqueado(Boolean estado) {
+        this.estadoBloqueado = estado;
     }
 
     public List<Pez> getPeces() {
