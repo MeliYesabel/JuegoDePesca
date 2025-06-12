@@ -33,7 +33,7 @@ public class ControladorRun {
     // DESPUÉS DE UN TURNO: consulta si hay más cebos
     @RequestMapping("/Run/continuar")
     public ModelAndView continuarPartida(@ModelAttribute("cebos") Turno turno, ModelMap model) {
-        if (servicioRun.hayCebo(turno){
+        if (servicioRun.hayCebo(turno)){
             String mensaje = servicioRun.jugarTurno(model);
             model.addAttribute("mensaje", mensaje);
             return new ModelAndView("redirect:/turno");
@@ -44,9 +44,9 @@ public class ControladorRun {
     //FINAL DEL TURNO
     @RequestMapping("/resumen-run")
     public ModelAndView mostrarResumenFinal(ModelMap model) {
-        List<Pez> pecesPescados = servicioRun.obtenerPecesPescados(); // Lista acumulada en la partida
-        Double totalGanado = servicioRun.calcularGanancia(); // Suma de precios
-        Integer turnosJugados = servicioRun.getCantidadTurnosJugados();
+        List<Pez> pecesPescados = servicioRun.obtenerPecesPescados(run); // Lista acumulada en la partida
+        Double totalGanado = servicioRun.calcularGanancia(run); // Suma de precios
+        Integer turnosJugados = servicioRun.getCantidadTurnosJugados(run);
 
         Resumen resumen = new Resumen(pecesPescados, totalGanado, turnosJugados);
         model.addAttribute("resumen", resumen);
