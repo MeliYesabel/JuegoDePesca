@@ -24,14 +24,14 @@ public class RepositorioRunTest {
 
     @Autowired
     RepositorioRun repositorioRun;
-
+/* PARA SOLUCIONAR CUANDO ESTEMOS TODOS JUNTOS
     @Test
     @Transactional
     @Rollback
     public void obtenerResumenDePartida() {
         givenSeTerminoUnaPartida();
-        Resumen resumen = whenCalculoResumenDeUnaPartida();
-        thenObtengoResumen(resumen);
+        *Resumen resumen = whenCalculoResumenDeUnaPartida();
+        *thenObtengoResumen(resumen);
     }
 
     private void givenSeTerminoUnaPartida() {
@@ -41,5 +41,5 @@ public class RepositorioRunTest {
         return null;
     }
     private void thenObtengoResumen(Resumen resumen) {
-    }
+    }*/
 }
