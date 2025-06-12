@@ -65,10 +65,10 @@ public class ControladorMapa {
         /*agregue 31/05 ->
         * hasta que no cree una clase me va a dar null xq no esta llamando a uno
         * asi que por ahora lo sett para hacer los test  */
-        if (marFalse.getEstado().equals(false)) {
+        if (marFalse.getEstadoBloqueado().equals(false)) {
             modelMap.put("mensajeDeVistaError", "El mar se encuentra en estado BLOQUEADO");
             return new ModelAndView("vistaMapa", modelMap);
-        }else if (marTrue.getEstado().equals(true)) {
+        }else if (marTrue.getEstadoBloqueado().equals(true)) {
             return new ModelAndView("vistaSeleccion", modelMap);
         }
 
