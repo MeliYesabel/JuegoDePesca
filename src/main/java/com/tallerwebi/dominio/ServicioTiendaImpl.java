@@ -70,6 +70,16 @@ public class ServicioTiendaImpl implements ServicioTienda {
         this.listaObjetos.add(objeto);
     }
 
+    public void inicializarTienda() {
+        if (this.getListaObjetos().isEmpty()) {
+            Objeto objeto1 = new Objeto(100.0, "caña");
+            Objeto objeto2 = new Objeto(150.0, "caña");
+            this.agregarYGuardarObjeto(objeto1);
+            this.agregarYGuardarObjeto(objeto2);
+        }
+    }
+
+
     public List<Objeto> getListaObjetos() {
         //agregar objetos si esta vacio y sacarla del controlador tienda
         return listaObjetos;

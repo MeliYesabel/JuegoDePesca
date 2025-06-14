@@ -40,25 +40,11 @@ public class ControladorTienda {
     @RequestMapping("/tienda")
     public ModelAndView irTienda(HttpSession session) {
         ModelMap model = new ModelMap();
-        if(servicioTienda.getListaObjetos().isEmpty()){
-           Objeto objeto1 = new Objeto( 100.0,"caña");
-           Objeto objeto2 = new Objeto( 150.0,"caña");
-
-
-            servicioTienda.agregarYGuardarObjeto(objeto1);
-            servicioTienda.agregarYGuardarObjeto(objeto2);
-           /* //aca los agrego a la base de datos para que tengan id
-            repositorioObjeto.guardarObjeto(objeto1);
-            repositorioObjeto.guardarObjeto(objeto2);
-
-            //  aca los agrego al servicio
-           servicioTienda.agregarObjetoDisponible(objeto1);
-            servicioTienda.agregarObjetoDisponible(objeto2); */
 
 
 
+       servicioTienda.inicializarTienda();
 
-        }
         Jugador jugador = (Jugador) session.getAttribute("jugador");
         model.put("claveTienda","Esta es la tienda");
         model.put("jugador", jugador);
