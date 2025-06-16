@@ -3,6 +3,7 @@ package com.tallerwebi.infraestructura;
 import com.tallerwebi.dominio.Jugador;
 import com.tallerwebi.dominio.RepositorioJugador;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
@@ -11,7 +12,9 @@ import javax.transaction.Transactional;
 @Transactional
 public class RepositorioJugadorImpl implements RepositorioJugador {
 
+
     SessionFactory sessionFactory;
+
 
     public RepositorioJugadorImpl(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;

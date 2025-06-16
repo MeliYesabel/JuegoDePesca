@@ -21,6 +21,7 @@ public class ServicioTiendaImplTest {
     private Objeto objeto;
     private ServicioTiendaImpl servicioTienda;
     private RepositorioObjeto repositorioObjeto;
+    private RepositorioJugador repositorioJugador;
 
     @BeforeEach
     public void init(){
@@ -28,7 +29,8 @@ public class ServicioTiendaImplTest {
         objeto = new Objeto(100.0,"caña metal");
         //objeto.setIdObjeto(1);
         repositorioObjeto = mock(RepositorioObjeto.class);
-        servicioTienda = new ServicioTiendaImpl(repositorioObjeto);
+        repositorioJugador = mock(RepositorioJugador.class);
+        servicioTienda = new ServicioTiendaImpl(repositorioObjeto,repositorioJugador);
        // servicioTienda = mock(ServicioTiendaImpl.class);
 
     }

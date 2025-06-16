@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Personaje</title>
+</head>
+<body>
+
+<header>
+    <nav>
+        <a th:href="@{/mapa}">Mapa</a> |
+        <a th:href="@{/tienda}">Tienda</a> |
+        <a th:href="@{/logros}">Logros</a>
+    </nav>
+</header>
+
+<main>
+    <p th:text="${clavePersonaje}"></p>
+</main>
+</body>
+</html>

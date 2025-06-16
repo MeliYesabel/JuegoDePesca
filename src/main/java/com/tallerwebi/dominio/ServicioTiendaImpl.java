@@ -15,9 +15,11 @@ public class ServicioTiendaImpl implements ServicioTienda {
 
     private List<Objeto> listaObjetos;
     private RepositorioObjeto repositorioObjeto;
+    private RepositorioJugador repositorioJugador;
 
-    public ServicioTiendaImpl( RepositorioObjeto repositorioObjeto ) {
+    public ServicioTiendaImpl( RepositorioObjeto repositorioObjeto, RepositorioJugador repositorioJugador) {
         this.repositorioObjeto = repositorioObjeto;
+        this.repositorioJugador = repositorioJugador;
         listaObjetos = new ArrayList<Objeto>();
     }
 
@@ -41,6 +43,10 @@ public class ServicioTiendaImpl implements ServicioTienda {
         }
 
                     jugador.setMonedas(jugador.getMonedas() - objeto.getPrecioObjeto());
+
+                    jugador.agregarObjeto(objeto);
+                    repositorioJugador.guardarJugador(jugador);
+
 
                     return Boolean.TRUE;
 
