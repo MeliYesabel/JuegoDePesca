@@ -28,6 +28,8 @@ public class RepositorioJugadorImpl implements RepositorioJugador {
 
     @Override
     public void guardarJugador(Jugador jugador) {
-     sessionFactory.getCurrentSession().save(jugador);
+    // sessionFactory.getCurrentSession().save(jugador);
+        sessionFactory.getCurrentSession().saveOrUpdate(jugador);
+
     }
 }

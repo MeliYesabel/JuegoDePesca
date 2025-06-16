@@ -14,18 +14,32 @@ private double monedas;
 private String nombre;
 
 @OneToMany
-private List<Objeto> objetosComprados = new ArrayList<>();;
+private List<Objeto> objetosComprados = new ArrayList<>();
+
+@ManyToOne
+private Objeto caniaActiva;
+
+
 
 
 public Jugador(String nombre){
     this.monedas = 0.0;
     //objetosComprados = new ArrayList<>(); preuguntar porque fallaba si la inicializo en el constructor
     this.nombre = nombre;
+    caniaActiva = null;
 
 }
 
     public Jugador() {
 
+    }
+
+    public Objeto getCaniaActiva() {
+        return caniaActiva;
+    }
+
+    public void setCaniaActiva(Objeto caniaActiva) {
+        this.caniaActiva = caniaActiva;
     }
 
     public double getMonedas() {

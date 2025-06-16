@@ -6,5 +6,19 @@
 </head>
 <body>
 
+
+
+<h2>Canias del Jugador</h2>
+<ul>
+    <li th:each="objeto:${objetosComprados}">
+        Objeto: <span th:text="${objeto.idObjeto} + ${objeto.nombre}">1</span>
+
+        <form th:action="@{/equipaCaniaAPersonaje}" method="post">
+            <input type="hidden" name="idObjeto" th:value="${objeto.idObjeto}">
+            <button type="submit">Equipar</button>
+        </form>
+    </li>
+</ul>
+
 </body>
 </html>

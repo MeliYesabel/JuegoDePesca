@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.Objects;
 
 @Entity
 public class Objeto {
@@ -27,7 +28,9 @@ public class Objeto {
     }
 
 
-
+    public String getNombre() {
+        return nombre;
+    }
 
     public Double getPrecioObjeto() {
         return precioObjeto;
@@ -51,5 +54,17 @@ public class Objeto {
 
     public void setEstaComprado(Boolean estaComprado) {
         this.estaComprado = estaComprado;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Objeto objeto = (Objeto) o;
+        return Objects.equals(idObjeto, objeto.idObjeto) && Objects.equals(precioObjeto, objeto.precioObjeto) && Objects.equals(nombre, objeto.nombre) && Objects.equals(estaComprado, objeto.estaComprado);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idObjeto, precioObjeto, nombre, estaComprado);
     }
 }

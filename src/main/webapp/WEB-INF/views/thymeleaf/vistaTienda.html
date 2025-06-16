@@ -37,7 +37,7 @@
     <h2>Objetos disponibles:</h2>
     <ul>
         <li th:each="objeto : ${objetosDisponibles}">
-            Objeto ID: <span th:text="${objeto.idObjeto}">1</span> -
+            Objeto ID: <span th:text="${objeto.idObjeto} + ${objeto.nombre} " >1</span> -
             Precio: <span th:text="${objeto.precioObjeto}">100.0</span>
             <form th:action="@{/comprarObjeto}" method="post">
                 <input type="hidden" name="idObjeto" th:value="${objeto.idObjeto}" /> <!-- "${1}"-->

@@ -32,8 +32,18 @@ public class ServicioJugadorImpl implements ServicioJugador {
             throw new ObjetoInexistenteException("Objeto no encontrado");
         }
 
-        jugador.agregarObjeto(objeto);
+      //  jugador.agregarObjeto(objeto);
+        jugador.setCaniaActiva(objeto);
         repositorioJugador.guardarJugador(jugador); //esta bien poner este repo aca? o seria como agregar un jugador cada vez que equipe una caña?
+
         return Boolean.TRUE;
+    }
+
+    @Override
+    public Jugador inicializarJugador() {
+        Jugador jugador = new Jugador();
+        repositorioJugador.guardarJugador(jugador);
+        return jugador;
+
     }
 }

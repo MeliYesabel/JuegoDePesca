@@ -4,6 +4,7 @@ import com.tallerwebi.dominio.*;
 import com.tallerwebi.dominio.Objeto;
 import com.tallerwebi.dominio.excepcion.MonedasInsuficientesException;
 import com.tallerwebi.dominio.excepcion.ObjetoInexistenteException;
+import com.tallerwebi.dominio.excepcion.ObjetoYaCompradoException;
 import com.tallerwebi.dominio.excepcion.ParametroInvalidoException;
 import com.tallerwebi.dominio.RepositorioObjeto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,7 +76,8 @@ public class ControladorTienda {
             model.put("jugador", jugador);  // para actualizar info
             return new ModelAndView("vistaObjeto.html", model);
 
-        } catch (ParametroInvalidoException | ObjetoInexistenteException | MonedasInsuficientesException e) {
+        } catch (ParametroInvalidoException | ObjetoInexistenteException | MonedasInsuficientesException |
+                 ObjetoYaCompradoException e) {
             model.put("error", e.getMessage());
             model.put("jugador", jugador);
             return new ModelAndView("vistaCompraSinExito.html", model);
