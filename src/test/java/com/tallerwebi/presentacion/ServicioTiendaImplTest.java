@@ -9,10 +9,11 @@ import com.tallerwebi.dominio.RepositorioObjeto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+
 
 public class ServicioTiendaImplTest {
 
@@ -20,6 +21,7 @@ public class ServicioTiendaImplTest {
     private Objeto objeto;
     private ServicioTiendaImpl servicioTienda;
     private RepositorioObjeto repositorioObjeto;
+    private RepositorioJugador repositorioJugador;
 
     @BeforeEach
     public void init(){
@@ -27,7 +29,8 @@ public class ServicioTiendaImplTest {
         objeto = new Objeto(100.0,"caña metal");
         //objeto.setIdObjeto(1);
         repositorioObjeto = mock(RepositorioObjeto.class);
-        servicioTienda = new ServicioTiendaImpl(repositorioObjeto);
+        repositorioJugador = mock(RepositorioJugador.class);
+        servicioTienda = new ServicioTiendaImpl(repositorioObjeto,repositorioJugador);
        // servicioTienda = mock(ServicioTiendaImpl.class);
 
     }

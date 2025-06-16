@@ -42,7 +42,7 @@ public class ControladorTiendaTest {
     @Test
 public void dadoQueCuandoComproUnObjetoYMeDevuelveTrueQueMeDevulevaLaVistaObjetoHtml(){
 
-        when(servicioTienda.comprarObjeto(jugador,(int)objeto.getIdObjeto())).thenReturn(true);
+        when(servicioTienda.comprarObjeto(jugador,(int)objeto.getIdObjeto())).thenReturn(true); //para que sirve esta linea si la saco y me corre igual el test?
         ModelAndView modelAndView = controladorTienda.comprarObjeto(session,1);
         assertThat(modelAndView.getViewName(), equalToIgnoringCase("vistaObjeto.html"));
 

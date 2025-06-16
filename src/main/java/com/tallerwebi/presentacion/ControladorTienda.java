@@ -4,6 +4,7 @@ import com.tallerwebi.dominio.*;
 import com.tallerwebi.dominio.Objeto;
 import com.tallerwebi.dominio.excepcion.MonedasInsuficientesException;
 import com.tallerwebi.dominio.excepcion.ObjetoInexistenteException;
+import com.tallerwebi.dominio.excepcion.ObjetoYaCompradoException;
 import com.tallerwebi.dominio.excepcion.ParametroInvalidoException;
 import com.tallerwebi.dominio.RepositorioObjeto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,25 +41,11 @@ public class ControladorTienda {
     @RequestMapping("/tienda")
     public ModelAndView irTienda(HttpSession session) {
         ModelMap model = new ModelMap();
-        if(servicioTienda.getListaObjetos().isEmpty()){
-           Objeto objeto1 = new Objeto( 100.0,"caña");
-           Objeto objeto2 = new Objeto( 150.0,"caña");
-
-
-            servicioTienda.agregarYGuardarObjeto(objeto1);
-            servicioTienda.agregarYGuardarObjeto(objeto2);
-           /* //aca los agrego a la base de datos para que tengan id
-            repositorioObjeto.guardarObjeto(objeto1);
-            repositorioObjeto.guardarObjeto(objeto2);
-
-            //  aca los agrego al servicio
-           servicioTienda.agregarObjetoDisponible(objeto1);
-            servicioTienda.agregarObjetoDisponible(objeto2); */
 
 
 
+       servicioTienda.inicializarTienda();
 
-        }
         Jugador jugador = (Jugador) session.getAttribute("jugador");
         model.put("claveTienda","Esta es la tienda");
         model.put("jugador", jugador);
@@ -89,7 +76,8 @@ public class ControladorTienda {
             model.put("jugador", jugador);  // para actualizar info
             return new ModelAndView("vistaObjeto.html", model);
 
-        } catch (ParametroInvalidoException | ObjetoInexistenteException | MonedasInsuficientesException e) {
+        } catch (ParametroInvalidoException | ObjetoInexistenteException | MonedasInsuficientesException |
+                 ObjetoYaCompradoException e) {
             model.put("error", e.getMessage());
             model.put("jugador", jugador);
             return new ModelAndView("vistaCompraSinExito.html", model);

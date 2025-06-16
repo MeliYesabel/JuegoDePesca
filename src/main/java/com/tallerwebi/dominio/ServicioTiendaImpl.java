@@ -2,6 +2,7 @@ package com.tallerwebi.dominio;
 
 import com.tallerwebi.dominio.excepcion.MonedasInsuficientesException;
 import com.tallerwebi.dominio.excepcion.ObjetoInexistenteException;
+import com.tallerwebi.dominio.excepcion.ObjetoYaCompradoException;
 import com.tallerwebi.dominio.excepcion.ParametroInvalidoException;
 import org.springframework.stereotype.Service;
 
@@ -15,9 +16,11 @@ public class ServicioTiendaImpl implements ServicioTienda {
 
     private List<Objeto> listaObjetos;
     private RepositorioObjeto repositorioObjeto;
+    private RepositorioJugador repositorioJugador;
 
-    public ServicioTiendaImpl( RepositorioObjeto repositorioObjeto ) {
+    public ServicioTiendaImpl( RepositorioObjeto repositorioObjeto, RepositorioJugador repositorioJugador) {
         this.repositorioObjeto = repositorioObjeto;
+        this.repositorioJugador = repositorioJugador;
         listaObjetos = new ArrayList<Objeto>();
     }
 
@@ -32,8 +35,13 @@ public class ServicioTiendaImpl implements ServicioTienda {
 
         Objeto objeto = repositorioObjeto.buscarObjeto(idObjeto);
 
+
         if (objeto == null) {
             throw new ObjetoInexistenteException("El objeto no existe");
+        }
+
+        if(jugador.getObjetosComprados().contains(objeto)){
+            throw new ObjetoYaCompradoException("El jugador ya esta tiene este objeto");
         }
 
         if(jugador.getMonedas() < objeto.getPrecioObjeto()){
@@ -41,6 +49,10 @@ public class ServicioTiendaImpl implements ServicioTienda {
         }
 
                     jugador.setMonedas(jugador.getMonedas() - objeto.getPrecioObjeto());
+
+                    jugador.agregarObjeto(objeto);
+                    repositorioJugador.guardarJugador(jugador);
+
 
                     return Boolean.TRUE;
 
@@ -69,6 +81,17 @@ public class ServicioTiendaImpl implements ServicioTienda {
         // Lo agregás a la lista interna para tenerlo disponible en el servicio
         this.listaObjetos.add(objeto);
     }
+
+    public void inicializarTienda() {
+        if (this.getListaObjetos().isEmpty()) {
+           /* Objeto objeto1 = new Objeto(100.0, "caña");
+            Objeto objeto2 = new Objeto(150.0, "caña");
+            this.agregarYGuardarObjeto(objeto1);
+            this.agregarYGuardarObjeto(objeto2);*/
+          this.listaObjetos =  repositorioObjeto.obtenerTodosLosObjetos();
+        }
+    }
+
 
     public List<Objeto> getListaObjetos() {
         //agregar objetos si esta vacio y sacarla del controlador tienda

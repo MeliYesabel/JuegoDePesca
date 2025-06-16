@@ -38,4 +38,10 @@ public class RepositorioObjetoImpl implements RepositorioObjeto {
         var session = sessionFactory.getCurrentSession();
         return session.createCriteria(Objeto.class).add(Restrictions.like("nombre",nombre +"%")).list();
     }
+
+    @Override
+    public List<Objeto> obtenerTodosLosObjetos(){
+        var session = sessionFactory.getCurrentSession();
+        return session.createCriteria(Objeto.class).list();
+    }
 }
