@@ -1,29 +1,32 @@
 package com.tallerwebi.dominio;
 
+import com.tallerwebi.dominio.entidad.UsuarioAuth;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Jugador {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+@DiscriminatorValue("JUGADOR")
+public class Jugador extends UsuarioAuth {
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private int id;
 
 private double monedas;
-private String nombre;
+//private String nombre;
 
 @OneToMany
 private List<Objeto> listaObjetos;
 
-
+/*
 public Jugador(String nombre){
     this.monedas = 0.0;
     listaObjetos = new ArrayList<>();
     this.nombre = nombre;
 
 }
-
+*/
     public Jugador() {
 
     }
