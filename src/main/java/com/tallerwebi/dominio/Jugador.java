@@ -14,7 +14,7 @@ public class Jugador extends UsuarioAuth {
 //    private int id;
 
 private double monedas;
-//private String nombre;
+private String nombre;
 
 @OneToMany
 private List<Objeto> objetosComprados = new ArrayList<>();
@@ -53,9 +53,6 @@ public Jugador(String nombre){
         this.monedas = monedas;
     }
 
-    public int getId() {
-        return id;
-    }
 
     public String getNombre() {
         return nombre;
@@ -65,9 +62,6 @@ public Jugador(String nombre){
         return objetosComprados;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
