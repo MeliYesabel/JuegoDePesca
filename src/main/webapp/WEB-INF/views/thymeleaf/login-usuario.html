@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login-Seven-Seas</title>
+
+    <!--Bootstrap y bootwatch-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.3.3/vapor/bootstrap.min.css"
+          integrity="sha512-9LoG2EQdcmuEQpzkslqa3whcL8LM+7GGPsW2MK1gRlmiML0G7M5ZPj2aZaW2DyixslBfZoy4kANfP/MYWDCSiw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
+    <!-- Bootstrap JS necesario -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!--Fuente Pixelify-->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" th:href="@{/css/login-pescador.css}">
+</head>
+
+<body>
+<div class="fondo">
+    <img th:src="@{img/background-sea2.jpg}" alt="Fondo difuminado"/>
+
+    <div class="contenido">
+
+        <div class="card-login">
+
+            <div class="form-section">
+                <div th:if="${mensaje}" class="alert alert-success alert-dismissible alert-info fade show cartel"
+                     role="alert">
+                    <span th:text="${mensaje}"></span>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+                </div>
+
+                <h2>Bienvenido a Seven Seas!</h2>
+
+                <form th:action="@{/login-pescador}" method="post" th:object="${usuarioDto}">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Correo electrónico</label>
+
+                        <input th:field="*{email}" type="email" id="email" class="form-control" name="email"
+                               placeholder="Ingrese su correo electrónico">
+
+                        <p class="text-danger mt-3" th:if="${error_email_vacio !=null}"
+                           th:text="${error_email_vacio}"></p>
+
+                        <p class="text-danger mt-3" th:if="${error_formato_email !=null}"
+                           th:text="${error_formato_email}"></p>
+
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Contraseña</label>
+
+                        <input th:field="*{contrasenia}" type="password" id="password" class="form-control"
+                               placeholder="Ingrese su Contraseña">
+
+                        <p class="text-danger mt-3" th:if="${error_password_vacia !=null}"
+                           th:text="${error_password_vacia}"></p>
+                    </div>
+                    <div class="mb-3">
+                        <a th:href="@{/recuperar-contrasenia}" class="form-text">¿Olvidaste tu contraseña?</a>
+                    </div>
+                    <button class="btn btn-primary w-100 mb-2" type="submit">Iniciar sesión</button>
+                    <button class="btn btn-social w-100 mb-2" disabled>Iniciar sesión con Google</button>
+                    <p class="text-center mt-3">¿No tienes una cuenta aún? <a th:href="@{/registro}">Registraté aqui</a>
+                    </p>
+
+                    <p class="text-danger mt-3" th:if="${error_not_exist !=null}" th:text="${error_not_exist}">
+                    </p>
+                </form>
+            </div>
+            <div class="side-image"></div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
