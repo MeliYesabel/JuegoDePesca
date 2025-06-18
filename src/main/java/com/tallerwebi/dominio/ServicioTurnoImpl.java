@@ -1,6 +1,7 @@
 package com.tallerwebi.dominio;
 
-import java.util.Collection;
+import com.tallerwebi.dominio.excepcion.ParametroInvalidoException;
+
 import java.util.Collections;
 import java.util.List;
 

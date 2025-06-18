@@ -1,57 +1,74 @@
 package com.tallerwebi.presentacion;
 
+import com.tallerwebi.dominio.Jugador;
 import com.tallerwebi.dominio.Mar;
-import com.tallerwebi.dominio.MonedasInsuficientesException;
+import com.tallerwebi.dominio.excepcion.MonedasInsuficientesException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import com.tallerwebi.dominio.ServicioMapa;
+import com.tallerwebi.dominio.ServicioJugador;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class ControladorMapa {
 
-    /*agrego la interfaz que conecta con los test de servicio(logica de negocio)*/
+    /*conexion a servicios (logica de negocio)*/
     private ServicioMapa servicioMapa;
-    /*creo el constructor*/
+    private ServicioJugador servicioJugador;
+
+    /*constructor las inyecciones*/
     @Autowired
-    public ControladorMapa(ServicioMapa servicioMapa) {
+    public ControladorMapa(ServicioMapa servicioMapa, ServicioJugador servicioJugador) {
         this.servicioMapa = servicioMapa;
+        this.servicioJugador = servicioJugador;
     }
+
+    /*redirecciones*/
     @RequestMapping("/mapa")
     public ModelAndView vistaMapa() {
         return new ModelAndView("vistaMapa");
     }
 
-  @RequestMapping("/vistaTienda")
+  @RequestMapping("/tienda")
     public ModelAndView irAVistaTienda(){
         return new ModelAndView("vistaTienda");
     }
 
 
-    @RequestMapping("/vistaLogros")
+    @RequestMapping("/logros")
     public ModelAndView irAVistaLogros(){
         return new ModelAndView("vistaLogros");
     }
 
-    /*si debe buscar los datos de otro clase de deberia llamar a la clase y dspues usarlo el controllador para que el asigne
-    * como va a ser destinado. A menos que el controller no tenga un alogica muy completo no va a ser necesario usar
-    * de un servicio(no todos los test van a necesitar e estos)
+    @RequestMapping("/marSeleccionado")
+    public ModelAndView redireccionSegunSiEstaBloqueadoONo(@ModelAttribute Jugador jugador,@ModelAttribute Mar mar){
+        ModelMap mm = new ModelMap();
+        Jugador jugadorBuscado = servicioJugador.buscarJugadorPorId(jugador.getId_jugador());
+        if (jugadorBuscado == null){
+            return new ModelAndView("login");
+        }
+       // Jugador jugadorActual = servicioJugador.buscarJugador(jugador);//-> base de datos
+       // Mar marSeleccionado = servicioMapa.obtenerElEstadoDeUnMarPorNombre("Mitologia griega");// -> base datos join usuario es
 
-    @RequestMapping("/vistaMarBloqueado")
-    public ModelAndView vistaMarDesbloqueado() {
-        return new ModelAndView("vistaMarBloqueado");
-    }
-    @RequestMapping("/vistaSeleccion")
-    public ModelAndView irAVistaSeleccion() {
+       // if(jugadorActual == null){
+         //   mm.put("mensaje", "El jugador no existe");
+          //  return new ModelAndView("login", mm);
+        //}
+
+       // if(marSeleccionado == null){
+         //   mm.put("mensaje", "El mar seleccionado esta bloqueado");
+           // return new ModelAndView("vistaMarbloqueado", mm);
+       // }
+
         return new ModelAndView("vistaSeleccion");
-
     }
 
 
-    /*DUDA:  @RequestMapping("/vistaMarDesbloqueado") aca hiria esto*/
+
+    @RequestMapping("/marSeleccionadoPrueba")
     public ModelAndView redireccionDeVistasDependiendoDelUsuario(String aliasJugador, Double monedasJuntadas) {
         ModelMap modelMap = new ModelMap();
         Mar marFalse = new Mar("mar sett",0.0,"pueba",false );
@@ -83,5 +100,6 @@ public class ControladorMapa {
 
         return new ModelAndView("vistaSeleccion");
     }
+
 
 }

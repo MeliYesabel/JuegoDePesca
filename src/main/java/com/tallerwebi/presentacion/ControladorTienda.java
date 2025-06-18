@@ -1,7 +1,10 @@
 package com.tallerwebi.presentacion;
 
 import com.tallerwebi.dominio.*;
-import com.tallerwebi.dominio.excepcion.Objeto;
+import com.tallerwebi.dominio.Objeto;
+import com.tallerwebi.dominio.excepcion.MonedasInsuficientesException;
+import com.tallerwebi.dominio.excepcion.ObjetoInexistenteException;
+import com.tallerwebi.dominio.excepcion.ParametroInvalidoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -32,7 +35,7 @@ public class ControladorTienda {
         return new ModelAndView("redirect:/tienda");
     }
 
-    @RequestMapping("/tienda")
+    @RequestMapping("/tiendaG")
     public ModelAndView irTienda(HttpSession session) {
         ModelMap model = new ModelMap();
         if(servicioTienda.getListaObjetos().isEmpty()){

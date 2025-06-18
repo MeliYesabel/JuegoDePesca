@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/estiloVistaMapa.css}" />
+</head>
+<body>
+<header class="container-fluid">
+    <ul class="nav justify-content-end mt-2 p-4">
+        <li class="nav-item">
+            <a class="btn btn-primary me-2" th:href="@{/vistaLogros}">Libro de Coleccion</a>
+        </li>
+        <li class="nav-item">
+            <a class="btn btn-primary me-2"  th:href="@{/vistaTienda}">Tienda</a>
+        </li>
+        <li class="nav-item">
+            <a class="btn btn-primary me-2" href="#">Usuario</a><!-- cual es la vista del usuario y si vista logros sera asi o libro de colecciones -->
+        </li>
+    </ul>
+</header>
+
+<div class="container mar-desbloqueado-container ">
+    <div class="row fondo">
+        <div >
+            <h2>Mar Bloqueado</h2>
+        </div>
+        <div >
+            <!-- aca tendria que haber un th que me diga la cantidad de monedas que tengo y si me alcanza comparar
+            el mar lo pueda comprar y si no me redirija a la vista mapa-->
+            <p>Para desbloquear el mar necesitas 150 monedas</p>
+        </div>
+        <div>
+            <p>¿Deseas desbloquear este mar?</p>
+            <!-- el boton si . se tiene que fijar si la cantidad d emonedas es suficiente para desbloquearlo y se puedo te redirije a vstaseleccion-->
+            <button type="submit" class="btn btn-primary" >Si</button>
+            <!--te redirige a mar -->
+            <button type="submit" class="btn btn-primary" >No</button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
