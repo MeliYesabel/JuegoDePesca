@@ -1,42 +1,61 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>Registro</title>
-    <link rel="stylesheet" th:href="@{/css/registro.css}">
-    <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/united/bootstrap.min.css" rel="stylesheet">
+
+    <!-- -Bootstrap y bootwatch--->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.3.3/vapor/bootstrap.min.css"
+          integrity="sha512-9LoG2EQdcmuEQpzkslqa3whcL8LM+7GGPsW2MK1gRlmiML0G7M5ZPj2aZaW2DyixslBfZoy4kANfP/MYWDCSiw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!--Fuente Pixelify--->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" th:href="@{/css/registro-1.css}">
+
+
 
 </head>
+
 <body>
+<div class="card border-primary rounded-4">
+    <div class="card-body">
+        <h3 class="card-title text-center mb-4 titulo-form">Registro</h3>
 
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-
-            <div class="card border-primary shadow-lg rounded-4">
-                <div class="card-body">
-                    <h3 class="card-title text-center mb-4">Registro</h3>
-
-                    <form>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Correo electrónico</label>
-                            <input type="email" class="form-control" id="email" placeholder="tucorreo@ejemplo.com" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="password" class="form-label">Contraseña</label>
-                            <input type="password" class="form-control" id="password" placeholder="Contraseña" required>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary w-100">Registrarse</button>
-                    </form>
-
-                </div>
+        <form th:action="@{/registro}" method="post" th:object="${usuarioDto}" >
+            <div class="mb-3">
+                <label for="email" class="form-label">Correo electrónico</label>
+                <input th:field="*{email}" type="email" class="form-control" id="email" placeholder="tucorreo@ejemplo.com">
             </div>
 
-        </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Contraseña</label>
+                <input th:field="*{contrasenia}" type="password" class="form-control" id="password" placeholder="Contraseña">
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label">Repetir contraseña</label>
+                <input th:field="*{contraseniaRepetida}" type="password" class="form-control" placeholder="Repetir contraseña">
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Registrarse</button>
+            <p class="text-center mt-3">¿Ya tienes una cuenta? <a th:href="@{/login-pescador}">Logueate aqui</a></p>
+
+            <p class="text-danger mt-3" th:if="${campos_vacios !=null}" th:text="${campos_vacios}"></p>
+            <p class="text-danger mt-3" th:if="${error_repeticion !=null}" th:text="${error_repeticion}"></p>
+            <p class="text-danger mt-3" th:if="${error_password_invalid !=null}" th:text="${error_password_invalid}"></p>
+            <p class="text-danger mt-3" th:if="${error_usuario_unico !=null}" th:text="${error_usuario_unico}"></p>
+        </form>
+
     </div>
 </div>
 
+
+</body>
+
+</html>
 </body>
 </html>
