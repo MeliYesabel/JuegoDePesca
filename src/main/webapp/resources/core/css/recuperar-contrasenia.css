@@ -1,0 +1,65 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: "Pixelify Sans", sans-serif !important;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-image: url("../img/background-sea1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.logo{
+    display:flex;
+    flex-direction: column;
+    background-color: rgb(31, 31, 31);
+    margin-bottom: 1em;
+    border-radius: 10%;
+    width: 6em;
+    align-items: center;
+}
+
+.logo img{
+    height: 5rem;
+}
+
+.logo p{
+    margin-bottom: 0.3rem !important;
+    text-decoration: none !important;
+}
+
+.cancelar{
+    text-decoration: none !important;
+    color: white !important;
+}
+
+.card-body {
+    width: 35rem;
+    background: rgba(94, 94, 94, 0.4);
+    /* Fondo semi-transparente */
+    border-radius: 0.7rem;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    /* Sombra suave */
+    backdrop-filter: blur(10px);
+    /* Desenfoque del fondo */
+    -webkit-backdrop-filter: blur(10px);
+    /*Soporte Safari */
+}
+
+.botones{
+    display: flex;
+    justify-content: space-around;
+}
+
+.text{
+    text-shadow: 2px 2px 4px black  !important;
+}
+
+.btn-secondary, .btn-primary {
+    width :10em
+}

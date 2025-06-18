@@ -1,0 +1,100 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family:"Pixelify Sans", sans-serif !important; /*Piso por defecto la fuente de bootswatch*/
+}
+
+.fondo {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.fondo img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(10px) brightness(0.3);
+    z-index: 1;
+}
+
+.fondo::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+.contenido {
+    position: relative;
+    z-index: 3;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-login {
+    display: flex;
+    flex-direction: row;
+    max-width: 900px;
+    width: 100%;
+    height: 500px;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+}
+
+.side-image {
+    flex: 1;
+    background: url('../img/background-sea2.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+.form-section {
+    flex: 1;
+    padding: 3rem 2rem;
+    background-color: #111827;
+    /* Fondo oscuro suave */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+}
+
+.form-section h2 {
+    margin-bottom: 1rem;
+}
+
+.form-check-label {
+    color: #ccc;
+}
+
+.form-text a {
+    color: #9dffff;
+    text-decoration: underline;
+}
+
+.btn-social {
+    background-color: #fff;
+    color: #000;
+}
+
+@media (max-width: 768px) {
+    .card-login {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .side-image {
+        height: 200px;
+    }
+}
