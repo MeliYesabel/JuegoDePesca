@@ -8,12 +8,12 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class ControladorLogin {
 
-    @RequestMapping("/loginPescador")
+    @RequestMapping("/login-usuario")
     public ModelAndView irALogin() {
         ModelMap modeloLogin = new ModelMap();
         modeloLogin.put("exito","estas en login");
 
-        return new ModelAndView("mapa", modeloLogin);
+        return new ModelAndView("login-usuario", modeloLogin);
     }
 
 }
