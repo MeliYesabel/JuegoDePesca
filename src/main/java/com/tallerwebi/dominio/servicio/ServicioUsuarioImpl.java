@@ -1,4 +1,10 @@
-package com.tallerwebi.presentacion;
+package com.tallerwebi.dominio.servicio;
 
-public class ServicioUsuarioImpl {
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+@Service
+@Transactional
+public class ServicioUsuarioImpl implements ServicioUsuarioI{
+
 }
