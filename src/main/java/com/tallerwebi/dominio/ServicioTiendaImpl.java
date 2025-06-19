@@ -50,6 +50,7 @@ public class ServicioTiendaImpl implements ServicioTienda {
 
                     jugador.setMonedas(jugador.getMonedas() - objeto.getPrecioObjeto());
 
+                    objeto.setJugador(jugador);
                     jugador.agregarObjeto(objeto);
                     repositorioJugador.guardarJugador(jugador);
 

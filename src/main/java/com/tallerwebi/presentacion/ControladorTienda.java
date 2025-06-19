@@ -7,6 +7,8 @@ import com.tallerwebi.dominio.excepcion.ObjetoInexistenteException;
 import com.tallerwebi.dominio.excepcion.ObjetoYaCompradoException;
 import com.tallerwebi.dominio.excepcion.ParametroInvalidoException;
 import com.tallerwebi.dominio.RepositorioObjeto;
+import com.tallerwebi.infraestructura.RepositorioJugadorImpl;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -23,18 +25,32 @@ public class ControladorTienda {
     private ServicioTienda servicioTienda;
     private RepositorioObjeto repositorioObjeto;
 
+    /*@Autowired
+    RepositorioJugador repositorioJugador;
+    @Autowired
+    SessionFactory sessionFactory;*/
+
     @Autowired
     public ControladorTienda(ServicioTienda servicioTienda,RepositorioObjeto repositorioObjeto) {
         this.servicioTienda = servicioTienda;
         this.repositorioObjeto = repositorioObjeto;
+
+       // this.repositorioJugador = new RepositorioJugadorImpl(); //lo agregue ahora
     }
 
     @RequestMapping("/inicio")
     public ModelAndView iniciarSesion(HttpSession session) {
-        Jugador jugador = new Jugador();
+       Jugador jugador = new Jugador();
 
         jugador.setMonedas(200.0);
-        session.setAttribute("jugador", jugador);
+       session.setAttribute("jugador", jugador);
+
+      /*  Jugador jugador = new Jugador();
+        jugador.setMonedas(200.0);
+        jugador.setNombre("jugador1"); // o lo que necesites
+        repositorioJugador.guardarJugador(jugador); // 🚨
+        session.setAttribute("jugador", jugador);*/
+
         return new ModelAndView("redirect:/tienda");
     }
 

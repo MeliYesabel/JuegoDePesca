@@ -14,6 +14,7 @@ private double monedas;
 private String nombre;
 
 @OneToMany
+@JoinColumn(name = "jugador_id")
 private List<Objeto> objetosComprados = new ArrayList<>();
 
 @ManyToOne

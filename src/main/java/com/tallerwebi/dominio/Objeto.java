@@ -1,9 +1,6 @@
 package com.tallerwebi.dominio;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
@@ -17,6 +14,9 @@ public class Objeto {
 
     private String nombre;
     private Boolean estaComprado = false;
+
+    @ManyToOne
+    private Jugador jugador;
 
     public Objeto(){
 
@@ -54,6 +54,18 @@ public class Objeto {
 
     public void setEstaComprado(Boolean estaComprado) {
         this.estaComprado = estaComprado;
+    }
+
+    public Jugador getJugador() {
+        return jugador;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setJugador(Jugador jugador) {
+        this.jugador = jugador;
     }
 
     @Override

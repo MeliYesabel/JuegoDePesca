@@ -27,7 +27,7 @@ public class ControladorPersonaje {
 
     }
 
-    @RequestMapping(value = "/personaje",method = RequestMethod.GET)
+   /* @RequestMapping(value = "/personaje",method = RequestMethod.GET)
     public ModelAndView irAPersonaje(HttpSession session){
         ModelMap model = new ModelMap();
 
@@ -40,9 +40,27 @@ public class ControladorPersonaje {
         model.put("jugador", jugador);
         model.put("objetosDelJugador",jugador.getObjetosComprados()); //si borro esto corre
         return new ModelAndView("vistaPersonaje.html",model);
+    }*/
+    @RequestMapping(value="/personaje", method = RequestMethod.GET)
+    public ModelAndView irAPersonaje(HttpSession session){
+        ModelMap model = new ModelMap();
+        session.setAttribute("jugador",jugador);
+        model.put("jugador",jugador);
+        model.put("clavePersonaje","Esta es la pantalla personaje");
+        return new ModelAndView("vistaPersonaje.html",model);
     }
 
-    @RequestMapping(value = "/vistaCaniasDelPersonaje")
+    @RequestMapping(value="/objeto", method = RequestMethod.GET)
+    public ModelAndView irAObjeto(HttpSession session){
+        ModelMap model = new ModelMap();
+        session.setAttribute("jugador",jugador);
+        model.put("jugador",jugador);
+        model.put("objetosDelJugador",jugador.getObjetosComprados());
+        //agregar lista de objetos
+        return new ModelAndView("objetoDelJugador.html",model);
+    }
+
+   /* @RequestMapping(value = "/vistaCaniasDelPersonaje")
     public ModelAndView verCaniasDisponiblesDelPersonaje(HttpSession session){
         ModelMap model = new ModelMap();
 
@@ -52,9 +70,9 @@ public class ControladorPersonaje {
         model.put("objetosDelJugador",jugador.getObjetosComprados());
         return new ModelAndView("vistaEquipamiento.html",model);
 
-    }
+    }*/
 
-    @RequestMapping(value = "/equipamiento", method = RequestMethod.POST)
+    /*@RequestMapping(value = "/equipamiento", method = RequestMethod.POST)
     public ModelAndView equiparCania(HttpSession session, @RequestParam Integer idObjeto) {
         ModelMap model = new ModelMap();
 
@@ -77,5 +95,5 @@ public class ControladorPersonaje {
            return new ModelAndView("vistaPersonaje.html",model); // la vista personaje nos permite ir a la vista equipamiento o a las demas
        }
 
-    }
+    }*/
 }

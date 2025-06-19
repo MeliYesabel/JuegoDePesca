@@ -17,12 +17,12 @@
 <main>
     <p th:text="${clavePersonaje}"></p>
 
-    <div th:if="${mensaje}" style="color:green">
-    <p th:text="${mensaje}"></p>
-    </div>
 
-    <div th:if="${error}" style="color:red">
-        <p th:text="${error}"></p>
+    
+    <div>
+        <a th:href="@{/objeto}">
+            <button>Cañas</button>
+        </a>
     </div>
 </main>
 </body>
