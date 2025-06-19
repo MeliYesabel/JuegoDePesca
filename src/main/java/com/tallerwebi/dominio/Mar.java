@@ -1,6 +1,7 @@
 package com.tallerwebi.dominio;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**/
@@ -18,6 +19,9 @@ public class Mar {
     @OneToMany
     private List<Pez> peces;
 
+    @OneToMany(mappedBy = "mar")
+    private List<JugadorMar>jugadores = new ArrayList<>();
+
     public Mar() {}
 
     /*Solo para probar los test */
@@ -26,6 +30,8 @@ public class Mar {
         this.precio = precio;
         this.descripcion = descripcion;
         this.estadoBloqueado = estadoBloqueado;
+        /*creo el array*/
+        jugadores = new ArrayList<>();
     }
 
     public Long getId_mar() {

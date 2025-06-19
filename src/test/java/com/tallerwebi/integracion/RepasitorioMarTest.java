@@ -1,5 +1,7 @@
 package com.tallerwebi.integracion;
 
+import com.tallerwebi.dominio.Jugador;
+import com.tallerwebi.dominio.JugadorMar;
 import com.tallerwebi.dominio.Mar;
 import com.tallerwebi.dominio.RepositorioMar;
 import com.tallerwebi.integracion.config.HibernateTestConfig;
@@ -35,15 +37,29 @@ public class RepasitorioMarTest {
     @Autowired
     private RepositorioMar repo;
 
-    /*test : mares y peces   -------------------------------*/
+    @Test
+    @Transactional
+    @Rollback
+    public void obtenerElEstadoDelMarSolicitadoQueMeDeVerdeSiEstaBloqueadosegunElJugador() {
 
-    /*test : solo mares  -----------------------------------*/
+        Mar mar = new Mar("Poseidon",0.0,"Mitologia Griega",true);
+        sessionFactory.getCurrentSession().save(mar);
+        Jugador jugador = new Jugador("Anahi","anis",30.0,1);
+        sessionFactory.getCurrentSession().save(jugador);
+        JugadorMar jugadorMar= new JugadorMar(jugador,mar,true);
+        sessionFactory.getCurrentSession().save(jugadorMar);
 
+        boolean estado = repo.obtenerElEstadoMarDelJugador(mar,jugador);
+        assertThat(estado,equalTo(true));
+    }
+
+/**/
     @Test
     @Transactional
     @Rollback
     public void queSePuedaObtenerUnMarSiEstaBloqueadoElPrecioParaDesbloqueralo(){
         givenTodosLosMaresAgregadosDeAUnoUsandoOtroMetodo();
+
         Mar mar = whenObtenerUnMarSiEstbloqueadoElPrecio("Njoror");
         thenQueMeDevuelvaLacantDeMonedas(mar,100.0);
     }
@@ -139,7 +155,7 @@ public class RepasitorioMarTest {
 
     private void givenTodosLosMaresAgregadosDeAUnoUsandoOtroMetodo(){
         /*String nombre, Double precio, String descripcion, Boolean estado*/
-        givenAgregarMaresALista("Poseidon",0.0,"Mitologia Grega",false);
+        givenAgregarMaresALista("Poseidon",0.0,"Mitologia Griega",false);
         givenAgregarMaresALista("Njoror",100.0,"Mitologia Nordica",true);
         givenAgregarMaresALista("Susanoo",150.0,"Mitologia Japonesa",true);
         givenAgregarMaresALista("Yemaya",200.0,"Mitologia Yoriba",true);

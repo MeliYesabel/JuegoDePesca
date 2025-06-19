@@ -18,8 +18,8 @@ public class Jugador {
     @OneToMany
    private List<Objeto> listaObjetos;
 
-    @ManyToMany
-    private List<Mar> mares;
+    @OneToMany(mappedBy = "jugador", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<JugadorMar> mares = new ArrayList<>();
 
 
     public Jugador(){
@@ -35,9 +35,6 @@ public class Jugador {
         listaObjetos = new ArrayList<>();
     }
 
-    public List<Mar>getMares() {
-        return mares;
-    }
 
     public Long getId_jugador() {
     return id_jugador;

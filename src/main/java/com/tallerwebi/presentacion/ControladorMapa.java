@@ -44,14 +44,19 @@ public class ControladorMapa {
     }
 
     @RequestMapping("/marSeleccionado")
-    public ModelAndView redireccionSegunSiEstaBloqueadoONo(@ModelAttribute Jugador jugador,@ModelAttribute Mar mar){
+    public ModelAndView redireccionSegunSiEstaBloqueadoONo(@ModelAttribute Jugador jugador,@ModelAttribute Mar mar) {
         ModelMap mm = new ModelMap();
-        Jugador jugadorBuscado = servicioJugador.buscarJugadorPorId(jugador.getId_jugador());
-        if (jugadorBuscado == null){
-            return new ModelAndView("login");
+        Jugador jugadorActual = servicioJugador.buscarJugadorPorId(jugador.getId_jugador());
+        if (jugadorActual == null){
+            mm.put("JugadorError", "El jugador no existe");
+            return new ModelAndView("login",mm);
         }
        // Jugador jugadorActual = servicioJugador.buscarJugador(jugador);//-> base de datos
-       // Mar marSeleccionado = servicioMapa.obtenerElEstadoDeUnMarPorNombre("Mitologia griega");// -> base datos join usuario es
+         boolean estado = servicioMapa.obtenerElEstadoDelMarSegunELJugador(mar,jugadorActual);// -> base datos join usuario es
+         if (estado){
+             mm.put("marError", "El mar seleccionado esta bloqueado");
+             return new ModelAndView("vistaMarBloqueado",mm);
+         }
 
        // if(jugadorActual == null){
          //   mm.put("mensaje", "El jugador no existe");

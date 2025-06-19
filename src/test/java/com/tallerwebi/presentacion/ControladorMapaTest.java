@@ -27,6 +27,36 @@ public class ControladorMapaTest {
     }
 
     @Test
+    public void siElMarDeUnCiertojugadorEstaDESBloqueadoIrAVistaSeleccion(){
+        Jugador jugador = new Jugador("Anahi","anis",30.0,1);
+        jugador.setId_jugador(3L);
+        Mar mar = new Mar();
+
+        when(servicioJugador.buscarJugadorPorId(3L)).thenReturn(jugador);
+        when(servicioMapa.obtenerElEstadoDelMarSegunELJugador(mar,jugador)).thenReturn(false);
+
+        ModelAndView cm = controladorMapa.redireccionSegunSiEstaBloqueadoONo(jugador,mar);
+
+        thenLaVistaFueRedirigidaADondeIba(cm,"vistaSeleccion");
+
+    }
+
+    @Test
+    public void siElMarDeUnCiertojugadorEstaBloqueadoIrAVistaMarBloqueado() {
+        Jugador jugador = new Jugador("Anahi","anis",30.0,1);
+        jugador.setId_jugador(3L);
+        Mar mar = new Mar();
+
+        when(servicioJugador.buscarJugadorPorId(3L)).thenReturn(jugador);
+        when(servicioMapa.obtenerElEstadoDelMarSegunELJugador(mar,jugador)).thenReturn(true);
+
+        ModelAndView cm = controladorMapa.redireccionSegunSiEstaBloqueadoONo(jugador,mar);
+
+        thenLaVistaFueRedirigidaADondeIba(cm,"vistaMarBloqueado");
+
+    }
+
+    @Test
     public void siExisteElJugadorRedirijaAVistaMapa(){
         Jugador jugador = new Jugador("Anahi","anis",30.0,1);
         jugador.setId_jugador(3L);

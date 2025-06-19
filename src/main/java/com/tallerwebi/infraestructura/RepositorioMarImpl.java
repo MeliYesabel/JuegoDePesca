@@ -1,5 +1,7 @@
 package com.tallerwebi.infraestructura;
 
+import com.tallerwebi.dominio.Jugador;
+import com.tallerwebi.dominio.JugadorMar;
 import com.tallerwebi.dominio.Mar;
 import com.tallerwebi.dominio.RepositorioMar;
 import org.hibernate.SessionFactory;
@@ -82,5 +84,16 @@ public class RepositorioMarImpl implements RepositorioMar {
                 .add(Restrictions.eq("nombre", marBloqueado))
                 .add(Restrictions.eq("estadoBloqueado",true))
                 .uniqueResult();
+    }
+
+    @Override
+    public boolean obtenerElEstadoMarDelJugador(Mar mar, Jugador jugadorActual) {
+        var session = sessionFactory.getCurrentSession();
+        JugadorMar jm = (JugadorMar) session.createCriteria(JugadorMar.class)
+                .add(Restrictions.eq("mar", mar))
+                .add(Restrictions.eq("jugador", jugadorActual))
+                .uniqueResult();
+
+        return jm!=null && jm.getEstadoBloqueado();
     }
 }

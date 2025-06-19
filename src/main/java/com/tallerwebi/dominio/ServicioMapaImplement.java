@@ -38,4 +38,13 @@ public class ServicioMapaImplement implements ServicioMapa {
         return null;
     }
 
+    @Override
+    public boolean obtenerElEstadoDelMarSegunELJugador(Mar mar, Jugador jugadorActual) {
+        boolean estado = false;
+        if (repositorioMar.obtenerElEstadoMarDelJugador(mar,jugadorActual)) {
+            estado=true;
+        }
+        return estado;
+    }
+
 }
