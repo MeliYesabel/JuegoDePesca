@@ -2,10 +2,13 @@ package com.tallerwebi.presentacion;
 
 import com.tallerwebi.dominio.servicio.ServicioUsuarioAuthI;
 import com.tallerwebi.presentacion.dto.UsuarioDto;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.web.servlet.ModelAndView;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 
 public class ControladorRegistroTest {
@@ -15,6 +18,13 @@ public class ControladorRegistroTest {
 
     private ServicioUsuarioAuthI servicioUsuarioI = mock(ServicioUsuarioAuthI.class);
     private ControladorRegistro controladorRegistro = new ControladorRegistro(servicioUsuarioI);
+
+    @BeforeEach
+    public void init(){
+        servicioUsuarioI = mock(ServicioUsuarioAuthI.class);
+        controladorRegistro = new ControladorRegistro(servicioUsuarioI);
+    }
+
 
     @Test
     public void queSePuedaCrearFormularioRegistroParaCrearUsuario(){
@@ -32,6 +42,11 @@ public class ControladorRegistroTest {
     }
 
     private void thenPuedoCrearUsuario(ModelAndView vistaModeladaGenerada) {
+        String vistaEsperada = "registro";
+        String vistaObtenida = vistaModeladaGenerada.getViewName();
+
+        assertThat(vistaObtenida,equalTo(vistaEsperada));
+        assertTrue(vistaModeladaGenerada.getModel().containsKey("usuarioDto"));
     }
 
 
@@ -45,6 +60,14 @@ public class ControladorRegistroTest {
     }
 
     private void entoncesSeMuestraRegistroExitosamente(ModelAndView vistaModelada) {
+        String vistaObtenida = vistaModelada.getViewName();
+        String vistaEsperada = "login-usuario";
+
+        String mensajeExitoso = vistaModelada.getModel().get("mensaje").toString();
+        String mensajeExitosoEsperado = "El usuario se registro exitosamente.";
+
+        assertThat(vistaObtenida,equalTo(vistaEsperada));
+        assertThat(mensajeExitoso, equalTo(mensajeExitosoEsperado));
     }
 
     private void dadoQueNoExisteJugadorRegistrado() {

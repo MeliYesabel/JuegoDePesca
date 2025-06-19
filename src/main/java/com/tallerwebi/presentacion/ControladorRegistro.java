@@ -57,7 +57,7 @@ public class ControladorRegistro {
             return new ModelAndView("registro", datosModelados);
         }
 
-        return new ModelAndView("login-pescador", datosModelados);
+        return new ModelAndView("login-usuario", datosModelados);
 
     }
 

@@ -2,7 +2,7 @@ package com.tallerwebi.dominio.servicio;
 
 import com.tallerwebi.dominio.Jugador;
 import com.tallerwebi.dominio.entidad.UsuarioAuth;
-import com.tallerwebi.dominio.excepcion.UsuarioExistente;
+import com.tallerwebi.dominio.excepcion.ContraseniaInvalidaExcepcion;
 import com.tallerwebi.dominio.excepcion.UsuarioExistenteExcepcion;
 import com.tallerwebi.dominio.repositorio.RepositorioUsuarioAuth;
 import com.tallerwebi.dominio.utils.PasswordUtil;
@@ -45,6 +45,49 @@ public class ServicioUsuarioAuthImpl implements ServicioUsuarioAuthI {
     }
 
     private boolean validarContrasenia(String password) {
+        boolean tieneNumero = tieneNumero(password);
+        boolean tieneMayusc = tieneMayusc(password);
+        boolean tieneMinuscula = tieneMinus(password);
+        boolean tieneCaracterEspecial = tieneEspecial(password);
+
+        if(tieneNumero && tieneMayusc && tieneMinuscula && tieneCaracterEspecial && password.length()>=8){
+            return true;
+        };
+
+        throw new ContraseniaInvalidaExcepcion();
+    }
+
+    private boolean tieneNumero(String pswd){
+        return (pswd.contains("0") ||pswd.contains("1") ||pswd.contains("2") ||pswd.contains("3") ||
+                pswd.contains("4") ||pswd.contains("5") ||pswd.contains("6")||pswd.contains("7") ||
+                pswd.contains("8") ||pswd.contains("9"));
+    }
+
+    private boolean tieneMayusc(String pswd){
+        char letraInicio = 'A', letraFin = 'Z';
+        int largoPWD = pswd.length();
+
+        return contieneTalLetra(pswd, letraInicio, letraFin, largoPWD);
+    }
+
+    private boolean tieneMinus(String pswd){
+        char letraInicio = 'a', letraFin = 'z';
+        int largoPWD = pswd.length();
+
+        return contieneTalLetra(pswd, letraInicio, letraFin, largoPWD);
+    }
+
+    private boolean contieneTalLetra(String pswd, char letraInicio, char letraFin, int largoPWD) {
+        for(int i=0; i<largoPWD; i++) {
+            for(int j=(int)letraInicio; j<(int)letraFin ; j++) {
+                if(pswd.charAt(i)== (char)j) return true;
+            }
+        }
         return false;
+    }
+
+
+    private boolean tieneEspecial(String pswd){
+        return (pswd.contains("!") ||pswd.contains("@") ||pswd.contains("$") ||pswd.contains("&"));
     }
 }
