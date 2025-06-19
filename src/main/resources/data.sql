@@ -1,8 +1,5 @@
 INSERT INTO Usuario(id, email, password, rol, activo)VALUES(null, 'test@unlam.edu.ar', 'test', 'ADMIN', true);
 
-INSERT INTO Jugador(nombre_jugador,monedas,cant_carnada) VALUES
-('Anahi','anis',30.0,1);
-
 
 
 INSERT INTO Mar (nombre,precio,descripcion,estadoBloqueado) VALUES

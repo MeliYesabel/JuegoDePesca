@@ -81,31 +81,6 @@ public class ControladorMapaTest {
         thenLaVistaFueRedirigidaADondeIba(cm, "login");
     }
 
-
-    /*segundo sprint
-    * PREGUNTa : es redundante hacer un test dond eme lanze un aexcepcion y otro test me testee las redirecciones */
-
-
-
-    /*31/05 agregue
-
-
-    @Test
-    public void fijarseSiElJugadorTieneEstadoDelElMarDESBLOQUEADOExito() {
-        ModelAndView mv = controladorMapa.redireccionDeVistasDependiendoDelUsuario("alias_jugador",4.0);
-        thenLaVistaFueRedirigidaExitosamente(mv,"vistaSeleccion");
-    }
-
-    @Test
-    public void fijarseSiElJugadorTieneElEstadoDelMarBloqueadoLanzarUnError(){
-        ModelAndView mv = controladorMapa.redireccionDeVistasDependiendoDelUsuario("alias_jugador",4.0);
-        thenNoSePuedoHacerElCambioDePagMensajeError(mv,"mensajeDeVistaError","El mar se encuentra en estado BLOQUEADO");
-    }*/
-
-
-
-
-    // primer sprint ----------------------------------------------------------------------------
     @Test
     public void alClickearVistaLogrosMeRedirigeAVistaLogros() {
         ModelAndView cm = controladorMapa.irAVistaLogros();
