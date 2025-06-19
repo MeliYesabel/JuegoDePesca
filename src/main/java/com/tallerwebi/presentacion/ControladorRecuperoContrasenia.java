@@ -1,6 +1,6 @@
 package com.tallerwebi.presentacion;
 
-import com.tallerwebi.dominio.servicio.ServicioUsuarioI;
+import com.tallerwebi.dominio.servicio.ServicioUsuarioAuthI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,10 +9,10 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class ControladorRecuperoContrasenia {
 
-    private ServicioUsuarioI servicioUsuario;
+    private ServicioUsuarioAuthI servicioUsuario;
 
     @Autowired
-    public ControladorRecuperoContrasenia(ServicioUsuarioI servicioUsuarioI) {
+    public ControladorRecuperoContrasenia(ServicioUsuarioAuthI servicioUsuarioI) {
         this.servicioUsuario = servicioUsuarioI;
     }
 

@@ -1,6 +1,6 @@
 package com.tallerwebi.presentacion;
 
-import com.tallerwebi.dominio.servicio.ServicioUsuarioI;
+import com.tallerwebi.dominio.servicio.ServicioUsuarioAuthI;
 import org.junit.jupiter.api.Test;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -11,7 +11,7 @@ import static org.mockito.Mockito.mock;
 
 public class ControladorLoginUsuarioTest {
     //mockito
-    private ServicioUsuarioI servicioUsuarioI = mock(ServicioUsuarioI.class);
+    private ServicioUsuarioAuthI servicioUsuarioI = mock(ServicioUsuarioAuthI.class);
     private ControladorLogin controladorLogin = new ControladorLogin(servicioUsuarioI);
 
     @Test

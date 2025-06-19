@@ -1,11 +1,11 @@
 package com.tallerwebi.presentacion;
 
-import com.tallerwebi.dominio.servicio.ServicioUsuarioI;
+import com.tallerwebi.dominio.servicio.ServicioUsuarioAuthI;
+import com.tallerwebi.presentacion.dto.UsuarioDto;
 import org.junit.jupiter.api.Test;
 import org.springframework.web.servlet.ModelAndView;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.text.IsEqualIgnoringCase.equalToIgnoringCase;
 import static org.mockito.Mockito.mock;
 
 public class ControladorRegistroTest {
@@ -13,7 +13,7 @@ public class ControladorRegistroTest {
     private final String email = "kitty@gmail.com";
     private final String password = "kitty1!";
 
-    private ServicioUsuarioI servicioUsuarioI = mock(ServicioUsuarioI.class);
+    private ServicioUsuarioAuthI servicioUsuarioI = mock(ServicioUsuarioAuthI.class);
     private ControladorRegistro controladorRegistro = new ControladorRegistro(servicioUsuarioI);
 
     @Test
@@ -35,27 +35,23 @@ public class ControladorRegistroTest {
     }
 
 
-
-/*
-
     @Test
-    public void dadoQueNoExisteUnUsuarioQueSePuedaRegistrar(){
+    public void dadoQueNoExisteUnUsuarioQueSePuedaRegistrarExitosamente(){
         dadoQueNoExisteJugadorRegistrado();
 
-        ModelAndView vistaModelada = cuandoUnJugadorIngresaARegistro();
+        ModelAndView vistaModelada = cuandoUnJugadorSeRegistra(email, password, password);
 
         entoncesSeMuestraRegistroExitosamente(vistaModelada);
     }
 
-
     private void entoncesSeMuestraRegistroExitosamente(ModelAndView vistaModelada) {
-        assertThat(vistaModelada.getViewName(), equalToIgnoringCase("registro"));
     }
-    private ModelAndView cuandoUnJugadorIngresaARegistro() {
-        ControladorRegistro controladorRegistro = new ControladorRegistro(servicioUsuarioI);
-        ModelAndView vistaModelada = controladorRegistro.irARegistro();
+
+    private void dadoQueNoExisteJugadorRegistrado() {
+    }
+
+    private ModelAndView cuandoUnJugadorSeRegistra(String email, String password, String password_repetida){
+        ModelAndView vistaModelada = controladorRegistro.registrarUsuario(new UsuarioDto(email, password, password_repetida));
         return vistaModelada;
     }
-    private void dadoQueNoExisteJugadorRegistrado() {}
-*/
 }

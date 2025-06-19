@@ -1,6 +1,6 @@
 package com.tallerwebi.presentacion;
 
-import com.tallerwebi.dominio.servicio.ServicioUsuarioI;
+import com.tallerwebi.dominio.servicio.ServicioUsuarioAuthI;
 import org.junit.jupiter.api.Test;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -9,7 +9,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.Mockito.mock;
 
 public class ControladorRecuperacionContraseniaTest {
-    private ServicioUsuarioI servicioUsuarioI = mock(ServicioUsuarioI.class);
+    private ServicioUsuarioAuthI servicioUsuarioI = mock(ServicioUsuarioAuthI.class);
     private ControladorRecuperoContrasenia controladorRecuperoContrasenia = new ControladorRecuperoContrasenia(servicioUsuarioI);
 
     @Test
