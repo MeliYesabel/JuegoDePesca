@@ -4,6 +4,7 @@ import com.tallerwebi.dominio.Jugador;
 import com.tallerwebi.dominio.entidad.UsuarioAuth;
 import com.tallerwebi.dominio.excepcion.ContraseniaInvalidaExcepcion;
 import com.tallerwebi.dominio.excepcion.UsuarioExistenteExcepcion;
+import com.tallerwebi.dominio.excepcion.UsuarioInexistenteLoginException;
 import com.tallerwebi.dominio.repositorio.RepositorioUsuarioAuth;
 import com.tallerwebi.dominio.utils.PasswordUtil;
 import com.tallerwebi.presentacion.dto.UsuarioDto;
@@ -46,6 +47,15 @@ public class ServicioUsuarioAuthImpl implements ServicioUsuarioAuthI {
 
         }
 
+    }
+
+    @Override
+    public UsuarioAuth autenticar(String emailIngresado, String contraseniaIngresada) {
+        UsuarioAuth usuarioAuth = repositorioUsuarioAuth.buscarPorMail(emailIngresado);
+        if(usuarioAuth!=null && PasswordUtil.verificar(contraseniaIngresada, usuarioAuth.getPassword())){
+            return usuarioAuth;
+        }
+        throw new UsuarioInexistenteLoginException();
     }
 
     private boolean validarContrasenia(String password) {
