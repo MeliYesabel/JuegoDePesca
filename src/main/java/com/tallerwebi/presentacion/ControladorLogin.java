@@ -52,7 +52,7 @@ public class ControladorLogin {
                 HttpSession sesion = request.getSession();
                 String rol = encontrado.getTipoUsuario();
 
-                //creo objeto dto seguro para la sesion
+                //creo objeto dto seguro para la sesion y asi lo consuma las demas vistas
                 UsuarioSesionDto usuarioSesion = new UsuarioSesionDto(encontrado.getId(), encontrado.getEmail(), rol);
                 sesion.setAttribute("usuarioLogueado", usuarioSesion);
 
@@ -70,6 +70,12 @@ public class ControladorLogin {
             return new ModelAndView("login-usuario", datosMapeados);
         }
 
+    }
+
+    @GetMapping("/logout")
+    public String looout(HttpServletRequest request){
+        request.getSession().invalidate();
+        return "redirect:/login-usuario";
     }
 
     private boolean emailTieneUnFormatoValido(String emailIngresado) {
