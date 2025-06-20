@@ -26,40 +26,49 @@
     </ul>
   </header>
 
-  <!-- Agregar de forma Correcta los mares en el html usando lo que tengo en la base de datos  -->
-  <div class="container-fluid mapa-container">
-    <div class="row">
-        <div class="col-2">1.1</div>
-        <div class="col-2">1.2</div>
-        <div class="col-2"><a th:action="@{/marSeleccionado}">"Poseidon"</a></div>
-        <div class="col-2">1.4</div>
-        <div class="col-2">1.5</div>
-       <!-- <div class="col-2">
-            <form th:action="@{/irAVistaSeleccion}" method="post">
-                <input type="hidden" name="idObjeto" th:value="${objeto.idObjeto}" />
-                <button type="submit">"Nuwa"</button>
-            </form>
-        </div>-->
-    </div>
-    <div class="row">
-        <div class="col-2">1.1</div>
-        <div class="col-2"><a th:href="@{/marSeleccionado(id_jugador=${jugador.id_jugador}, id_mar=${mar.id_mar})}">"Njorock"</a></div>
-        <div class="col-2">1.3</div>
-        <div class="col-2">1.4</div>
-        <div class="col-2"><a th:action="@{/marSeleccionado}">"Susanoo"</a></div>
-        <div class="col-2"></div>
-    </div>
-    <div class="row">
-        <div class="col-2"><a th:action="@{/marSeleccionado}">"Yemaya"</a></div>
-        <div class="col-2">1.2</div>
-        <div class="col-2"><a th:action="@{/marSeleccionado}">"Tlaloc"</a></div>
-        <div class="col-2">1.4</div>
-        <div class="col-2">1.5</div>
-        <div class="col-2"><a th:action="@{/marSeleccionado}">"Varuna"</a></div>
-    </div>
+
+  <div th:if="${mensaje}">
+      <p th:text="${mensaje}" style="color:red"></p>
   </div>
 
+  <ul>
+      <li th:each="mar : ${listaMar}" th:text="${mar.nombre}"> nombre mar
+      <!--<a th:href="${/marSeleccionado(idMar=${mar.id},)}"></a>-->
+      </li>
+  </ul>
+
+  <!-- Agregar de forma Correcta los mares en el html usando lo que tengo en la base de datos  -->
+  <!-- <div class="container-fluid mapa-container">
+     <div class="row">
+         <div class="col-2">1.1</div>
+         <div class="col-2">1.2</div>
+         <div class="col-2"><a th:href="@{/vistaMarBloqueado.html}">"Poseidon"</a></div>
+         <div class="col-2">1.4</div>
+         <div class="col-2">1.5</div>
+    <!-- de esta forma puedo recorrer los mares <div th:each="mar : ${listaMares}">
+   <a th:href="@{/marSeleccionado(id_jugador=${jugador.id_jugador}, id_mar=${mar.id_jugador})}"
+      th:text="${mar.nombre}">Nombre del Mar</a>
+ </div>
+     </div>
+     <div class="row">
+         <div class="col-2">1.1</div>
+         <div class="col-2"><a th:href="@{/marSeleccionado(id_jugador=${jugador.id_jugador}, id_mar=${mar.id_mar})}">"Njorock"</a></div>
+         <div class="col-2">1.3</div>
+         <div class="col-2">1.4</div>
+         <div class="col-2"><a th:action="@{/marSeleccionado}">"Susanoo"</a></div>
+         <div class="col-2"></div>
+     </div>
+     <div class="row">
+         <div class="col-2"><a th:action="@{/marSeleccionado}">"Yemaya"</a></div>
+         <div class="col-2">1.2</div>
+         <div class="col-2"><a th:action="@{/marSeleccionado}">"Tlaloc"</a></div>
+         <div class="col-2">1.4</div>
+         <div class="col-2">1.5</div>
+         <div class="col-2"><a th:action="@{/marSeleccionado}">"Varuna"</a></div>
+     </div>
+   </div>-->
 
 
-</body>
+
+  </body>
 </html>

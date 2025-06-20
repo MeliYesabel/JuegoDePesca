@@ -8,6 +8,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalToIgnoringCase;
 import static org.mockito.Mockito.*;
@@ -26,6 +29,36 @@ public class ControladorMapaTest {
         controladorMapa = new ControladorMapa(servicioMapa, servicioJugador);
     }
 
+   /* @Test con exception
+    public void queSiNoObtieneTodaLaListaDeMares() {}*/
+
+    @Test
+    public void queAlObtenerTodaLaListaDeMaresIrAVistaMapa(){
+        List<Mar> listaMar = givenInstanciaDeTodosLosMares();
+
+        //mock
+        when(servicioMapa.obtenerTodaListaDeMares()).thenReturn(listaMar);
+
+        //when
+        ModelAndView mv = controladorMapa.irAVistaMapa();
+
+        thenLaVistaFueRedirigidaADondeIba(mv,"vistaMapa");
+    }
+
+    private List<Mar> givenInstanciaDeTodosLosMares() {
+        List<Mar> listaMar = Arrays.asList(
+                new Mar("Mitologia griega", 0.0, "mar uno", false),
+                new Mar("Mitologia Nordica", 150.0, "mar dos", true),
+                new Mar("Mitologia Japonesa", 200.0, "mar tres", true),
+                new Mar("Mitología Yoruba", 250.0, "mar cuatro", true),
+                new Mar("Mitología Indú", 300.0, "mar cinco", true),
+                new Mar("Mitología Asteca", 350.0, "mar seis", true),
+                new Mar("Mitología China", 450.0, "mar siete", true)
+
+        );
+        return listaMar;
+    }
+
     @Test
     public void siElMarDeUnCiertojugadorEstaDESBloqueadoIrAVistaSeleccion(){
         Jugador jugador = new Jugador("Anahi","anis",30.0,1);
@@ -35,7 +68,7 @@ public class ControladorMapaTest {
         when(servicioJugador.buscarJugadorPorId(3L)).thenReturn(jugador);
         when(servicioMapa.obtenerElEstadoDelMarSegunELJugador(mar,jugador)).thenReturn(false);
 
-        ModelAndView cm = controladorMapa.redireccionSegunSiEstaBloqueadoONo(jugador,mar);
+        ModelAndView cm = whenLaRedireccionEsSegunElJugadorOMar(jugador,mar);
 
         thenLaVistaFueRedirigidaADondeIba(cm,"vistaSeleccion");
 
@@ -50,7 +83,7 @@ public class ControladorMapaTest {
         when(servicioJugador.buscarJugadorPorId(3L)).thenReturn(jugador);
         when(servicioMapa.obtenerElEstadoDelMarSegunELJugador(mar,jugador)).thenReturn(true);
 
-        ModelAndView cm = controladorMapa.redireccionSegunSiEstaBloqueadoONo(jugador,mar);
+        ModelAndView cm = whenLaRedireccionEsSegunElJugadorOMar(jugador,mar);
 
         thenLaVistaFueRedirigidaADondeIba(cm,"vistaMarBloqueado");
 
@@ -64,7 +97,7 @@ public class ControladorMapaTest {
 
         when(servicioJugador.buscarJugadorPorId(3L)).thenReturn(jugador);
 
-        ModelAndView cm = controladorMapa.redireccionSegunSiEstaBloqueadoONo(jugador, mar);
+        ModelAndView cm = whenLaRedireccionEsSegunElJugadorOMar(jugador,mar);
         thenLaVistaFueRedirigidaADondeIba(cm,"vistaSeleccion");
 
     }
@@ -77,8 +110,14 @@ public class ControladorMapaTest {
         Mar mar = new Mar();
         when(servicioJugador.buscarJugadorPorId(1L)).thenReturn(null);
 
-        ModelAndView cm = controladorMapa.redireccionSegunSiEstaBloqueadoONo(jugador, mar);
+        ModelAndView cm = whenLaRedireccionEsSegunElJugadorOMar(jugador,mar);
+
         thenLaVistaFueRedirigidaADondeIba(cm, "login");
+    }
+
+    private ModelAndView whenLaRedireccionEsSegunElJugadorOMar(Jugador jugador, Mar mar) {
+        ModelAndView mv = controladorMapa.redireccionSegunSiEstaBloqueadoONo(jugador, mar);
+        return mv;
     }
 
     @Test

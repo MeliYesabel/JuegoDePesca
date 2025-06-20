@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 @Controller
 public class ControladorMapa {
 
@@ -28,8 +30,16 @@ public class ControladorMapa {
 
     /*redirecciones*/
     @RequestMapping("/mapa")
-    public ModelAndView vistaMapa() {
-        return new ModelAndView("vistaMapa");
+    public ModelAndView irAVistaMapa() {
+        ModelMap modelMap = new ModelMap();
+        List<Mar> listaMar = servicioMapa.obtenerTodaListaDeMares();
+        if (listaMar.isEmpty()) {
+            modelMap.put("mensaje", "No se puede obtener la lista de mars");
+            return new ModelAndView("login",modelMap);
+        }
+        modelMap.addAttribute("listaMar", listaMar);
+
+        return new ModelAndView("vistaMapa",modelMap);
     }
 
   @RequestMapping("/tienda")

@@ -1,10 +1,11 @@
 package com.tallerwebi.dominio;
 
-import org.hibernate.SessionFactory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 
+
+import java.util.Arrays;
+import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
@@ -23,9 +24,41 @@ public class ServicioMapaTest {
         servicioMapa = new ServicioMapaImplement(repositorioMar);
     }
 
+    @Test
+    public void obtenerTodaListaDeMares() {
+        List<Mar>mares = givenInstanciaDeTodosLosMares();
+
+        //mock
+        when(repositorioMar.obtenerLaListaCompletaDeTodosLosMares()).thenReturn(mares);
+
+        List<Mar>resultado = servicioMapa.obtenerTodaListaDeMares();
+
+        thenComporbarQueElTestDeVerdadero(resultado,mares);
+    }
+
+    private void thenComporbarQueElTestDeVerdadero(List<Mar> resultado, List<Mar> comparar) {
+        assertThat(resultado, is(comparar));
+        assertThat(resultado.size(), is(7));
+    }
+
+    private List<Mar> givenInstanciaDeTodosLosMares() {
+        List<Mar> listaMar = Arrays.asList(
+                new Mar("Mitologia griega", 0.0, "mar uno", false),
+                new Mar("Mitologia Nordica", 150.0, "mar dos", true),
+                new Mar("Mitologia Japonesa", 200.0, "mar tres", true),
+                new Mar("Mitología Yoruba", 250.0, "mar cuatro", true),
+                new Mar("Mitología Indú", 300.0, "mar cinco", true),
+                new Mar("Mitología Asteca", 350.0, "mar seis", true),
+                new Mar("Mitología China", 450.0, "mar siete", true)
+
+        );
+        return listaMar;
+    }
+
 
     @Test
     public void obtenerElEstadoMarSegunElJugadorQueMeDeVerDeElEstadoEstaBloqueado() {
+        //given
         Mar mar = new Mar("Poseidon",0.0,"Mitologia Griega",true);
 
         Jugador jugador = new Jugador("Anahi","anis",30.0,1);
@@ -34,65 +67,16 @@ public class ServicioMapaTest {
 
         when(repositorioMar.obtenerElEstadoMarDelJugador(mar,jugador)).thenReturn(true);
 
+        //when
         boolean estado = servicioMapa.obtenerElEstadoDelMarSegunELJugador(mar,jugador);
 
+        //then
         assertThat(estado,is(true));
 
     }
-
-
-    /*esta clase deberia ir en el repositorio preguntar a la prefe con respecto al mock
-    @Test
-    public void queSePuedaObtenerUnMarPorNombre() {
-        //given
-        Mar marBuscar = new Mar("Mitologia griega", 0.0, "mar uno", false);
-        //configuracion del mock
-        when(repositorioMar.obtenerMarPorNombre(marBuscar.getNombre())).thenReturn(marBuscar);
-
-        // when
-        Mar mar = whenObtenerElEstadoDeUnMarPorNombre(marBuscar.getNombre());
-
-        //then
-        assertNotNull(mar);
-        assertEquals("Mitologia griega", mar.getNombre());
-    }*/
-
-  /*  @Test
-    public void queSePuedaObtenerElEstadoDeUnMarEspecifico(){
-        Mar marBuscar = new Mar("Mitologia griega", 0.0, "mar uno", false);
-        Mar mar = whenObtenerElEstadoDeUnMarPorNombre(marBuscar.getNombre());
-        thenComprobarResultadoFueExitosoONo(mar,"Mitologia griega");
-    }
-
-    private void thenComprobarResultadoFueExitosoONo(Mar mar, String nombre) {
-         assertThat(mar.getNombre(),equals(nombre));
-    }*/
 
     private Mar whenObtenerElEstadoDeUnMarPorNombre(String nombre) {
         return servicioMapa.obtenerElEstadoDeUnMarPorNombre(nombre);
     }
 
-  /*  @Test
-    public void siElJugadorNOTieneSuficienteMonedasParaDesbloquearUnElMarFalle() {
-        Boolean sePuedoComprar = whenCalcularSiSePuedeComprarElDesbloqueoDelMar("alias_jugador",90.0);
-        thenElCalculoNofueExitoso(sePuedoComprar);
-    }
-
-    @Test
-    public void siElJugadorTieneSuficienteMonedasParaDesbloquearUnElMarExitoso() {
-       Boolean sePuedoComprar = whenCalcularSiSePuedeComprarElDesbloqueoDelMar("alias_jugador",150.0);
-       thenElCalculofueExitoso(sePuedoComprar);
-    }
-
-    private Boolean whenCalcularSiSePuedeComprarElDesbloqueoDelMar(String aliasJugador, Double monedas) {
-          return sm.calcularSiSePuedeDesbloquearUnMar(aliasJugador,monedas);
-    }
-
-    private void thenElCalculoNofueExitoso(Boolean sePuedoComprar) {
-        assertThat(sePuedoComprar, is(false));
-    }
-
-    private void thenElCalculofueExitoso(Boolean sePuedoComprar) {
-        assertThat(sePuedoComprar,is(true));
-    }*/
 }

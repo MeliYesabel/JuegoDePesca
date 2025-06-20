@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service /*decir que es un clase servicio*/
 @Transactional /*que sea mas raapido ? */
@@ -45,6 +46,12 @@ public class ServicioMapaImplement implements ServicioMapa {
             estado=true;
         }
         return estado;
+    }
+
+    @Override
+    public List<Mar> obtenerTodaListaDeMares() {
+        List<Mar>listaMar = repositorioMar.obtenerLaListaCompletaDeTodosLosMares();
+        return listaMar;
     }
 
 }
