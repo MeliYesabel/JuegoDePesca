@@ -25,6 +25,8 @@ public class ServicioUsuarioAuthImpl implements ServicioUsuarioAuthI {
     public void registrarUsuario(UsuarioDto usuarioDto) {
         String email = usuarioDto.getEmail();
         String password = usuarioDto.getContrasenia();
+        String username = email.split("@")[0];
+        Double monedasXNuevoUsuario = 200.0;
 
         UsuarioAuth encontrado = repositorioUsuarioAuth.buscarPorMail(email);
 
@@ -32,9 +34,11 @@ public class ServicioUsuarioAuthImpl implements ServicioUsuarioAuthI {
             throw new UsuarioExistenteExcepcion("Ya existe un usuario registrado con ese email");
         }
         if(validarContrasenia(password)){
-            UsuarioAuth nuevoUsuario = new Jugador();
+            Jugador nuevoUsuario = new Jugador();
             nuevoUsuario.setEmail(email);
-
+            nuevoUsuario.setUsername(username);
+            nuevoUsuario.setMonedas(monedasXNuevoUsuario);
+            
             String contraseniaHasheada = PasswordUtil.hashear(password);
             nuevoUsuario.setPassword(contraseniaHasheada);
 
