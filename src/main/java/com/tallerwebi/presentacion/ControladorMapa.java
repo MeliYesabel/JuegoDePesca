@@ -9,9 +9,12 @@ import com.tallerwebi.dominio.ServicioMapa;
 import com.tallerwebi.dominio.ServicioJugador;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -53,23 +56,31 @@ public class ControladorMapa {
         return new ModelAndView("vistaLogros");
     }
 
-    @RequestMapping("/marSeleccionado")
-    public ModelAndView redireccionSegunSiEstaBloqueadoONo(@ModelAttribute Jugador jugador,@ModelAttribute Mar mar) {
+    @RequestMapping("/marSeleccionado/{nombreMar}")
+    public ModelAndView redireccionSegunSiEstaBloqueadoONo(HttpSession session, @PathVariable ("nombreMar") String nombreMar) {
         ModelMap mm = new ModelMap();
-        Jugador jugadorActual = servicioJugador.buscarJugadorPorId(jugador.getId_jugador());
-        if (jugadorActual == null){
-            mm.put("JugadorError", "El jugador no existe");
-            return new ModelAndView("login",mm);
-        }
 
-         boolean estado = servicioMapa.obtenerElEstadoDelMarSegunELJugador(mar,jugadorActual);// -> base datos join usuario es
+        /*utilizo una session*/
+        Jugador jugadorActual = (Jugador) session.getAttribute("jugador");
+
+        /*if (jugadorActual == null){
+            // por como esta la logica de la prof si quiero usar ellogin deberia
+            // tener mm.put("datosLogin",new DatosLogin());
+            mm.put("JugadorError", "El jugador no existe");
+            mm.put("datosLogin",new DatosLogin());
+            return new ModelAndView("vistaMapa",mm);
+        }*/
+
+        Mar mar = servicioMapa.obtenerUnMarPorNombre(nombreMar);
+        boolean estado = servicioMapa.obtenerElEstadoDelMarSegunELJugador(mar,jugadorActual);// -> base datos join usuario es
          if (estado){
              mm.put("marError", "El mar seleccionado esta bloqueado");
              return new ModelAndView("vistaMarBloqueado",mm);
          }
 
+        mm.put("mar", mar);
 
-        return new ModelAndView("vistaSeleccion");
+        return new ModelAndView("vistaSeleccion",mm);
     }
 
 

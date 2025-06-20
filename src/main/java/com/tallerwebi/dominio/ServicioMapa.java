@@ -10,4 +10,6 @@ public interface ServicioMapa {
     boolean obtenerElEstadoDelMarSegunELJugador(Mar mar, Jugador jugadorActual);
 
     List<Mar> obtenerTodaListaDeMares();
+
+    Mar obtenerUnMarPorNombre(String nombreMar);
 }

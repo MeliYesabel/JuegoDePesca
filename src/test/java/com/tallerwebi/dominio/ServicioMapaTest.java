@@ -25,6 +25,16 @@ public class ServicioMapaTest {
     }
 
     @Test
+    public void obtenerMarPorNombre() {
+        Mar mar =   new Mar("Mitologia griega", 0.0, "mar uno", false);
+
+        when(repositorioMar.obtenerMarPorNombre("Mitologia griega")).thenReturn(mar);
+
+        Mar obtenido = servicioMapa.obtenerUnMarPorNombre("Mitologia griega");
+        assertEquals(mar, obtenido);
+    }
+
+    @Test
     public void obtenerTodaListaDeMares() {
         List<Mar>mares = givenInstanciaDeTodosLosMares();
 

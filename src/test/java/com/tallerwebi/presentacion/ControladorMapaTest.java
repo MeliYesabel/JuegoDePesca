@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import java.util.Arrays;
 import java.util.List;
 
@@ -61,14 +62,17 @@ public class ControladorMapaTest {
 
     @Test
     public void siElMarDeUnCiertojugadorEstaDESBloqueadoIrAVistaSeleccion(){
+        HttpSession session = mock(HttpSession.class);
+
         Jugador jugador = new Jugador("Anahi","anis",30.0,1);
         jugador.setId_jugador(3L);
         Mar mar = new Mar();
 
-        when(servicioJugador.buscarJugadorPorId(3L)).thenReturn(jugador);
+        //when(servicioJugador.buscarJugadorPorId(3L)).thenReturn(jugador);
+        when(session.getAttribute("jugador")).thenReturn(jugador);
         when(servicioMapa.obtenerElEstadoDelMarSegunELJugador(mar,jugador)).thenReturn(false);
 
-        ModelAndView cm = whenLaRedireccionEsSegunElJugadorOMar(jugador,mar);
+        ModelAndView cm = whenLaRedireccionEsSegunElJugadorOMar(session,mar.getNombre());
 
         thenLaVistaFueRedirigidaADondeIba(cm,"vistaSeleccion");
 
@@ -76,14 +80,17 @@ public class ControladorMapaTest {
 
     @Test
     public void siElMarDeUnCiertojugadorEstaBloqueadoIrAVistaMarBloqueado() {
+        HttpSession session = mock(HttpSession.class);
         Jugador jugador = new Jugador("Anahi","anis",30.0,1);
         jugador.setId_jugador(3L);
         Mar mar = new Mar();
 
-        when(servicioJugador.buscarJugadorPorId(3L)).thenReturn(jugador);
+        //when(servicioJugador.buscarJugadorPorId(3L)).thenReturn(jugador);
+        when(session.getAttribute("jugador")).thenReturn(jugador);
+
         when(servicioMapa.obtenerElEstadoDelMarSegunELJugador(mar,jugador)).thenReturn(true);
 
-        ModelAndView cm = whenLaRedireccionEsSegunElJugadorOMar(jugador,mar);
+        ModelAndView cm = whenLaRedireccionEsSegunElJugadorOMar(session,mar.getNombre());
 
         thenLaVistaFueRedirigidaADondeIba(cm,"vistaMarBloqueado");
 
@@ -91,32 +98,33 @@ public class ControladorMapaTest {
 
     @Test
     public void siExisteElJugadorRedirijaAVistaMapa(){
+        HttpSession session = mock(HttpSession.class);
         Jugador jugador = new Jugador("Anahi","anis",30.0,1);
         jugador.setId_jugador(3L);
         Mar mar = new Mar();
 
-        when(servicioJugador.buscarJugadorPorId(3L)).thenReturn(jugador);
-
-        ModelAndView cm = whenLaRedireccionEsSegunElJugadorOMar(jugador,mar);
+       // when(servicioJugador.buscarJugadorPorId(3L)).thenReturn(jugador);
+        when(session.getAttribute("jugador")).thenReturn(jugador);
+        ModelAndView cm = whenLaRedireccionEsSegunElJugadorOMar(session,mar.getNombre());
         thenLaVistaFueRedirigidaADondeIba(cm,"vistaSeleccion");
 
     }
 
     @Test
     public void siElJugadorEsNullQueRedirijaAVistaLogin(){
-        Jugador jugador = new Jugador();
-        jugador.setId_jugador(1L);
+        HttpSession session = mock(HttpSession.class);
 
         Mar mar = new Mar();
-        when(servicioJugador.buscarJugadorPorId(1L)).thenReturn(null);
+        //when(servicioJugador.buscarJugadorPorId(1L)).thenReturn(null);
+         when(session.getAttribute("jugador")).thenReturn(null);
 
-        ModelAndView cm = whenLaRedireccionEsSegunElJugadorOMar(jugador,mar);
+        ModelAndView cm = whenLaRedireccionEsSegunElJugadorOMar(session,mar.getNombre());
 
         thenLaVistaFueRedirigidaADondeIba(cm, "login");
     }
 
-    private ModelAndView whenLaRedireccionEsSegunElJugadorOMar(Jugador jugador, Mar mar) {
-        ModelAndView mv = controladorMapa.redireccionSegunSiEstaBloqueadoONo(jugador, mar);
+    private ModelAndView whenLaRedireccionEsSegunElJugadorOMar(HttpSession session, String mar) {
+        ModelAndView mv = controladorMapa.redireccionSegunSiEstaBloqueadoONo(session, mar);
         return mv;
     }
 

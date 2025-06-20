@@ -54,4 +54,10 @@ public class ServicioMapaImplement implements ServicioMapa {
         return listaMar;
     }
 
+    @Override
+    public Mar obtenerUnMarPorNombre(String nombreMar) {
+        Mar mar = repositorioMar.obtenerMarPorNombre(nombreMar);
+        return mar;
+    }
+
 }

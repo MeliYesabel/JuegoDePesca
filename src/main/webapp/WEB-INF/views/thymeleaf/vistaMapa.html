@@ -32,10 +32,11 @@
   </div>
 
   <ul>
-      <li th:each="mar : ${listaMar}" th:text="${mar.nombre}"> nombre mar
-      <!--<a th:href="${/marSeleccionado(idMar=${mar.id},)}"></a>-->
+      <li th:each="mar : ${listaMar}">
+          <a th:href="@{/marSeleccionado/{nombreMar}(nombreMar=${mar.nombre})}" th:text="${mar.nombre}">Nombre del mar</a>
       </li>
   </ul>
+
 
   <!-- Agregar de forma Correcta los mares en el html usando lo que tengo en la base de datos  -->
   <!-- <div class="container-fluid mapa-container">
@@ -45,7 +46,7 @@
          <div class="col-2"><a th:href="@{/vistaMarBloqueado.html}">"Poseidon"</a></div>
          <div class="col-2">1.4</div>
          <div class="col-2">1.5</div>
-    <!-- de esta forma puedo recorrer los mares <div th:each="mar : ${listaMares}">
+   de esta forma puedo recorrer los mares <div th:each="mar : ${listaMares}">
    <a th:href="@{/marSeleccionado(id_jugador=${jugador.id_jugador}, id_mar=${mar.id_jugador})}"
       th:text="${mar.nombre}">Nombre del Mar</a>
  </div>
