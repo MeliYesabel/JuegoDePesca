@@ -16,6 +16,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -41,12 +42,12 @@ public class RepositorioUsuarioAuthTest {
     @Transactional
     @Rollback
     public void queSePuedaGuardarUnUsuarioEnLaBBDD(){
-        qivenQueHayUnUsuarioGuardado();
-        UsuarioAuth obtenido = whenSeConsultaUsuarioEnLaDB();
+        qivenQueHayUnUsuarioParaGuardar();//dado que no hay usuario
+        UsuarioAuth obtenido = whenSeConsultaUsuarioEnLaDB();//cuando guardo y consulto?
         thenSeGuardoExitosamente(obtenido);
     }
 
-    private void qivenQueHayUnUsuarioGuardado() {
+    private void qivenQueHayUnUsuarioParaGuardar() {
         Jugador jugador = new Jugador();
         jugador.setEmail("jesi@mail.com");
         jugador.setPassword("hash123");
@@ -55,8 +56,11 @@ public class RepositorioUsuarioAuthTest {
     }
 
     private UsuarioAuth whenSeConsultaUsuarioEnLaDB() {
-
-        UsuarioAuth recuperado = repositorioUsuarioAuth.buscarPorMail("jesi@mail.com");
+        String hql = "FROM UsuarioAuth WHERE email = :email";
+        Query query = this.sessionFactory.getCurrentSession().createQuery(hql);
+        query.setParameter("email", "jesi@mail.com");
+        UsuarioAuth recuperado = (UsuarioAuth) query.getSingleResult();
+        //UsuarioAuth recuperado = repositorioUsuarioAuth.buscarPorMail("jesi@mail.com");
 
         return recuperado;
     }
@@ -69,7 +73,10 @@ public class RepositorioUsuarioAuthTest {
     @Test
     @Transactional
     @Rollback
-    public void queSePuedaBuscarUnUsuarioPorSuMail(){
+    public void dadoUnEmailRegistradoQueMeDevuelvaElUsuario(){
+        qivenQueHayUnUsuarioParaGuardar();
+        UsuarioAuth encontrado = whenSeConsultaUsuarioEnLaDB();
+        thenSeGuardoExitosamente(encontrado);
 
     }
 

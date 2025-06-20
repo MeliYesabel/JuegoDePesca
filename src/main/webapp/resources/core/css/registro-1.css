@@ -28,9 +28,24 @@ body {
     backdrop-filter: blur(10px);
     /* Desenfoque del fondo */
     -webkit-backdrop-filter: blur(10px);
-    /*Soporte Safari */
 }
 
-.titulo-form{
+.titulo-form, .irlogin, .error{
     text-shadow: 2px 2px 4px black  !important;
 }
+
+.card-body,
+.card-body .form-label,
+.card-body .form-control,
+.card-body input,
+.card-body button,
+.card-body p,
+.card-body a {
+    font-size: 1.1rem !important;
+}
+
+/*
+* {
+    font-size: 1.05rem !important;
+}
+*/

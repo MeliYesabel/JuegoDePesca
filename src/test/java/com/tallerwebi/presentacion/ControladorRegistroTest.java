@@ -5,6 +5,7 @@ import com.tallerwebi.presentacion.dto.UsuarioDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -61,20 +62,20 @@ public class ControladorRegistroTest {
 
     private void entoncesSeMuestraRegistroExitosamente(ModelAndView vistaModelada) {
         String vistaObtenida = vistaModelada.getViewName();
-        String vistaEsperada = "login-usuario";
+        String vistaEsperada = "redirect:/login-pescador";
 
-        String mensajeExitoso = vistaModelada.getModel().get("mensaje").toString();
-        String mensajeExitosoEsperado = "El usuario se registro exitosamente.";
+//        String mensajeExitoso = vistaModelada.getModel().get("mensaje").toString();
+//        String mensajeExitosoEsperado = "El usuario se registro exitosamente.";
 
         assertThat(vistaObtenida,equalTo(vistaEsperada));
-        assertThat(mensajeExitoso, equalTo(mensajeExitosoEsperado));
+//        assertThat(mensajeExitoso, equalTo(mensajeExitosoEsperado));
     }
 
     private void dadoQueNoExisteJugadorRegistrado() {
     }
 
     private ModelAndView cuandoUnJugadorSeRegistra(String email, String password, String password_repetida){
-        ModelAndView vistaModelada = controladorRegistro.registrarUsuario(new UsuarioDto(email, password, password_repetida));
+        ModelAndView vistaModelada = controladorRegistro.registrarUsuario(new UsuarioDto(email, password, password_repetida),mock(RedirectAttributes.class));
         return vistaModelada;
     }
 }

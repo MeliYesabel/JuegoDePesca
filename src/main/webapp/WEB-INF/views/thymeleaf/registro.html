@@ -23,7 +23,7 @@
 <body>
 <div class="card border-primary rounded-4">
     <div class="card-body">
-        <h3 class="card-title text-center mb-4 titulo-form">Registro</h3>
+        <h1 class="card-title text-center mb-4 titulo-form">Registro</h1>
 
         <form th:action="@{/registro}" method="post" th:object="${usuarioDto}" >
             <div class="mb-3">
@@ -42,12 +42,12 @@
             </div>
 
             <button type="submit" class="btn btn-primary w-100">Registrarse</button>
-            <p class="text-center mt-3">¿Ya tienes una cuenta? <a th:href="@{/login-pescador}">Logueate aqui</a></p>
+            <p class="irlogin text-center mt-3">¿Ya tienes una cuenta? <a class="irlogin" th:href="@{/login-pescador}">Logueate aqui</a></p>
 
-            <p class="text-danger mt-3" th:if="${campos_vacios !=null}" th:text="${campos_vacios}"></p>
-            <p class="text-danger mt-3" th:if="${error_repeticion !=null}" th:text="${error_repeticion}"></p>
-            <p class="text-danger mt-3" th:if="${error_password_invalid !=null}" th:text="${error_password_invalid}"></p>
-            <p class="text-danger mt-3" th:if="${error_usuario_unico !=null}" th:text="${error_usuario_unico}"></p>
+            <p class="error text-warning mt-3" th:if="${campos_vacios !=null}" th:text="${campos_vacios}"></p>
+            <p class="error text-warning mt-3" th:if="${error_repeticion !=null}" th:text="${error_repeticion}"></p>
+            <p class="error text-warning mt-3" th:if="${error_password_invalid !=null}" th:text="${error_password_invalid}"></p>
+            <p class="error text-warning mt-3" th:if="${error_usuario_unico !=null}" th:text="${error_usuario_unico}"></p>
         </form>
 
     </div>
@@ -56,6 +56,4 @@
 
 </body>
 
-</html>
-</body>
 </html>

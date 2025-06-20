@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class ControladorRegistro {
@@ -30,7 +31,7 @@ public class ControladorRegistro {
     }
 
     @RequestMapping(value = "/registro", method = RequestMethod.POST)
-    public ModelAndView registrarUsuario(@ModelAttribute("usuarioDto")UsuarioDto usuarioDto) {
+    public ModelAndView registrarUsuario(@ModelAttribute("usuarioDto")UsuarioDto usuarioDto, RedirectAttributes redirectAttributes) {
         ModelMap datosModelados = new ModelMap();
 
         if(!estanTodosLosCamposCompletos(usuarioDto)){
@@ -44,8 +45,7 @@ public class ControladorRegistro {
 
         try {
             servicioUsuarioI.registrarUsuario(usuarioDto);
-            datosModelados.put("mensaje", "El usuario se registro exitosamente.");
-            datosModelados.put("usuarioDto", new UsuarioDto());
+            redirectAttributes.addFlashAttribute("mensaje", "El usuario se registró exitosamente.");
 
         } catch (ContraseniaInvalidaExcepcion excepcion) {
 
@@ -57,7 +57,7 @@ public class ControladorRegistro {
             return new ModelAndView("registro", datosModelados);
         }
 
-        return new ModelAndView("login-usuario", datosModelados);
+        return new ModelAndView("redirect:/login-pescador");
 
     }
 
