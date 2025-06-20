@@ -1,16 +1,16 @@
 package com.tallerwebi.dominio;
 
 import com.tallerwebi.dominio.entidad.UsuarioAuth;
+import com.tallerwebi.dominio.excepcion.ContraseniaInvalidaExcepcion;
+import com.tallerwebi.dominio.excepcion.UsuarioExistenteExcepcion;
 import com.tallerwebi.dominio.repositorio.RepositorioUsuarioAuth;
-import com.tallerwebi.dominio.servicio.ServicioUsuarioAuthI;
 import com.tallerwebi.dominio.servicio.ServicioUsuarioAuthImpl;
 import com.tallerwebi.presentacion.dto.UsuarioDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 public class ServicioUsuarioAuthTest {
@@ -38,6 +38,30 @@ public class ServicioUsuarioAuthTest {
         UsuarioAuth guardado = captor.getValue();
         assertEquals("belen@mail.com", guardado.getEmail());
         assertNotNull(guardado.getPassword());
+    }
+
+    @Test
+    public void dadoUnaContraseniaInvalidaQueElRegistroFalle(){
+        givenQueNoHayRegistro();
+        assertThrows(ContraseniaInvalidaExcepcion.class, ()-> whenUnUsuarioSeRegistra(new UsuarioDto("belen@mail.com", "kitty", "kitty")));
+    }
+
+
+    private void whenUnUsuarioSeRegistra(UsuarioDto usuarioDto) {
+        servicioUsuarioAuth.registrarUsuario(usuarioDto);
+    }
+
+    private void givenQueNoHayRegistro() {
+    }
+
+    @Test
+    public void dadoUnMailRegistradoQueElRegistroFalle(){
+        //dentro del metodo registrarUsuario hace el buscarMail()
+        when(repositorioUsuarioAuth.buscarPorMail("jesi@mail.com")).thenReturn(new Jugador());
+
+        assertThrows(UsuarioExistenteExcepcion.class,()->{servicioUsuarioAuth.registrarUsuario(new UsuarioDto("jesi@mail.com"));
+        });
+
     }
 
 }
