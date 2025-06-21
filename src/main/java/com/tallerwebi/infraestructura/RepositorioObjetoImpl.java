@@ -23,7 +23,7 @@ public class RepositorioObjetoImpl implements RepositorioObjeto {
     }
 
     @Override
-    public Objeto buscarObjeto(int id) {
+    public Objeto buscarObjeto(Long id) {
         var session = sessionFactory.getCurrentSession();
         return session.get(Objeto.class, id);
     }
@@ -37,5 +37,11 @@ public class RepositorioObjetoImpl implements RepositorioObjeto {
     public List<Objeto> buscarListaObjetosPorNombreLike(String nombre) {
         var session = sessionFactory.getCurrentSession();
         return session.createCriteria(Objeto.class).add(Restrictions.like("nombre",nombre +"%")).list();
+    }
+
+    @Override
+    public List<Objeto> obtenerTodosLosObjetos(){
+        var session = sessionFactory.getCurrentSession();
+        return session.createCriteria(Objeto.class).list();
     }
 }

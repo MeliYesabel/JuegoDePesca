@@ -4,8 +4,11 @@ import com.tallerwebi.dominio.*;
 import com.tallerwebi.dominio.Objeto;
 import com.tallerwebi.dominio.excepcion.MonedasInsuficientesException;
 import com.tallerwebi.dominio.excepcion.ObjetoInexistenteException;
+import com.tallerwebi.dominio.excepcion.ObjetoYaCompradoException;
 import com.tallerwebi.dominio.excepcion.ParametroInvalidoException;
 import com.tallerwebi.dominio.RepositorioObjeto;
+import com.tallerwebi.infraestructura.RepositorioJugadorImpl;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -22,43 +25,43 @@ public class ControladorTienda {
     private ServicioTienda servicioTienda;
     private RepositorioObjeto repositorioObjeto;
 
+    /*@Autowired
+    RepositorioJugador repositorioJugador;
+    @Autowired
+    SessionFactory sessionFactory;*/
+
     @Autowired
     public ControladorTienda(ServicioTienda servicioTienda,RepositorioObjeto repositorioObjeto) {
         this.servicioTienda = servicioTienda;
         this.repositorioObjeto = repositorioObjeto;
+
+       // this.repositorioJugador = new RepositorioJugadorImpl(); //lo agregue ahora
     }
 
     @RequestMapping("/inicio")
     public ModelAndView iniciarSesion(HttpSession session) {
-        Jugador jugador = new Jugador();
+       Jugador jugador = new Jugador();
 
         jugador.setMonedas(200.0);
-        session.setAttribute("jugador", jugador);
+       session.setAttribute("jugador", jugador);
+
+      /*  Jugador jugador = new Jugador();
+        jugador.setMonedas(200.0);
+        jugador.setNombre("jugador1"); // o lo que necesites
+        repositorioJugador.guardarJugador(jugador); // 🚨
+        session.setAttribute("jugador", jugador);*/
+
         return new ModelAndView("redirect:/tienda");
     }
 
     @RequestMapping("/tienda")
     public ModelAndView irTienda(HttpSession session) {
         ModelMap model = new ModelMap();
-        if(servicioTienda.getListaObjetos().isEmpty()){
-           Objeto objeto1 = new Objeto( 100.0,"caña");
-           Objeto objeto2 = new Objeto( 150.0,"caña");
-
-
-            servicioTienda.agregarYGuardarObjeto(objeto1);
-            servicioTienda.agregarYGuardarObjeto(objeto2);
-           /* //aca los agrego a la base de datos para que tengan id
-            repositorioObjeto.guardarObjeto(objeto1);
-            repositorioObjeto.guardarObjeto(objeto2);
-
-            //  aca los agrego al servicio
-           servicioTienda.agregarObjetoDisponible(objeto1);
-            servicioTienda.agregarObjetoDisponible(objeto2); */
 
 
 
+       servicioTienda.inicializarTienda();
 
-        }
         Jugador jugador = (Jugador) session.getAttribute("jugador");
         model.put("claveTienda","Esta es la tienda");
         model.put("jugador", jugador);
@@ -72,7 +75,7 @@ public class ControladorTienda {
 
 
     @RequestMapping(value = "/comprarObjeto", method = RequestMethod.POST)
-    public ModelAndView comprarObjeto(HttpSession session,@RequestParam Integer idObjeto) {
+    public ModelAndView comprarObjeto(HttpSession session,@RequestParam Long idObjeto) {
         ModelMap model = new ModelMap();
 
         // Recupero el jugador desde la sesión (que ya debería estar guardado)
@@ -89,7 +92,8 @@ public class ControladorTienda {
             model.put("jugador", jugador);  // para actualizar info
             return new ModelAndView("vistaObjeto.html", model);
 
-        } catch (ParametroInvalidoException | ObjetoInexistenteException | MonedasInsuficientesException e) {
+        } catch (ParametroInvalidoException | ObjetoInexistenteException | MonedasInsuficientesException |
+                 ObjetoYaCompradoException e) {
             model.put("error", e.getMessage());
             model.put("jugador", jugador);
             return new ModelAndView("vistaCompraSinExito.html", model);

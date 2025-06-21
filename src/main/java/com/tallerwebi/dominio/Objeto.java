@@ -1,9 +1,7 @@
 package com.tallerwebi.dominio;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 public class Objeto {
@@ -11,11 +9,14 @@ public class Objeto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idObjeto;
+    private Long idObjeto;
     private Double precioObjeto;
 
     private String nombre;
     private Boolean estaComprado = false;
+
+    @ManyToOne
+    private Jugador jugador;
 
     public Objeto(){
 
@@ -27,13 +28,15 @@ public class Objeto {
     }
 
 
-
+    public String getNombre() {
+        return nombre;
+    }
 
     public Double getPrecioObjeto() {
         return precioObjeto;
     }
 
-    public Integer getIdObjeto() {
+    public Long getIdObjeto() {
         return idObjeto;
     }
 
@@ -41,7 +44,7 @@ public class Objeto {
         this.precioObjeto = precioObjeto;
     }
 
-    public void setIdObjeto(Integer idObjeto) {
+    public void setIdObjeto(Long idObjeto) {
         this.idObjeto = idObjeto;
     }
 
@@ -51,5 +54,29 @@ public class Objeto {
 
     public void setEstaComprado(Boolean estaComprado) {
         this.estaComprado = estaComprado;
+    }
+
+    public Jugador getJugador() {
+        return jugador;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setJugador(Jugador jugador) {
+        this.jugador = jugador;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Objeto objeto = (Objeto) o;
+        return Objects.equals(idObjeto, objeto.idObjeto) && Objects.equals(precioObjeto, objeto.precioObjeto) && Objects.equals(nombre, objeto.nombre) && Objects.equals(estaComprado, objeto.estaComprado);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idObjeto, precioObjeto, nombre, estaComprado);
     }
 }

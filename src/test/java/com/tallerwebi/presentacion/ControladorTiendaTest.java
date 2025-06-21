@@ -29,9 +29,9 @@ public class ControladorTiendaTest {
         repositorioObjeto = mock(RepositorioObjeto.class);
         jugador = new Jugador();
          objeto = new Objeto(100.0,"caña metal");
-         objeto.setIdObjeto(1);
+         objeto.setIdObjeto(1L);
         servicioTienda = mock(ServicioTienda.class);
-        Integer idObjeto = (int) objeto.getIdObjeto();
+        Long idObjeto = objeto.getIdObjeto();
         controladorTienda = new ControladorTienda(servicioTienda,repositorioObjeto);
        session = mock(HttpSession.class);
         when(session.getAttribute("jugador")).thenReturn(jugador);
@@ -42,8 +42,8 @@ public class ControladorTiendaTest {
     @Test
 public void dadoQueCuandoComproUnObjetoYMeDevuelveTrueQueMeDevulevaLaVistaObjetoHtml(){
 
-        when(servicioTienda.comprarObjeto(jugador,(int)objeto.getIdObjeto())).thenReturn(true);
-        ModelAndView modelAndView = controladorTienda.comprarObjeto(session,1);
+        when(servicioTienda.comprarObjeto(jugador,objeto.getIdObjeto())).thenReturn(true); //para que sirve esta linea si la saco y me corre igual el test?
+        ModelAndView modelAndView = controladorTienda.comprarObjeto(session,1L);
         assertThat(modelAndView.getViewName(), equalToIgnoringCase("vistaObjeto.html"));
 
 
@@ -54,7 +54,7 @@ public void dadoQueCuandoComproUnObjetoYMeDevuelveTrueQueMeDevulevaLaVistaObjeto
     public void dadoQueCuandoComproUnObjetoYMeDevuelveFalseQueMeDevuelvaLaVistaCompraSinExitoHtml(){//si falla la compra de un objeto vuelva a la tienda
         when(servicioTienda.comprarObjeto(jugador,objeto.getIdObjeto())).thenThrow(new MonedasInsuficientesException("No hay monedas"));
                 //.thenReturn(false);
-        ModelAndView modelAndView = controladorTienda.comprarObjeto(session,1);
+        ModelAndView modelAndView = controladorTienda.comprarObjeto(session,1L);
         assertThat(modelAndView.getViewName(), equalToIgnoringCase("vistaCompraSinExito.html"));// en realidad seria vista compra sin exito
     }
  /*  @Test
