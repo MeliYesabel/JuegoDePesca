@@ -36,8 +36,8 @@ public class RepositorioJugadorTest {
     @Rollback
     public void queAlBuscarUnJugadorMeDevuelveUnJugador() {
         Jugador creado = givenAgregarUnJugador("Anahi","anis",30.0,1);
-        Jugador jugador = whenObtenerUnJugadorPorId(creado.getId_jugador());
-        assertThat(jugador.getId_jugador(), equalTo(creado.getId_jugador()));
+        Jugador jugador = whenObtenerUnJugadorPorId(creado.getId());
+        assertThat(jugador.getId(), equalTo(creado.getId()));
 
     }
 

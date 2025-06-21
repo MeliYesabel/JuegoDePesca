@@ -65,7 +65,7 @@ public class ControladorMapaTest {
         HttpSession session = mock(HttpSession.class);
 
         Jugador jugador = new Jugador("Anahi","anis",30.0,1);
-        jugador.setId_jugador(3L);
+        jugador.setId(3L);
         Mar mar = new Mar();
 
         //when(servicioJugador.buscarJugadorPorId(3L)).thenReturn(jugador);
@@ -82,7 +82,7 @@ public class ControladorMapaTest {
     public void siElMarDeUnCiertojugadorEstaBloqueadoIrAVistaMarBloqueado() {
         HttpSession session = mock(HttpSession.class);
         Jugador jugador = new Jugador("Anahi","anis",30.0,1);
-        jugador.setId_jugador(3L);
+        jugador.setId(3L);
         Mar mar = new Mar();
 
         //when(servicioJugador.buscarJugadorPorId(3L)).thenReturn(jugador);
@@ -100,7 +100,7 @@ public class ControladorMapaTest {
     public void siExisteElJugadorRedirijaAVistaMapa(){
         HttpSession session = mock(HttpSession.class);
         Jugador jugador = new Jugador("Anahi","anis",30.0,1);
-        jugador.setId_jugador(3L);
+        jugador.setId(3L);
         Mar mar = new Mar();
 
        // when(servicioJugador.buscarJugadorPorId(3L)).thenReturn(jugador);
@@ -134,11 +134,6 @@ public class ControladorMapaTest {
         thenLaVistaFueRedirigidaADondeIba(cm,"vistaLogros");
     }
 
-    @Test
-    public void alClickearVistaTiendaMeRedirigeAVistaTienda() {
-        ModelAndView cm = controladorMapa.irAVistaTienda();
-        thenLaVistaFueRedirigidaADondeIba(cm,"vistaTienda");
-    }
 
     private void thenLaVistaFueRedirigidaADondeIba(ModelAndView cm, String vista) {
         assertThat(cm.getViewName(),equalToIgnoringCase(vista));

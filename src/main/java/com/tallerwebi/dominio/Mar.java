@@ -24,6 +24,9 @@ public class Mar {
 
     public Mar() {}
 
+    public Mar(String nombre){
+        this.nombre = nombre;
+    }
     /*Solo para probar los test */
     public Mar(String nombre, Double precio, String descripcion, Boolean estadoBloqueado) {
         this.nombre = nombre;

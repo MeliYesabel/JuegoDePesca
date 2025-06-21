@@ -4,6 +4,7 @@ import com.tallerwebi.dominio.Jugador;
 import com.tallerwebi.dominio.Objeto;
 import com.tallerwebi.dominio.RepositorioJugador;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -39,5 +40,13 @@ public class RepositorioJugadorImpl implements RepositorioJugador {
     public List<Objeto> obtenerListaDeObjetosDelJugador(Jugador jugador) {
         var session = sessionFactory.getCurrentSession();
         return session.get(Jugador.class,jugador.getId()).getObjetosComprados();
+    }
+
+    @Override
+    public Jugador buscarjugadorPorId(Long idJugador) {
+        var session = sessionFactory.getCurrentSession();
+        return (Jugador) session.createCriteria(Jugador.class)
+                .add(Restrictions.eq("id_jugador", idJugador))
+                .uniqueResult(); /*si no encuentra nada me retorna NULL*/
     }
 }

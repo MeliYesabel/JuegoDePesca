@@ -13,11 +13,11 @@ public class ServicioJugadorTest {
      ServicioJugador servicioJugador;
      /*pero le genera un mock del repo xq yo ya probe la implementacin en otro lado solo quiero usar un metodo para probar el test*/
      RepositorioJugador repositorioJugador = mock(RepositorioJugador.class);
-
+     RepositorioObjeto repositorioObjeto = mock(RepositorioObjeto.class);
     @BeforeEach
     public void init() {
         /*genera un new xq ya si quiero probar la implementacion*/
-        servicioJugador = new ServicioJugadorImpl(repositorioJugador);
+        servicioJugador = new ServicioJugadorImpl(repositorioJugador,repositorioObjeto);
     }
 
     @Test //ver como puede funcionar a la abse de d atos
@@ -25,7 +25,7 @@ public class ServicioJugadorTest {
         // Given
         Jugador j = new Jugador("Anahi", "anis", 100.0, 3);
         Long id = 1L; // Simula que este es su ID
-        j.setId_jugador(id); // Asegúrate de tener un setter o constructor con ID
+        j.setId(id); // Asegúrate de tener un setter o constructor con ID
 
         // Configura el mock para que devuelva ese jugador cuando se lo busque
         when(repositorioJugador.buscarjugadorPorId(id)).thenReturn(j);

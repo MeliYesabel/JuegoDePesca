@@ -13,10 +13,18 @@ public class ServicioJugadorImpl implements ServicioJugador {
     RepositorioJugador repositorioJugador;
     RepositorioObjeto repositorioObjeto;
 
-    public ServicioJugadorImpl(RepositorioJugador repositorioJugador, RepositorioObjeto repositorioObjeto) {
+    public ServicioJugadorImpl(RepositorioJugador repositorioJugador,RepositorioObjeto repositorioObjeto) {
         this.repositorioJugador = repositorioJugador;
         this.repositorioObjeto = repositorioObjeto;
 
+    }
+    @Override
+    public Jugador buscarJugadorPorId(Long idJugador) {
+        Jugador resultado = repositorioJugador.buscarjugadorPorId(idJugador);
+        if (resultado != null){
+            return resultado;
+        }
+        return null;
     }
 
     @Override

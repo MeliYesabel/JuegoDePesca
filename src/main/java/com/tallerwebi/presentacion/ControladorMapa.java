@@ -38,18 +38,12 @@ public class ControladorMapa {
         List<Mar> listaMar = servicioMapa.obtenerTodaListaDeMares();
         if (listaMar.isEmpty()) {
             modelMap.put("mensaje", "No se puede obtener la lista de mars");
-            return new ModelAndView("login",modelMap);
+            return new ModelAndView("login-usuario",modelMap);
         }
         modelMap.addAttribute("listaMar", listaMar);
 
         return new ModelAndView("vistaMapa",modelMap);
     }
-
-  @RequestMapping("/tienda")
-    public ModelAndView irAVistaTienda(){
-        return new ModelAndView("vistaTienda");
-    }
-
 
     @RequestMapping("/logros")
     public ModelAndView irAVistaLogros(){
