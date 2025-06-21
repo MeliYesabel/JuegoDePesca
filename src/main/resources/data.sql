@@ -8,3 +8,4 @@ INSERT INTO Mar (id_mar,nombre,precio,descripcion,estadoBloqueado) VALUES
 (null,'Mitologia Indu', 300.0, 'mar cinco', TRUE),
 (null,'Mitologia Asteca', 350.0, 'mar seis', TRUE),
 (null,'Mitologia China', 450.0, 'mar siete', TRUE);
+
