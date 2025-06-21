@@ -1,94 +1,146 @@
 package com.tallerwebi.presentacion;
 
-import com.tallerwebi.dominio.excepcion.MonedasInsuficientesException;
+import com.tallerwebi.dominio.Jugador;
+import com.tallerwebi.dominio.Mar;
 import com.tallerwebi.dominio.ServicioMapa;
+import com.tallerwebi.dominio.ServicioJugador;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
+import java.util.Arrays;
+import java.util.List;
+
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.equalToIgnoringCase;
 import static org.mockito.Mockito.*;
 
-/*POR AHORA: NO NECESITA MOCKITO YA QUE NO TIENE LOGICAS NI DEPENDENCIAS EXTERNAS.
-* solo son test que te muestran vistas nada de logica*/
+/*Los Test Controladores solo sirven para probar las Redirecciones de paginas */
+
 public class ControladorMapaTest {
 
-    /*Controllador Test X es donde debo poner le mockito*/
-    private ControladorMapa controladorMapa;
+    private ControladorMapa controladorMapa; /*paso el objeto q prueba en este caso el controlador mapa*/
 
     public ServicioMapa servicioMapa = mock(ServicioMapa.class);
+    public ServicioJugador servicioJugador = mock(ServicioJugador.class);
 
     @BeforeEach
     public void init() {
-        controladorMapa = new ControladorMapa(servicioMapa);
+        controladorMapa = new ControladorMapa(servicioMapa, servicioJugador);
     }
-    /*segundo sprint
-    * PREGUNTa : es redundante hacer un test dond eme lanze un aexcepcion y otro test me testee las redirecciones */
 
-    /*servicio(agregue logica) + exception*/
-    @Test
-    public void siElJugadorNOTieneSuficientesMonedasParaDesbloquearElMarDebeLanzarMonedasInsuficientesException() {
-        /*test con exception mas mock xq usa logica del test servicio */
-        doThrow(MonedasInsuficientesException.class).when(servicioMapa).calcularSiSePuedeDesbloquearUnMar("alias_jugador",90.0);
-        ModelAndView mav = controladorMapa.redireccionDeVistasDependiendoDelUsuario("alias_jugador",90.0);
-
-        thenNoSePuedoHacerElCambioDePagMensajeError(mav,"mensajeErrorMonedas","El Usuario no tiene suficientes monedas para desbloquear el mar");
-    }
+   /* @Test con exception
+    public void queSiNoObtieneTodaLaListaDeMares() {}*/
 
     @Test
-    public void siElJugadorTieneSuficientesMonedasParaDesbloquearElMarDebeCambiardePaginaAVistaSeleccion() {
-        ModelAndView mav = controladorMapa.redireccionDeVistasDependiendoDelUsuario("alias_jugador",150.0);
-        thenLaVistaFueRedirigidaExitosamente(mav,"vistaSeleccion");
+    public void queAlObtenerTodaLaListaDeMaresIrAVistaMapa(){
+        List<Mar> listaMar = givenInstanciaDeTodosLosMares();
+
+        //mock
+        when(servicioMapa.obtenerTodaListaDeMares()).thenReturn(listaMar);
+
+        //when
+        ModelAndView mv = controladorMapa.irAVistaMapa();
+
+        thenLaVistaFueRedirigidaADondeIba(mv,"vistaMapa");
     }
 
-   /* @Disabled no funciona
+    private List<Mar> givenInstanciaDeTodosLosMares() {
+        List<Mar> listaMar = Arrays.asList(
+                new Mar("Mitologia griega", 0.0, "mar uno", false),
+                new Mar("Mitologia Nordica", 150.0, "mar dos", true),
+                new Mar("Mitologia Japonesa", 200.0, "mar tres", true),
+                new Mar("Mitología Yoruba", 250.0, "mar cuatro", true),
+                new Mar("Mitología Indú", 300.0, "mar cinco", true),
+                new Mar("Mitología Asteca", 350.0, "mar seis", true),
+                new Mar("Mitología China", 450.0, "mar siete", true)
+
+        );
+        return listaMar;
+    }
+
     @Test
-    public void siElJugadorNOTieneSuficientesMonedasParaDesbloquearElMarDebeCambiardePaginaAVistaSeleccion() {
-        ModelAndView mav = controladorMapa.redireccionDeVistasDependiendoDelUsuario("alias_jugador",90.0);
-        thenNoSePuedoHacerElCambioDePagMensajeError(mav,"mensajeErrorMonedas","El Usuario no tiene suficientes monedas para desbloquear el mar");
-    }*/
+    public void siElMarDeUnCiertojugadorEstaDESBloqueadoIrAVistaSeleccion(){
+        HttpSession session = mock(HttpSession.class);
+
+        Jugador jugador = new Jugador("Anahi","anis",30.0,1);
+        jugador.setId_jugador(3L);
+        Mar mar = new Mar();
+
+        //when(servicioJugador.buscarJugadorPorId(3L)).thenReturn(jugador);
+        when(session.getAttribute("jugador")).thenReturn(jugador);
+        when(servicioMapa.obtenerElEstadoDelMarSegunELJugador(mar,jugador)).thenReturn(false);
+
+        ModelAndView cm = whenLaRedireccionEsSegunElJugadorOMar(session,mar.getNombre());
+
+        thenLaVistaFueRedirigidaADondeIba(cm,"vistaSeleccion");
+
+    }
 
     @Test
-    public void siElJugadorTieneMonedasSuficientesParaDesbloquearElMarDebeCambiarDePaginaAVistaSeleccion() {
-        ModelAndView mav = controladorMapa.redireccionDeVistasDependiendoDelUsuario("alias_jugador",100.0);
-        thenLaVistaFueRedirigidaExitosamente(mav,"vistaSeleccion");
+    public void siElMarDeUnCiertojugadorEstaBloqueadoIrAVistaMarBloqueado() {
+        HttpSession session = mock(HttpSession.class);
+        Jugador jugador = new Jugador("Anahi","anis",30.0,1);
+        jugador.setId_jugador(3L);
+        Mar mar = new Mar();
+
+        //when(servicioJugador.buscarJugadorPorId(3L)).thenReturn(jugador);
+        when(session.getAttribute("jugador")).thenReturn(jugador);
+
+        when(servicioMapa.obtenerElEstadoDelMarSegunELJugador(mar,jugador)).thenReturn(true);
+
+        ModelAndView cm = whenLaRedireccionEsSegunElJugadorOMar(session,mar.getNombre());
+
+        thenLaVistaFueRedirigidaADondeIba(cm,"vistaMarBloqueado");
+
     }
 
     @Test
-    public void siElJugadorNoTieneMonedasParaDesbloquearElMarDebeMostarMensajeError(){
-        ModelAndView mav = controladorMapa.redireccionDeVistasDependiendoDelUsuario("alias_jugador",0.0);
-        thenNoSePuedoHacerElCambioDePagMensajeError(mav,"mensajeDeVistaError","El Usuario no cuenta con Monedas");
+    public void siExisteElJugadorRedirijaAVistaMapa(){
+        HttpSession session = mock(HttpSession.class);
+        Jugador jugador = new Jugador("Anahi","anis",30.0,1);
+        jugador.setId_jugador(3L);
+        Mar mar = new Mar();
+
+       // when(servicioJugador.buscarJugadorPorId(3L)).thenReturn(jugador);
+        when(session.getAttribute("jugador")).thenReturn(jugador);
+        ModelAndView cm = whenLaRedireccionEsSegunElJugadorOMar(session,mar.getNombre());
+        thenLaVistaFueRedirigidaADondeIba(cm,"vistaSeleccion");
 
     }
 
-    private void thenNoSePuedoHacerElCambioDePagMensajeError(ModelAndView mav, String claveMensaje,String valorMensaje) {
-        assertThat(mav.getViewName(),equalToIgnoringCase("vistaMapa"));
-        assertThat(mav.getModel().get(claveMensaje),equalTo(valorMensaje));
+    @Test
+    public void siElJugadorEsNullQueRedirijaAVistaLogin(){
+        HttpSession session = mock(HttpSession.class);
 
+        Mar mar = new Mar();
+        //when(servicioJugador.buscarJugadorPorId(1L)).thenReturn(null);
+         when(session.getAttribute("jugador")).thenReturn(null);
+
+        ModelAndView cm = whenLaRedireccionEsSegunElJugadorOMar(session,mar.getNombre());
+
+        thenLaVistaFueRedirigidaADondeIba(cm, "login");
     }
 
-/*primer sprint*/
+    private ModelAndView whenLaRedireccionEsSegunElJugadorOMar(HttpSession session, String mar) {
+        ModelAndView mv = controladorMapa.redireccionSegunSiEstaBloqueadoONo(session, mar);
+        return mv;
+    }
+
     @Test
     public void alClickearVistaLogrosMeRedirigeAVistaLogros() {
         ModelAndView cm = controladorMapa.irAVistaLogros();
-        thenLaVistaFueRedirigidaExitosamente(cm,"vistaLogros");
+        thenLaVistaFueRedirigidaADondeIba(cm,"vistaLogros");
     }
-
-   /* @Test
-    public void alClickearVistaTiendaMeRedirigeAVistaTienda() {
-        ModelAndView cm = controladorMapa.irAVistaTienda();
-        thenLaVistaFueRedirigidaExitosamente(cm,"vistaTienda");
-    }*/
 
     @Test
-    public void alClickearUnMapaDesboqueadoPreviamenteVoyAVistaSeleccion() {
-        ModelAndView cm = controladorMapa.irAVistaSeleccion();
-        thenLaVistaFueRedirigidaExitosamente(cm,"vistaSeleccion");
+    public void alClickearVistaTiendaMeRedirigeAVistaTienda() {
+        ModelAndView cm = controladorMapa.irAVistaTienda();
+        thenLaVistaFueRedirigidaADondeIba(cm,"vistaTienda");
     }
 
-    private void thenLaVistaFueRedirigidaExitosamente(ModelAndView cm, String vista) {
+    private void thenLaVistaFueRedirigidaADondeIba(ModelAndView cm, String vista) {
         assertThat(cm.getViewName(),equalToIgnoringCase(vista));
 
     }

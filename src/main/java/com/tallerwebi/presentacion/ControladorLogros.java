@@ -8,10 +8,10 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class ControladorLogros {
 
-    @RequestMapping("/logros")
+  /*  @RequestMapping("/logros")
     public ModelAndView irLogros(){
         ModelMap model = new ModelMap();
         model.put("claveLogros","Este es el libro de logos");
         return new ModelAndView("vistaLogros.html", model);
-    }
+    }*/
 }

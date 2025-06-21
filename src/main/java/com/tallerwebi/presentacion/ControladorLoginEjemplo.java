@@ -37,8 +37,9 @@ public class ControladorLoginEjemplo {
 
         Usuario usuarioBuscado = servicioLogin.consultarUsuario(datosLogin.getEmail(), datosLogin.getPassword());
         if (usuarioBuscado != null) {
-            request.getSession().setAttribute("ROL", usuarioBuscado.getRol());
-            return new ModelAndView("redirect:/home");
+            /*cambie el atributo de session de ROL -> jugador */
+            request.getSession().setAttribute("jugador", usuarioBuscado.getRol());
+            return new ModelAndView("redirect:/mapa");
         } else {
             model.put("error", "Usuario o clave incorrecta");
         }

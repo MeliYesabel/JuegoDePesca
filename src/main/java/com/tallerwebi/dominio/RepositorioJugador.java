@@ -6,5 +6,8 @@ public interface RepositorioJugador {
     Jugador buscarJugador(Long idJugador);
     void guardarJugador(Jugador jugador);
     List<Objeto> obtenerListaDeObjetosDelJugador(Jugador jugador);
+    Jugador buscarjugadorPorId(Long idJugador);
+
+
 }
 

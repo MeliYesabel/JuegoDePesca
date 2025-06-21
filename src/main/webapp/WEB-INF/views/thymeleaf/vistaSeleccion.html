@@ -13,12 +13,14 @@
 <body>
 
   <header class="container-fluid">
+      <!--modedas :500 (se descontarian si el jugador quiere ir a la tienda y proveerce de carnadas )-->
+      <!--carnadas :5 (este sse descantaria dependiendo si el jugador quiere mas carnadas para su mar )-->
     <ul class="nav justify-content-end mt-2 p-4">
         <li class="nav-item">
-            <a class="btn btn-primary me-2" th:href="@{/vistaLogros}">Libro de Coleccion</a>
+            <a class="btn btn-primary me-2" th:href="@{/logros}">Libro de Coleccion</a>
         </li>
         <li class="nav-item">
-            <a class="btn btn-primary me-2"  th:href="@{/vistaTienda}">Tienda</a>
+            <a class="btn btn-primary me-2"  th:href="@{/tienda}">Tienda</a>
         </li>
         <li class="nav-item">
             <a class="btn btn-primary me-2" href="#">Usuario</a><!-- cual es la vista del usuario y si vista logros sera asi o libro de colecciones -->
@@ -29,18 +31,24 @@
   <div class="container mar-desbloqueado-container ">
     <div class="row fondo">
         <div >
-            <h2>Mitologia Griega</h2>
+            <!--aca deberia ser de forma dinamica -->
+            <h2 th:text="${mar.nombre}">nombre mar </h2>
         </div>
         <div >
-            <p>Cantidad de Carnada : 3</p>
+            <!-- el boton te permite ingrementar la canitdad de carnadas que a suvez se descuenten de que tenga el usuario-->
+            <!-- el 3 tiene que ser una variable? la cual debe incrementar pero no puede quedarse a menos de tres
+             no seria mejor que el jugador tenga las carnadas asi si llega a cero este puede ir a comprarlas en vez que vengan por defalut-->
+            <p>Cantidad de Carnada : 3 </p> <button type="submit" class="btn btn-primary" > mas </button>
         </div>
         <div >
+            <!--FALTA LOGICA MAS ADELANTE -->
             <p>Elige el jugador</p>
         </div>
         <div >
-            <p>Meta : alcanzar la cantidad minima de 500 monedas. Pescando los distintos peces</p>
+            <p>Junta la sufientes cantidad de monedas para poder desbloquar y conocer otros mares! </p>
         </div>
         <div>
+            <!-- tendria que redirigirte a run-->
             <button type="submit" class="btn btn-primary" >Empezar</button>
         </div>
     </div>

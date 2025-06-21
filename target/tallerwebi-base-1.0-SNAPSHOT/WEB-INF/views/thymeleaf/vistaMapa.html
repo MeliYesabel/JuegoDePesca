@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mapa</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/estiloVistaMapa.css}" />
+
+</head>
+<body>
+
+  <header class="container-fluid">
+    <ul class="nav justify-content-end mt-2 p-4">
+        <li class="nav-item">
+            <a class="btn btn-primary me-2" th:href="@{/logros}">Libro de Coleccion</a>
+        </li>
+        <li class="nav-item">
+            <a class="btn btn-primary me-2"  th:href="@{/tienda}">Tienda</a>
+        </li>
+        <li class="nav-item">
+            <a class="btn btn-primary me-2" href="#">Usuario</a><!-- cual es la vista del usuario y si vista logros sera asi o libro de colecciones -->
+        </li>
+    </ul>
+  </header>
+
+  <!-- Agregar de forma Correcta los mares en el html usando lo que tengo en la base de datos  -->
+  <div class="container-fluid mapa-container">
+    <div class="row">
+        <div class="col-2">1.1</div>
+        <div class="col-2">1.2</div>
+        <div class="col-2"><a th:href="@{/vistaSeleccion.html}">"Poseidon"</a></div>
+        <div class="col-2">1.4</div>
+        <div class="col-2">1.5</div>
+       <!-- <div class="col-2">
+            <form th:action="@{/irAVistaSeleccion}" method="post">
+                <input type="hidden" name="idObjeto" th:value="${objeto.idObjeto}" />
+                <button type="submit">"Nuwa"</button>
+            </form>
+        </div>-->
+    </div>
+    <div class="row">
+        <div class="col-2">1.1</div>
+        <div class="col-2"><a th:href="@{/vistaMarBloqueado.html}">"Njorock"</a></div>
+        <div class="col-2">1.3</div>
+        <div class="col-2">1.4</div>
+        <div class="col-2"><a th:href="@{/vistaMarBloqueado.html}">"Susanoo"</a></div>
+        <div class="col-2"></div>
+    </div>
+    <div class="row">
+        <div class="col-2"><a th:href="@{/vistaMarBloqueado.html}">"Yemaya"</a></div>
+        <div class="col-2">1.2</div>
+        <div class="col-2"><a th:href="@{/vistaMarBloqueado.html}">"Tlaloc"</a></div>
+        <div class="col-2">1.4</div>
+        <div class="col-2">1.5</div>
+        <div class="col-2"><a th:href="@{/vistaMarBloqueado.html}">"Varuna"</a></div>
+    </div>
+  </div>
+
+
+
+</body>
+</html>
