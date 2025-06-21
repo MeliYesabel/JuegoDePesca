@@ -26,7 +26,7 @@ public class ControladorLogin {
         this.servicioUsuarioAuthI = servicioUsuarioI;
     }
 
-    @GetMapping("login-pescador")
+    @GetMapping("/login-pescador")
     public ModelAndView mostrarLogin() {
         ModelMap modeloLogin = new ModelMap();
         modeloLogin.put("usuarioDto", new UsuarioDto());
@@ -34,14 +34,14 @@ public class ControladorLogin {
     }
 
 
-    @PostMapping("/login-auth")
+    @PostMapping("/login-pescador")
     public ModelAndView procesarLogin(@ModelAttribute("usuarioDto")UsuarioDto usuarioDto, HttpServletRequest request){
         ModelMap datosMapeados =new ModelMap();
         String emailIngresado = usuarioDto.getEmail();
         String contraseniaIngresada = usuarioDto.getContrasenia();
 
         if(usuarioDto.getEmail().isBlank()) datosMapeados.put("error_email_vacio", "El email es obligatorio");
-        if(contraseniaIngresada.isBlank()) datosMapeados.put("error_password_vacia", "La contrasenia es obligatorio");
+        if(contraseniaIngresada.isBlank()) datosMapeados.put("error_password_vacia", "La contraseña es obligatorio");
 
         if(!emailTieneUnFormatoValido(emailIngresado))
             datosMapeados.put("error_formato_email", "El formato del email es invalido");
@@ -63,7 +63,7 @@ public class ControladorLogin {
                 }
 
             }catch (UsuarioInexistenteLoginException exception){
-                datosMapeados.put("error_not_exist", "El usuario no se encuentraRegistrado");
+                datosMapeados.put("error_not_exist", "El usuario no se encuentra registrado.");
                 return new ModelAndView("login-usuario", datosMapeados);
             }
         }else {
@@ -75,7 +75,7 @@ public class ControladorLogin {
     @GetMapping("/logout")
     public String looout(HttpServletRequest request){
         request.getSession().invalidate();
-        return "redirect:/login-usuario";
+        return "redirect:/login-pescador";
     }
 
     private boolean emailTieneUnFormatoValido(String emailIngresado) {

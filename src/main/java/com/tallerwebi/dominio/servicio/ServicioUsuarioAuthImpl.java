@@ -27,7 +27,6 @@ public class ServicioUsuarioAuthImpl implements ServicioUsuarioAuthI {
         String email = usuarioDto.getEmail();
         String password = usuarioDto.getContrasenia();
         String username = email.split("@")[0];
-        Double monedasXNuevoUsuario = 200.0;
 
         UsuarioAuth encontrado = repositorioUsuarioAuth.buscarPorMail(email);
 
@@ -38,8 +37,7 @@ public class ServicioUsuarioAuthImpl implements ServicioUsuarioAuthI {
             Jugador nuevoUsuario = new Jugador();
             nuevoUsuario.setEmail(email);
             nuevoUsuario.setUsername(username);
-            nuevoUsuario.setMonedas(monedasXNuevoUsuario);
-            
+
             String contraseniaHasheada = PasswordUtil.hashear(password);
             nuevoUsuario.setPassword(contraseniaHasheada);
 
