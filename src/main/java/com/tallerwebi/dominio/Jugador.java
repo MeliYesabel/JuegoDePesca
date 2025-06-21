@@ -1,11 +1,17 @@
 package com.tallerwebi.dominio;
 
+import com.tallerwebi.dominio.entidad.UsuarioAuth;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Jugador {
+@DiscriminatorValue("JUGADOR")
+public class Jugador extends UsuarioAuth {
+
+    private static final Double MONEDAS_INICIALES = 200.0;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -32,7 +38,7 @@ public Jugador(String nombre){
 }
 
     public Jugador() {
-
+        this.monedas = MONEDAS_INICIALES;
     }
 
     public Objeto getCaniaActiva() {
