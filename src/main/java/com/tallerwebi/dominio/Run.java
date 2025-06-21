@@ -1,19 +1,20 @@
 package com.tallerwebi.dominio;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.util.List;
 @Entity
 public class Run {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Integer cebo;
     @ManyToOne
     private Mar mar;
-    private List<Pez> pecesPescados;
-    private List<Turno> historialTurnos;
+   // @OneToMany
+    //private List<Pez> pecesPescados;
+
+    //@OneToMany
+    //private List<Turno> historialTurnos;
 
     public Run() {
     }
@@ -35,7 +36,7 @@ public class Run {
     public void setMar(Mar mar) {
         this.mar = mar;
     }
-    public void setPecesPescados(List<Pez> pecesPescados) {
+   /* public void setPecesPescados(List<Pez> pecesPescados) {
         this.pecesPescados = pecesPescados;
     }
     public void setHistorialTurnos(List<Turno> historialTurnos) {
@@ -44,7 +45,7 @@ public class Run {
 
     public Integer getCeboRestante() {
         return cebo;
-    }
+    }*/
 
     public void restarCebo() {
         if (cebo == 0) {

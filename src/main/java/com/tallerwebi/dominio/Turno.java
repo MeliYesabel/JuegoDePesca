@@ -1,5 +1,7 @@
 package com.tallerwebi.dominio;
 
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.util.List;
 
 public class Turno {
@@ -8,6 +10,11 @@ public class Turno {
     private Boolean fuePescado;
     private Integer ceboRestante;
     private Integer monedasGanadas;
+
+    /*relacion con turno
+    @ManyToOne
+    @JoinColumn(name = "run_id")
+    private Run run;*/
 
     public Turno() {}
 
