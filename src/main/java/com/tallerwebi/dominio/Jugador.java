@@ -10,11 +10,13 @@ import java.util.List;
 @DiscriminatorValue("JUGADOR")
 public class Jugador extends UsuarioAuth {
 
+   /* @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;*/
+
     private static final Double MONEDAS_INICIALES = 200.0;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+
 
 private double monedas;
 private String nombre;
@@ -57,9 +59,7 @@ public Jugador(String nombre){
         this.monedas = monedas;
     }
 
-    public int getId() {
-        return id;
-    }
+
 
     public String getNombre() {
         return nombre;
@@ -69,9 +69,7 @@ public Jugador(String nombre){
         return objetosComprados;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
