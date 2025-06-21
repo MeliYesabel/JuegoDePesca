@@ -26,7 +26,7 @@ public class ServicioTiendaImpl implements ServicioTienda {
 
 
     @Override
-    public Boolean comprarObjeto(Jugador jugador, Integer idObjeto) {
+    public Boolean comprarObjeto(Jugador jugador, Long idObjeto) {
 
         if (jugador == null || idObjeto == null) {
             throw new ParametroInvalidoException("El jugador o el id del objeto no pueden ser nulos");

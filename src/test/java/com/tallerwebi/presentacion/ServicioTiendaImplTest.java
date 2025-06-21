@@ -44,12 +44,12 @@ public class ServicioTiendaImplTest {
 
         jugador.setMonedas(150.0);
         //objeto.setIdObjeto(1);
-      when(repositorioObjeto.buscarObjeto(1)).thenReturn(objeto);
+      when(repositorioObjeto.buscarObjeto(1L)).thenReturn(objeto);
         // sin mock
         servicioTienda.agregarObjetoDisponible(objeto);
        // servicioTienda.agregarYGuardarObjeto(objeto);
 
-        Boolean resultado = servicioTienda.comprarObjeto(jugador, 1);
+        Boolean resultado = servicioTienda.comprarObjeto(jugador, 1L);
 
         assertTrue(resultado);
         //assertThat(resultado).isFalse();
@@ -63,19 +63,19 @@ public class ServicioTiendaImplTest {
         jugador.setMonedas(50.0); // menos que el precio del objeto
 
         servicioTienda.agregarObjetoDisponible(objeto); // agrega el objeto a la tienda
-when(repositorioObjeto.buscarObjeto(1)).thenReturn(objeto);
+when(repositorioObjeto.buscarObjeto(1L)).thenReturn(objeto);
         assertThrows(MonedasInsuficientesException.class, () -> {
-            servicioTienda.comprarObjeto(jugador, 1);
+            servicioTienda.comprarObjeto(jugador, 1L);
         });
     }
 
     @Test
     public void queNoSePuedaComprarUnObjetoQueNoExiste() {
         jugador.setMonedas(150.0); // monedas suficientes
-when(repositorioObjeto.buscarObjeto(1)).thenReturn(objeto);
+when(repositorioObjeto.buscarObjeto(1L)).thenReturn(objeto);
         // No agrego el objeto a la tienda
         assertThrows(ObjetoInexistenteException.class, () -> {
-            servicioTienda.comprarObjeto(jugador, 2); // objeto no agregado objeto.getIdObjeto()
+            servicioTienda.comprarObjeto(jugador, 2L); // objeto no agregado objeto.getIdObjeto()
         });
     }
 

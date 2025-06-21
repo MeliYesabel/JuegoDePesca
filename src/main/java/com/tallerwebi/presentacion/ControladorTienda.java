@@ -75,7 +75,7 @@ public class ControladorTienda {
 
 
     @RequestMapping(value = "/comprarObjeto", method = RequestMethod.POST)
-    public ModelAndView comprarObjeto(HttpSession session,@RequestParam Integer idObjeto) {
+    public ModelAndView comprarObjeto(HttpSession session,@RequestParam Long idObjeto) {
         ModelMap model = new ModelMap();
 
         // Recupero el jugador desde la sesión (que ya debería estar guardado)

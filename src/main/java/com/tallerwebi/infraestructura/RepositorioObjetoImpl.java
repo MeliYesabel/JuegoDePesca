@@ -23,7 +23,7 @@ public class RepositorioObjetoImpl implements RepositorioObjeto {
     }
 
     @Override
-    public Objeto buscarObjeto(int id) {
+    public Objeto buscarObjeto(Long id) {
         var session = sessionFactory.getCurrentSession();
         return session.get(Objeto.class, id);
     }

@@ -9,7 +9,7 @@ public class Objeto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idObjeto;
+    private Long idObjeto;
     private Double precioObjeto;
 
     private String nombre;
@@ -36,7 +36,7 @@ public class Objeto {
         return precioObjeto;
     }
 
-    public Integer getIdObjeto() {
+    public Long getIdObjeto() {
         return idObjeto;
     }
 
@@ -44,7 +44,7 @@ public class Objeto {
         this.precioObjeto = precioObjeto;
     }
 
-    public void setIdObjeto(Integer idObjeto) {
+    public void setIdObjeto(Long idObjeto) {
         this.idObjeto = idObjeto;
     }
 
