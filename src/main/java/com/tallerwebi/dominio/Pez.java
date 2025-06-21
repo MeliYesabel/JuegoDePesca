@@ -1,9 +1,35 @@
 package com.tallerwebi.dominio;
 
+import javax.persistence.*;
+
+@Entity
 public class Pez {
+    @Id
+    @GeneratedValue
+    private Long id;
+
     private String nombre;
-    private Rareza rareza;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Rareza rareza; //rareza entidad opcion 1
+
+    //opcion 2 rareza enum y no se crea tabla en la bbdd solo un campo con el nombre de la rareza
+//    @Enumerated(EnumType.STRING)
+//    private RarezaEnum rarezaEnum;
+
+
+
+
+    @ManyToOne(fetch = FetchType.LAZY)
     private Mar mar;
+
+    private  String imagenUrl;
+
+    private boolean atrapado; //para la coleccion de peces creo q es necesario para q se vea desbloqueado o bloqueado
+
+    //Para vender el pez en caso si sigue la idea de que la tienda venda y compre peces
+    private Double valorVenta;
+    private String descripcion;
 
     public Pez(String nombre) {
         this.nombre = nombre;

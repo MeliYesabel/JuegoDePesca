@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel del admin</title>
+</head>
+<body>
+<h1>Bienvenido, <span th:text="${nombreAdmin}"></span></h1>
+<form th:action="@{/logout}" method="get">
+    <button type="submit">Cerrar sesion</button>
+</form>
+</body>
+</html>

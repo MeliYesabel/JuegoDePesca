@@ -31,10 +31,10 @@ public class ControladorTienda {
 
     @RequestMapping("/inicio")
     public ModelAndView iniciarSesion(HttpSession session) {
-        Jugador jugador = new Jugador();
+        /*Jugador jugador = new Jugador();
 
         jugador.setMonedas(200.0);
-        session.setAttribute("jugador", jugador);
+        session.setAttribute("jugador", jugador);*/
         return new ModelAndView("redirect:/tienda");
     }
 

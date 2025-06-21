@@ -1,9 +1,19 @@
 package com.tallerwebi.dominio;
 
+import javax.persistence.*;
 import java.util.List;
-
+@Entity
 public class Turno {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Run run;
+
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Pez> pecesGenerados;
+    @ManyToOne(fetch = FetchType.LAZY)
     private Pez seleccionado;
     private Boolean fuePescado;
     private Integer ceboRestante;

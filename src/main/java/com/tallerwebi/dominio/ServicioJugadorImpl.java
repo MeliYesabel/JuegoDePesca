@@ -41,9 +41,9 @@ public class ServicioJugadorImpl implements ServicioJugador {
 
     @Override
     public Jugador inicializarJugador() {
-        Jugador jugador = new Jugador();
-        repositorioJugador.guardarJugador(jugador);
-        return jugador;
-
+//        Jugador jugador = new Jugador();
+//        repositorioJugador.guardarJugador(jugador);
+//        return jugador;
+return  null;
     }
 }

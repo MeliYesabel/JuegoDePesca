@@ -1,16 +1,35 @@
 package com.tallerwebi.dominio;
 
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
 public class Run {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private Integer cebo;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Jugador jugador; // El jugador que hizo esta sesión
+
+    @ManyToOne(fetch = FetchType.LAZY)
     private Mar mar;
+
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Pez> pecesPescados;
+
+    @OneToMany(mappedBy = "run", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Turno> historialTurnos;
 
     public Run(Mar mar, Integer cebo) {
         this.mar = mar;
         this.cebo = cebo;
+    }
+
+    public Run() {
+
     }
 
     public Integer getCebo() {

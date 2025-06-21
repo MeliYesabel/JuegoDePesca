@@ -1,9 +1,6 @@
 package com.tallerwebi.dominio;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
@@ -17,6 +14,15 @@ public class Objeto {
 
     private String nombre;
     private Boolean estaComprado = false;
+
+    @Column(nullable = true)
+    private String imagenUrl
+            ;
+    @Column(nullable = true)
+    private int cantidad;
+
+    @Column(nullable = true) //para que sea opcional y el data.sql no rompa elproyecto
+    private double bonificacionProbabilidad; //para jugar
 
     public Objeto(){
 
