@@ -18,8 +18,19 @@
     <li th:each="objeto : ${objetosDelJugador}">
         Objeto: <span th:text="${objeto.nombre}">1</span>
 
+        <form th:action="@{/equipar}" method="post">
+            <input type="hidden" name="idObjeto" th:value="${objeto.idObjeto}">
+            <button type="submit">Equipar</button>
+        </form>
     </li>
 </ul>
+
+<p>
+    Caña activa:
+    <span th:if="${caniaActiva != null}" th:text="${jugador.caniaActiva.nombre}"></span>
+    <span th:if="${caniaActiva == null}">Ninguna </span>
+
+</p>
 
 <a th:href="@{/personaje}">Volver al personaje</a>
 

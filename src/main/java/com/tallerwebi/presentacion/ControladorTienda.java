@@ -48,7 +48,7 @@ public class ControladorTienda {
       /*  Jugador jugador = new Jugador();
         jugador.setMonedas(200.0);
         jugador.setNombre("jugador1"); // o lo que necesites
-        repositorioJugador.guardarJugador(jugador); // 🚨
+        repositorioJugador.guardarJugador(jugador); //
         session.setAttribute("jugador", jugador);*/
 
         return new ModelAndView("redirect:/tienda");
@@ -63,6 +63,12 @@ public class ControladorTienda {
        servicioTienda.inicializarTienda();
 
         Jugador jugador = (Jugador) session.getAttribute("jugador");
+
+        if (jugador == null) {
+            model.put("error", "No hay sesiones activas para este jugador");
+            return new ModelAndView("vistaTienda.html", model);
+        }
+
         model.put("claveTienda","Esta es la tienda");
         model.put("jugador", jugador);
         model.put("objetosDisponibles", servicioTienda.getListaObjetos());

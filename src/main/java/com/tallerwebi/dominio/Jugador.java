@@ -21,7 +21,7 @@ public class Jugador extends UsuarioAuth {
 private double monedas;
 private String nombre;
 
-@OneToMany
+@OneToMany(fetch = FetchType.EAGER)
 @JoinColumn(name = "jugador_id")
 private List<Objeto> objetosComprados = new ArrayList<>();
 

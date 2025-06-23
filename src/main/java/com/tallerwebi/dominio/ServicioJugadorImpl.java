@@ -25,14 +25,26 @@ public class ServicioJugadorImpl implements ServicioJugador {
         if(jugador == null || idObjeto == null){
             throw new ParametroInvalidoException("El jugador o el id del objeto no puede ser nulo");
         }
+
+        Jugador jugadorGestionado = repositorioJugador.buscarJugador(jugador.getId());
+        if(jugadorGestionado == null){
+            throw new ParametroInvalidoException("Jugador no existe");
+        }
+
         Objeto objeto = repositorioObjeto.buscarObjeto(idObjeto);
         if(objeto == null){
             throw new ObjetoInexistenteException("Objeto no encontrado");
         }
 
+        if(!jugadorGestionado.getObjetosComprados().contains(objeto)){
+            throw new ObjetoInexistenteException("Objeto no encontrado en el inventario de este jugador");
+        }
+
+
+
       //  jugador.agregarObjeto(objeto);
-        jugador.setCaniaActiva(objeto);
-        repositorioJugador.guardarJugador(jugador); //esta bien poner este repo aca? o seria como agregar un jugador cada vez que equipe una caña?
+        jugadorGestionado.setCaniaActiva(objeto);
+        repositorioJugador.guardarJugador(jugadorGestionado); //esta bien poner este repo aca? o seria como agregar un jugador cada vez que equipe una caña?
 
         return Boolean.TRUE;
     }
