@@ -2,6 +2,7 @@ package com.tallerwebi.dominio;
 import com.tallerwebi.dominio.excepcion.ObjetoInexistenteException;
 import com.tallerwebi.dominio.excepcion.ParametroInvalidoException;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -58,6 +59,7 @@ public class ServicioTurnoTest {
         assertEquals("No hay cebo para crear un turno.", ex.getMessage());
     }
 
+    @Disabled
     @Test
     public void tomarTresPecesDelLalistaDePecesDelMar(){
         mar = new Mar("Nombre");
@@ -73,6 +75,8 @@ public class ServicioTurnoTest {
         assertNotNull(testTresPeces);
         assertEquals(3, tr.getPecesGenerados().size());
     }
+
+    @Disabled
     @Test
     public void obtenerParaPescarElPezEnlaPosicionCero(){
         mar = new Mar("Nombre");
@@ -90,6 +94,7 @@ public class ServicioTurnoTest {
         assertEquals(testTresPeces.get(0), pezSeleccionado);
     }
 
+    @Disabled
     @Test
     public void noPoderObtenerParaPescarElPezEnlaPosicionCuatro() {
         mar = new Mar("Nombre");

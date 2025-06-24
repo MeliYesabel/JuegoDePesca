@@ -1,8 +1,8 @@
-package com.tallerwebi.dominio;
+package com.tallerwebi.infraestructura;
 
 //import com.mysql.cj.xdevapi.SessionFactory;
 
-import com.tallerwebi.infraestructura.RepositorioObjetoImpl;
+import com.tallerwebi.dominio.Objeto;
 import com.tallerwebi.integracion.config.HibernateTestConfig;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

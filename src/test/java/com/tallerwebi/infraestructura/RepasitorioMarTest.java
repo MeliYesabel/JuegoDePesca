@@ -1,5 +1,7 @@
 package com.tallerwebi.infraestructura;
 
+import com.tallerwebi.dominio.Jugador;
+import com.tallerwebi.dominio.JugadorMar;
 import com.tallerwebi.dominio.Mar;
 import com.tallerwebi.dominio.RepositorioMar;
 import com.tallerwebi.integracion.config.HibernateTestConfig;
@@ -14,7 +16,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -25,7 +26,7 @@ import static org.hamcrest.Matchers.equalTo;
 @WebAppConfiguration
 @ContextConfiguration(classes = {SpringWebTestConfig.class, HibernateTestConfig.class})
 
-public class RepositorioMarTest {
+public class RepasitorioMarTest {
 
     /*para que se una a la base de datos*/
     @Autowired
@@ -35,15 +36,29 @@ public class RepositorioMarTest {
     @Autowired
     private RepositorioMar repo;
 
-    /*test : mares y peces   -------------------------------*/
+    @Test
+    @Transactional
+    @Rollback
+    public void obtenerElEstadoDelMarSolicitadoQueMeDeVerdeSiEstaBloqueadosegunElJugador() {
 
-    /*test : solo mares  -----------------------------------*/
+        Mar mar = new Mar("Poseidon",0.0,"Mitologia Griega",true);
+        sessionFactory.getCurrentSession().save(mar);
+        Jugador jugador = new Jugador("Anahi","anis",30.0,1);
+        sessionFactory.getCurrentSession().save(jugador);
+        JugadorMar jugadorMar= new JugadorMar(jugador,mar,true);
+        sessionFactory.getCurrentSession().save(jugadorMar);
 
+        boolean estado = repo.obtenerElEstadoMarDelJugador(mar,jugador);
+        assertThat(estado,equalTo(true));
+    }
+
+/**/
     @Test
     @Transactional
     @Rollback
     public void queSePuedaObtenerUnMarSiEstaBloqueadoElPrecioParaDesbloqueralo(){
         givenTodosLosMaresAgregadosDeAUnoUsandoOtroMetodo();
+
         Mar mar = whenObtenerUnMarSiEstbloqueadoElPrecio("Njoror");
         thenQueMeDevuelvaLacantDeMonedas(mar,100.0);
     }
@@ -139,7 +154,7 @@ public class RepositorioMarTest {
 
     private void givenTodosLosMaresAgregadosDeAUnoUsandoOtroMetodo(){
         /*String nombre, Double precio, String descripcion, Boolean estado*/
-        givenAgregarMaresALista("Poseidon",0.0,"Mitologia Grega",false);
+        givenAgregarMaresALista("Poseidon",0.0,"Mitologia Griega",false);
         givenAgregarMaresALista("Njoror",100.0,"Mitologia Nordica",true);
         givenAgregarMaresALista("Susanoo",150.0,"Mitologia Japonesa",true);
         givenAgregarMaresALista("Yemaya",200.0,"Mitologia Yoriba",true);

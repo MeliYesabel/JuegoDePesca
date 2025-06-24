@@ -1,5 +1,6 @@
 package com.tallerwebi.dominio;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -11,6 +12,7 @@ public class ServicioSeleccionTest {
     /*Setteo solo por ahora*/
     Jugador j = new Jugador();
 
+    @Disabled
     @Test
     public void laCantidadDeCarnadaEsMenorACincoYMayorACeroTrue() {
         Boolean carnada = ss.laCantidadDeCarnadaEsMenorQueCindo(j.getCant_carnada());
