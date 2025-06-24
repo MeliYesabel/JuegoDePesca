@@ -27,28 +27,7 @@ public class ControladorPersonaje {
 
     }
 
-   /* @RequestMapping(value = "/personaje",method = RequestMethod.GET)
-    public ModelAndView irAPersonaje(HttpSession session){
-        ModelMap model = new ModelMap();
 
-
-        //Jugador jugador = new Jugador();
-       // repositorioJugador.guardarJugador(jugador);
-
-       session.getAttribute("jugador");
-        model.put("clavePersonaje","Esta es la pantalla del personaje");
-        model.put("jugador", jugador);
-        model.put("objetosDelJugador",jugador.getObjetosComprados()); //si borro esto corre
-        return new ModelAndView("vistaPersonaje.html",model);
-    }*/
-  /*  @RequestMapping(value="/personaje", method = RequestMethod.GET)
-    public ModelAndView irAPersonaje(HttpSession session){
-        ModelMap model = new ModelMap();
-        session.setAttribute("jugador",jugador);
-        model.put("jugador",jugador);
-        model.put("clavePersonaje","Esta es la pantalla personaje");
-        return new ModelAndView("vistaPersonaje.html",model);
-    }*/
 
    @RequestMapping(value="/personaje", method = RequestMethod.GET)
     public ModelAndView irAPersonaje(HttpSession session){
@@ -69,15 +48,7 @@ public class ControladorPersonaje {
         return new ModelAndView("vistaPersonaje.html", model);
     }
 
-    /*@RequestMapping(value="/objeto", method = RequestMethod.GET)
-    public ModelAndView irAObjeto(HttpSession session){
-        ModelMap model = new ModelMap();
-        session.setAttribute("jugador",jugador);
-        model.put("jugador",jugador);
-        model.put("objetosDelJugador",jugador.getObjetosComprados());
-        //agregar lista de objetos
-        return new ModelAndView("objetoDelJugador.html",model);
-    }*/
+
 
     @RequestMapping(value="/objeto", method = RequestMethod.GET)
     public ModelAndView irAObjeto(HttpSession session){
@@ -101,28 +72,7 @@ public class ControladorPersonaje {
         return new ModelAndView("objetoDelJugador.html", model);
     }
 
-    /*@RequestMapping(value = "/equipar", method = RequestMethod.POST)
-    public ModelAndView equiparCania(HttpSession session, @RequestParam Long idObjeto) {
-        ModelMap model = new ModelMap();
-        Jugador jugador = (Jugador) session.getAttribute("jugador");
 
-        if (jugador == null) {
-            model.put("error", "No hay sesiones activas para este jugador");
-            return new ModelAndView("vistaPersonaje.html", model);
-        }
-
-        try {
-            servicioJugador.equipaCaniaAPersonaje(jugador, idObjeto);
-            model.put("mensaje", "Caña equipada correctamente");
-        } catch (ParametroInvalidoException | ObjetoInexistenteException e) {
-            model.put("error", e.getMessage());
-        }
-
-        session.setAttribute("jugador", jugador); // actualizo sesión
-        model.put("jugador", jugador);
-        model.put("objetosDelJugador", jugador.getObjetosComprados());
-        return new ModelAndView("objetoDelJugador.html", model);
-    }*/
     @RequestMapping(value = "/equipar", method = RequestMethod.POST)
     public ModelAndView equiparCania(HttpSession session, @RequestParam Long idObjeto) {
         ModelMap model = new ModelMap();
@@ -153,40 +103,5 @@ public class ControladorPersonaje {
         return new ModelAndView("objetoDelJugador.html", model);
     }
 
-   /* @RequestMapping(value = "/vistaCaniasDelPersonaje")
-    public ModelAndView verCaniasDisponiblesDelPersonaje(HttpSession session){
-        ModelMap model = new ModelMap();
 
-        jugador.agregarObjeto(new Objeto(100.0,"caña")); //lo agregue ahora pero esta mal
-        session.getAttribute("jugador");
-        model.put("jugador", jugador);
-        model.put("objetosDelJugador",jugador.getObjetosComprados());
-        return new ModelAndView("vistaEquipamiento.html",model);
-
-    }*/
-
-    /*@RequestMapping(value = "/equipamiento", method = RequestMethod.POST)
-    public ModelAndView equiparCania(HttpSession session, @RequestParam Integer idObjeto) {
-        ModelMap model = new ModelMap();
-
-        Jugador jugador = (Jugador)session.getAttribute("jugador");
-
-       if(jugador == null){
-           model.put("error", "No hay sesiones activas para este jugador");
-           return new ModelAndView("vistaPersonaje.html",model);
-       }
-
-       try{
-           servicioJugador.equipaCaniaAPersonaje(jugador,idObjeto);
-           model.put("mensaje", "Caña equipa correctamente");
-           model.put("jugador",jugador);
-           return new ModelAndView("vistaEquipamiento.html",model); //la vista equipamiento tiene la lista de cañas para equipar
-
-       }catch (ParametroInvalidoException | ObjetoInexistenteException e){
-           model.put("error", e.getMessage());
-           model.put("jugador",jugador);
-           return new ModelAndView("vistaPersonaje.html",model); // la vista personaje nos permite ir a la vista equipamiento o a las demas
-       }
-
-    }*/
 }

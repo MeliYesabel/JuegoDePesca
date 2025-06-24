@@ -30,16 +30,19 @@ public class RepositorioJugadorTest {
     SessionFactory sessionFactory;
 
     RepositorioJugadorImpl repositorioJugador;
+    Jugador jugador;
+    Objeto objeto;
 
     @BeforeEach
     public void setUp() {
         repositorioJugador = new RepositorioJugadorImpl(sessionFactory);
+         jugador = new Jugador();
+         objeto = new Objeto(100.0, "Cania madera");
     }
 
     @Test
     public void queAlAgregarUnObjetoAlJugadorSeGuardeEnLaBaseDeDatos() {
-        Objeto objeto = new Objeto();
-        Jugador jugador = new Jugador();
+
         jugador.agregarObjeto(objeto);
        repositorioJugador.guardarJugador(jugador);
        List<Objeto> listaObjeto = repositorioJugador.obtenerListaDeObjetosDelJugador(jugador);
@@ -47,5 +50,17 @@ public class RepositorioJugadorTest {
        assertEquals(listaObjeto.size(),1);
         //assertThat();
     }
+
+    @Test
+    public void dadoQueTengoUnJugadorQueSeGuardeCorrectamenteEnLaBaseDeDatos() {
+
+        jugador.setNombre("Gonza");
+
+        repositorioJugador.guardarJugador(jugador);
+
+        Jugador encontrado = repositorioJugador.buscarJugador(jugador.getId());
+        assertEquals(jugador, encontrado);
+    }
+
 
 }

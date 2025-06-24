@@ -38,21 +38,7 @@ public class ControladorTienda {
        // this.repositorioJugador = new RepositorioJugadorImpl(); //lo agregue ahora
     }
 
-    @RequestMapping("/inicio")
-    public ModelAndView iniciarSesion(HttpSession session) {
-       Jugador jugador = new Jugador();
 
-        jugador.setMonedas(200.0);
-       session.setAttribute("jugador", jugador);
-
-      /*  Jugador jugador = new Jugador();
-        jugador.setMonedas(200.0);
-        jugador.setNombre("jugador1"); // o lo que necesites
-        repositorioJugador.guardarJugador(jugador); //
-        session.setAttribute("jugador", jugador);*/
-
-        return new ModelAndView("redirect:/tienda");
-    }
 
     @RequestMapping("/tienda")
     public ModelAndView irTienda(HttpSession session) {
