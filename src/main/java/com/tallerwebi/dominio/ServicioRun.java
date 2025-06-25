@@ -5,8 +5,9 @@ import org.springframework.ui.ModelMap;
 import java.util.List;
 
 public interface ServicioRun {
-    Boolean hayCebo(Turno turno);
+
     String jugarTurno(ModelMap model);
+    Boolean hayCeboJugador(Run run);
 
     List<Pez> obtenerPecesPescados(Run run);
 

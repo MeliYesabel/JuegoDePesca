@@ -21,8 +21,8 @@ public class Jugador extends UsuarioAuth {
     private double monedas;
     private String nombre;
     private Integer cant_carnada;
-
-@OneToMany(fetch = FetchType.EAGER)
+    private Integer ceboEquipado;
+    @OneToMany(fetch = FetchType.EAGER)
 @JoinColumn(name = "jugador_id")
 private List<Objeto> objetosComprados = new ArrayList<>();
 
@@ -106,6 +106,13 @@ public Jugador(String nombre){
         this.cant_carnada = cant_carnada;
     }
 
+    public Integer getCeboEquipado() {
+        return ceboEquipado;
+    }
+
+    public void setCeboEquipado(Integer ceboEquipado) {
+        this.ceboEquipado = ceboEquipado;
+    }
     }
 
 

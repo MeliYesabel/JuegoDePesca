@@ -12,7 +12,8 @@ public class Run {
     private Mar mar;
    // @OneToMany
     //private List<Pez> pecesPescados;
-
+   @ManyToOne
+   private Jugador jugador;
     //@OneToMany
     //private List<Turno> historialTurnos;
 
@@ -61,5 +62,12 @@ public class Run {
 
     public Long getId() {
         return id;
+    }
+    public Jugador getJugador() {
+        return jugador;
+    }
+
+    public void setJugador(Jugador jugador) {
+        this.jugador = jugador;
     }
 }

@@ -1,4 +1,6 @@
 package com.tallerwebi.infraestructura;
+import com.tallerwebi.dominio.Mar;
+import com.tallerwebi.dominio.Objeto;
 import com.tallerwebi.dominio.Pez;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -20,5 +22,11 @@ public class RepositorioPezImpl implements RepositorioPez {
                 .createAlias("mar", "m")
                 .add(Restrictions.eq("m.nombre", nombreDelMar))
                 .list();
+    }
+
+    @Override
+    public List<Pez> obtenerTodosLosPeces() {
+        var session = sessionFactory.getCurrentSession();
+        return session.createCriteria(Objeto.class).list();
     }
 }

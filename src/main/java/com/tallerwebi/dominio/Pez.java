@@ -12,6 +12,15 @@ public class Pez {
     private String nombre;
     @OneToOne
     private Rareza rareza;
+
+    public Long getId_pez() {
+        return id_pez;
+    }
+
+    public void setId_pez(Long id_pez) {
+        this.id_pez = id_pez;
+    }
+
     /*segun la explicacion del prof es mejor tener manyto one q onetoone*/
     @ManyToOne
     @JoinColumn(name = "id_mar")

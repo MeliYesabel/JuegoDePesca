@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -25,32 +26,31 @@ public class ControladorRun {
     }
 
     // PRIMER INGRESO a /Run: se muestra pantalla de inicio
-    @RequestMapping("/Run")
-    public ModelAndView iniciarPartida(ModelMap model) {
-        return new ModelAndView("vistaRun", model);
+    @RequestMapping("/run")
+    public ModelAndView iniciarPartida(HttpSession session) {
+        ModelMap model = new ModelMap();
+
+        //Run run = (Run) session.getAttribute("run");
+        //model.put("run", run);
+        //Jugador jugador = (Jugador) session.getAttribute("jugador");
+        //model.put("jugador", jugador);
+        //model.put("cantidadCebo", jugador.getCantidadCeboSeleccionado());
+        //model.put("cantidadCebo", run.getCebo());
+        return new ModelAndView("vistaRun.html", model);
     }
 
-    // DESPUÉS DE UN TURNO: consulta si hay más cebos
-    @RequestMapping("/Run/continuar")
-    public ModelAndView continuarPartida(@ModelAttribute("cebos") Turno turno, ModelMap model) {
-        if (servicioRun.hayCebo(turno)){
-            String mensaje = servicioRun.jugarTurno(model);
-            model.addAttribute("mensaje", mensaje);
-            return new ModelAndView("redirect:/turno");
+    @RequestMapping("/Run/verificar-cebo")
+    public ModelAndView verificarCeboJugador(HttpSession session) {
+        Run run = (Run) session.getAttribute("run");
+
+        if (run == null || run.getJugador() == null) {
+            return new ModelAndView("redirect:/run"); // vuelve al inicio si falta algo
         }
-            return new ModelAndView("redirect:/resumen-run");
-    }
 
-    //FINAL DEL TURNO
-    @RequestMapping("/resumen-run")
-    public ModelAndView mostrarResumenFinal(ModelMap model) {
-        List<Pez> pecesPescados = servicioRun.obtenerPecesPescados(run); // Lista acumulada en la partida
-        Double totalGanado = servicioRun.calcularGanancia(run); // Suma de precios
-        Integer turnosJugados = servicioRun.getCantidadTurnosJugados(run);
-
-        Resumen resumen = new Resumen(pecesPescados, totalGanado, turnosJugados);
-        model.addAttribute("resumen", resumen);
-
-        return new ModelAndView("vistaResumen", model); // Asegurate de tener vistaResumen.html
+        if (servicioRun.hayCeboJugador(run)) {
+            return new ModelAndView("redirect:/turno");
+        } else {
+            return new ModelAndView("redirect:/resumen");
+        }
     }
 }

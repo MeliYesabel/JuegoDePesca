@@ -8,4 +8,7 @@ public interface ServicioTurno {
     List<Pez> guardarLosTresPecesParaElTurno(Run run);
     Pez seleccionarUnPez(List<Pez> pecesGenerados, Integer posicionDelPez);
 
+    List<Pez> obtenerTresPecesAleatorios();
+
+    Pez pescarPezPorId(Long id);
 }

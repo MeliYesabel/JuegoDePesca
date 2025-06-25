@@ -10,12 +10,9 @@ public class Resumen {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @OneToMany
     private List<Pez> pecesPescados;
-
     private Double totalGanado;
-
     private int turnosJugados;
 
     @ManyToOne(optional = true) // Si querés saber en qué mar fue

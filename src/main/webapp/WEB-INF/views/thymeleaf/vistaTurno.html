@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Pescar un pez</title>
+</head>
+<body>
+<h1>¡Elige un pez para pescar!</h1>
+<div th:each="pez : ${peces}">
+    <div style="border: 1px solid black; margin: 10px; padding: 10px;">
+        <p><strong>Nombre:</strong> <span th:text="${pez.nombre}"></span></p>
+        <p><strong>Peso:</strong> <span th:text="${pez.peso}"></span> kg</p>
+        <form th:action="@{/pescar/seleccionar}" method="get">
+            <input type="hidden" name="id" th:value="${pez.id}"/>
+            <button type="submit">¡Pescar este!</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

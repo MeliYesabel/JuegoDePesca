@@ -1,6 +1,7 @@
 package com.tallerwebi.dominio;
 import com.tallerwebi.dominio.excepcion.ObjetoInexistenteException;
 import com.tallerwebi.dominio.excepcion.ParametroInvalidoException;
+import com.tallerwebi.infraestructura.RepositorioPez;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -9,16 +10,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
 
 public class ServicioTurnoTest {
-
+    private RepositorioPez repositorioPez;
     private ServicioTurnoImpl st;
     private Run run;
     private Mar mar;
 
     @BeforeEach
     public void setUp() {
-        st = new ServicioTurnoImpl();
+        repositorioPez = mock(RepositorioPez.class);
+        st = new ServicioTurnoImpl(repositorioPez);
 
     }
 

@@ -2,11 +2,19 @@ package com.tallerwebi.dominio;
 
 import com.tallerwebi.dominio.excepcion.ObjetoInexistenteException;
 import com.tallerwebi.dominio.excepcion.ParametroInvalidoException;
+import com.tallerwebi.infraestructura.RepositorioPez;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ServicioTurnoImpl implements ServicioTurno {
+
+    private RepositorioPez repositorioPez;
+
+    public ServicioTurnoImpl(RepositorioPez repositorioPez) {
+        this.repositorioPez = repositorioPez;
+    }
     @Override
     public Turno crearUnTurno(Run run) {
 
@@ -37,6 +45,20 @@ public class ServicioTurnoImpl implements ServicioTurno {
         }
         throw new ObjetoInexistenteException("No existe");
     }
+@Override
+public List<Pez> obtenerTresPecesAleatorios() {
+        List<Pez> todosLosPeces = repositorioPez.obtenerTodosLosPeces();
+        Collections.shuffle(todosLosPeces);
+        return todosLosPeces.stream().limit(3).collect(Collectors.toList());
+    }
+@Override
 
+public Pez pescarPezPorId(Long id) {
+        return repositorioPez.obtenerTodosLosPeces()
+                .stream()
+                .filter(pez -> pez.getId_pez().equals(id))
+                .findFirst()
+                .orElse(null);
+    }
 
 }

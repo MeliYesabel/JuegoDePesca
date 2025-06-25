@@ -9,17 +9,15 @@ import java.util.List;
 @Service
 @Transactional
 public class ServicioRunImpl implements ServicioRun {
-    @Override
-    public Boolean hayCebo(Turno turno) {
-        if (turno.getCeboRestante() >= 1) {
-            return false;
-        }
-        return true;
-    }
 
     @Override
     public String jugarTurno(ModelMap model) {
         return "";
+    }
+
+    @Override
+    public Boolean hayCeboJugador(Run run) {
+        return run.getJugador() != null && run.getJugador().getCeboEquipado() > 0;
     }
 
     @Override

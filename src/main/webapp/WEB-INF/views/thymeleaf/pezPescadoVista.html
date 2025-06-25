@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Resultado</title>
+</head>
+<body>
+<h1>¡Has pescado un pez!</h1>
+<p><strong>Nombre:</strong> <span th:text="${pezPescado.nombre}"></span></p>
+<p><strong>Peso:</strong> <span th:text="${pezPescado.peso}"></span> kg</p>
+
+<a href="/run">Volver a pescar</a>
+</body>
+</html>
