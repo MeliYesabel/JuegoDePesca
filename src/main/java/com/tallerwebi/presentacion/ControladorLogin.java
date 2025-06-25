@@ -52,10 +52,9 @@ public class ControladorLogin {
                 HttpSession sesion = request.getSession();
                 String rol = encontrado.getTipoUsuario();
 
-                //creo objeto dto seguro para la sesion y asi lo consuma las demas vistas
+                //creo objeto dto seguro para la SESSION y asi lo consuma las demas vistas
                 UsuarioSesionDto usuarioSesion = new UsuarioSesionDto(encontrado.getId(), encontrado.getEmail(), rol);
                sesion.setAttribute("usuarioLogueado", usuarioSesion);
-                //sesion.setAttribute("jugador", usuarioSesion);
                 if(rol.equalsIgnoreCase("ADMIN")){
                     return new ModelAndView("redirect:/admin/dashboard");
                 }else{

@@ -10,8 +10,11 @@ public class JugadorMar {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_jugador_mar;
     @ManyToOne
+    @JoinColumn(name = "id_jugador")
     private Jugador jugador;
+
     @ManyToOne
+    @JoinColumn(name = "id_mar")
     private Mar mar;
     private boolean estadoBloqueado;
 

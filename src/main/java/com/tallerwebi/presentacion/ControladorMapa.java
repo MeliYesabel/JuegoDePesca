@@ -3,6 +3,7 @@ package com.tallerwebi.presentacion;
 import com.tallerwebi.dominio.Jugador;
 import com.tallerwebi.dominio.Mar;
 import com.tallerwebi.dominio.excepcion.MonedasInsuficientesException;
+import com.tallerwebi.presentacion.dto.UsuarioSesionDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import com.tallerwebi.dominio.ServicioMapa;
@@ -55,18 +56,11 @@ public class ControladorMapa {
         ModelMap mm = new ModelMap();
 
         /*utilizo una session*/
-        Jugador jugadorActual = (Jugador) session.getAttribute("jugador");
-
-        /*if (jugadorActual == null){
-            // por como esta la logica de la prof si quiero usar ellogin deberia
-            // tener mm.put("datosLogin",new DatosLogin());
-            mm.put("JugadorError", "El jugador no existe");
-            mm.put("datosLogin",new DatosLogin());
-            return new ModelAndView("vistaMapa",mm);
-        }*/
+        UsuarioSesionDto usuarioSesion = (UsuarioSesionDto) session.getAttribute("usuarioLogueado");
+        Jugador jugador = servicioJugador.buscarJugadorPorId(usuarioSesion.getId());
 
         Mar mar = servicioMapa.obtenerUnMarPorNombre(nombreMar);
-        boolean estado = servicioMapa.obtenerElEstadoDelMarSegunELJugador(mar,jugadorActual);// -> base datos join usuario es
+        boolean estado = servicioMapa.obtenerElEstadoDelMarSegunELJugador(mar,jugador);// -> base datos join usuario es
          if (estado){
              mm.put("marError", "El mar seleccionado esta bloqueado");
              return new ModelAndView("vistaMarBloqueado",mm);

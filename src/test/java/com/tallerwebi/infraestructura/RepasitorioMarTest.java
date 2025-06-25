@@ -41,7 +41,8 @@ public class RepasitorioMarTest {
     @Rollback
     public void obtenerElEstadoDelMarSolicitadoQueMeDeVerdeSiEstaBloqueadosegunElJugador() {
 
-        Mar mar = new Mar("Poseidon",0.0,"Mitologia Griega",true);
+        Mar mar = new Mar("Poseidon", 0.0, "Mitologia Griega", true);
+        mar.setId_mar(1L);
         sessionFactory.getCurrentSession().save(mar);
         Jugador jugador = new Jugador("Anahi","anis",30.0,1);
         sessionFactory.getCurrentSession().save(jugador);
@@ -154,19 +155,35 @@ public class RepasitorioMarTest {
 
     private void givenTodosLosMaresAgregadosDeAUnoUsandoOtroMetodo(){
         /*String nombre, Double precio, String descripcion, Boolean estado*/
-        givenAgregarMaresALista("Poseidon",0.0,"Mitologia Griega",false);
-        givenAgregarMaresALista("Njoror",100.0,"Mitologia Nordica",true);
-        givenAgregarMaresALista("Susanoo",150.0,"Mitologia Japonesa",true);
-        givenAgregarMaresALista("Yemaya",200.0,"Mitologia Yoriba",true);
-        givenAgregarMaresALista("Tlaloc",250.0,"Mitologia Azteca",true);
-        givenAgregarMaresALista("Varuna",300.0,"Mitologia Hindu ",true);
-        givenAgregarMaresALista("Nuwa",400.0,"Mitologia China",true);
+        Mar mar = new Mar("Poseidon",0.0,"Mitologia Griega",false);
+        mar.setId_mar(1L);
+        sessionFactory.getCurrentSession().save(mar);
+
+        Mar mar2 = new Mar("Njoror",100.0,"Mitologia Nordica",true);
+        mar2.setId_mar(2L);
+        sessionFactory.getCurrentSession().save(mar2);
+
+        Mar mar3 = new Mar("Susanoo",150.0,"Mitologia Japonesa",true);
+        mar3.setId_mar(3L);
+        sessionFactory.getCurrentSession().save(mar3);
+
+        Mar mar4 = new Mar("Yemaya",200.0,"Mitologia Yoriba",true);
+        mar4.setId_mar(4L);
+        sessionFactory.getCurrentSession().save(mar4);
+
+        Mar mar5 = new Mar("Tlaloc",250.0,"Mitologia Azteca",true);
+        mar5.setId_mar(5L);
+        sessionFactory.getCurrentSession().save(mar5);
+
+        Mar mar6 = new Mar("Varuna",300.0,"Mitologia Hindu ",true);
+        mar6.setId_mar(6L);
+        sessionFactory.getCurrentSession().save(mar6);
+
+        Mar mar7 = new Mar("Nuwa",400.0,"Mitologia China",true);
+        mar7.setId_mar(7L);
+        sessionFactory.getCurrentSession().save(mar7);
     }
 
-    private void givenAgregarMaresALista(String marNombre, Double precio, String descripcion, Boolean estadoBloqueado){
-        Mar mar = new Mar(marNombre,precio,descripcion,estadoBloqueado);
-        sessionFactory.getCurrentSession().save(mar);/*creo que esto debe estar en la claseImplement*/
-    }
 
     private List<Mar> whenObtenerLaListaCompletaDeTodosLosMares() {
         return repo.obtenerLaListaCompletaDeTodosLosMares();
