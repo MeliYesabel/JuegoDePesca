@@ -10,7 +10,8 @@ public class Pez {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_pez;
     private String nombre;
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "id_rareza")  // <- esta parte es clave
     private Rareza rareza;
 
     public Long getId_pez() {
