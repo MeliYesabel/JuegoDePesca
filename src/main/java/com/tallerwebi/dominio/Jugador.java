@@ -22,18 +22,18 @@ public class Jugador extends UsuarioAuth {
     private String nombre;
     private Integer cant_carnada;
 
-    @OneToMany
-    @JoinColumn(name = "jugador_id")
-    private List<Objeto> objetosComprados = new ArrayList<>();
+@OneToMany(fetch = FetchType.EAGER)
+@JoinColumn(name = "jugador_id")
+private List<Objeto> objetosComprados = new ArrayList<>();
 
-    @ManyToOne
-    private Objeto caniaActiva;
+@ManyToOne
+private Objeto caniaActiva;
 
     @OneToMany(mappedBy = "jugador", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<JugadorMar> mares = new ArrayList<>();
 
 
-    public Jugador(String nombre){
+public Jugador(String nombre){
     this.monedas = 0.0;
     //objetosComprados = new ArrayList<>(); preuguntar porque fallaba si la inicializo en el constructor
     this.nombre = nombre;
@@ -67,6 +67,8 @@ public class Jugador extends UsuarioAuth {
         this.monedas = monedas;
     }
 
+
+
     public String getNombre() {
         return nombre;
     }
@@ -74,6 +76,8 @@ public class Jugador extends UsuarioAuth {
     public List<Objeto> getObjetosComprados() {
         return objetosComprados;
     }
+
+
 
     public void setNombre(String nombre) {
         this.nombre = nombre;

@@ -1,7 +1,6 @@
-package com.tallerwebi.infraestructura;
+package com.tallerwebi.dominio;
 
-import com.tallerwebi.dominio.Jugador;
-import com.tallerwebi.dominio.Objeto;
+import com.tallerwebi.infraestructura.RepositorioJugadorImpl;
 import com.tallerwebi.integracion.config.HibernateTestConfig;
 import org.hibernate.SessionFactory;
 import org.junit.jupiter.api.BeforeEach;
@@ -31,16 +30,19 @@ public class RepositorioJugadorTest {
     SessionFactory sessionFactory;
 
     RepositorioJugadorImpl repositorioJugador;
+    Jugador jugador;
+    Objeto objeto;
 
     @BeforeEach
     public void setUp() {
         repositorioJugador = new RepositorioJugadorImpl(sessionFactory);
+         jugador = new Jugador();
+         objeto = new Objeto(100.0, "Cania madera");
     }
 
     @Test
     public void queAlAgregarUnObjetoAlJugadorSeGuardeEnLaBaseDeDatos() {
-        Objeto objeto = new Objeto();
-        Jugador jugador = new Jugador();
+
         jugador.agregarObjeto(objeto);
        repositorioJugador.guardarJugador(jugador);
        List<Objeto> listaObjeto = repositorioJugador.obtenerListaDeObjetosDelJugador(jugador);
@@ -49,28 +51,16 @@ public class RepositorioJugadorTest {
         //assertThat();
     }
 
-    /*
-
-    @Disabled
     @Test
-    @Transactional
-    @Rollback
-    public void queAlBuscarUnJugadorMeDevuelveUnJugador() {
-        Jugador creado = givenAgregarUnJugador("Anahi","anis",30.0,1);
-        Jugador jugador = whenObtenerUnJugadorPorId(creado.getId());
-        assertThat(jugador.getId(), equalTo(creado.getId()));
+    public void dadoQueTengoUnJugadorQueSeGuardeCorrectamenteEnLaBaseDeDatos() {
 
+        jugador.setNombre("Gonza");
+
+        repositorioJugador.guardarJugador(jugador);
+
+        Jugador encontrado = repositorioJugador.buscarJugador(jugador.getId());
+        assertEquals(jugador, encontrado);
     }
 
-    private Jugador whenObtenerUnJugadorPorId(Long id) {
-        return (Jugador) repo.buscarjugadorPorId(id);
-    }
-
-    //aunque ya tenga esto en la base de datos igual debo tenerlo ya que este test es unitaria
-    private Jugador givenAgregarUnJugador(String nombre, String alias, Double monedas, Integer carnadas) {
-        Jugador j = new Jugador(nombre,alias,monedas,carnadas);
-        sessionFactory.getCurrentSession().save(j);
-        return j;
-    }*/
 
 }

@@ -29,9 +29,46 @@ public void setUp() {
     objeto = new Objeto();
     servicioJugador = mock(ServicioJugadorImpl.class);
     repositorioJugador = mock(RepositorioJugadorImpl.class);
-    //controladorPersonaje = new ControladorPersonaje(servicioJugador,repositorioJugador);
+    controladorPersonaje = new ControladorPersonaje(servicioJugador,repositorioJugador);
     session = mock(HttpSession.class);
 
-     }
+}
 
+@Test
+    public void dadoQueEstoyEnLaVistaPersonajeQueCuandoToqueElBotonCaniaMeDuvuelvaLaVistaObjetosDelJugador() {
+
+    jugador.setId(1L);
+    objeto.setIdObjeto(1L);
+    jugador.agregarObjeto(objeto);
+
+    when(session.getAttribute("jugador")).thenReturn(jugador);
+    when(repositorioJugador.buscarJugador(1L)).thenReturn(jugador);
+    when(servicioJugador.equipaCaniaAPersonaje(jugador,objeto.getIdObjeto())).thenReturn(true);
+    ModelAndView model = controladorPersonaje.equiparCania(session,objeto.getIdObjeto());
+    assertThat(model.getViewName(), equalToIgnoringCase("objetoDelJugador.html"));
+}
+
+@Test
+    public void dadoQueEstoyEnLaVistaPersonajeYelJugadorEsNullQueCuandoToqueElBotonCaniaMeDevuelvaLaVistaPersonaje(){
+    when(repositorioJugador.buscarJugador(1L)).thenReturn(jugador);
+    when(servicioJugador.equipaCaniaAPersonaje(jugador,objeto.getIdObjeto())).thenReturn(true);
+    ModelAndView model = controladorPersonaje.equiparCania(session,objeto.getIdObjeto());
+    assertThat(model.getViewName(), equalToIgnoringCase("vistaPersonaje.html"));
+}
+
+   /* @Test
+    public void dadoQueElJugadorEstaLogueadoQueSePuedaEquiparUnaCaña(){//cuando toco en la parte de caña que me lleve a la vista /caña y que tenga las cañas disponibles para equipar
+       // jugador.agregarObjeto(objeto);
+       // jugador.agregarObjeto(objeto);
+        //servicioJugador.equipaCaniaAPersonaje(jugador,objeto.getIdObjeto());
+        when(servicioJugador.equipaCaniaAPersonaje(jugador,objeto.getIdObjeto())).thenReturn(true);
+        when(session.getAttribute("jugador")).thenReturn(jugador);
+       // when(servicioJugador.equipaCaniaAPersonaje(any(Jugador.class),anyInt())).thenReturn(true);
+//cuando toco personaje estoy en personaje pero despues tengo que tener otra vista equipamiento
+       ModelAndView model = controladorPersonaje.equiparCania(session,1); //lo comento porque comente el metodo
+       assertThat(model.getViewName(), equalToIgnoringCase("vistaEquipamiento.html"));
+
+
+
+    }*/
 }
