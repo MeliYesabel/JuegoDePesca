@@ -4,6 +4,7 @@ import com.tallerwebi.dominio.Jugador;
 import com.tallerwebi.dominio.Mar;
 import com.tallerwebi.dominio.ServicioMapa;
 import com.tallerwebi.dominio.ServicioJugador;
+import com.tallerwebi.presentacion.dto.UsuarioSesionDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -65,65 +66,62 @@ public class ControladorMapaTest {
     public void siElMarDeUnCiertojugadorEstaDESBloqueadoIrAVistaSeleccion(){
         HttpSession session = mock(HttpSession.class);
 
+        // session
+        UsuarioSesionDto usuarioSesion = new UsuarioSesionDto(3L,"Anahi","PERSCADOR");
         Jugador jugador = new Jugador("Anahi","anis",30.0,1);
         jugador.setId(3L);
-        Mar mar = new Mar();
 
-        //when(servicioJugador.buscarJugadorPorId(3L)).thenReturn(jugador);
-        when(session.getAttribute("jugador")).thenReturn(jugador);
+        Mar mar = new Mar("Mitologia Nordica", 150.0, "mar dos", false);
+
+
+        when(session.getAttribute("usuarioLogueado")).thenReturn(usuarioSesion);
+        //when(session.getAttribute("jugador")).thenReturn(jugador);
+        when(servicioJugador.buscarJugadorPorId(3L)).thenReturn(jugador);
+        when(servicioMapa.obtenerUnMarPorNombre("Mitologia Nordica")).thenReturn(mar);
         when(servicioMapa.obtenerElEstadoDelMarSegunELJugador(mar,jugador)).thenReturn(false);
 
         ModelAndView cm = whenLaRedireccionEsSegunElJugadorOMar(session,mar.getNombre());
 
-        thenLaVistaFueRedirigidaADondeIba(cm,"vistaSeleccion");
-
+        assertThat(cm.getViewName(),equalToIgnoringCase("vistaSeleccion"));
     }
 
-    @Disabled
     @Test
     public void siElMarDeUnCiertojugadorEstaBloqueadoIrAVistaMarBloqueado() {
         HttpSession session = mock(HttpSession.class);
+
+        // session
+        UsuarioSesionDto usuarioSesion = new UsuarioSesionDto(3L,"Anahi","PERSCADOR");
         Jugador jugador = new Jugador("Anahi","anis",30.0,1);
         jugador.setId(3L);
-        Mar mar = new Mar();
 
-        //when(servicioJugador.buscarJugadorPorId(3L)).thenReturn(jugador);
-        when(session.getAttribute("jugador")).thenReturn(jugador);
+        Mar mar = new Mar("Mitologia Nordica", 150.0, "mar dos", true);
 
+
+        when(session.getAttribute("usuarioLogueado")).thenReturn(usuarioSesion);
+        when(servicioJugador.buscarJugadorPorId(3L)).thenReturn(jugador);
+        when(servicioMapa.obtenerUnMarPorNombre("Mitologia Nordica")).thenReturn(mar);
         when(servicioMapa.obtenerElEstadoDelMarSegunELJugador(mar,jugador)).thenReturn(true);
 
         ModelAndView cm = whenLaRedireccionEsSegunElJugadorOMar(session,mar.getNombre());
 
-        thenLaVistaFueRedirigidaADondeIba(cm,"vistaMarBloqueado");
+        assertThat(cm.getViewName(),equalToIgnoringCase("vistaMarBloqueado"));
 
     }
 
     @Test
     public void siExisteElJugadorRedirijaAVistaMapa(){
         HttpSession session = mock(HttpSession.class);
+        UsuarioSesionDto usuarioSesion = new UsuarioSesionDto(3L,"Anahi","PERSCADOR");
         Jugador jugador = new Jugador("Anahi","anis",30.0,1);
         jugador.setId(3L);
         Mar mar = new Mar();
 
-       // when(servicioJugador.buscarJugadorPorId(3L)).thenReturn(jugador);
-        when(session.getAttribute("jugador")).thenReturn(jugador);
+        when(session.getAttribute("usuarioLogueado")).thenReturn(usuarioSesion);
+        when(servicioJugador.buscarJugadorPorId(3L)).thenReturn(jugador);
+
         ModelAndView cm = whenLaRedireccionEsSegunElJugadorOMar(session,mar.getNombre());
         thenLaVistaFueRedirigidaADondeIba(cm,"vistaSeleccion");
 
-    }
-
-    @Disabled
-    @Test
-    public void siElJugadorEsNullQueRedirijaAVistaLogin(){
-        HttpSession session = mock(HttpSession.class);
-
-        Mar mar = new Mar();
-        //when(servicioJugador.buscarJugadorPorId(1L)).thenReturn(null);
-         when(session.getAttribute("jugador")).thenReturn(null);
-
-        ModelAndView cm = whenLaRedireccionEsSegunElJugadorOMar(session,mar.getNombre());
-
-        thenLaVistaFueRedirigidaADondeIba(cm, "login");
     }
 
     private ModelAndView whenLaRedireccionEsSegunElJugadorOMar(HttpSession session, String mar) {

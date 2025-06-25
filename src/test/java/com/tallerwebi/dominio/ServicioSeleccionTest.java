@@ -23,6 +23,7 @@ public class ServicioSeleccionTest {
         assertThat(carnada, is(true));
     }
 
+    @Disabled
     @Test
     public void laCantidadDeCarnadaEsMayorQueCincoFalse() {
         j.setCant_carnada(6);

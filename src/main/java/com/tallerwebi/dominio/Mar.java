@@ -9,7 +9,7 @@ import java.util.List;
 public class Mar {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_mar;
     private String nombre;
     private Double precio;
