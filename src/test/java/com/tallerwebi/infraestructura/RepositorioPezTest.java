@@ -40,12 +40,15 @@ public class RepositorioPezTest {
 
     private void givenObtengoUnaListaDePecesConMarSeteados() {
         Mar nordico = new Mar();
+        nordico.setId_mar(0L);
         nordico.setNombre("Nordico");
         sessionFactory.getCurrentSession().save(nordico);
         Mar griego = new Mar();
+        griego.setId_mar(1L);
         griego.setNombre("Griego");
         sessionFactory.getCurrentSession().save(griego);
         Mar japones = new Mar();
+        japones.setId_mar(2L);
         japones.setNombre("Japones");
         sessionFactory.getCurrentSession().save(japones);
         Pez pez1 = new Pez();
@@ -77,7 +80,6 @@ public class RepositorioPezTest {
     @Rollback
     public void quePuedaBuscarPecesPorIdDeMar() {
         Long idMarNordico = givenMarConPeces("Nordico", 2);
-        givenMarConPeces("Griego", 3);
         List<Pez> pecesNordico = whenBuscoPecesPorIdMar(idMarNordico);
 
         assertEquals(2, pecesNordico.size());
@@ -90,6 +92,7 @@ public class RepositorioPezTest {
 
     private Long givenMarConPeces(String nombreMar, int cantidadPeces) {
         Mar mar = new Mar();
+        mar.setId_mar(0L);
         mar.setNombre(nombreMar);
         sessionFactory.getCurrentSession().save(mar);
 
