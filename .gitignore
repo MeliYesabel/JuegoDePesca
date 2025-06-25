@@ -1,7 +1,7 @@
 *.class
 *.DS_Store
 
-/target
+/target/
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
@@ -20,7 +20,7 @@ hs_err_pid*
 /.settings/
 
 src/main/webapp/resources/core/js/node_modules
-
+*.class
 
 
 

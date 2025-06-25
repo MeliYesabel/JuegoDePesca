@@ -56,6 +56,11 @@ public class ServicioUsuarioAuthImpl implements ServicioUsuarioAuthI {
         throw new UsuarioInexistenteLoginException();
     }
 
+    @Override
+    public UsuarioAuth buscarUsuarioPorMail(String mail) {
+        return null;
+    }
+
     private boolean validarContrasenia(String password) {
         boolean tieneNumero = tieneNumero(password);
         boolean tieneMayusc = tieneMayusc(password);

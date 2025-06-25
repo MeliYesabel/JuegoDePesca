@@ -7,4 +7,6 @@ public interface ServicioUsuarioAuthI {
     void registrarUsuario(UsuarioDto usuarioDto);
 
     UsuarioAuth autenticar(String emailIngresado, String contraseniaIngresada);
+
+    UsuarioAuth buscarUsuarioPorMail(String mail);
 }
