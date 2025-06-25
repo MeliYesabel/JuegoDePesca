@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cambiar contraseña</title>
+
+    <!-- -Bootstrap y bootwatch--->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.3.3/vapor/bootstrap.min.css"
+          integrity="sha512-9LoG2EQdcmuEQpzkslqa3whcL8LM+7GGPsW2MK1gRlmiML0G7M5ZPj2aZaW2DyixslBfZoy4kANfP/MYWDCSiw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
+    <!--Fuente Pixelify--->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" th:href="@{/css/recuperar-contrasenia.css}">
+
+</head>
+
+<body>
+<a th:href="@{/login-pescador}" class="logo">
+    <div>
+        <img th:src="@{img/tsunami.png}" alt="logo-juego"/>
+        <p>SEVEN SEAS</p>
+    </div>
+</a>
+
+<div class="card border-primary rounded-4">
+    <div class="card-body">
+        <h3 class="card-title text-center mb-4 text">Cambiar contraseña</h3>
+
+        <form th:action="@{/cambiar-contrasenia}" method="post" th:object="${usuarioDto}">
+            <input type="hidden" name="token" th:value="${token}"/>
+
+        <div class="mb-3">
+            <label for="nuevaPassword" class="form-label text">Nueva contraseña</label>
+            <input th:field="*{contrasenia}" type="password" name="nuevaPassword" class="form-control"
+                   id="nuevaPassword" placeholder="Ingrese una contraseña" required>
+
+            <label for="repetirPassword" class="form-label text">Repetir contraseña</label>
+            <input th:field="*{contraseniaRepetida}" type="password" name="repetirPassword" class="form-control"
+                   id="repetirPassword" placeholder="Repetir contrasenia" required>
+
+        </div>
+
+        <button type="submit" class="btn btn-primary">Actualizar</button>
+
+        <p class="text-danger mt-3" th:if="${error}" th:text="${error}">
+        <p class="error text-warning mt-3" th:if="${campos_vacios !=null}" th:text="${campos_vacios}"></p>
+        <p class="error text-warning mt-3" th:if="${error_repeticion !=null}" th:text="${error_repeticion}"></p>
+        <p class="error text-warning mt-3" th:if="${error_password_invalid !=null}"
+           th:text="${error_password_invalid}"></p>
+        </p>
+
+        </form>
+
+    </div>
+</div>
+
+
+</body>
+</html>

@@ -41,8 +41,6 @@
                 <input type="email" name="email" class="form-control" id="email" placeholder="tucorreo@ejemplo.com" >
                 <p class="text-danger mt-3" th:if="${email_vacio !=null}" th:text="${email_vacio}"></p>
 
-                <p class="text-danger mt-3" th:if="${email_invalido !=null}" th:text="${email_invalido}">
-                </p>
             </div>
 
             <div class="botones">
@@ -53,6 +51,11 @@
             </div>
             <p class="text-danger mt-3" th:if="${no_existe !=null}" th:text="${no_existe}">
             </p>
+            <p class="text-danger mt-3" th:if="${mensaje !=null}" th:text="${mensaje}">
+            </p>
+            <p class="text-danger mt-3" th:if="${error !=null}" th:text="${error}">
+            </p>
+
 
         </form>
 

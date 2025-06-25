@@ -6,4 +6,6 @@ public interface RepositorioUsuarioAuth {
     UsuarioAuth buscarPorMail(String email);
 
     void guardar(UsuarioAuth nuevoUsuario);
+
+    void actualizar(UsuarioAuth usuario);
 }

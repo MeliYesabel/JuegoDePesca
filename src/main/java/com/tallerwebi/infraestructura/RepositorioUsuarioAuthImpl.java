@@ -28,4 +28,10 @@ public class RepositorioUsuarioAuthImpl implements RepositorioUsuarioAuth {
     public void guardar(UsuarioAuth nuevoUsuario) {
         sessionFactory.getCurrentSession().save(nuevoUsuario);
     }
+
+    @Override
+    public void actualizar(UsuarioAuth usuario) {
+        sessionFactory.getCurrentSession().update(usuario);
+
+    }
 }

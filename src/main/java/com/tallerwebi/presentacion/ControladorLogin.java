@@ -1,7 +1,7 @@
 package com.tallerwebi.presentacion;
 
 import com.tallerwebi.dominio.entidad.UsuarioAuth;
-import com.tallerwebi.dominio.excepcion.UsuarioInexistenteLoginException;
+import com.tallerwebi.dominio.excepcion.UsuarioInexistenteException;
 import com.tallerwebi.dominio.servicio.ServicioUsuarioAuthI;
 import com.tallerwebi.presentacion.dto.UsuarioDto;
 import com.tallerwebi.presentacion.dto.UsuarioSesionDto;
@@ -61,7 +61,7 @@ public class ControladorLogin {
                     return new ModelAndView("redirect:/mapa");
                 }
 
-            }catch (UsuarioInexistenteLoginException exception){
+            }catch (UsuarioInexistenteException exception){
                 datosMapeados.put("error_not_exist", "El usuario no se encuentra registrado.");
                 return new ModelAndView("login-usuario", datosMapeados);
             }

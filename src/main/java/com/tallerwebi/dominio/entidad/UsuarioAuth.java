@@ -18,9 +18,9 @@ public abstract class UsuarioAuth {
     private String tipoUsuario;
 
     //para la recuperacion de contrasenia
-    private String tokenRecuperacion;
+    /*private String tokenRecuperacion;
     private LocalDateTime expiracionToken;
-
+*/
     public Long getId() {
         return id;
     }
@@ -57,11 +57,4 @@ public abstract class UsuarioAuth {
         return tipoUsuario;
     }
 
-    public String getTokenRecuperacion() {
-        return tokenRecuperacion;
-    }
-
-    public LocalDateTime getExpiracionToken() {
-        return expiracionToken;
-    }
 }
