@@ -1,10 +1,12 @@
 package com.tallerwebi.dominio.servicio;
 
 import com.tallerwebi.dominio.Jugador;
+import com.tallerwebi.dominio.entidad.TokenRecuperacionContrasenia;
 import com.tallerwebi.dominio.entidad.UsuarioAuth;
 import com.tallerwebi.dominio.excepcion.ContraseniaInvalidaExcepcion;
 import com.tallerwebi.dominio.excepcion.UsuarioExistenteExcepcion;
 import com.tallerwebi.dominio.excepcion.UsuarioInexistenteException;
+import com.tallerwebi.dominio.repositorio.RepositorioTokenRecupContrasenia;
 import com.tallerwebi.dominio.repositorio.RepositorioUsuarioAuth;
 import com.tallerwebi.dominio.utils.PasswordUtil;
 import com.tallerwebi.presentacion.dto.UsuarioDto;
@@ -16,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class ServicioUsuarioAuthImpl implements ServicioUsuarioAuthI {
     private RepositorioUsuarioAuth repositorioUsuarioAuth;
+    private RepositorioTokenRecupContrasenia tokenRecup;
 
     @Autowired
     public ServicioUsuarioAuthImpl(RepositorioUsuarioAuth repositorioUsuarioAuth) {
@@ -23,7 +26,17 @@ public class ServicioUsuarioAuthImpl implements ServicioUsuarioAuthI {
     }
 
     @Override
-    public void actualizar(UsuarioDto usuarioDto) {
+    public void actualizarContrasenia(UsuarioDto usuarioDto, TokenRecuperacionContrasenia tokenRecibido) {
+        String password = usuarioDto.getContrasenia();
+        UsuarioAuth usuario = tokenRecibido.getUsuarioAuth();
+
+        if(validarContrasenia(password)){
+            String passwordHasheada = PasswordUtil.hashear(password);
+            usuario.setPassword(passwordHasheada);
+            repositorioUsuarioAuth.actualizar(usuario);
+            tokenRecup.eliminar(tokenRecibido);
+        }
+
 
     }
 
@@ -63,7 +76,10 @@ public class ServicioUsuarioAuthImpl implements ServicioUsuarioAuthI {
 
     @Override
     public UsuarioAuth buscarUsuarioPorMail(String mail) {
-        return null;
+        UsuarioAuth encontrado = repositorioUsuarioAuth.buscarPorMail(mail);
+        if(encontrado!=null)
+            return  encontrado;
+        throw new UsuarioInexistenteException();
     }
 
     private boolean validarContrasenia(String password) {

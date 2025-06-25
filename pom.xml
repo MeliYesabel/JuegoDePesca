@@ -23,6 +23,7 @@
 
         <mysql.version>8.0.33</mysql.version>
         <springsecurity.version>5.4.0</springsecurity.version>
+        <javamail.version>1.6.2</javamail.version>
     </properties>
 
     <dependencies>
@@ -123,6 +124,13 @@
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-crypto</artifactId>
             <version>${springsecurity.version}</version>
+        </dependency>
+
+        <!-- Dependencia para usar JavaMail  para Java version 8 u 11-->
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>${javamail.version}</version>
         </dependency>
         <!-- compile only, deployed container will provide this -->
         <!--

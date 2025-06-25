@@ -2,7 +2,6 @@ package com.tallerwebi.presentacion;
 
 import com.tallerwebi.dominio.entidad.TokenRecuperacionContrasenia;
 import com.tallerwebi.dominio.excepcion.ContraseniaInvalidaExcepcion;
-import com.tallerwebi.dominio.excepcion.UsuarioExistenteExcepcion;
 import com.tallerwebi.dominio.servicio.ServicioTokenRecupContrasenia;
 import com.tallerwebi.dominio.servicio.ServicioUsuarioAuthI;
 import com.tallerwebi.presentacion.dto.UsuarioDto;
@@ -59,9 +58,10 @@ public class ControladorCambiarContrasenia {
         try {
             TokenRecuperacionContrasenia tokenRegistrado = serviceRecuparacion.buscarPorToken(token);
             if(tokenRegistrado==null || tokenRegistrado.getExpiracionToken().isBefore(LocalDateTime.now())){
-                modelo.put("error", "");
+                modelo.put("error", "Token invalido o expirado");
+                return new ModelAndView("cambiar-contrasenia",modelo);
             }
-            servicioUsuarioAuth.actualizar(usuarioDto);
+            servicioUsuarioAuth.actualizarContrasenia(usuarioDto, tokenRegistrado);
             modelo.put("mensaje", "El cambio de contraseña fue exitoso.");
 
         } catch (ContraseniaInvalidaExcepcion excepcion) {
@@ -69,16 +69,15 @@ public class ControladorCambiarContrasenia {
 
         }
 
-        return new ModelAndView("redirect:/login-pescador");
+        return new ModelAndView("cambiar-contrasenia", modelo);
 
     }
 
     private boolean estanTodosLosCamposCompletos(UsuarioDto usuarioDto) {
-        String emailIngresado = usuarioDto.getEmail();
         String contrasenia = usuarioDto.getContrasenia();
         String contraseniaRepetida = usuarioDto.getContraseniaRepetida();
 
-        return !emailIngresado.isBlank() && !contrasenia.isBlank() && !contraseniaRepetida.isBlank();
+        return !contrasenia.isBlank() && !contraseniaRepetida.isBlank();
 
     }
 }
