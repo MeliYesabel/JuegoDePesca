@@ -6,7 +6,7 @@ import com.tallerwebi.dominio.entidad.UsuarioAuth;
 import javax.servlet.http.HttpServletRequest;
 
 public interface ServicioTokenRecupContrasenia {
-    void enviarTokenRecupacion(UsuarioAuth usuario, HttpServletRequest request);
+    void enviarTokenRecuperacion(UsuarioAuth usuario, HttpServletRequest request);
 
     TokenRecuperacionContrasenia buscarPorToken(String token);
 }

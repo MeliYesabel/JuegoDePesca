@@ -38,8 +38,18 @@ public class ControladorRecuperoContrasenia {
         }else{
             try{
                 UsuarioAuth usuario = servicioUsuario.buscarUsuarioPorMail(email);
-                serviceRecuparacion.enviarTokenRecupacion(usuario, request);
-                modelo.put("mensaje", "Se le envio un enlace de recuperacion a tu email.");
+                if (usuario == null) {
+                    modelo.put("no_existe", "El email ingresado no se encuentra registrado.");
+                } else {
+                    System.out.println("DEBUG >> Email del usuario: " + usuario.getEmail());
+                    if (usuario.getEmail() == null || usuario.getEmail().isBlank()) {
+                        modelo.put("error", "El usuario no tiene un correo válido.");
+                        return new ModelAndView("recuperar-contrasenia", modelo);
+                    }
+
+                    serviceRecuparacion.enviarTokenRecuperacion(usuario, request);
+                    modelo.put("mensaje", "Se le envió un enlace de recuperación a tu email.");
+                }
 
             }catch (UsuarioInexistenteException exception){
                 modelo.put("no_existe", "El email ingresado no se encuentra registrado.");

@@ -10,7 +10,7 @@ public class TokenRecuperacionContrasenia {
     private Long id;
 
     @OneToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     private UsuarioAuth usuarioAuth;
 
     private String token;

@@ -45,6 +45,7 @@ public class ControladorCambiarContrasenia {
     @PostMapping("/cambiar-contrasenia")
     public ModelAndView procesarCambio(@ModelAttribute("usuarioDto")UsuarioDto usuarioDto, @RequestParam("token") String token){
         ModelMap modelo = new ModelMap();
+        modelo.put("usuarioDto", usuarioDto); // <-- ¡IMPORTANTE!
 
         if(!estanTodosLosCamposCompletos(usuarioDto)){
             modelo.put("campos_vacios", "Todos los campos son obligatorios.Por favor complete los que faltan");

@@ -18,13 +18,16 @@ public class ServicioTokenRecupContraseniaImpl implements ServicioTokenRecupCont
     private ServicioMail servicioMail;
 
     @Autowired
-    public ServicioTokenRecupContraseniaImpl(RepositorioTokenRecupContrasenia repoTokenRecupPswd) {
+    public ServicioTokenRecupContraseniaImpl(RepositorioTokenRecupContrasenia repoTokenRecupPswd, ServicioMail servicioMail) {
         this.repoTokenRecupPswd = repoTokenRecupPswd;
-        this.servicioMail = new ServicioMail();
+        this.servicioMail = servicioMail;
     }
 
     @Override
-    public void enviarTokenRecupacion(UsuarioAuth usuario, HttpServletRequest request) {
+    public void enviarTokenRecuperacion(UsuarioAuth usuario, HttpServletRequest request) {
+        if (usuario.getEmail() == null || usuario.getEmail().isBlank()) {
+            throw new RuntimeException("El usuario no tiene un correo electrónico válido");
+        }
         //Genero el token random
         String tokenRandom = UUID.randomUUID().toString();
 
@@ -48,6 +51,7 @@ public class ServicioTokenRecupContraseniaImpl implements ServicioTokenRecupCont
         String cuerpo = "Hola "+ usuario.getUsername() +
                 ". Para cambiar tu contrasenia, hace click en el siguiente enlace: \n " +
                 url +"\n\n"+ "Este enlace expirara en 30 min.";
+        System.out.println("DEBUG >> Email del usuario en servicio: " + usuario.getEmail());
 
         servicioMail.enviarEmail(usuario.getEmail(), asunto, cuerpo);
 
@@ -55,6 +59,6 @@ public class ServicioTokenRecupContraseniaImpl implements ServicioTokenRecupCont
 
     @Override
     public TokenRecuperacionContrasenia buscarPorToken(String token) {
-        return null;
+        return repoTokenRecupPswd.buscarPorToken(token);
     }
 }
