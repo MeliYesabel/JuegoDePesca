@@ -4,7 +4,7 @@ import com.tallerwebi.dominio.Jugador;
 import com.tallerwebi.dominio.entidad.UsuarioAuth;
 import com.tallerwebi.dominio.excepcion.ContraseniaInvalidaExcepcion;
 import com.tallerwebi.dominio.excepcion.UsuarioExistenteExcepcion;
-import com.tallerwebi.dominio.excepcion.UsuarioInexistenteLoginException;
+import com.tallerwebi.dominio.excepcion.UsuarioInexistenteException;
 import com.tallerwebi.dominio.repositorio.RepositorioUsuarioAuth;
 import com.tallerwebi.dominio.utils.PasswordUtil;
 import com.tallerwebi.presentacion.dto.UsuarioDto;
@@ -20,6 +20,11 @@ public class ServicioUsuarioAuthImpl implements ServicioUsuarioAuthI {
     @Autowired
     public ServicioUsuarioAuthImpl(RepositorioUsuarioAuth repositorioUsuarioAuth) {
         this.repositorioUsuarioAuth = repositorioUsuarioAuth;
+    }
+
+    @Override
+    public void actualizar(UsuarioDto usuarioDto) {
+
     }
 
     @Override
@@ -53,7 +58,7 @@ public class ServicioUsuarioAuthImpl implements ServicioUsuarioAuthI {
         if(usuarioAuth!=null && PasswordUtil.verificar(contraseniaIngresada, usuarioAuth.getPassword())){
             return usuarioAuth;
         }
-        throw new UsuarioInexistenteLoginException();
+        throw new UsuarioInexistenteException();
     }
 
     @Override

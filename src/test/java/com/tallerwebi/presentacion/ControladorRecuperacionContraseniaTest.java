@@ -1,10 +1,12 @@
 package com.tallerwebi.presentacion;
 
-import com.tallerwebi.dominio.excepcion.UsuarioInexistenteLoginException;
+import com.tallerwebi.dominio.excepcion.UsuarioInexistenteException;
+import com.tallerwebi.dominio.servicio.ServicioTokenRecupContrasenia;
 import com.tallerwebi.dominio.servicio.ServicioUsuarioAuthI;
 import org.junit.jupiter.api.Test;
-import org.springframework.ui.Model;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -13,7 +15,8 @@ import static org.mockito.Mockito.mock;
 
 public class ControladorRecuperacionContraseniaTest {
     private ServicioUsuarioAuthI servicioUsuarioI = mock(ServicioUsuarioAuthI.class);
-    private ControladorRecuperoContrasenia controladorRecuperoContrasenia = new ControladorRecuperoContrasenia(servicioUsuarioI);
+    private ServicioTokenRecupContrasenia serviceRecuparacion = mock(ServicioTokenRecupContrasenia.class);
+    private ControladorRecuperoContrasenia controladorRecuperoContrasenia = new ControladorRecuperoContrasenia(servicioUsuarioI,serviceRecuparacion);
 
     @Test
     public void queSePuedaCrearFormRecuperacionContrasenia() {
@@ -33,7 +36,7 @@ public class ControladorRecuperacionContraseniaTest {
     @Test
     public void siNoHayMailRegistradoQueLaRecuperacionFalle(){
         givenQueNoHayRecuperoContrasenia();
-        doThrow(UsuarioInexistenteLoginException.class).when(servicioUsuarioI).buscarUsuarioPorMail("belen@mail.com");
+        doThrow(UsuarioInexistenteException.class).when(servicioUsuarioI).buscarUsuarioPorMail("belen@mail.com");
 
         ModelAndView vistaModelada = whenIntentoRecuperarContrasenia("belen@mail.com");
         thenLaRecuperacionFalla(vistaModelada, "no_existe", "El email ingresado no se encuentra registrado.", "recuperar-contrasenia");
@@ -47,7 +50,7 @@ public class ControladorRecuperacionContraseniaTest {
     }
 
     private void thenLaRecuperacionEsExitosa(ModelAndView vistaModelada) {
-        String vistaEsperada = "login-pescador";
+        String vistaEsperada = "recuperar-contrasenia";
         String vistaObtenida = vistaModelada.getViewName();
 
         String mensajeObtenido = vistaModelada.getModel().get("mensaje").toString();
@@ -83,7 +86,7 @@ public class ControladorRecuperacionContraseniaTest {
     }
 
     private ModelAndView whenIntentoRecuperarContrasenia(String mail) {
-        ModelAndView vistaModelada = controladorRecuperoContrasenia.recuperarContrasenia(mail);
+        ModelAndView vistaModelada = controladorRecuperoContrasenia.recuperarContrasenia(mock(HttpServletRequest.class),mail);
         return vistaModelada;
     }
 

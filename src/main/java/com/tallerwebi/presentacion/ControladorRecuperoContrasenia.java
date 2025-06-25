@@ -1,8 +1,9 @@
 package com.tallerwebi.presentacion;
 
-import com.tallerwebi.dominio.excepcion.UsuarioInexistenteLoginException;
+import com.tallerwebi.dominio.entidad.UsuarioAuth;
+import com.tallerwebi.dominio.excepcion.UsuarioInexistenteException;
+import com.tallerwebi.dominio.servicio.ServicioTokenRecupContrasenia;
 import com.tallerwebi.dominio.servicio.ServicioUsuarioAuthI;
-import com.tallerwebi.presentacion.dto.UsuarioDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -11,14 +12,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 public class ControladorRecuperoContrasenia {
 
     private ServicioUsuarioAuthI servicioUsuario;
-
+    private ServicioTokenRecupContrasenia serviceRecuparacion;
     @Autowired
-    public ControladorRecuperoContrasenia(ServicioUsuarioAuthI servicioUsuarioI) {
+    public ControladorRecuperoContrasenia(ServicioUsuarioAuthI servicioUsuarioI, ServicioTokenRecupContrasenia servicioRecuperacion) {
         this.servicioUsuario = servicioUsuarioI;
+        this.serviceRecuparacion = servicioRecuperacion;
     }
 
     @GetMapping("recuperar-contrasenia")
@@ -27,20 +31,18 @@ public class ControladorRecuperoContrasenia {
     }
 
     @PostMapping("recuperar-contrasenia")
-    public ModelAndView recuperarContrasenia(@RequestParam(name = "email") String email) {
+    public ModelAndView recuperarContrasenia(HttpServletRequest request, @RequestParam(name = "email") String email) {
         ModelMap modelo = new ModelMap();
         if(email.isBlank()) {
             modelo.put("email_vacio", "El email es obligatorio");
         }else{
-            try{//ARREGLAR CON REDIRECT
-                servicioUsuario.buscarUsuarioPorMail(email);
-                modelo.put("usuarioDto", new UsuarioDto());
+            try{
+                UsuarioAuth usuario = servicioUsuario.buscarUsuarioPorMail(email);
+                serviceRecuparacion.enviarTokenRecupacion(usuario, request);
                 modelo.put("mensaje", "Se le envio un enlace de recuperacion a tu email.");
-                return new ModelAndView("login-pescador", modelo);
 
-            }catch (UsuarioInexistenteLoginException exception){
+            }catch (UsuarioInexistenteException exception){
                 modelo.put("no_existe", "El email ingresado no se encuentra registrado.");
-                return new ModelAndView("recuperar-contrasenia", modelo);
             }
         }
         return new ModelAndView("recuperar-contrasenia", modelo);

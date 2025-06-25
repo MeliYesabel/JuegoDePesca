@@ -9,4 +9,6 @@ public interface ServicioUsuarioAuthI {
     UsuarioAuth autenticar(String emailIngresado, String contraseniaIngresada);
 
     UsuarioAuth buscarUsuarioPorMail(String mail);
+
+    void actualizar(UsuarioDto usuarioDto);
 }
