@@ -46,7 +46,7 @@ public class RepositorioJugadorImpl implements RepositorioJugador {
     public Jugador buscarjugadorPorId(Long idJugador) {
         var session = sessionFactory.getCurrentSession();
         return (Jugador) session.createCriteria(Jugador.class)
-                .add(Restrictions.eq("id_jugador", idJugador))
+                .add(Restrictions.eq("id", idJugador))
                 .uniqueResult(); /*si no encuentra nada me retorna NULL*/
     }
 }
