@@ -2,11 +2,12 @@ package com.tallerwebi.dominio;
 
 import org.springframework.ui.ModelMap;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 public interface ServicioRun {
 
-    String jugarTurno(ModelMap model);
+    void jugarTurno(HttpSession httpSession);
     Boolean hayCeboJugador(Run run);
 
     List<Pez> obtenerPecesPescados(Run run);

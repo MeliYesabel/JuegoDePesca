@@ -26,8 +26,6 @@ public class Rareza {
         this.valor = valor;
     }
 
-
-
     public String getNombre() {
         return nombre;
     }

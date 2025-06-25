@@ -14,13 +14,6 @@ public class Pez {
     @JoinColumn(name = "id_rareza")  // <- esta parte es clave
     private Rareza rareza;
 
-    public Long getId_pez() {
-        return id_pez;
-    }
-
-    public void setId_pez(Long id_pez) {
-        this.id_pez = id_pez;
-    }
 
     /*segun la explicacion del prof es mejor tener manyto one q onetoone*/
     @ManyToOne
@@ -72,4 +65,11 @@ public class Pez {
                 '}';
     }
 
+    public Long getId_pez() {
+        return id_pez;
+    }
+
+    public void setId_pez(Long id_pez) {
+        this.id_pez = id_pez;
+    }
 }

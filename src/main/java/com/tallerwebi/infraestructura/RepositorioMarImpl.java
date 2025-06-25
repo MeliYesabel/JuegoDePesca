@@ -96,4 +96,12 @@ public class RepositorioMarImpl implements RepositorioMar {
 
         return jm!=null && jm.getEstadoBloqueado();
     }
+
+    @Override
+    public Mar obtenerMarPorId(Long idMar) {
+        var session = sessionFactory.getCurrentSession();
+        return (Mar)session.createCriteria(Mar.class)
+                .add(Restrictions.eq("id_mar", idMar))
+                .uniqueResult();
+    }
 }

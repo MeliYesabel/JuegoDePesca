@@ -27,6 +27,15 @@ public class RepositorioPezImpl implements RepositorioPez {
     @Override
     public List<Pez> obtenerTodosLosPeces() {
         var session = sessionFactory.getCurrentSession();
-        return session.createCriteria(Objeto.class).list();
+        return session.createCriteria(Pez.class).list();
+    }
+
+    @Override
+    public List<Pez> buscarPorIdMar(Long idMar) {
+        var session = sessionFactory.getCurrentSession();
+        return session.createCriteria(Pez.class)
+                .createAlias("mar", "m")
+                .add(Restrictions.eq("m.id_mar", idMar))
+                .list();
     }
 }

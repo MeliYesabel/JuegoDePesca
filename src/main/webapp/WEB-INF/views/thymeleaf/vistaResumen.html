@@ -6,14 +6,15 @@
 </head>
 <body>
 <h2>Resumen de la Partida</h2>
-<p>Turnos jugados: <span th:text="${resumen.turnosJugados}"></span></p>
+<!--<p>Turnos jugados: <span th:text="${resumen.turnosJugados}"></span></p>
 <p>Total ganado: $<span th:text="${resumen.totalGanado}"></span></p>
 
 <h3>Peces pescados:</h3>
 <ul>
-    <li th:each="pez : ${resumen.pecesPescados}" th:text="${pez.nombre} + ' - $' + ${pez.precio}"></li>
-</ul>
+    <li th:each="pez : ${resumen.pecesPescados}" th:text="${pez.nombre} + ' - $' + ${pez.rareza.getValor()}"></li>
+</ul> -->
 
-
+<span>Resumen de la partida </span>
+<a href="mapa">Mapa</a>
 </body>
 </html>

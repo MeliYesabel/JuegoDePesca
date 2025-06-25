@@ -3,11 +3,16 @@ package com.tallerwebi.dominio;
 import com.tallerwebi.dominio.excepcion.ObjetoInexistenteException;
 import com.tallerwebi.dominio.excepcion.ParametroInvalidoException;
 import com.tallerwebi.infraestructura.RepositorioPez;
+import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
+@Transactional
 public class ServicioTurnoImpl implements ServicioTurno {
 
     private RepositorioPez repositorioPez;
@@ -45,7 +50,13 @@ public class ServicioTurnoImpl implements ServicioTurno {
         }
         throw new ObjetoInexistenteException("No existe");
     }
-@Override
+
+    @Override
+    public void restarCeboEquipado() {
+
+    }
+
+    @Override
 public List<Pez> obtenerTresPecesAleatorios() {
         List<Pez> todosLosPeces = repositorioPez.obtenerTodosLosPeces();
         Collections.shuffle(todosLosPeces);
@@ -59,6 +70,13 @@ public Pez pescarPezPorId(Long id) {
                 .filter(pez -> pez.getId_pez().equals(id))
                 .findFirst()
                 .orElse(null);
+    }
+
+    @Override
+    public List<Pez> obtenerTresPecesDelMar(Long idMar) {
+        List<Pez> todosLosPecesDelMar = repositorioPez.buscarPorIdMar(idMar);
+        Collections.shuffle(todosLosPecesDelMar);
+        return todosLosPecesDelMar.stream().limit(3).collect(Collectors.toList());
     }
 
 }

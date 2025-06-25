@@ -12,4 +12,6 @@ public interface ServicioMapa {
     List<Mar> obtenerTodaListaDeMares();
 
     Mar obtenerUnMarPorNombre(String nombreMar);
+
+    Mar obtenerMarPorId(Long idMar);
 }

@@ -60,4 +60,10 @@ public class ServicioMapaImplement implements ServicioMapa {
         return mar;
     }
 
+    @Override
+    public Mar obtenerMarPorId(Long idMar) {
+        Mar mar = repositorioMar.obtenerMarPorId(idMar);
+        return mar;
+    }
+
 }

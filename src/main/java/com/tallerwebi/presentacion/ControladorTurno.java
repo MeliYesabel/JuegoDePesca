@@ -15,14 +15,24 @@ import java.util.List;
 @Controller
 public class ControladorTurno {
 
-    ServicioRun servicioRun;
-    ServicioTurno servicioTurno;
+    private ServicioRun servicioRun;
+    private ServicioTurno servicioTurno;
+
+    public ControladorTurno(ServicioRun servicioRun, ServicioTurno servicioTurno) {
+        this.servicioRun = servicioRun;
+        this.servicioTurno = servicioTurno;
+    }
+
 
     @RequestMapping("/turno")
     public ModelAndView iniciarTurno(HttpSession session) {
         ModelMap model = new ModelMap();
-    return new ModelAndView("vistaTurno.html", model);
+        Long idMar = 0L;
+        List<Pez> peces = servicioTurno.obtenerTresPecesDelMar(idMar);
+        model.addAttribute("peces", peces);
+        return new ModelAndView("vistaTurno.html", model);
     }
+
 
     @RequestMapping("/pescar")
     public ModelAndView mostrarOpcionesDePesca(ModelMap model) {
@@ -35,6 +45,6 @@ public class ControladorTurno {
     public ModelAndView seleccionarPez(@RequestParam("id") Long idPez, ModelMap model) {
         Pez pezPescado = servicioTurno.pescarPezPorId(idPez);
         model.addAttribute("pezPescado", pezPescado);
-        return new ModelAndView("pezPescadoVista", model);
+        return new ModelAndView("pezPescadoVista.html", model);
     }
 }

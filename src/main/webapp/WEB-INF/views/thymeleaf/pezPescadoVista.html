@@ -6,8 +6,8 @@
 <body>
 <h1>¡Has pescado un pez!</h1>
 <p><strong>Nombre:</strong> <span th:text="${pezPescado.nombre}"></span></p>
-<p><strong>Peso:</strong> <span th:text="${pezPescado.peso}"></span> kg</p>
+<p><strong>Valor:</strong> <span th:text="${pezPescado.rareza.getValor()}"></span> $</p>
 
-<a href="/run">Volver a pescar</a>
+<a th:href="@{/verificar-cebo}">Volver a pescar</a>
 </body>
 </html>

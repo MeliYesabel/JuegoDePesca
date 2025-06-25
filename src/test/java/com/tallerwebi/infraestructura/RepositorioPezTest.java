@@ -72,6 +72,35 @@ public class RepositorioPezTest {
     }
 
 
+    @Test
+    @Transactional
+    @Rollback
+    public void quePuedaBuscarPecesPorIdDeMar() {
+        Long idMarNordico = givenMarConPeces("Nordico", 2);
+        givenMarConPeces("Griego", 3);
+        List<Pez> pecesNordico = whenBuscoPecesPorIdMar(idMarNordico);
+
+        assertEquals(2, pecesNordico.size());
+    }
+
+    private List<Pez> whenBuscoPecesPorIdMar(Long idMarNordico) {
+        List<Pez> pecesNordico;
+        return  repositorioPez.buscarPorIdMar(idMarNordico);
+    }
+
+    private Long givenMarConPeces(String nombreMar, int cantidadPeces) {
+        Mar mar = new Mar();
+        mar.setNombre(nombreMar);
+        sessionFactory.getCurrentSession().save(mar);
+
+        for (int i = 0; i < cantidadPeces; i++) {
+            Pez pez = new Pez();
+            pez.setMar(mar);
+            sessionFactory.getCurrentSession().save(pez);
+        }
+
+        return mar.getId_mar();
+    }
 
 
 }

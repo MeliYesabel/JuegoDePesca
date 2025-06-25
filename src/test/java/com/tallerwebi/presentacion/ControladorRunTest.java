@@ -12,6 +12,7 @@ import static org.mockito.Mockito.*;
 
 public class ControladorRunTest {
 
+    private ServicioMapa servicioMapaMock;
     private ServicioRun servicioRunMock;
     private ControladorRun controladorRun;
     private HttpSession session;
@@ -22,7 +23,8 @@ public class ControladorRunTest {
     @BeforeEach
     public void setUp() {
         servicioRunMock = mock(ServicioRun.class);
-        controladorRun = new ControladorRun(servicioRunMock);
+        servicioMapaMock = mock(ServicioMapa.class);
+        controladorRun = new ControladorRun(servicioRunMock, servicioMapaMock);
         session = mock(HttpSession.class);
 
         jugador = new Jugador();

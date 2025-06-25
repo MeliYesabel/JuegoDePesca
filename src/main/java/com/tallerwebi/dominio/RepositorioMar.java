@@ -17,4 +17,6 @@ public interface RepositorioMar  {
     Mar obtenerElPrecioDeUnMarBloqueado(String marBloqueado);
 
     boolean obtenerElEstadoMarDelJugador(Mar mar, Jugador jugadorActual);
+
+    Mar obtenerMarPorId(Long idMar);
 }

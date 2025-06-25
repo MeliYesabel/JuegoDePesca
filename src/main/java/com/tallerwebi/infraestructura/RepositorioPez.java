@@ -8,4 +8,6 @@ public interface RepositorioPez {
     List<Pez> buscarPezPorMar(String nombreDelMar);
 
     List<Pez> obtenerTodosLosPeces();
+
+    List<Pez> buscarPorIdMar(Long idMar);
 }

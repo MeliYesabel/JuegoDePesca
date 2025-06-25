@@ -3,6 +3,7 @@ package com.tallerwebi.dominio;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
 
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -10,17 +11,24 @@ import java.util.List;
 @Transactional
 public class ServicioRunImpl implements ServicioRun {
 
+    ServicioTurno servicioTurno;
+
+    public ServicioRunImpl(ServicioTurno servicioTurno) {
+        this.servicioTurno = servicioTurno;
+
+    }
     @Override
-    public String jugarTurno(ModelMap model) {
-        return "";
+    public void jugarTurno(HttpSession httpSession) {
     }
 
     @Override
     public Boolean hayCeboJugador(Run run) {
-        return run.getJugador() != null && run.getJugador().getCeboEquipado() > 0;
+        return run != null
+                && run.getJugador() != null
+                && run.getJugador().getCeboEquipado() != null
+                && run.getJugador().getCeboEquipado() > 0;
     }
-
-    @Override
+        @Override
     public List<Pez> obtenerPecesPescados(Run run) {
         return List.of();
     }

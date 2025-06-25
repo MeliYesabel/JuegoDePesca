@@ -5,10 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -19,14 +22,16 @@ public class ControladorRun {
 
     private ServicioRun servicioRun;
     private Run run = new Run();
+    private ServicioMapa servicioMapa;
 
     @Autowired
-    public ControladorRun(ServicioRun servicioRun) {
+    public ControladorRun(ServicioRun servicioRun,  ServicioMapa servicioMapa) {
         this.servicioRun = servicioRun;
+        this.servicioMapa = servicioMapa;
     }
 
     // PRIMER INGRESO a /Run: se muestra pantalla de inicio
-    @RequestMapping("/run")
+   /* @RequestMapping("/run")
     public ModelAndView iniciarPartida(HttpSession session) {
         ModelMap model = new ModelMap();
 
@@ -37,20 +42,42 @@ public class ControladorRun {
         //model.put("cantidadCebo", jugador.getCantidadCeboSeleccionado());
         //model.put("cantidadCebo", run.getCebo());
         return new ModelAndView("vistaRun.html", model);
-    }
+    }*/                                                         // comento para ir a run desde el boton empezar
 
-    @RequestMapping("/Run/verificar-cebo")
+    @RequestMapping("/verificar-cebo")
     public ModelAndView verificarCeboJugador(HttpSession session) {
         Run run = (Run) session.getAttribute("run");
-
+/*
         if (run == null || run.getJugador() == null) {
             return new ModelAndView("redirect:/run"); // vuelve al inicio si falta algo
         }
-
+*/
         if (servicioRun.hayCeboJugador(run)) {
             return new ModelAndView("redirect:/turno");
         } else {
             return new ModelAndView("redirect:/resumen");
         }
     }
+    @PostMapping("/run")
+    public ModelAndView iniciarRun(@RequestParam("idMar") Long idMar, HttpSession session) {
+        Jugador jugador = (Jugador) session.getAttribute("jugador");
+
+       /* if (jugador == null) {
+            return new ModelAndView("redirect:/login"); // o algún manejo de error
+        }*///por el momento no lo pongo hasta juntar lo de login
+
+
+        Mar marSeleccionado = servicioMapa.obtenerMarPorId(idMar);
+
+        Run run = new Run();
+        run.setJugador(jugador);
+        run.setMar(marSeleccionado);
+
+        session.setAttribute("run", run);
+
+        ModelAndView mav = new ModelAndView("vistaRun");
+        mav.addObject("run", run);
+        return mav;
+    }
+
 }
