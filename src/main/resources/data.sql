@@ -28,11 +28,11 @@ INSERT INTO Mar (id_mar,nombre,precio,descripcion,estadoBloqueado) VALUES
 INSERT INTO JugadorMar(id_jugador,id_mar,estadoBloqueado)VALUES
 (2,1,false),
 (2,2,true),
-(2,2,true),
-(2,2,true),
-(2,2,true),
-(2,2,true),
-(2,2,true);
+(2,3,true),
+(2,4,true),
+(2,5,true),
+(2,6,true),
+(2,7,true);
 
 
 
