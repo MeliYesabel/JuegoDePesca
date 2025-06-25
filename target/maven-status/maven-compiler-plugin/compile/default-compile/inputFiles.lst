@@ -4,13 +4,17 @@ C:\Users\arenas\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\infraestr
 C:\Users\arenas\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\MyServletInitializer.java
 C:\Users\arenas\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\presentacion\ControladorLoginEjemplo.java
 C:\Users\arenas\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\presentacion\ControladorTienda.java
+C:\Users\arenas\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\dominio\ServicioColecciones.java
 C:\Users\arenas\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\dominio\Usuario.java
 C:\Users\arenas\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\presentacion\ControladorMapa.java
 C:\Users\arenas\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\config\SpringWebConfig.java
+C:\Users\arenas\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\presentacion\ControladorLibroDeColeccion.java
 C:\Users\arenas\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\presentacion\ControladorRegistro.java
 C:\Users\arenas\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\presentacion\ControladorLogin.java
+C:\Users\arenas\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\dominio\DatosColeccion.java
 C:\Users\arenas\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\dominio\ServicioLoginImpl.java
 C:\Users\arenas\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\config\HibernateConfig.java
+C:\Users\arenas\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\dominio\ServicioColeccionesImpl.java
 C:\Users\arenas\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\presentacion\ControladorLogros.java
 C:\Users\arenas\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\dominio\excepcion\UsuarioExistente.java
 C:\Users\arenas\IdeaProjects\JuegoDePesca\src\main\java\com\tallerwebi\dominio\RepositorioUsuario.java

@@ -1,15 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Libro de colecciones</title>
 </head>
 <body>
 <header>
-    <h1>Colecciones</h1>
+
 </header>
 
-<p th:text=" ${claveColeccion}">  </p>
 
+<table border="1" style="width: 50%; text-align: center;">
+    <caption><h1>Tus Colecciónes</h1></caption>
+    <tr>
+        <th>Nombre</th>
+        <th>peso</th>
+        <th>Rareza</th>
+        <th>Valor base</th>
+        <th>Cantidad</th>
+    </tr>
+    <tr>
+
+        <td th:text="${datosColeccion.getNombre()}"></td>
+        <td th:text="${datosColeccion.getPeso()}"></td>
+        <td th:text="${datosColeccion.getRareza()}"></td>
+        <td th:text="${datosColeccion.getValorBase()}"></td>
+        <td th:text="${datosColeccion.getCantidadDePeces()}"></td>
+
+    </tr>
+
+</table><br>
+<a href="filtrarColeccion" class="btn btn-primary btn-block">Filtrar</a>&nbsp;
+<a href="ordenarColeccion" class="btn btn-primary btn-block">Ordenar</a>
 </body>
 </html>
