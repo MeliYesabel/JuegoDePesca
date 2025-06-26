@@ -1,5 +1,6 @@
 package com.tallerwebi.dominio.servicio;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.mail.*;
@@ -12,7 +13,9 @@ import java.util.Properties;
 //Aplicando JavaMail
 @Service
 public class ServicioMail {
+    @Value("${email.usuario}")
     private String remitente;
+    @Value("${email.clave}")
     private String clave;
 
 
