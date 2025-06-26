@@ -33,4 +33,4 @@ src/main/webapp/resources/core/js/node_modules
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
-/src/main/resources/email.properties
+#/src/main/resources/email.properties
