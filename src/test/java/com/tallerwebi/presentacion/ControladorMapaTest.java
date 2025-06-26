@@ -32,16 +32,31 @@ public class ControladorMapaTest {
         controladorMapa = new ControladorMapa(servicioMapa, servicioJugador);
     }
 
-   /* @Test con exception
-    public void queSiNoObtieneTodaLaListaDeMares() {}*/
+    @Test
+    public void siAlBuscarUnMarPorNombreEsInexistenteMeRedirijaAVistaMapaYMeMuestreMarError() {
+        HttpSession session = mock(HttpSession.class);
+
+        // session
+        UsuarioSesionDto usuarioSesion = new UsuarioSesionDto(3L,"Anahi","PERSCADOR");
+        Jugador jugador = new Jugador("Anahi","anis",30.0,1);
+        jugador.setId(3L);
+
+        Mar mar = new Mar("Mitologia Nordica", 150.0, "mar dos", false);
+
+
+        when(session.getAttribute("usuarioLogueado")).thenReturn(usuarioSesion);
+        when(servicioJugador.buscarJugadorPorId(3L)).thenReturn(jugador);
+        when(servicioMapa.obtenerUnMarPorNombre("Mitologia")).thenReturn(mar);
+
+        ModelAndView mv = whenLaRedireccionEsSegunElJugadorOMar(session,mar.getNombre());
+        thenLaVistaFueRedirigidaADondeIba(mv,"vistaMapa");
+    }
 
     @Test
     public void queAlObtenerTodaLaListaDeMaresIrAVistaMapa(){
         List<Mar> listaMar = givenInstanciaDeTodosLosMares();
-
         //mock
         when(servicioMapa.obtenerTodaListaDeMares()).thenReturn(listaMar);
-
         //when
         ModelAndView mv = controladorMapa.irAVistaMapa();
 

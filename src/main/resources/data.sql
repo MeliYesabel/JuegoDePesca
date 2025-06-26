@@ -21,7 +21,7 @@ INSERT INTO Mar (id_mar,nombre,precio,descripcion,estadoBloqueado) VALUES
 (3,'Mitologia Japonesa', 200.0, 'mar tres', TRUE),
 (4,'Mitologia Yoruba', 250.0, 'mar cuatro', TRUE),
 (5,'Mitologia Indu', 300.0, 'mar cinco', TRUE),
-(6,'Mitologia Asteca', 350.0, 'mar seis', TRUE),
+(6,'Mitologia Azteca', 350.0, 'mar seis', TRUE),
 (7,'Mitologia China', 450.0, 'mar siete', TRUE);
 
 --tabla jugadorMar jugador:bart@gmail.com contra:Barto123!
