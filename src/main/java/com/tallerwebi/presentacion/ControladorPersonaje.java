@@ -3,6 +3,7 @@ package com.tallerwebi.presentacion;
 import com.tallerwebi.dominio.*;
 import com.tallerwebi.dominio.excepcion.ObjetoInexistenteException;
 import com.tallerwebi.dominio.excepcion.ParametroInvalidoException;
+import com.tallerwebi.presentacion.dto.UsuarioSesionDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -33,15 +34,17 @@ public class ControladorPersonaje {
     public ModelAndView irAPersonaje(HttpSession session){
         ModelMap model = new ModelMap();
 
-        Jugador jugador = (Jugador) session.getAttribute("jugador");
+       // Jugador jugador = (Jugador) session.getAttribute("jugador");
+       UsuarioSesionDto usuarioSesion = (UsuarioSesionDto) session.getAttribute("usuarioLogueado");
+       Jugador jugador = servicioJugador.buscarJugadorPorId(usuarioSesion.getId());
 
-        if (jugador == null) {
+      /*  if (jugador == null) {
             jugador = servicioJugador.inicializarJugador(); // solo entra acá la primera vez
             session.setAttribute("jugador", jugador);
         } else{
             jugador = repositorioJugador.buscarJugador(jugador.getId());
             session.setAttribute("jugador", jugador);
-        }
+        }*/
 
         model.put("jugador", jugador);
         model.put("clavePersonaje", "Esta es la pantalla personaje");
@@ -54,7 +57,9 @@ public class ControladorPersonaje {
     public ModelAndView irAObjeto(HttpSession session){
         ModelMap model = new ModelMap();
 
-        Jugador jugador = (Jugador) session.getAttribute("jugador");
+        //Jugador jugador = (Jugador) session.getAttribute("jugador");
+        UsuarioSesionDto usuarioSesion = (UsuarioSesionDto) session.getAttribute("usuarioLogueado");
+        Jugador jugador = servicioJugador.buscarJugadorPorId(usuarioSesion.getId());
 
         if (jugador == null) {
             model.put("error", "No hay sesión activa");
@@ -77,7 +82,9 @@ public class ControladorPersonaje {
     public ModelAndView equiparCania(HttpSession session, @RequestParam Long idObjeto) {
         ModelMap model = new ModelMap();
 
-        Jugador jugador = (Jugador) session.getAttribute("jugador");
+       // Jugador jugador = (Jugador) session.getAttribute("jugador");
+        UsuarioSesionDto usuarioSesion = (UsuarioSesionDto) session.getAttribute("usuarioLogueado");
+        Jugador jugador = servicioJugador.buscarJugadorPorId(usuarioSesion.getId());
 
         if (jugador == null) {
             model.put("error", "No hay sesión activa para este jugador");

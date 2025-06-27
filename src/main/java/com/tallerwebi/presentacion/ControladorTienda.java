@@ -8,6 +8,7 @@ import com.tallerwebi.dominio.excepcion.ObjetoYaCompradoException;
 import com.tallerwebi.dominio.excepcion.ParametroInvalidoException;
 import com.tallerwebi.dominio.RepositorioObjeto;
 import com.tallerwebi.infraestructura.RepositorioJugadorImpl;
+import com.tallerwebi.presentacion.dto.UsuarioSesionDto;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +24,7 @@ import javax.servlet.http.HttpSession;
 public class ControladorTienda {
 
     private ServicioTienda servicioTienda;
+    private ServicioJugador servicioJugador;
     private RepositorioObjeto repositorioObjeto;
 
     /*@Autowired
@@ -31,9 +33,10 @@ public class ControladorTienda {
     SessionFactory sessionFactory;*/
 
     @Autowired
-    public ControladorTienda(ServicioTienda servicioTienda,RepositorioObjeto repositorioObjeto) {
+    public ControladorTienda(ServicioTienda servicioTienda,ServicioJugador servicioJugador,RepositorioObjeto repositorioObjeto) {
         this.servicioTienda = servicioTienda;
         this.repositorioObjeto = repositorioObjeto;
+        this.servicioJugador = servicioJugador;
 
        // this.repositorioJugador = new RepositorioJugadorImpl(); //lo agregue ahora
     }
@@ -48,7 +51,10 @@ public class ControladorTienda {
 
        servicioTienda.inicializarTienda();
 
-        Jugador jugador = (Jugador) session.getAttribute("jugador");
+       // Jugador jugador = (Jugador) session.getAttribute("jugador");
+
+        UsuarioSesionDto usuarioSesion = (UsuarioSesionDto) session.getAttribute("usuarioLogueado");
+        Jugador jugador = servicioJugador.buscarJugadorPorId(usuarioSesion.getId());
 
         if (jugador == null) {
             model.put("error", "No hay sesiones activas para este jugador");
@@ -71,7 +77,9 @@ public class ControladorTienda {
         ModelMap model = new ModelMap();
 
         // Recupero el jugador desde la sesión (que ya debería estar guardado)
-        Jugador jugador = (Jugador) session.getAttribute("jugador");
+        //Jugador jugador = (Jugador) session.getAttribute("jugador");
+        UsuarioSesionDto usuarioSesion = (UsuarioSesionDto) session.getAttribute("usuarioLogueado");
+        Jugador jugador = servicioJugador.buscarJugadorPorId(usuarioSesion.getId());
 
         if(jugador == null){
             model.put("error","No hay sesiones activas para este jugador");

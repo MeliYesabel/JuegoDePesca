@@ -1,10 +1,7 @@
 package com.tallerwebi.presentacion;
 
-import com.tallerwebi.dominio.Jugador;
+import com.tallerwebi.dominio.*;
 import com.tallerwebi.dominio.excepcion.MonedasInsuficientesException;
-import com.tallerwebi.dominio.ServicioTienda;
-import com.tallerwebi.dominio.Objeto;
-import com.tallerwebi.dominio.RepositorioObjeto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.web.servlet.ModelAndView;
@@ -21,6 +18,7 @@ public class ControladorTiendaTest {
     private Jugador jugador;
     private Objeto objeto;
     private ServicioTienda servicioTienda;
+    private ServicioJugador servicioJugador;
     private ControladorTienda controladorTienda;
     private  HttpSession session;
     private RepositorioObjeto repositorioObjeto;
@@ -31,8 +29,9 @@ public class ControladorTiendaTest {
          objeto = new Objeto(100.0,"caña metal");
          objeto.setIdObjeto(1L);
         servicioTienda = mock(ServicioTienda.class);
+        servicioJugador = mock(ServicioJugador.class); //lo agregue porque lo puse en el parametro del controlador poner el mokito en los test
         Long idObjeto = objeto.getIdObjeto();
-        controladorTienda = new ControladorTienda(servicioTienda,repositorioObjeto);
+        controladorTienda = new ControladorTienda(servicioTienda,servicioJugador,repositorioObjeto);
        session = mock(HttpSession.class);
         when(session.getAttribute("jugador")).thenReturn(jugador);
     }
