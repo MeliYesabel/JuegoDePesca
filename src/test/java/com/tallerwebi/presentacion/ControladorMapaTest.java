@@ -1,12 +1,11 @@
 package com.tallerwebi.presentacion;
 
-import com.tallerwebi.dominio.Jugador;
-import com.tallerwebi.dominio.Mar;
-import com.tallerwebi.dominio.ServicioMapa;
-import com.tallerwebi.dominio.ServicioJugador;
+import com.tallerwebi.dominio.entidad.Jugador;
+import com.tallerwebi.dominio.entidad.Mar;
+import com.tallerwebi.dominio.servicio.ServicioMapa;
+import com.tallerwebi.dominio.servicio.ServicioJugador;
 import com.tallerwebi.presentacion.dto.UsuarioSesionDto;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.web.servlet.ModelAndView;
 

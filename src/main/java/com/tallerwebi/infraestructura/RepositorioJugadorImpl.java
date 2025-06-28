@@ -1,11 +1,10 @@
 package com.tallerwebi.infraestructura;
 
-import com.tallerwebi.dominio.Jugador;
-import com.tallerwebi.dominio.Objeto;
-import com.tallerwebi.dominio.RepositorioJugador;
+import com.tallerwebi.dominio.entidad.Jugador;
+import com.tallerwebi.dominio.entidad.Objeto;
+import com.tallerwebi.dominio.repositorio.RepositorioJugador;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;

@@ -1,5 +1,8 @@
 package com.tallerwebi.dominio;
 
+import com.tallerwebi.dominio.entidad.Jugador;
+import com.tallerwebi.dominio.servicio.ServicioSeleccion;
+import com.tallerwebi.dominio.servicio.ServicioSeleccionImp;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 

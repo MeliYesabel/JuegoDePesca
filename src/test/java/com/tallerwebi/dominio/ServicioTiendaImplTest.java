@@ -1,8 +1,13 @@
 package com.tallerwebi.dominio;
 
+import com.tallerwebi.dominio.entidad.Jugador;
+import com.tallerwebi.dominio.entidad.Objeto;
 import com.tallerwebi.dominio.excepcion.MonedasInsuficientesException;
 import com.tallerwebi.dominio.excepcion.ObjetoInexistenteException;
 import com.tallerwebi.dominio.excepcion.ParametroInvalidoException;
+import com.tallerwebi.dominio.repositorio.RepositorioJugador;
+import com.tallerwebi.dominio.repositorio.RepositorioObjeto;
+import com.tallerwebi.dominio.servicio.ServicioTiendaImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

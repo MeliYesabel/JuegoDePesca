@@ -34,7 +34,7 @@ public class ControladorLogin {
     }
 
 
-    @PostMapping("/login")
+    @PostMapping("/login-pescador")
     public ModelAndView procesarLogin(@ModelAttribute("usuarioDto")UsuarioDto usuarioDto, HttpServletRequest request){
         ModelMap datosMapeados =new ModelMap();
         String emailIngresado = usuarioDto.getEmail();
@@ -74,7 +74,7 @@ public class ControladorLogin {
     @GetMapping("/logout")
     public String looout(HttpServletRequest request){
         request.getSession().invalidate();
-        return "redirect:/login-pescador";
+        return "redirect:/login";
     }
 
     private boolean emailTieneUnFormatoValido(String emailIngresado) {

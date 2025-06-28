@@ -1,8 +1,8 @@
 package com.tallerwebi.presentacion;
 
-import com.tallerwebi.dominio.Pez;
-import com.tallerwebi.dominio.ServicioRun;
-import com.tallerwebi.dominio.ServicioTurno;
+import com.tallerwebi.dominio.entidad.Pez;
+import com.tallerwebi.dominio.servicio.ServicioRun;
+import com.tallerwebi.dominio.servicio.ServicioTurno;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;

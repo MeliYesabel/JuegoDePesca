@@ -1,14 +1,12 @@
 package com.tallerwebi.presentacion;
 
-import com.tallerwebi.dominio.*;
-import com.tallerwebi.dominio.Objeto;
+import com.tallerwebi.dominio.entidad.Jugador;
 import com.tallerwebi.dominio.excepcion.MonedasInsuficientesException;
 import com.tallerwebi.dominio.excepcion.ObjetoInexistenteException;
 import com.tallerwebi.dominio.excepcion.ObjetoYaCompradoException;
 import com.tallerwebi.dominio.excepcion.ParametroInvalidoException;
-import com.tallerwebi.dominio.RepositorioObjeto;
-import com.tallerwebi.infraestructura.RepositorioJugadorImpl;
-import org.hibernate.SessionFactory;
+import com.tallerwebi.dominio.repositorio.RepositorioObjeto;
+import com.tallerwebi.dominio.servicio.ServicioTienda;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

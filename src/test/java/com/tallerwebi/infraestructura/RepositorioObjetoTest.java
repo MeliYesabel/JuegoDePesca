@@ -2,7 +2,7 @@ package com.tallerwebi.infraestructura;
 
 //import com.mysql.cj.xdevapi.SessionFactory;
 
-import com.tallerwebi.dominio.Objeto;
+import com.tallerwebi.dominio.entidad.Objeto;
 import com.tallerwebi.integracion.config.HibernateTestConfig;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,7 +17,6 @@ import org.hibernate.SessionFactory;
 import javax.transaction.Transactional;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;

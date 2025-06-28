@@ -1,19 +1,15 @@
 package com.tallerwebi.presentacion;
 
-import com.tallerwebi.dominio.Jugador;
-import com.tallerwebi.dominio.ServicioMapa;
-import com.tallerwebi.dominio.ServicioSeleccion;
+import com.tallerwebi.dominio.entidad.Jugador;
+import com.tallerwebi.dominio.servicio.ServicioMapa;
+import com.tallerwebi.dominio.servicio.ServicioSeleccion;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.http.HttpSession;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.equalToIgnoringCase;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 public class ControladorSeleccionTest {
 

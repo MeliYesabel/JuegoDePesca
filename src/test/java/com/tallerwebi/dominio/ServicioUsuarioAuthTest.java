@@ -1,5 +1,6 @@
 package com.tallerwebi.dominio;
 
+import com.tallerwebi.dominio.entidad.Jugador;
 import com.tallerwebi.dominio.entidad.UsuarioAuth;
 import com.tallerwebi.dominio.excepcion.ContraseniaInvalidaExcepcion;
 import com.tallerwebi.dominio.excepcion.UsuarioExistenteExcepcion;

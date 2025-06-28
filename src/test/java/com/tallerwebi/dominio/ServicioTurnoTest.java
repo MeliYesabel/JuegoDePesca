@@ -1,7 +1,12 @@
 package com.tallerwebi.dominio;
+import com.tallerwebi.dominio.entidad.Mar;
+import com.tallerwebi.dominio.entidad.Pez;
+import com.tallerwebi.dominio.entidad.Run;
+import com.tallerwebi.dominio.entidad.Turno;
 import com.tallerwebi.dominio.excepcion.ObjetoInexistenteException;
 import com.tallerwebi.dominio.excepcion.ParametroInvalidoException;
-import com.tallerwebi.infraestructura.RepositorioPez;
+import com.tallerwebi.dominio.servicio.ServicioTurnoImpl;
+import com.tallerwebi.dominio.repositorio.RepositorioPez;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;

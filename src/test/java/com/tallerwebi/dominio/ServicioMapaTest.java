@@ -1,5 +1,11 @@
 package com.tallerwebi.dominio;
 
+import com.tallerwebi.dominio.entidad.Jugador;
+import com.tallerwebi.dominio.entidad.JugadorMar;
+import com.tallerwebi.dominio.entidad.Mar;
+import com.tallerwebi.dominio.repositorio.RepositorioMar;
+import com.tallerwebi.dominio.servicio.ServicioMapa;
+import com.tallerwebi.dominio.servicio.ServicioMapaImplement;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

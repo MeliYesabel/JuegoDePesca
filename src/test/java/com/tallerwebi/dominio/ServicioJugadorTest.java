@@ -1,8 +1,13 @@
 package com.tallerwebi.dominio;
 
+import com.tallerwebi.dominio.entidad.Jugador;
+import com.tallerwebi.dominio.repositorio.RepositorioJugador;
+import com.tallerwebi.dominio.repositorio.RepositorioObjeto;
+import com.tallerwebi.dominio.servicio.ServicioJugador;
+import com.tallerwebi.dominio.servicio.ServicioJugadorImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.mock;
