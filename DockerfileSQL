@@ -1,14 +1,14 @@
-# Usa la imagen oficial de MySQL como base
+#Usa la imagen oficial de MySQL como base
 FROM mysql:5.7
 
-# Establece las variables de entorno para la configuración de MySQL
+#Establece las variables de entorno para la configuración de MySQL
 ENV MYSQL_ROOT_PASSWORD=rootpassword
 ENV MYSQL_DATABASE=tallerwebi
 ENV MYSQL_USER=user
 ENV MYSQL_PASSWORD=user
 
-# Copia cualquier script SQL que desees ejecutar en la inicialización
+#Copia cualquier script SQL que desees ejecutar en la inicialización
 #COPY ./init.sql /docker-entrypoint-initdb.d/
 
-# Expone el puerto 3306
+#Expone el puerto 3306
 EXPOSE 3306

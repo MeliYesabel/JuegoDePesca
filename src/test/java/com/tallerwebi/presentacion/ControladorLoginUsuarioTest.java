@@ -1,6 +1,6 @@
 package com.tallerwebi.presentacion;
 
-import com.tallerwebi.dominio.excepcion.UsuarioInexistenteException;
+import com.tallerwebi.dominio.excepcion.UsuarioInexistenteLoginException;
 import com.tallerwebi.dominio.servicio.ServicioUsuarioAuthI;
 import com.tallerwebi.presentacion.dto.UsuarioDto;
 import org.junit.jupiter.api.Test;
@@ -60,7 +60,7 @@ public class ControladorLoginUsuarioTest {
         givenNoHayUsuarioLogueado();
 
         //setear comportamiento de mockito
-        doThrow(UsuarioInexistenteException.class).when(servicioUsuarioI).autenticar("bel@mail.com", "hola");
+        doThrow(UsuarioInexistenteLoginException.class).when(servicioUsuarioI).autenticar("bel@mail.com", "hola");
         /*ModelAndView mav = whenGeneroUsuarioLogueado("bel@mail.com", "hola");
         thenElLoginFalla(mav);*/
     }

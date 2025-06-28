@@ -1,7 +1,7 @@
 package com.tallerwebi.presentacion;
 
 import com.tallerwebi.dominio.entidad.UsuarioAuth;
-import com.tallerwebi.dominio.excepcion.UsuarioInexistenteException;
+import com.tallerwebi.dominio.excepcion.UsuarioInexistenteLoginException;
 import com.tallerwebi.dominio.servicio.ServicioUsuarioAuthI;
 import com.tallerwebi.presentacion.dto.UsuarioDto;
 import com.tallerwebi.presentacion.dto.UsuarioSesionDto;
@@ -26,7 +26,7 @@ public class ControladorLogin {
         this.servicioUsuarioAuthI = servicioUsuarioI;
     }
 
-    @GetMapping("/login-pescador")
+    @GetMapping("/login")
     public ModelAndView mostrarLogin() {
         ModelMap modeloLogin = new ModelMap();
         modeloLogin.put("usuarioDto", new UsuarioDto());
@@ -34,7 +34,7 @@ public class ControladorLogin {
     }
 
 
-    @PostMapping("/login-pescador")
+    @PostMapping("/login")
     public ModelAndView procesarLogin(@ModelAttribute("usuarioDto")UsuarioDto usuarioDto, HttpServletRequest request){
         ModelMap datosMapeados =new ModelMap();
         String emailIngresado = usuarioDto.getEmail();
@@ -61,7 +61,7 @@ public class ControladorLogin {
                     return new ModelAndView("redirect:/mapa");
                 }
 
-            }catch (UsuarioInexistenteException exception){
+            }catch (UsuarioInexistenteLoginException exception){
                 datosMapeados.put("error_not_exist", "El usuario no se encuentra registrado.");
                 return new ModelAndView("login-usuario", datosMapeados);
             }
