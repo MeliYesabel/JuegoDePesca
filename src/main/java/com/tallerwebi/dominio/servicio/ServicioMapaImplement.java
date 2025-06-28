@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.List;
 
-@Service /*decir que es un clase servicio*/
-@Transactional /*que sea mas raapido ? */
+@Service
+@Transactional
 public class ServicioMapaImplement implements ServicioMapa {
 
 

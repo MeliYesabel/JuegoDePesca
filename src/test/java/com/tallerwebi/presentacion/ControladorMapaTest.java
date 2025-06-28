@@ -2,6 +2,7 @@ package com.tallerwebi.presentacion;
 
 import com.tallerwebi.dominio.entidad.Jugador;
 import com.tallerwebi.dominio.entidad.Mar;
+import com.tallerwebi.dominio.excepcion.NoSePuedodesbloquearElMarException;
 import com.tallerwebi.dominio.servicio.ServicioMapa;
 import com.tallerwebi.dominio.servicio.ServicioJugador;
 import com.tallerwebi.presentacion.dto.UsuarioSesionDto;
@@ -29,6 +30,52 @@ public class ControladorMapaTest {
     @BeforeEach
     public void init() {
         controladorMapa = new ControladorMapa(servicioMapa, servicioJugador);
+    }
+
+
+    @Test
+    public void siAlDesbloquearUnMarLaEjecucionFallaMeRedirijaAVistaMarBloqueado() {
+        HttpSession session = mock(HttpSession.class);
+
+        // session
+        UsuarioSesionDto usuarioSesion = new UsuarioSesionDto(3L, "Anahi", "PESCADOR");
+        Jugador jugador = new Jugador("Anahi", "anis", 300.0, 1);
+        jugador.setId(3L);
+
+        Mar mar = new Mar("Mitologia Nordica", 150.0, "mar dos", false);
+
+        when(session.getAttribute("usuarioLogueado")).thenReturn(usuarioSesion);
+        when(servicioJugador.buscarJugadorPorId(3L)).thenReturn(jugador);
+        when(servicioMapa.obtenerUnMarPorNombre("Mitologia Nordica")).thenReturn(mar);
+        when(servicioMapa.obtenerElEstadoDelMarSegunELJugador(mar, jugador)).thenReturn(false); // para que entre al try
+
+        doThrow(new NoSePuedodesbloquearElMarException("Fallo")).when(servicioMapa)
+                .desbloquearMarSegunElJugador(mar, jugador);
+
+        ModelAndView mv = controladorMapa.desbloquearMarSeleccionado(session, mar.getNombre());
+
+        assertThat(mv.getViewName(), equalToIgnoringCase("vistaMarBloqueado"));
+    }
+
+
+    @Test
+    public void siAlDesbloquearUnMarLaEjecucionEsExitosaSeRedirijaAVistaSeleccionDelMArSolicitado(){
+        HttpSession session = mock(HttpSession.class);
+        // session
+        UsuarioSesionDto usuarioSesion = new UsuarioSesionDto(3L,"Anahi","PERSCADOR");
+        Jugador jugador = new Jugador("Anahi","anis",300.0,1);
+        jugador.setId(3L);
+
+        Mar mar = new Mar("Mitologia Nordica", 150.0, "mar dos", false);
+
+        when(session.getAttribute("usuarioLogueado")).thenReturn(usuarioSesion);
+        when(servicioJugador.buscarJugadorPorId(3L)).thenReturn(jugador);
+        when(servicioMapa.obtenerUnMarPorNombre("Mitologia")).thenReturn(mar);
+        when(servicioMapa.desbloquearMarSegunElJugador(mar,jugador)).thenReturn(true);
+
+        ModelAndView mv = controladorMapa.desbloquearMarSeleccionado(session,mar.getNombre());
+        assertThat(mv.getViewName(), equalToIgnoringCase("redirect:/marSeleccionado/Mitologia Nordica"));
+
     }
 
     @Test
@@ -89,7 +136,6 @@ public class ControladorMapaTest {
 
 
         when(session.getAttribute("usuarioLogueado")).thenReturn(usuarioSesion);
-        //when(session.getAttribute("jugador")).thenReturn(jugador);
         when(servicioJugador.buscarJugadorPorId(3L)).thenReturn(jugador);
         when(servicioMapa.obtenerUnMarPorNombre("Mitologia Nordica")).thenReturn(mar);
         when(servicioMapa.obtenerElEstadoDelMarSegunELJugador(mar,jugador)).thenReturn(false);
