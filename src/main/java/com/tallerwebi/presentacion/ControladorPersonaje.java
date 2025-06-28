@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
 public class ControladorPersonaje {
     private ServicioJugador servicioJugador;
     private RepositorioJugador repositorioJugador;
-    private Jugador jugador;
+   // private Jugador jugador;
 
     @Autowired
     public ControladorPersonaje(ServicioJugador servicioJugador, RepositorioJugador repositorioJugador) {
