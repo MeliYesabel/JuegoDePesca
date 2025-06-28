@@ -34,10 +34,6 @@ public class ControladorMapa {
     public ModelAndView irAVistaMapa() {
         ModelMap modelMap = new ModelMap();
         List<Mar> listaMar = servicioMapa.obtenerTodaListaDeMares();
-        if (listaMar.isEmpty()) {
-            modelMap.put("mensaje", "No se puede obtener la lista de mars");
-            return new ModelAndView("login-usuario",modelMap);
-        }
         modelMap.addAttribute("listaMar", listaMar);
 
         return new ModelAndView("vistaMapa",modelMap);
@@ -52,13 +48,20 @@ public class ControladorMapa {
     public ModelAndView redireccionSegunSiEstaBloqueadoONo(HttpSession session, @PathVariable ("nombreMar") String nombreMar) {
         ModelMap mm = new ModelMap();
 
-        /*utilizo una session*/
+        /*utilizo una session devuelve un long */
         UsuarioSesionDto usuarioSesion = (UsuarioSesionDto) session.getAttribute("usuarioLogueado");
         Jugador jugador = servicioJugador.buscarJugadorPorId(usuarioSesion.getId());
 
+        /*HTTP ERROR 500 javax.servlet.ServletException: deberia buscar el jugador si es null o una exception*/
+
         Mar mar = servicioMapa.obtenerUnMarPorNombre(nombreMar);
+        if (mar == null) {
+            mm.put("marError", "No existe ese mar");
+            return new ModelAndView("vistaMapa",mm);
+        }
+
         boolean estado = servicioMapa.obtenerElEstadoDelMarSegunELJugador(mar,jugador);// -> base datos join usuario es
-         if (estado){
+        if (estado){
              mm.put("marError", "El mar seleccionado esta bloqueado");
              return new ModelAndView("vistaMarBloqueado",mm);
          }

@@ -2,16 +2,16 @@
 *.DS_Store
 
 /target/
-Mobile Tools for Java (J2ME)
+# Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
-Package Files
+# Package Files #
 *.jar
 *.war
-.ear
+*.ear
 
-virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
 /.tomcatplugin
 /work/
 .settings/org.eclipse.m2e.core.prefs
@@ -24,11 +24,11 @@ src/main/webapp/resources/core/js/node_modules
 
 
 
-Default ignored files
+# Default ignored files
 /shelf/
 /workspace.xml
-Editor-based HTTP Client requests
+# Editor-based HTTP Client requests
 /httpRequests/
-Datasource local storage ignored files
+# Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml

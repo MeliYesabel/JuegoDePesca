@@ -24,11 +24,7 @@ public class ServicioJugadorImpl implements ServicioJugador {
     }
     @Override
     public Jugador buscarJugadorPorId(Long idJugador) {
-        Jugador resultado = repositorioJugador.buscarjugadorPorId(idJugador);
-        if (resultado != null){
-            return resultado;
-        }
-        return null;
+        return  repositorioJugador.buscarjugadorPorId(idJugador);
     }
 
     @Override
