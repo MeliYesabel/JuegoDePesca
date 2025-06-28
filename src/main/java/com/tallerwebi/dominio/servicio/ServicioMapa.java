@@ -17,4 +17,6 @@ public interface ServicioMapa {
     Mar obtenerUnMarPorNombre(String nombreMar);
 
     Mar obtenerMarPorId(Long idMar);
+
+    Boolean desbloquearMarSegunElJugador(Mar mar, Jugador jugador);
 }

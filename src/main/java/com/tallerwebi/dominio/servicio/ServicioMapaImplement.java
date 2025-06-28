@@ -2,6 +2,7 @@ package com.tallerwebi.dominio.servicio;
 
 
 import com.tallerwebi.dominio.entidad.Jugador;
+import com.tallerwebi.dominio.entidad.JugadorMar;
 import com.tallerwebi.dominio.entidad.Mar;
 import com.tallerwebi.dominio.repositorio.RepositorioMar;
 import org.springframework.stereotype.Service;
@@ -34,11 +35,7 @@ public class ServicioMapaImplement implements ServicioMapa {
 
     @Override
     public Mar obtenerElEstadoDeUnMarPorNombre(String nombre) {
-        Mar mar = repositorioMar.obtenerMarPorNombreSiEsteEstaDesbloqeuado(nombre);
-        if (mar != null) {
-            return mar;
-        }
-        return null;
+        return  repositorioMar.obtenerMarPorNombreSiEsteEstaDesbloqeuado(nombre);
     }
 
     @Override
@@ -51,6 +48,16 @@ public class ServicioMapaImplement implements ServicioMapa {
     }
 
     @Override
+    public Boolean desbloquearMarSegunElJugador(Mar mar, Jugador jugador) {
+        if (jugador.getMonedas() >= mar.getPrecio()){
+            JugadorMar jm = repositorioMar.obtenerElJugadorMarBuscado(mar,jugador);
+            jm.setEstadoBloqueado(false);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
     public List<Mar> obtenerTodaListaDeMares() {
         List<Mar>listaMar = repositorioMar.obtenerLaListaCompletaDeTodosLosMares();
         return listaMar;
@@ -58,8 +65,8 @@ public class ServicioMapaImplement implements ServicioMapa {
 
     @Override
     public Mar obtenerUnMarPorNombre(String nombreMar) {
-        Mar mar = repositorioMar.obtenerMarPorNombre(nombreMar);
-        return mar;
+        return  repositorioMar.obtenerMarPorNombre(nombreMar);
+
     }
 
     @Override
@@ -67,5 +74,6 @@ public class ServicioMapaImplement implements ServicioMapa {
         Mar mar = repositorioMar.obtenerMarPorId(idMar);
         return mar;
     }
+
 
 }

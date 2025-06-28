@@ -2,6 +2,7 @@ package com.tallerwebi.presentacion;
 
 import com.tallerwebi.dominio.entidad.Jugador;
 import com.tallerwebi.dominio.entidad.Mar;
+import com.tallerwebi.dominio.excepcion.NoSePuedodesbloquearElMarException;
 import com.tallerwebi.presentacion.dto.UsuarioSesionDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -70,6 +71,30 @@ public class ControladorMapa {
 
         return new ModelAndView("vistaSeleccion",mm);
     }
+
+    @RequestMapping("/marBloqueado/{nombreMar}")
+    public ModelAndView desbloquearMarSeleccionado(HttpSession session, @PathVariable ("nombreMar") String nombreMar){
+        ModelMap mm = new ModelMap();
+
+        UsuarioSesionDto usuarioSesion = (UsuarioSesionDto) session.getAttribute("usuarioLogueado");
+        Jugador jugador = servicioJugador.buscarJugadorPorId(usuarioSesion.getId());
+        Mar mar = servicioMapa.obtenerUnMarPorNombre(nombreMar);
+
+        // aca tambien deberia ir la logica de si no existe jugador o si el mar no existe hacer algo?
+        Boolean estado = servicioMapa.obtenerElEstadoDelMarSegunELJugador(mar,jugador);
+        if (!estado){
+            try{
+               servicioMapa.desbloquearMarSegunElJugador(mar,jugador);
+            }catch (NoSePuedodesbloquearElMarException e){
+                mm.put("errorAlDesbloquear","No se puedo bloquear el mar");
+                return new ModelAndView("vistaMarBloqueado",mm);
+            }
+        }
+
+        return new ModelAndView("redirect:/marSeleccionado/" + nombreMar);
+    }
+
+
 
 
 }

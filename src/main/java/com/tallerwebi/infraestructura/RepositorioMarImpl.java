@@ -11,11 +11,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-/*no olvidar de poner el repo*/
 @Repository
 public class RepositorioMarImpl implements RepositorioMar {
 
-    /*para unir a la base de datos se necesita esto */
     @Autowired
     SessionFactory sessionFactory;
 
@@ -85,6 +83,14 @@ public class RepositorioMarImpl implements RepositorioMar {
     }
 
     @Override
+    public Mar obtenerMarPorId(Long idMar) {
+        var session = sessionFactory.getCurrentSession();
+        return (Mar)session.createCriteria(Mar.class)
+                .add(Restrictions.eq("id_mar", idMar))
+                .uniqueResult();
+    }
+
+    @Override
     public boolean obtenerElEstadoMarDelJugador(Mar mar, Jugador jugadorActual) {
         var session = sessionFactory.getCurrentSession();
         JugadorMar jm = (JugadorMar) session.createCriteria(JugadorMar.class)
@@ -96,10 +102,14 @@ public class RepositorioMarImpl implements RepositorioMar {
     }
 
     @Override
-    public Mar obtenerMarPorId(Long idMar) {
+    public JugadorMar obtenerElJugadorMarBuscado(Mar mar, Jugador jugador) {
         var session = sessionFactory.getCurrentSession();
-        return (Mar)session.createCriteria(Mar.class)
-                .add(Restrictions.eq("id_mar", idMar))
+        JugadorMar jm = (JugadorMar) session.createCriteria(JugadorMar.class)
+                .add(Restrictions.eq("mar", mar))
+                .add(Restrictions.eq("jugador", jugador))
                 .uniqueResult();
+        return jm;
     }
+
+
 }

@@ -1,6 +1,7 @@
 package com.tallerwebi.dominio.repositorio;
 
 import com.tallerwebi.dominio.entidad.Jugador;
+import com.tallerwebi.dominio.entidad.JugadorMar;
 import com.tallerwebi.dominio.entidad.Mar;
 
 import java.util.List;
@@ -22,4 +23,6 @@ public interface RepositorioMar  {
     boolean obtenerElEstadoMarDelJugador(Mar mar, Jugador jugadorActual);
 
     Mar obtenerMarPorId(Long idMar);
+
+    JugadorMar obtenerElJugadorMarBuscado(Mar mar, Jugador jugador);
 }
