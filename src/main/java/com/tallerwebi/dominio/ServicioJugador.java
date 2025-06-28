@@ -6,4 +6,6 @@ public interface ServicioJugador {
     Boolean equipaCaniaAPersonaje(Jugador jugador, Long idObjeto);
 
     Jugador inicializarJugador();
+    RepositorioJugador getRepositorioJugador();
+    RepositorioObjeto getRepositorioObjeto();
 }

@@ -17,13 +17,13 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class ControladorPersonaje {
     private ServicioJugador servicioJugador;
-    private RepositorioJugador repositorioJugador;
+
    // private Jugador jugador;
 
     @Autowired
-    public ControladorPersonaje(ServicioJugador servicioJugador, RepositorioJugador repositorioJugador) {
+    public ControladorPersonaje(ServicioJugador servicioJugador) {
         this.servicioJugador = servicioJugador;
-        this.repositorioJugador = repositorioJugador;
+
        // jugador =  servicioJugador.inicializarJugador();
 
     }
@@ -67,8 +67,9 @@ public class ControladorPersonaje {
         }
 
         // Recargo jugador con objetos actualizados
-        jugador = repositorioJugador.buscarJugador(jugador.getId());
-        session.setAttribute("jugador", jugador);
+       // jugador = repositorioJugador.buscarJugador(jugador.getId());
+        servicioJugador.getRepositorioJugador().buscarJugador(jugador.getId());
+       // session.setAttribute("jugador", jugador);
 
         model.put("jugador", jugador);
         model.put("objetosDelJugador", jugador.getObjetosComprados());
@@ -95,8 +96,9 @@ public class ControladorPersonaje {
             servicioJugador.equipaCaniaAPersonaje(jugador, idObjeto);
 
             // Recargo jugador luego de equipar para reflejar cambios
-            jugador = repositorioJugador.buscarJugador(jugador.getId());
-            session.setAttribute("jugador", jugador);
+          //  jugador = repositorioJugador.buscarJugador(jugador.getId());
+            servicioJugador.getRepositorioJugador().buscarJugador(jugador.getId());
+            //session.setAttribute("jugador", jugador);
 
             model.put("mensaje", "Caña equipada correctamente");
         } catch (ParametroInvalidoException | ObjetoInexistenteException e) {

@@ -33,29 +33,34 @@ public void setUp() {
     objeto = new Objeto();
     servicioJugador = mock(ServicioJugadorImpl.class);
     repositorioJugador = mock(RepositorioJugadorImpl.class);
-    controladorPersonaje = new ControladorPersonaje(servicioJugador,repositorioJugador);
+    controladorPersonaje = new ControladorPersonaje(servicioJugador);
     session = mock(HttpSession.class);
     usuarioSesionDtoDtoDto = new UsuarioSesionDto(1L,"gonza","admin");
 
 }
 
-@Test
+
+    @Test
     public void dadoQueEstoyEnLaVistaPersonajeQueCuandoToqueElBotonCaniaMeDuvuelvaLaVistaObjetosDelJugador() {
+        // Arrange
+        jugador.setId(1L);
+        objeto.setIdObjeto(1L);
+        jugador.agregarObjeto(objeto);
+        usuarioSesionDtoDtoDto.setId(1L);
 
-    jugador.setId(1L);
-    objeto.setIdObjeto(1L);
-    jugador.agregarObjeto(objeto);
-    usuarioSesionDtoDtoDto.setId(1L);
+        // Mocks
+        when(session.getAttribute("usuarioLogueado")).thenReturn(usuarioSesionDtoDtoDto);
+        when(servicioJugador.buscarJugadorPorId(1L)).thenReturn(jugador);
+        when(servicioJugador.equipaCaniaAPersonaje(jugador, objeto.getIdObjeto())).thenReturn(true);
+        when(repositorioJugador.buscarJugador(1L)).thenReturn(jugador);
+        when(servicioJugador.getRepositorioJugador()).thenReturn(repositorioJugador);
 
-    when(session.getAttribute("usuarioLogueado")).thenReturn(usuarioSesionDtoDtoDto);
-    //
-    when(servicioJugador.buscarJugadorPorId(1L)).thenReturn(jugador);
-    when(repositorioJugador.buscarJugador(1L)).thenReturn(jugador);
-    when(servicioJugador.equipaCaniaAPersonaje(jugador,objeto.getIdObjeto())).thenReturn(true);
 
-    ModelAndView model = controladorPersonaje.equiparCania(session,objeto.getIdObjeto());
-    assertThat(model.getViewName(), equalToIgnoringCase("objetoDelJugador.html"));
-}
+        ModelAndView model = controladorPersonaje.equiparCania(session, objeto.getIdObjeto());
+
+
+        assertThat(model.getViewName(), equalToIgnoringCase("objetoDelJugador.html"));
+    }
 
 @Test
     public void dadoQueEstoyEnLaVistaPersonajeYelJugadorEsNullQueCuandoToqueElBotonCaniaMeDevuelvaLaVistaPersonaje(){

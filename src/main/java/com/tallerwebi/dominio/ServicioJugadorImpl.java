@@ -60,4 +60,12 @@ public class ServicioJugadorImpl implements ServicioJugador {
         return jugador;
 
     }
+
+    public RepositorioJugador getRepositorioJugador() {
+        return repositorioJugador;
+    }
+
+    public RepositorioObjeto getRepositorioObjeto() {
+        return repositorioObjeto;
+    }
 }
