@@ -111,5 +111,11 @@ public class RepositorioMarImpl implements RepositorioMar {
         return jm;
     }
 
+    @Override
+    public void agregarUnJugadorMarALaBaseDeDatos(Jugador jugador, Mar mar, boolean b) {
+        JugadorMar jm = new JugadorMar(jugador,mar,b);
+        sessionFactory.getCurrentSession().save(jm);
+    }
+
 
 }

@@ -25,4 +25,6 @@ public interface RepositorioMar  {
     Mar obtenerMarPorId(Long idMar);
 
     JugadorMar obtenerElJugadorMarBuscado(Mar mar, Jugador jugador);
+
+    void agregarUnJugadorMarALaBaseDeDatos(Jugador jugador, Mar mar, boolean b);
 }

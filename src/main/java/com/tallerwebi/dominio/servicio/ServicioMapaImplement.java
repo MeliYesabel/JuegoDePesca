@@ -50,10 +50,28 @@ public class ServicioMapaImplement implements ServicioMapa {
     @Override
     public Boolean desbloquearMarSegunElJugador(Mar mar, Jugador jugador) {
         if (jugador.getMonedas() >= mar.getPrecio()){
-            JugadorMar jm = repositorioMar.obtenerElJugadorMarBuscado(mar,jugador);
+            cambiarElEstadoDelMarADesbloqueado(mar,jugador);
+            descontarLasMonedasDelJugador(mar,jugador);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public Double descontarLasMonedasDelJugador(Mar mar, Jugador jugador) {
+        Double total = jugador.getMonedas() - mar.getPrecio();
+        jugador.setMonedas(total);
+        return  total;
+    }
+
+    @Override
+    public Boolean cambiarElEstadoDelMarADesbloqueado(Mar mar, Jugador jugador) {
+        JugadorMar jm = repositorioMar.obtenerElJugadorMarBuscado(mar,jugador);
+        if (jm.getEstadoBloqueado()){
             jm.setEstadoBloqueado(false);
             return true;
         }
+
         return false;
     }
 
