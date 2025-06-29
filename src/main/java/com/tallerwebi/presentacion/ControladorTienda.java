@@ -25,7 +25,7 @@ public class ControladorTienda {
 
     private ServicioTienda servicioTienda;
     private ServicioJugador servicioJugador;
-    private RepositorioObjeto repositorioObjeto;
+   // private RepositorioObjeto repositorioObjeto;
 
     /*@Autowired
     RepositorioJugador repositorioJugador;
@@ -33,9 +33,9 @@ public class ControladorTienda {
     SessionFactory sessionFactory;*/
 
     @Autowired
-    public ControladorTienda(ServicioTienda servicioTienda,ServicioJugador servicioJugador,RepositorioObjeto repositorioObjeto) {
+    public ControladorTienda(ServicioTienda servicioTienda,ServicioJugador servicioJugador) {
         this.servicioTienda = servicioTienda;
-        this.repositorioObjeto = repositorioObjeto;
+
         this.servicioJugador = servicioJugador;
 
        // this.repositorioJugador = new RepositorioJugadorImpl(); //lo agregue ahora
