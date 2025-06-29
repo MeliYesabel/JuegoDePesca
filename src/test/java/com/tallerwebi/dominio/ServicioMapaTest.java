@@ -3,6 +3,9 @@ package com.tallerwebi.dominio;
 import com.tallerwebi.dominio.entidad.Jugador;
 import com.tallerwebi.dominio.entidad.JugadorMar;
 import com.tallerwebi.dominio.entidad.Mar;
+import com.tallerwebi.dominio.excepcion.NoSePuedodesbloquearElMarException;
+import com.tallerwebi.dominio.repositorio.RepositorioJugador;
+import com.tallerwebi.dominio.repositorio.RepositorioJugadorMar;
 import com.tallerwebi.dominio.repositorio.RepositorioMar;
 import com.tallerwebi.dominio.servicio.ServicioMapa;
 import com.tallerwebi.dominio.servicio.ServicioMapaImplement;
@@ -15,18 +18,19 @@ import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 public class ServicioMapaTest {
 
     ServicioMapa servicioMapa;
     RepositorioMar repositorioMar = mock(RepositorioMar.class);
+    RepositorioJugador repositorioJugador = mock(RepositorioJugador.class);
+  //  RepositorioJugadorMar repositorioJugadorMar = mock(RepositorioJugadorMar.class);
 
     @BeforeEach
     public void init() {
-        servicioMapa = new ServicioMapaImplement(repositorioMar);
+        servicioMapa = new ServicioMapaImplement(repositorioMar,repositorioJugador);
     }
 
     @Test
@@ -70,11 +74,10 @@ public class ServicioMapaTest {
 
         when(repositorioMar.obtenerElJugadorMarBuscado(mar, jugador)).thenReturn(jugadorMar);
 
-        //when
-        Boolean estado = servicioMapa.desbloquearMarSegunElJugador(mar,jugador);
-
-        //then
-        assertThat(estado,is(false));
+        //when y then -> paar comfirmar una exception
+        assertThrows(NoSePuedodesbloquearElMarException.class, () -> {
+            servicioMapa.desbloquearMarSegunElJugador(mar, jugador);
+        });
     }
 
     @Test

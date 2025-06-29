@@ -10,6 +10,7 @@ import com.tallerwebi.dominio.servicio.ServicioMapa;
 import com.tallerwebi.dominio.servicio.ServicioJugador;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -58,21 +59,23 @@ public class ControladorMapa {
         Mar mar = servicioMapa.obtenerUnMarPorNombre(nombreMar);
         if (mar == null) {
             mm.put("marError", "No existe ese mar");
-            return new ModelAndView("vistaMapa",mm);
+            return new ModelAndView("redirect:/mapa",mm);
         }
 
         boolean estado = servicioMapa.obtenerElEstadoDelMarSegunELJugador(mar,jugador);// -> base datos join usuario es
         if (estado){
              mm.put("marError", "El mar seleccionado esta bloqueado");
+             mm.put("mar",mar);
              return new ModelAndView("vistaMarBloqueado",mm);
          }
 
+        // si pasa_todo guardo el mar para que se pueda mostar sus datos por pantalla
         mm.put("mar", mar);
 
         return new ModelAndView("vistaSeleccion",mm);
     }
 
-    @RequestMapping("/marBloqueado/{nombreMar}")
+    @PostMapping("/marBloqueado/{nombreMar}")
     public ModelAndView desbloquearMarSeleccionado(HttpSession session, @PathVariable ("nombreMar") String nombreMar){
         ModelMap mm = new ModelMap();
 
@@ -81,17 +84,19 @@ public class ControladorMapa {
         Mar mar = servicioMapa.obtenerUnMarPorNombre(nombreMar);
 
         // aca tambien deberia ir la logica de si no existe jugador o si el mar no existe hacer algo?
-        Boolean estado = servicioMapa.obtenerElEstadoDelMarSegunELJugador(mar,jugador);
-        if (!estado){
+
             try{
                servicioMapa.desbloquearMarSegunElJugador(mar,jugador);
             }catch (NoSePuedodesbloquearElMarException e){
-                mm.put("errorAlDesbloquear","No se puedo bloquear el mar");
+                mm.put("mar",mar);
+                mm.put("jugadorMonedas",jugador.getMonedas());
+                mm.put("errorAlDesbloquear",e.getMessage());
                 return new ModelAndView("vistaMarBloqueado",mm);
             }
-        }
 
-        return new ModelAndView("redirect:/marSeleccionado/" + nombreMar);
+
+        return new ModelAndView("redirect:/mapa");
+        // return new ModelAndView("redirect:/marSeleccionado/" + nombreMar);
     }
 
 
