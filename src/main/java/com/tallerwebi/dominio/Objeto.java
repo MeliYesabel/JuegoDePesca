@@ -15,6 +15,8 @@ public class Objeto {
     private String nombre;
     private Boolean estaComprado = false;
 
+    private String nombreImagen;
+
     @ManyToOne
     private Jugador jugador;
 
@@ -66,6 +68,14 @@ public class Objeto {
 
     public void setJugador(Jugador jugador) {
         this.jugador = jugador;
+    }
+
+    public String getNombreImagen() {
+        return nombreImagen;
+    }
+
+    public void setNombreImagen(String nombreImagen) {
+        this.nombreImagen = nombreImagen;
     }
 
     @Override

@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Tienda</title>
+    <link rel="stylesheet" th:href="@{/css/vistaTienda.css}">
+
 </head>
 <body>
 <header>
@@ -16,7 +18,7 @@
 
 <main>
     <!-- Título o mensaje de bienvenida -->
-    <p th:text="${claveTienda}">Bienvenido a la tienda</p>
+    <p th:text="${claveTienda}" class="titulo">Bienvenido a la tienda</p>
 
     <!-- Mensaje de éxito -->
     <div th:if="${mensaje}" style="color:green;">
@@ -29,15 +31,16 @@
     </div>
 
     <!-- Monedas del jugador -->
-    <p>
+    <p class="titulo">
         Monedas actuales:
-        <span th:text="${jugador != null ? jugador.monedas : 0}">0</span>
+        <span th:text="${jugador != null ? jugador.monedas : 0}" class="titulo">0</span>
     </p>
 
     <!-- Lista de objetos disponibles -->
-    <h2>Objetos disponibles:</h2>
+    <h2 class="titulo">Objetos disponibles:</h2>
     <ul>
-        <li th:each="objeto : ${objetosDisponibles}">
+        <li th:each="objeto : ${objetosDisponibles}" >
+            <img th:src="@{'/img/' + ${objeto.nombreImagen}}" alt="Imagen del objeto" width="100" />
             Objeto ID: <span th:text="${objeto.idObjeto} + ${objeto.nombre} " >1</span> -
             Precio: <span th:text="${objeto.precioObjeto}">100.0</span>
             <form th:action="@{/comprarObjeto}" method="post">
