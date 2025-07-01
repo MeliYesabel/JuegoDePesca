@@ -28,20 +28,13 @@ public class ControladorTurno {
     public ModelAndView iniciarTurno(HttpSession session) {
         ModelMap model = new ModelMap();
         Long idMar = 0L;
-        List<Pez> peces = servicioTurno.obtenerTresPecesDelMar(idMar);
+        List<Pez> peces = servicioTurno.obtenerTresPecesAleatorios();
         model.addAttribute("peces", peces);
         return new ModelAndView("vistaTurno.html", model);
     }
 
 
-    @RequestMapping("/pescar")
-    public ModelAndView mostrarOpcionesDePesca(ModelMap model) {
-        List<Pez> peces = servicioTurno.obtenerTresPecesAleatorios();
-        model.addAttribute("peces", peces);
-        return new ModelAndView("vistaTurno", model);
-    }
-
-    @RequestMapping("/pescar/seleccionar")
+    @RequestMapping("/tunro/resultado")
     public ModelAndView seleccionarPez(@RequestParam("id") Long idPez, ModelMap model) {
         Pez pezPescado = servicioTurno.pescarPezPorId(idPez);
         model.addAttribute("pezPescado", pezPescado);

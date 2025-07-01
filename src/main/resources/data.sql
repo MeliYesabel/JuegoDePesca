@@ -39,7 +39,7 @@ INSERT INTO Pez (id_pez, nombre, id_rareza, id_mar) VALUES
 
 -- Mar 2 - Mitología Nórdica
 INSERT INTO Pez (id_pez, nombre, id_rareza, id_mar) VALUES
-                                                        (null, 'Pez Runa', 1, 2),
+                                                        (null, 'Pez RunatunN', 1, 2),
                                                         (null, 'Salmón de Thor', 1, 2),
                                                         (null, 'Bacalao de Freyja', 1, 2),
                                                         (null, 'Serpiente del Fiordo', 2, 2),

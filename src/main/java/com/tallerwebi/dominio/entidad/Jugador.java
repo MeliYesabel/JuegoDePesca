@@ -65,8 +65,6 @@ public Jugador(String nombre){
         this.monedas = monedas;
     }
 
-
-
     public String getNombre() {
         return nombre;
     }
@@ -74,8 +72,6 @@ public Jugador(String nombre){
     public List<Objeto> getObjetosComprados() {
         return objetosComprados;
     }
-
-
 
     public void setNombre(String nombre) {
         this.nombre = nombre;

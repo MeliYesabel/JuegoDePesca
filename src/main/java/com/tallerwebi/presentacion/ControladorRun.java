@@ -42,16 +42,11 @@ public class ControladorRun {
         //model.put("cantidadCebo", jugador.getCantidadCeboSeleccionado());
         //model.put("cantidadCebo", run.getCebo());
         return new ModelAndView("vistaRun.html", model);
-    }*/                                                         // comento para ir a run desde el boton empezar
+    }*/   // comento para ir a run desde el boton empezar
 
     @RequestMapping("/verificar-cebo")
     public ModelAndView verificarCeboJugador(HttpSession session) {
         Run run = (Run) session.getAttribute("run");
-/*
-        if (run == null || run.getJugador() == null) {
-            return new ModelAndView("redirect:/run"); // vuelve al inicio si falta algo
-        }
-*/
         if (servicioRun.hayCeboJugador(run)) {
             return new ModelAndView("redirect:/turno");
         } else {
@@ -62,16 +57,13 @@ public class ControladorRun {
     public ModelAndView iniciarRun(@RequestParam("idMar") Long idMar, HttpSession session) {
         Jugador jugador = (Jugador) session.getAttribute("jugador");
 
-       /* if (jugador == null) {
-            return new ModelAndView("redirect:/login"); // o algún manejo de error
-        }*///por el momento no lo pongo hasta juntar lo de login
-
-
         Mar marSeleccionado = servicioMapa.obtenerMarPorId(idMar);
 
         Run run = new Run();
         run.setJugador(jugador);
         run.setMar(marSeleccionado);
+        run.setCebo(run.getCebo());
+        servicioRun.guardarRun(run);
 
         session.setAttribute("run", run);
 
@@ -79,5 +71,4 @@ public class ControladorRun {
         mav.addObject("run", run);
         return mav;
     }
-
 }

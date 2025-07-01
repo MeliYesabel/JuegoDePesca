@@ -48,7 +48,6 @@
             <p>Junta la sufientes cantidad de monedas para poder desbloquar y conocer otros mares! </p>
         </div>
         <div>
-            <!-- tendria que redirigirte a run-->
             <form th:action="@{/run}" method="post">
                 <input type="hidden" name="idMar" th:value="${mar.id_mar}"/>
                 <button type="submit" class="btn btn-primary">Empezar</button>
@@ -56,8 +55,5 @@
         </div>
     </div>
   </div>
-
-
-
 </body>
 </html>
