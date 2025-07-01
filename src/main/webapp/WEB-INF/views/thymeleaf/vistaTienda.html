@@ -5,6 +5,7 @@
     <title>Tienda</title>
     <link rel="stylesheet" th:href="@{/css/vistaTienda.css}">
 
+
 </head>
 <body>
 <header>
@@ -21,12 +22,12 @@
     <p th:text="${claveTienda}" class="titulo">Bienvenido a la tienda</p>
 
     <!-- Mensaje de éxito -->
-    <div th:if="${mensaje}" style="color:green;">
+    <div th:if="${mensaje}"  class="mensaje-exito">
         <p th:text="${mensaje}"></p>
     </div>
 
     <!-- Mensaje de error -->
-    <div th:if="${error}" style="color:red;">
+    <div th:if="${error}"  class="mensaje-error">
         <p th:text="${error}"></p>
     </div>
 

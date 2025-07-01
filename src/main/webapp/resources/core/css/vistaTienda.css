@@ -12,10 +12,11 @@ html, body {
     height: 100%;
     overflow-x: hidden;
     background-image: url('../img/fondo-tienda.jpg');
-    <!--background: linear-gradient(to bottom, #a2d4f3, #e0f7fa); -->
+    /*background: linear-gradient(to bottom, #a2d4f3, #e0f7fa); */
     color: #033b4a;
     font-size: 14px;
-    padding: 20px;
+    /*padding: 20px;*/
+
 }
 
 /* Navegación */
@@ -46,6 +47,25 @@ nav a:hover {
     color:white;
     font-size: 36px;
     margin-bottom: 15px;
+}
+
+
+body.con-mensaje{
+    background-image: url("../img/fondo-tienda2.jpg");
+}
+
+body.con-error{
+    background-image: url("../img/fondo-tienda2.jpg");
+}
+.mensaje-exito{
+    color:green;
+
+}
+
+
+.mensaje-error{
+    color:red;
+
 }
 
 main span {
