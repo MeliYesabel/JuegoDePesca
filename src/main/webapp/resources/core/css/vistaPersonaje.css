@@ -2,15 +2,14 @@
     margin:0;
     padding:0;
     font-family: "Press Start 2P", system-ui;
-   /* font-family: "Pixelify Sans", sans-serif;*/
     font-weight: 400;
 
 }
 
-html,body{
-    background-image: url('../img/fondo-tienda2.jpg');
-
+body{
+    background-image: url('../img/muelle.jpg');
 }
+
 
 nav {
     background-color: #0288d1;
@@ -41,20 +40,53 @@ main{
     text-align: center;
 }
 
-.letraGrande{
+.encabezado {
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+#clavePersonaje{
     font-size: 50px;
-    color:red;
+    color:white;
+}
+
+.contenido-centrado {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 button{
     background-color: #0288d1;
     color:white !important;
     border-radius: 22px;
-    border:none;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 40px;
 
 }
 
 button:hover{
-    color: #ffeb3b !important;
+
+    background-color:#ffeb3b ;
+}
+
+button img.icono-cania {
+    width: 324px;
+    height: 324px;
+    object-fit: contain;
+}
+
+div a{
+    text-decoration: none;
+
 }
 
