@@ -26,7 +26,7 @@ public class ControladorLogin {
         this.servicioUsuarioAuthI = servicioUsuarioI;
     }
 
-    @GetMapping("/login")
+    @GetMapping("/login-pescador")
     public ModelAndView mostrarLogin() {
         ModelMap modeloLogin = new ModelMap();
         modeloLogin.put("usuarioDto", new UsuarioDto());

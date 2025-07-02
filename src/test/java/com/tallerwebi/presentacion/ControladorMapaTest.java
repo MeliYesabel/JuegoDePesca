@@ -134,7 +134,7 @@ public class ControladorMapaTest {
         when(servicioJugador.buscarJugadorPorId(3L)).thenReturn(jugador);
 
         ModelAndView cm = whenLaRedireccionEsSegunElJugadorOMar(session,mar.getNombre());
-        thenLaVistaFueRedirigidaADondeIba(cm,"vistaSeleccion");
+        thenLaVistaFueRedirigidaADondeIba(cm,"vistaMapa");
 
     }
 

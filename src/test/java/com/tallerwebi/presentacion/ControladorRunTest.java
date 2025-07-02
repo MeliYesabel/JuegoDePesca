@@ -1,6 +1,7 @@
 package com.tallerwebi.presentacion;
 
 import com.tallerwebi.dominio.entidad.Jugador;
+import com.tallerwebi.dominio.entidad.Mar;
 import com.tallerwebi.dominio.entidad.Run;
 import com.tallerwebi.dominio.servicio.ServicioMapa;
 import com.tallerwebi.dominio.servicio.ServicioRun;
@@ -19,9 +20,12 @@ public class ControladorRunTest {
     private ServicioRun servicioRunMock;
     private ControladorRun controladorRun;
     private HttpSession session;
-
-    private Run run;
+    private ServicioRun servicioRun;
+    private ServicioMapa servicioMapa;
+    private ControladorRun controlador;
     private Jugador jugador;
+    private Mar mar;
+    private Run run;
 
     @BeforeEach
     public void setUp() {
@@ -37,6 +41,8 @@ public class ControladorRunTest {
         run.setId(1L);
         run.setJugador(jugador);
         run.setCebo(2);
+
+        mar = new Mar();
     }
 
     @Test
@@ -59,5 +65,23 @@ public class ControladorRunTest {
         assertEquals("redirect:/resumen", mav.getViewName());
     }
 
+    @Test
+    public void testIniciarRun_creaRunYRedirigeAVistaRun() {
+        Long idMar = 1L;
+        when(session.getAttribute("jugador")).thenReturn(jugador);
+        when(servicioMapa.obtenerMarPorId(idMar)).thenReturn(mar);
+
+        ModelAndView mav = controlador.iniciarRun(idMar, session);
+
+        assertEquals("vistaRun", mav.getViewName());
+
+        Run runCreado = (Run) mav.getModel().get("run");
+        assertEquals(jugador, runCreado.getJugador());
+        assertEquals(mar, runCreado.getMar());
+        assertEquals(3, runCreado.getCebo());
+
+        verify(servicioRun).guardarRun(runCreado);
+        verify(session).setAttribute("run", runCreado);
+    }
 }
 

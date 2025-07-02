@@ -107,7 +107,11 @@ public Jugador(String nombre){
     public void setCeboEquipado(Integer ceboEquipado) {
         this.ceboEquipado = ceboEquipado;
     }
+
+    public void sumarGanancia(Integer ganancia) {
+    this.monedas += ganancia;
     }
+}
 
 
 

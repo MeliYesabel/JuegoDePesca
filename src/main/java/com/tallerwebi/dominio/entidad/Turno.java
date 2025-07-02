@@ -1,9 +1,21 @@
 package com.tallerwebi.dominio.entidad;
 
+import org.springframework.stereotype.Repository;
+
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
 public class Turno {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Pez> pecesGenerados;
+    @ManyToOne
+    @JoinColumn(name = "seleccionado_id_pez")
     private Pez seleccionado;
     private Boolean fuePescado;
     private Integer ceboRestante;
@@ -55,5 +67,13 @@ public class Turno {
 
     public List<Pez> getPecesGenerados() {
         return pecesGenerados;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 }

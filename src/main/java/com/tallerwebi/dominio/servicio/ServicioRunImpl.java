@@ -30,9 +30,7 @@ public class ServicioRunImpl implements ServicioRun {
     @Override
     public Boolean hayCeboJugador(Run run) {
         return run != null
-                && run.getJugador() != null
-                && run.getJugador().getCeboEquipado() != null
-                && run.getJugador().getCeboEquipado() > 0;
+                && run.getCebo() > 0;
     }
         @Override
     public List<Pez> obtenerPecesPescados(Run run) {
@@ -52,6 +50,16 @@ public class ServicioRunImpl implements ServicioRun {
     @Override
     public void guardarRun(Run run) {
         repositorioRun.crearUnaRun(run);
+    }
+
+    @Override
+    public Run obtenerRun(Long idRun) {
+        return repositorioRun.obtenerRunPorId(idRun);
+    }
+
+    @Override
+    public void agregarPezAListaPecesPescados(Pez pezSeleccionado, Long idRun) {
+        repositorioRun.obtenerRunPorId(idRun).agregarPecesPescados(pezSeleccionado);
     }
 
 }

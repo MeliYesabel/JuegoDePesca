@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/estiloRun.css}" />
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Resumen</title>
 </head>
 <body>
-<h2>Resumen de la Partida</h2>
-<!--<p>Turnos jugados: <span th:text="${resumen.turnosJugados}"></span></p>
-<p>Total ganado: $<span th:text="${resumen.totalGanado}"></span></p>
+<div class="resumen" style="color: white">
+    <h1>Resumen de la Partida</h1>
+    <p><strong>Ganancia total:</strong><span th:text="${ganancia}"></span> monedas</p>
+    <p><strong>Cantidad de peces pescados:</strong> <span th:text="${cantidadePecesPescados}"></span></p>
 
-<h3>Peces pescados:</h3>
-<ul>
-    <li th:each="pez : ${resumen.pecesPescados}" th:text="${pez.nombre} + ' - $' + ${pez.rareza.getValor()}"></li>
-</ul> -->
+    <a href="mapa">Volver a la mar</a>
+</div>
 
-<span>Resumen de la partida </span>
-<a href="mapa">Mapa</a>
 </body>
 </html>
