@@ -3,6 +3,7 @@ package com.tallerwebi.dominio.entidad;
 import java.util.List;
 
 public class Turno {
+
     private List<Pez> pecesGenerados;
     private Pez seleccionado;
     private Boolean fuePescado;
@@ -15,7 +16,6 @@ public class Turno {
     private Run run;*/
 
     public Turno() {}
-
 
     public void setPecesGenerados(List<Pez> pecesGenerados) {
         this.pecesGenerados = pecesGenerados;

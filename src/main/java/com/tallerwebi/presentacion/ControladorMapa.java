@@ -94,11 +94,13 @@ public class ControladorMapa {
                 return new ModelAndView("vistaMarBloqueado",mm);
             }
 
-
         return new ModelAndView("redirect:/mapa");
-        // return new ModelAndView("redirect:/marSeleccionado/" + nombreMar);
     }
 
+    @RequestMapping("/validar")
+    public ModelAndView validarSeleccionMar(HttpSession session){
+        return null;
+    }
 
 
 

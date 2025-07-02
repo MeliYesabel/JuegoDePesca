@@ -21,23 +21,23 @@ public class Jugador extends UsuarioAuth {
     private Integer cant_carnada;
     private Integer ceboEquipado;
     @OneToMany(fetch = FetchType.EAGER)
-@JoinColumn(name = "jugador_id")
-private List<Objeto> objetosComprados = new ArrayList<>();
+    @JoinColumn(name = "jugador_id")
+    private List<Objeto> objetosComprados = new ArrayList<>();
 
-@ManyToOne
-private Objeto caniaActiva;
+   @ManyToOne
+   private Objeto caniaActiva;
 
-    @OneToMany(mappedBy = "jugador", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<JugadorMar> mares = new ArrayList<>();
+   @OneToMany(mappedBy = "jugador", cascade = CascadeType.ALL, orphanRemoval = true)
+   private List<JugadorMar> mares = new ArrayList<>();
 
 
-public Jugador(String nombre){
-    this.monedas = 0.0;
+   public Jugador(String nombre){
+        this.monedas = 0.0;
     //objetosComprados = new ArrayList<>(); preuguntar porque fallaba si la inicializo en el constructor
-    this.nombre = nombre;
-    caniaActiva = null;
+        this.nombre = nombre;
+        caniaActiva = null;
 
-}
+    }
     public Jugador(String nombre, String alias, double monedas, Integer cant_carnada){
         this.nombre = nombre;
         this.alias = alias;
@@ -45,9 +45,7 @@ public Jugador(String nombre){
         this.cant_carnada = cant_carnada;
     }
 
-    public Jugador() {
-        this.monedas = MONEDAS_INICIALES;
-    }
+    public Jugador() {}
 
     public Objeto getCaniaActiva() {
         return caniaActiva;
@@ -65,8 +63,6 @@ public Jugador(String nombre){
         this.monedas = monedas;
     }
 
-
-
     public String getNombre() {
         return nombre;
     }
@@ -74,8 +70,6 @@ public Jugador(String nombre){
     public List<Objeto> getObjetosComprados() {
         return objetosComprados;
     }
-
-
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -92,6 +86,7 @@ public Jugador(String nombre){
     public String getAlias() {
         return alias;
     }
+
     public void setAlias(String alias) {
         this.alias = alias;
     }

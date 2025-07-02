@@ -59,7 +59,7 @@ public class ControladorMapaTest {
 
 
     @Test
-    public void siAlDesbloquearUnMarLaEjecucionEsExitosaSeRedirijaAVistaSeleccionDelMArSolicitado(){
+    public void siAlDesbloquearUnMarLaEjecucionEsExitosaSeRedirijaAVistaMapaParaDespuesPoderSeleccionarlo(){
         HttpSession session = mock(HttpSession.class);
         // session
         UsuarioSesionDto usuarioSesion = new UsuarioSesionDto(3L,"Anahi","PERSCADOR");
@@ -74,7 +74,7 @@ public class ControladorMapaTest {
         when(servicioMapa.desbloquearMarSegunElJugador(mar,jugador)).thenReturn(true);
 
         ModelAndView mv = controladorMapa.desbloquearMarSeleccionado(session,mar.getNombre());
-        assertThat(mv.getViewName(), equalToIgnoringCase("redirect:/marSeleccionado/Mitologia Nordica"));
+        assertThat(mv.getViewName(), equalToIgnoringCase("redirect:/mapa"));
 
     }
 
@@ -95,7 +95,7 @@ public class ControladorMapaTest {
         when(servicioMapa.obtenerUnMarPorNombre("Mitologia")).thenReturn(mar);
 
         ModelAndView mv = whenLaRedireccionEsSegunElJugadorOMar(session,mar.getNombre());
-        thenLaVistaFueRedirigidaADondeIba(mv,"vistaMapa");
+        thenLaVistaFueRedirigidaADondeIba(mv, "redirect:/mapa");
     }
 
     @Test
@@ -180,7 +180,7 @@ public class ControladorMapaTest {
         when(servicioJugador.buscarJugadorPorId(3L)).thenReturn(jugador);
 
         ModelAndView cm = whenLaRedireccionEsSegunElJugadorOMar(session,mar.getNombre());
-        thenLaVistaFueRedirigidaADondeIba(cm,"vistaMapa");
+        thenLaVistaFueRedirigidaADondeIba(cm,"redirect:/mapa");
 
     }
 
