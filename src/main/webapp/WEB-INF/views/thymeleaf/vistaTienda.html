@@ -43,7 +43,8 @@
     <ul>
         <li th:each="objeto : ${objetosDisponibles}" >
             <img th:src="@{'/img/' + ${objeto.nombreImagen}}" alt="Imagen del objeto" width="100" />
-            Objeto ID: <span th:text="${objeto.idObjeto} + ${objeto.nombre} " >1</span> -
+          <!--  Objeto ID: <span th:text="${objeto.idObjeto} + ${objeto.nombre} " >1</span> - -->
+            <span th:text="${objeto.nombre} " >1</span>
             Precio: <span th:text="${objeto.precioObjeto}">100.0</span>
             <form th:action="@{/comprarObjeto}" method="post">
                 <input type="hidden" name="idObjeto" th:value="${objeto.idObjeto}" /> <!-- "${1}"-->
