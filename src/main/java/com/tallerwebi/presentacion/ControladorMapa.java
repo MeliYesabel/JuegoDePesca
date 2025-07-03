@@ -33,10 +33,20 @@ public class ControladorMapa {
 
     /*redirecciones*/
     @RequestMapping("/mapa")
-    public ModelAndView irAVistaMapa() {
+    public ModelAndView irAVistaMapa(HttpSession session) {
         ModelMap modelMap = new ModelMap();
+
+        UsuarioSesionDto usuarioSesion = (UsuarioSesionDto) session.getAttribute("usuarioLogueado");
+        if (usuarioSesion == null) {
+            return new ModelAndView("redirect:/login"); // Por si no está logueado
+        }
+
+        Jugador jugador = servicioJugador.buscarJugadorPorId(usuarioSesion.getId());
         List<Mar> listaMar = servicioMapa.obtenerTodaListaDeMares();
+
         modelMap.addAttribute("listaMar", listaMar);
+        modelMap.addAttribute("jugador", jugador);
+        modelMap.addAttribute("monedas", jugador.getMonedas());
 
         return new ModelAndView("vistaMapa",modelMap);
     }
