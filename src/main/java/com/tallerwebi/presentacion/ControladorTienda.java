@@ -1,12 +1,15 @@
 package com.tallerwebi.presentacion;
 
-import com.tallerwebi.dominio.*;
-import com.tallerwebi.dominio.Objeto;
+
+import com.tallerwebi.dominio.entidad.Objeto;
+import com.tallerwebi.dominio.entidad.Jugador;
 import com.tallerwebi.dominio.excepcion.MonedasInsuficientesException;
 import com.tallerwebi.dominio.excepcion.ObjetoInexistenteException;
 import com.tallerwebi.dominio.excepcion.ObjetoYaCompradoException;
 import com.tallerwebi.dominio.excepcion.ParametroInvalidoException;
-import com.tallerwebi.dominio.RepositorioObjeto;
+import com.tallerwebi.dominio.repositorio.RepositorioObjeto;
+import com.tallerwebi.dominio.servicio.ServicioJugador;
+import com.tallerwebi.dominio.servicio.ServicioTienda;
 import com.tallerwebi.infraestructura.RepositorioJugadorImpl;
 import com.tallerwebi.presentacion.dto.UsuarioSesionDto;
 import org.hibernate.SessionFactory;
