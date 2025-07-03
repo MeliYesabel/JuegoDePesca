@@ -5,11 +5,13 @@ public class UsuarioDto {
     private String contrasenia;
     private String contraseniaRepetida;
 
+
     public UsuarioDto() {
     }
 
 
     public UsuarioDto(String email, String contrasenia) {
+
         this.email = email;
         this.contrasenia = contrasenia;
     }
@@ -49,5 +51,6 @@ public class UsuarioDto {
     public void setContraseniaRepetida(String contraseniaRepetida) {
         this.contraseniaRepetida = contraseniaRepetida;
     }
+
 
 }

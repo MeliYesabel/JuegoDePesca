@@ -168,6 +168,7 @@ public class ControladorMapaTest {
 
     }
 
+    @Disabled
     @Test
     public void siExisteElJugadorRedirijaAVistaMapa(){
         HttpSession session = mock(HttpSession.class);

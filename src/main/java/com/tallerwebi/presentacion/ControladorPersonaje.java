@@ -1,10 +1,9 @@
 package com.tallerwebi.presentacion;
 
-import com.tallerwebi.dominio.entidad.Jugador;
+import com.tallerwebi.dominio.*;
 import com.tallerwebi.dominio.excepcion.ObjetoInexistenteException;
 import com.tallerwebi.dominio.excepcion.ParametroInvalidoException;
-import com.tallerwebi.dominio.repositorio.RepositorioJugador;
-import com.tallerwebi.dominio.servicio.ServicioJugador;
+import com.tallerwebi.presentacion.dto.UsuarioSesionDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -18,13 +17,13 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class ControladorPersonaje {
     private ServicioJugador servicioJugador;
-    private RepositorioJugador repositorioJugador;
-    private Jugador jugador;
+
+   // private Jugador jugador;
 
     @Autowired
-    public ControladorPersonaje(ServicioJugador servicioJugador, RepositorioJugador repositorioJugador) {
+    public ControladorPersonaje(ServicioJugador servicioJugador) {
         this.servicioJugador = servicioJugador;
-        this.repositorioJugador = repositorioJugador;
+
        // jugador =  servicioJugador.inicializarJugador();
 
     }
@@ -35,15 +34,17 @@ public class ControladorPersonaje {
     public ModelAndView irAPersonaje(HttpSession session){
         ModelMap model = new ModelMap();
 
-        Jugador jugador = (Jugador) session.getAttribute("jugador");
+       // Jugador jugador = (Jugador) session.getAttribute("jugador");
+       UsuarioSesionDto usuarioSesion = (UsuarioSesionDto) session.getAttribute("usuarioLogueado");
+       Jugador jugador = servicioJugador.buscarJugadorPorId(usuarioSesion.getId());
 
-        if (jugador == null) {
+      /*  if (jugador == null) {
             jugador = servicioJugador.inicializarJugador(); // solo entra acá la primera vez
             session.setAttribute("jugador", jugador);
         } else{
             jugador = repositorioJugador.buscarJugador(jugador.getId());
             session.setAttribute("jugador", jugador);
-        }
+        }*/
 
         model.put("jugador", jugador);
         model.put("clavePersonaje", "Esta es la pantalla personaje");
@@ -56,7 +57,9 @@ public class ControladorPersonaje {
     public ModelAndView irAObjeto(HttpSession session){
         ModelMap model = new ModelMap();
 
-        Jugador jugador = (Jugador) session.getAttribute("jugador");
+        //Jugador jugador = (Jugador) session.getAttribute("jugador");
+        UsuarioSesionDto usuarioSesion = (UsuarioSesionDto) session.getAttribute("usuarioLogueado");
+        Jugador jugador = servicioJugador.buscarJugadorPorId(usuarioSesion.getId());
 
         if (jugador == null) {
             model.put("error", "No hay sesión activa");
@@ -64,8 +67,9 @@ public class ControladorPersonaje {
         }
 
         // Recargo jugador con objetos actualizados
-        jugador = repositorioJugador.buscarJugador(jugador.getId());
-        session.setAttribute("jugador", jugador);
+       // jugador = repositorioJugador.buscarJugador(jugador.getId());
+        servicioJugador.getRepositorioJugador().buscarJugador(jugador.getId());
+       // session.setAttribute("jugador", jugador);
 
         model.put("jugador", jugador);
         model.put("objetosDelJugador", jugador.getObjetosComprados());
@@ -79,7 +83,9 @@ public class ControladorPersonaje {
     public ModelAndView equiparCania(HttpSession session, @RequestParam Long idObjeto) {
         ModelMap model = new ModelMap();
 
-        Jugador jugador = (Jugador) session.getAttribute("jugador");
+       // Jugador jugador = (Jugador) session.getAttribute("jugador");
+        UsuarioSesionDto usuarioSesion = (UsuarioSesionDto) session.getAttribute("usuarioLogueado");
+        Jugador jugador = servicioJugador.buscarJugadorPorId(usuarioSesion.getId());
 
         if (jugador == null) {
             model.put("error", "No hay sesión activa para este jugador");
@@ -90,8 +96,9 @@ public class ControladorPersonaje {
             servicioJugador.equipaCaniaAPersonaje(jugador, idObjeto);
 
             // Recargo jugador luego de equipar para reflejar cambios
-            jugador = repositorioJugador.buscarJugador(jugador.getId());
-            session.setAttribute("jugador", jugador);
+          //  jugador = repositorioJugador.buscarJugador(jugador.getId());
+            servicioJugador.getRepositorioJugador().buscarJugador(jugador.getId());
+            //session.setAttribute("jugador", jugador);
 
             model.put("mensaje", "Caña equipada correctamente");
         } catch (ParametroInvalidoException | ObjetoInexistenteException e) {
