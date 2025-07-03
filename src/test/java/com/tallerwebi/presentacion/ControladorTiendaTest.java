@@ -1,6 +1,5 @@
 package com.tallerwebi.presentacion;
 
-import com.tallerwebi.dominio.*;
 import com.tallerwebi.dominio.entidad.Jugador;
 import com.tallerwebi.dominio.entidad.Objeto;
 import com.tallerwebi.dominio.excepcion.MonedasInsuficientesException;
@@ -46,7 +45,7 @@ public class ControladorTiendaTest {
         controladorTienda = new ControladorTienda(servicioTienda,servicioJugador);
        session = mock(HttpSession.class);
        //when(session.getAttribute("jugador")).thenReturn(jugador);
-        when(session.getAttribute("usuarioLogueado")).thenReturn(usuarioSesion);
+        when(session.getAttribute("idUsuarioLogueado")).thenReturn(1L);
     }
 
 

@@ -55,8 +55,8 @@ public class ControladorMapa {
         ModelMap mm = new ModelMap();
 
         /*utilizo una session devuelve un long */
-        UsuarioSesionDto usuarioSesion = (UsuarioSesionDto) session.getAttribute("usuarioLogueado");
-        Jugador jugador = servicioJugador.buscarJugadorPorId(usuarioSesion.getId());
+        Long idUsuarioLogueado =(Long)  session.getAttribute("idUsuarioLogueado");
+        Jugador jugador = servicioJugador.buscarJugadorPorId(idUsuarioLogueado);
 
         /*HTTP ERROR 500 javax.servlet.ServletException: deberia buscar el jugador si es null o una exception*/
 
@@ -83,8 +83,8 @@ public class ControladorMapa {
     public ModelAndView desbloquearMarSeleccionado(HttpSession session, @PathVariable ("nombreMar") String nombreMar){
         ModelMap mm = new ModelMap();
 
-        UsuarioSesionDto usuarioSesion = (UsuarioSesionDto) session.getAttribute("usuarioLogueado");
-        Jugador jugador = servicioJugador.buscarJugadorPorId(usuarioSesion.getId());
+        Long idUsuarioLogueado =(Long)  session.getAttribute("idUsuarioLogueado");
+        Jugador jugador = servicioJugador.buscarJugadorPorId(idUsuarioLogueado);
         Mar mar = servicioMapa.obtenerUnMarPorNombre(nombreMar);
 
         // aca tambien deberia ir la logica de si no existe jugador o si el mar no existe hacer algo?

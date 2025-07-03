@@ -39,13 +39,15 @@ public class ControladorMapaTest {
         HttpSession session = mock(HttpSession.class);
 
         // session
-        UsuarioSesionDto usuarioSesion = new UsuarioSesionDto(3L, "Anahi", "PESCADOR");
+        //UsuarioSesionDto usuarioSesion = new UsuarioSesionDto(3L, "Anahi", "PESCADOR");
+        Long idUsuarioDto = 3L;
+
         Jugador jugador = new Jugador("Anahi", "anis", 300.0, 1);
         jugador.setId(3L);
 
         Mar mar = new Mar("Mitologia Nordica", 150.0, "mar dos", false);
 
-        when(session.getAttribute("usuarioLogueado")).thenReturn(usuarioSesion);
+        when(session.getAttribute("idUsuarioLogueado")).thenReturn(idUsuarioDto);
         when(servicioJugador.buscarJugadorPorId(3L)).thenReturn(jugador);
         when(servicioMapa.obtenerUnMarPorNombre("Mitologia Nordica")).thenReturn(mar);
         when(servicioMapa.obtenerElEstadoDelMarSegunELJugador(mar, jugador)).thenReturn(false); // para que entre al try
@@ -63,13 +65,14 @@ public class ControladorMapaTest {
     public void siAlDesbloquearUnMarLaEjecucionEsExitosaSeRedirijaAVistaMapaParaDespuesPoderSeleccionarlo(){
         HttpSession session = mock(HttpSession.class);
         // session
-        UsuarioSesionDto usuarioSesion = new UsuarioSesionDto(3L,"Anahi","PERSCADOR");
+       // UsuarioSesionDto usuarioSesion = new UsuarioSesionDto(3L,"Anahi","PERSCADOR");
+        Long idUsuarioDto = 3L;
         Jugador jugador = new Jugador("Anahi","anis",300.0,1);
         jugador.setId(3L);
 
         Mar mar = new Mar("Mitologia Nordica", 150.0, "mar dos", false);
 
-        when(session.getAttribute("usuarioLogueado")).thenReturn(usuarioSesion);
+        when(session.getAttribute("idUsuarioLogueado")).thenReturn(idUsuarioDto);
         when(servicioJugador.buscarJugadorPorId(3L)).thenReturn(jugador);
         when(servicioMapa.obtenerUnMarPorNombre("Mitologia")).thenReturn(mar);
         when(servicioMapa.desbloquearMarSegunElJugador(mar,jugador)).thenReturn(true);
@@ -84,14 +87,15 @@ public class ControladorMapaTest {
         HttpSession session = mock(HttpSession.class);
 
         // session
-        UsuarioSesionDto usuarioSesion = new UsuarioSesionDto(3L,"Anahi","PERSCADOR");
+       // UsuarioSesionDto usuarioSesion = new UsuarioSesionDto(3L,"Anahi","PERSCADOR");
+        Long idUsuarioDto = 3L;
         Jugador jugador = new Jugador("Anahi","anis",30.0,1);
         jugador.setId(3L);
 
         Mar mar = new Mar("Mitologia Nordica", 150.0, "mar dos", false);
 
 
-        when(session.getAttribute("usuarioLogueado")).thenReturn(usuarioSesion);
+        when(session.getAttribute("idUsuarioLogueado")).thenReturn(idUsuarioDto);
         when(servicioJugador.buscarJugadorPorId(3L)).thenReturn(jugador);
         when(servicioMapa.obtenerUnMarPorNombre("Mitologia")).thenReturn(mar);
 
@@ -129,14 +133,15 @@ public class ControladorMapaTest {
         HttpSession session = mock(HttpSession.class);
 
         // session
-        UsuarioSesionDto usuarioSesion = new UsuarioSesionDto(3L,"Anahi","PERSCADOR");
+       // UsuarioSesionDto usuarioSesion = new UsuarioSesionDto(3L,"Anahi","PERSCADOR");
+       Long idUsuarioDto = 3L;
         Jugador jugador = new Jugador("Anahi","anis",30.0,1);
         jugador.setId(3L);
 
         Mar mar = new Mar("Mitologia Nordica", 150.0, "mar dos", false);
 
 
-        when(session.getAttribute("usuarioLogueado")).thenReturn(usuarioSesion);
+        when(session.getAttribute("idUsuarioLogueado")).thenReturn(idUsuarioDto);
         when(servicioJugador.buscarJugadorPorId(3L)).thenReturn(jugador);
         when(servicioMapa.obtenerUnMarPorNombre("Mitologia Nordica")).thenReturn(mar);
         when(servicioMapa.obtenerElEstadoDelMarSegunELJugador(mar,jugador)).thenReturn(false);
@@ -151,14 +156,15 @@ public class ControladorMapaTest {
         HttpSession session = mock(HttpSession.class);
 
         // session
-        UsuarioSesionDto usuarioSesion = new UsuarioSesionDto(3L,"Anahi","PERSCADOR");
+       // UsuarioSesionDto usuarioSesion = new UsuarioSesionDto(3L,"Anahi","PERSCADOR");
+      Long idUsuarioDto = 3L;
         Jugador jugador = new Jugador("Anahi","anis",30.0,1);
         jugador.setId(3L);
 
         Mar mar = new Mar("Mitologia Nordica", 150.0, "mar dos", true);
 
 
-        when(session.getAttribute("usuarioLogueado")).thenReturn(usuarioSesion);
+        when(session.getAttribute("idUsuarioLogueado")).thenReturn(idUsuarioDto);
         when(servicioJugador.buscarJugadorPorId(3L)).thenReturn(jugador);
         when(servicioMapa.obtenerUnMarPorNombre("Mitologia Nordica")).thenReturn(mar);
         when(servicioMapa.obtenerElEstadoDelMarSegunELJugador(mar,jugador)).thenReturn(true);
@@ -173,12 +179,13 @@ public class ControladorMapaTest {
     @Test
     public void siExisteElJugadorRedirijaAVistaMapa(){
         HttpSession session = mock(HttpSession.class);
-        UsuarioSesionDto usuarioSesion = new UsuarioSesionDto(3L,"Anahi","PERSCADOR");
+      //  UsuarioSesionDto usuarioSesion = new UsuarioSesionDto(3L,"Anahi","PERSCADOR");
+      Long idUsuarioDto = 3L;
         Jugador jugador = new Jugador("Anahi","anis",30.0,1);
         jugador.setId(3L);
         Mar mar = new Mar();
 
-        when(session.getAttribute("usuarioLogueado")).thenReturn(usuarioSesion);
+        when(session.getAttribute("idUsuarioLogueado")).thenReturn(idUsuarioDto);
         when(servicioJugador.buscarJugadorPorId(3L)).thenReturn(jugador);
 
         ModelAndView cm = whenLaRedireccionEsSegunElJugadorOMar(session,mar.getNombre());

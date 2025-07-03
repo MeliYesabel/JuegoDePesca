@@ -55,7 +55,7 @@ public class ControladorLogin {
                 //creo objeto dto seguro para la SESSION y asi lo consuma las demas vistas
                 // en vez de pasar el usuario pasar solo el id -> ususariLogueadoId
                 UsuarioSesionDto usuarioSesion = new UsuarioSesionDto(encontrado.getId(), encontrado.getEmail(), rol);
-                sesion.setAttribute("usuarioLogueado", usuarioSesion);
+                sesion.setAttribute("idUsuarioLogueado", usuarioSesion.getId());
 
                 if(rol.equalsIgnoreCase("ADMIN")){
                     return new ModelAndView("redirect:/admin/dashboard");

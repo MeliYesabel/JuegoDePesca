@@ -4,7 +4,6 @@ import com.tallerwebi.dominio.entidad.Jugador;
 import com.tallerwebi.dominio.entidad.Objeto;
 import com.tallerwebi.dominio.servicio.ServicioJugadorImpl;
 import com.tallerwebi.infraestructura.RepositorioJugadorImpl;
-import com.tallerwebi.presentacion.dto.UsuarioDto;
 import com.tallerwebi.presentacion.dto.UsuarioSesionDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -25,7 +24,7 @@ private ServicioJugadorImpl servicioJugador;
 private ControladorPersonaje controladorPersonaje;
 private HttpSession session;
 private RepositorioJugadorImpl repositorioJugador;
-private UsuarioSesionDto usuarioSesionDtoDtoDto;
+//private UsuarioSesionDto usuarioSesionDtoDtoDto;
 
 
 @BeforeEach
@@ -36,7 +35,7 @@ public void setUp() {
     repositorioJugador = mock(RepositorioJugadorImpl.class);
     controladorPersonaje = new ControladorPersonaje(servicioJugador);
     session = mock(HttpSession.class);
-    usuarioSesionDtoDtoDto = new UsuarioSesionDto(1L,"gonza","admin");
+    //usuarioSesionDtoDtoDto = new UsuarioSesionDto(1L,"gonza","admin");
 
 }
 
@@ -47,10 +46,11 @@ public void setUp() {
         jugador.setId(1L);
         objeto.setIdObjeto(1L);
         jugador.agregarObjeto(objeto);
-        usuarioSesionDtoDtoDto.setId(1L);
+        //usuarioSesionDtoDtoDto.setId(1L);
 
         // Mocks
-        when(session.getAttribute("usuarioLogueado")).thenReturn(usuarioSesionDtoDtoDto);
+      //  when(session.getAttribute("idUsuarioLogueado")).thenReturn(usuarioSesionDtoDtoDto);
+        when(session.getAttribute("idUsuarioLogueado")).thenReturn(1L);
         when(servicioJugador.buscarJugadorPorId(1L)).thenReturn(jugador);
         when(servicioJugador.equipaCaniaAPersonaje(jugador, objeto.getIdObjeto())).thenReturn(true);
         when(repositorioJugador.buscarJugador(1L)).thenReturn(jugador);
@@ -65,7 +65,8 @@ public void setUp() {
 
 @Test
     public void dadoQueEstoyEnLaVistaPersonajeYelJugadorEsNullQueCuandoToqueElBotonCaniaMeDevuelvaLaVistaPersonaje(){
-    when(session.getAttribute("usuarioLogueado")).thenReturn(usuarioSesionDtoDtoDto);
+   // when(session.getAttribute("idUsuarioLogueado")).thenReturn(usuarioSesionDtoDtoDto);
+    when(session.getAttribute("idUsuarioLogueado")).thenReturn(1L);
     when(servicioJugador.buscarJugadorPorId(1L)).thenReturn(null); // <-- jugador null
     ModelAndView model = controladorPersonaje.equiparCania(session,objeto.getIdObjeto());
     assertThat(model.getViewName(), equalToIgnoringCase("vistaPersonaje.html"));

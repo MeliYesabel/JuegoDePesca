@@ -17,7 +17,7 @@ public class ControladorAdmin {
     public ModelAndView mostrarDashBoard(HttpServletRequest request){
         ModelMap datosModelado = new ModelMap();
 
-        UsuarioSesionDto usuarioSesion = (UsuarioSesionDto) request.getSession().getAttribute("usuarioLogueado");
+        UsuarioSesionDto usuarioSesion = (UsuarioSesionDto) request.getSession().getAttribute("idUsuarioLogueado");
         String rol_admin = "ADMIN";
 
         if(usuarioSesion == null || !rol_admin.equalsIgnoreCase(usuarioSesion.getRol())){

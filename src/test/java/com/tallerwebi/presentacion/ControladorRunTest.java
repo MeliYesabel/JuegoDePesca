@@ -3,6 +3,7 @@ package com.tallerwebi.presentacion;
 import com.tallerwebi.dominio.entidad.Jugador;
 import com.tallerwebi.dominio.entidad.Mar;
 import com.tallerwebi.dominio.entidad.Run;
+import com.tallerwebi.dominio.servicio.ServicioJugador;
 import com.tallerwebi.dominio.servicio.ServicioMapa;
 import com.tallerwebi.dominio.servicio.ServicioRun;
 import org.junit.jupiter.api.BeforeEach;
@@ -18,6 +19,7 @@ public class ControladorRunTest {
 
     private ServicioMapa servicioMapaMock;
     private ServicioRun servicioRunMock;
+    private ServicioJugador servicioJugadorMock;
     private ControladorRun controladorRun;
     private HttpSession session;
     private ServicioRun servicioRun;
@@ -31,7 +33,8 @@ public class ControladorRunTest {
     public void setUp() {
         servicioRunMock = mock(ServicioRun.class);
         servicioMapaMock = mock(ServicioMapa.class);
-        controladorRun = new ControladorRun(servicioRunMock, servicioMapaMock);
+        servicioJugadorMock = mock(ServicioJugador.class);
+        controladorRun = new ControladorRun(servicioRunMock, servicioMapaMock,servicioJugadorMock);
         session = mock(HttpSession.class);
 
         jugador = new Jugador();
@@ -70,8 +73,10 @@ public class ControladorRunTest {
         Mar mar = new Mar();
         mar.setId_mar(1L);
         Long idMar = 1L;
+        Long idUsuarioDto  = 3L;
 
-        when(session.getAttribute("jugador")).thenReturn(jugador);
+        when(session.getAttribute("idUsuarioLogueado")).thenReturn(idUsuarioDto);
+        when(servicioJugadorMock.buscarJugadorPorId(idUsuarioDto)).thenReturn(jugador);
         when(servicioMapaMock.obtenerMarPorId(1L)).thenReturn(mar);
 
         ModelAndView mav = controladorRun.iniciarRun(idMar, session);

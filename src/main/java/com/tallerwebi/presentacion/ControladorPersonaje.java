@@ -37,8 +37,8 @@ public class ControladorPersonaje {
         ModelMap model = new ModelMap();
 
        // Jugador jugador = (Jugador) session.getAttribute("jugador");
-       UsuarioSesionDto usuarioSesion = (UsuarioSesionDto) session.getAttribute("usuarioLogueado");
-       Jugador jugador = servicioJugador.buscarJugadorPorId(usuarioSesion.getId());
+       Long idUsuarioLogueado =(Long)  session.getAttribute("idUsuarioLogueado");
+       Jugador jugador = servicioJugador.buscarJugadorPorId(idUsuarioLogueado);
 
       /*  if (jugador == null) {
             jugador = servicioJugador.inicializarJugador(); // solo entra acá la primera vez
@@ -60,8 +60,8 @@ public class ControladorPersonaje {
         ModelMap model = new ModelMap();
 
         //Jugador jugador = (Jugador) session.getAttribute("jugador");
-        UsuarioSesionDto usuarioSesion = (UsuarioSesionDto) session.getAttribute("usuarioLogueado");
-        Jugador jugador = servicioJugador.buscarJugadorPorId(usuarioSesion.getId());
+        Long idUsuarioLogueado =(Long)  session.getAttribute("idUsuarioLogueado");
+        Jugador jugador = servicioJugador.buscarJugadorPorId(idUsuarioLogueado);
 
         if (jugador == null) {
             model.put("error", "No hay sesión activa");
@@ -86,8 +86,8 @@ public class ControladorPersonaje {
         ModelMap model = new ModelMap();
 
        // Jugador jugador = (Jugador) session.getAttribute("jugador");
-        UsuarioSesionDto usuarioSesion = (UsuarioSesionDto) session.getAttribute("usuarioLogueado");
-        Jugador jugador = servicioJugador.buscarJugadorPorId(usuarioSesion.getId());
+        Long idUsuarioLogueado =(Long)  session.getAttribute("idUsuarioLogueado");
+        Jugador jugador = servicioJugador.buscarJugadorPorId(idUsuarioLogueado);
 
         if (jugador == null) {
             model.put("error", "No hay sesión activa para este jugador");

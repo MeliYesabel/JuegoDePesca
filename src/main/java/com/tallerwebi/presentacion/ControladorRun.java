@@ -3,6 +3,7 @@ package com.tallerwebi.presentacion;
 import com.tallerwebi.dominio.entidad.Jugador;
 import com.tallerwebi.dominio.entidad.Mar;
 import com.tallerwebi.dominio.entidad.Run;
+import com.tallerwebi.dominio.servicio.ServicioJugador;
 import com.tallerwebi.dominio.servicio.ServicioMapa;
 import com.tallerwebi.dominio.servicio.ServicioRun;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,11 +22,13 @@ public class ControladorRun {
     * si da verdadero te redirige a vista->  "Run"*/
 
     private ServicioRun servicioRun;
+    private ServicioJugador servicioJugador;
     private Run run = new Run();
     private ServicioMapa servicioMapa;
 
     @Autowired
-    public ControladorRun(ServicioRun servicioRun,  ServicioMapa servicioMapa) {
+    public ControladorRun(ServicioRun servicioRun,  ServicioMapa servicioMapa,ServicioJugador servicioJugador) {
+        this.servicioJugador = servicioJugador;
         this.servicioRun = servicioRun;
         this.servicioMapa = servicioMapa;
     }
@@ -44,7 +47,9 @@ public class ControladorRun {
     }
     @PostMapping("/run")
     public ModelAndView iniciarRun(@RequestParam("idMar") Long idMar, HttpSession session) {
-        Jugador jugador = (Jugador) session.getAttribute("jugador");
+        Long idUsuarioLogueado =(Long)  session.getAttribute("idUsuarioLogueado");
+        Jugador jugador = servicioJugador.buscarJugadorPorId(idUsuarioLogueado);
+
         Integer cantidadCebo =  3; // hard codeo, aca van los cebo seteados previamente
         Mar marSeleccionado = servicioMapa.obtenerMarPorId(idMar);
 
