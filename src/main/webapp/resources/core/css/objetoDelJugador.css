@@ -65,19 +65,19 @@ li {
     box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
 }
 
-/* Imagen de objeto */
+
 li::before {
     content: "";
     width: 64px;
     height: 64px;
-    background-image: url(/resources/core/img/caña-madera.png); /* Asegurate de tener esta imagen en /static/images */
+    background-image: url(/resources/core/img/caña-madera.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     flex-shrink: 0;
 }
 
-/* Botón */
+
 form button {
     margin-left: auto;
     padding: 8px 16px;

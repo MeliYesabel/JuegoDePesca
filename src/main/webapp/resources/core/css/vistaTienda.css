@@ -1,4 +1,4 @@
-/* Reset general y fuente retro */
+
 * {
     margin: 0;
     padding: 0;
@@ -12,14 +12,14 @@ html, body {
     height: 100%;
     overflow-x: hidden;
     background-image: url('../img/fondo-tienda.jpg');
-    /*background: linear-gradient(to bottom, #a2d4f3, #e0f7fa); */
+
     color: #033b4a;
     font-size: 14px;
-    /*padding: 20px;*/
+
 
 }
 
-/* Navegación */
+
 nav {
     background-color: #0288d1;
     padding: 10px;
@@ -42,7 +42,7 @@ nav a:hover {
 
 
 
-/* Título y monedas */
+
 .titulo {
     color:white;
     font-size: 36px;
@@ -73,7 +73,7 @@ main span {
     color: #004d40;
 }
 
-/* Lista de objetos */
+
 ul {
     list-style: none;
     margin-top: 20px;
@@ -93,19 +93,19 @@ justify-content: flex-start;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
 }
 
-/* Imagen de objeto */
+
 li::before {
     content: "";
     width: 64px;
     height: 64px;
-    background-image: url(/resources/core/img/caña-madera.png); /* Asegurate de tener esta imagen en /static/images */
+    background-image: url(/resources/core/img/caña-madera.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     flex-shrink: 0;
 }
 
-/* Botón */
+
 form button {
     margin-left: auto;
     padding: 8px 16px;
