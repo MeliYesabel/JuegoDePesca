@@ -41,6 +41,8 @@ public class ControladorMapa {
         return new ModelAndView("vistaMapa",modelMap);
     }
 
+    /*implementar la cantidad de monedas que tiene eljugador */
+
     @RequestMapping("/logros")
     public ModelAndView irAVistaLogros(){
         return new ModelAndView("vistaLogros");
