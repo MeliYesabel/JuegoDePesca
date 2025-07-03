@@ -16,14 +16,7 @@
     <ul class="nav justify-content-end mt-2 p-4">
 
         <li class="nav-item">
-            <a class="btn btn-primary me-2" th:href="@{/personaje}">Personaje</a>
-        </li>
-
-        <li class="nav-item">
-            <p class="btn btn-primary me-2" th:href="@{/logros}">Monedas</p>
-        </li>
-        <li class="nav-item">
-            <p>Monedas: <span th:text="${monedas}"></span></p>
+            <p class="btn btn-primary me-2">Monedas: <span th:text="${monedas}"></span></p>
         </li>
         <li class="nav-item">
             <a class="btn btn-primary me-2" th:href="@{/logros}">Libro de Coleccion</a>
@@ -32,8 +25,9 @@
             <a class="btn btn-primary me-2"  th:href="@{/tienda}">Tienda</a>
         </li>
         <li class="nav-item">
-            <a class="btn btn-primary me-2" th:href="@{/login-pescador}">Usuario</a><!-- cual es la vista del usuario y si vista logros sera asi o libro de colecciones -->
+            <a class="btn btn-primary me-2" th:href="@{/personaje}">Personaje</a>
         </li>
+
     </ul>
   </header>
 
