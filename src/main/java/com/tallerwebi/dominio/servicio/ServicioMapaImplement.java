@@ -68,7 +68,6 @@ public class ServicioMapaImplement implements ServicioMapa {
     public Double descontarLasMonedasDelJugador(Mar mar, Jugador jugador) {
         Double total = jugador.getMonedas() - mar.getPrecio();
         jugador.setMonedas(total);
-      //  repositorioJugador.save(jugador);
         return  total;
     }
 
