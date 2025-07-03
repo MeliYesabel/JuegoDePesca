@@ -44,7 +44,9 @@ public class Jugador extends UsuarioAuth {
         this.cant_carnada = cant_carnada;
     }
 
-    public Jugador() {}
+    public Jugador() {
+       this.monedas  = MONEDAS_INICIALES;
+    }
 
     public Objeto getCaniaActiva() {
         return caniaActiva;

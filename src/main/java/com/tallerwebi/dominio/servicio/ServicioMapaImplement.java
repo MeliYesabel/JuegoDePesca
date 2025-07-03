@@ -59,6 +59,8 @@ public class ServicioMapaImplement implements ServicioMapa {
         if (jugador.getMonedas() >= mar.getPrecio()){
             cambiarElEstadoDelMarADesbloqueado(mar,jugador);
             descontarLasMonedasDelJugador(mar,jugador);
+            //repositorioJugador.guardarJugador(jugador);
+            repositorioJugador.actualizarDatosDeJugadorYaExistente(jugador);
             return true;
         }
         throw new NoSePuedodesbloquearElMarException("No tenés monedas suficientes");

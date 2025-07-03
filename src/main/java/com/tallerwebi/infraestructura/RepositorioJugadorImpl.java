@@ -48,4 +48,9 @@ public class RepositorioJugadorImpl implements RepositorioJugador {
                 .add(Restrictions.eq("id", idJugador))
                 .uniqueResult(); /*si no encuentra nada me retorna NULL*/
     }
+
+    @Override
+    public void actualizarDatosDeJugadorYaExistente(Jugador jugador) {
+        sessionFactory.getCurrentSession().merge(jugador);
+    }
 }

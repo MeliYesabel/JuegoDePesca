@@ -11,5 +11,6 @@ public interface RepositorioJugador {
     List<Objeto> obtenerListaDeObjetosDelJugador(Jugador jugador);
     Jugador buscarjugadorPorId(Long idJugador);
 
+    void actualizarDatosDeJugadorYaExistente(Jugador jugador);
 }
 

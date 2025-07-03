@@ -89,7 +89,6 @@ public class ControladorMapa {
 
             try{
                servicioMapa.desbloquearMarSegunElJugador(mar,jugador);
-               session.setAttribute("jugador",jugador);
             }catch (NoSePuedodesbloquearElMarException e){
                 mm.put("mar",mar);
                 mm.put("jugadorMonedas",jugador.getMonedas());
