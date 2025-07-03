@@ -32,7 +32,7 @@ public class ControladorResumenRunTest {
 
         ModelAndView mav = controlador.mostrarResumen(session);
 
-        assertEquals("errorVista", mav.getViewName());
+        assertEquals("vistaResumen.html", mav.getViewName());
         assertEquals("No hay una partida activa. Volvé al inicio.", mav.getModel().get("error"));
     }
 
