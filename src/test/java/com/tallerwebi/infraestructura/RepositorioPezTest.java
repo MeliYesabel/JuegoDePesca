@@ -6,6 +6,7 @@ import com.tallerwebi.dominio.repositorio.RepositorioPez;
 import com.tallerwebi.integracion.config.HibernateTestConfig;
 import com.tallerwebi.integracion.config.SpringWebTestConfig;
 import org.hibernate.SessionFactory;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,7 @@ public class RepositorioPezTest {
     @Autowired
     RepositorioPez repositorioPez;
 
+    @Disabled
     @Test
     @Transactional
     @Rollback

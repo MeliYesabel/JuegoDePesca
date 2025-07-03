@@ -1,0 +1,60 @@
+*{
+    margin:0;
+    padding:0;
+    font-family: "Press Start 2P", system-ui;
+
+    font-weight: 400;
+
+}
+
+html,body{
+    background-image: url('../img/fondo-tienda2.jpg');
+
+}
+
+nav {
+    background-color: #0288d1;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: 0.2s;
+}
+
+nav a:hover {
+    color: #ffeb3b;
+}
+
+main{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 80px);
+    text-align: center;
+}
+
+.letraGrande{
+    font-size: 50px;
+    color:red;
+}
+
+button{
+    background-color: #0288d1;
+    color:white !important;
+    border-radius: 22px;
+    border:none;
+
+}
+
+button:hover{
+    color: #ffeb3b !important;
+}
+

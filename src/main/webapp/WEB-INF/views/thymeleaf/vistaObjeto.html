@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Objeto Comprado</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/vistaObjeto.css}">
 </head>
 <body>
 
@@ -15,20 +17,28 @@
     </nav>
 </header>
 
-<h1>¡Has comprado un objeto!</h1>
+
+<main>
+
+<h1 class="letraGrande">¡Has comprado un objeto!</h1>
 
 <!-- Mensaje de éxito -->
-<div th:if="${mensaje}" style="color:green;">
+<div th:if="${mensaje}" style="color:green;" class="letraGrande">
     <p th:text="${mensaje}"></p>
 </div>
 
 <!-- Mostrar monedas actuales -->
-<p><strong>Monedas actuales:</strong> <span th:text="${jugador.monedas}">0</span></p>
+<p class="letraGrande"><strong>Monedas actuales:</strong> <span th:text="${jugador.monedas}">0</span></p>
 
 <!-- Volver a la tienda -->
 <form th:action="@{/tienda}" method="get">
-    <button type="submit">Volver a la Tienda</button>
+    <br>
+    <br>
+    <br>
+    <button type="submit" class="letraGrande">Volver a la Tienda</button>
 </form>
+
+</main>
 
 </body>
 </html>

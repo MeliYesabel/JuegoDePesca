@@ -10,9 +10,10 @@ INSERT INTO Jugador(id,monedas) VALUES
 INSERT INTO Admin(id) values (3);
 
 --objetos
-INSERT INTO Objeto(precioObjeto,nombre)VALUES
-(100.0,'CAÑA MADERA'),
-(150.0,'CAÑA METAL');
+INSERT INTO Objeto(precioObjeto,nombre,nombreImagen)VALUES
+(100.0,'CAÑA MADERA','caña-madera.png'),
+(150.0,'CAÑA METAL','caña-metal.jpg');
+
 --mares
 INSERT INTO Mar (id_mar,nombre,precio,descripcion,estadoBloqueado) VALUES
 (1,'Mitologia-griega', 0.0, 'mar uno', FALSE),
