@@ -21,7 +21,7 @@ public class ControladorResumenRun {
 
             if (run == null) {
                 model.put("error", "No hay una partida activa. Volvé al inicio.");
-                return new ModelAndView("errorVista", model);
+                return new ModelAndView("vistaResumen.html", model);
             }
 
             Integer ganancia = run.obtenerganacia();

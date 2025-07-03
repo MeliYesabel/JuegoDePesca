@@ -30,16 +30,16 @@ INSERT INTO Rareza (id_rareza, nombre, probabilidadAtrapar, valor) VALUES
 
 -- Mar 1 - Mitología griega
 INSERT INTO Pez (id_pez, nombre, id_rareza, id_mar) VALUES
-                                                        (null, 'Delfín Helénico', 1, 1),
-                                                        (null, 'Trucha de Atenea', 1, 1),
-                                                        (null, 'Carpa de Apolo', 1, 1),
-                                                        (null, 'Sirena Menor', 2, 1),
-                                                        (null, 'Hipocampo Menor', 2, 1),
-                                                        (null, 'Kraken Mítico', 3, 1);
+(null, 'Delfín Helénico', 1, 1),
+(null, 'Trucha de Atenea', 1, 1),
+(null, 'Carpa de Apolo', 1, 1),
+(null, 'Sirena Menor', 2, 1),
+(null, 'Hipocampo Menor', 2, 1),
+(null, 'Kraken Mítico', 3, 1);
 
 -- Mar 2 - Mitología Nórdica
 INSERT INTO Pez (id_pez, nombre, id_rareza, id_mar) VALUES
-                                                        (null, 'Pez RunatunN', 1, 2),
+ (null, 'Pez RunatunN', 1, 2),
                                                         (null, 'Salmón de Thor', 1, 2),
                                                         (null, 'Bacalao de Freyja', 1, 2),
                                                         (null, 'Serpiente del Fiordo', 2, 2),

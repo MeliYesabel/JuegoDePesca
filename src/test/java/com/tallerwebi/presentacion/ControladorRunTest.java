@@ -67,11 +67,14 @@ public class ControladorRunTest {
 
     @Test
     public void testIniciarRun_creaRunYRedirigeAVistaRun() {
+        Mar mar = new Mar();
+        mar.setId_mar(1L);
         Long idMar = 1L;
-        when(session.getAttribute("jugador")).thenReturn(jugador);
-        when(servicioMapa.obtenerMarPorId(idMar)).thenReturn(mar);
 
-        ModelAndView mav = controlador.iniciarRun(idMar, session);
+        when(session.getAttribute("jugador")).thenReturn(jugador);
+        when(servicioMapaMock.obtenerMarPorId(1L)).thenReturn(mar);
+
+        ModelAndView mav = controladorRun.iniciarRun(idMar, session);
 
         assertEquals("vistaRun", mav.getViewName());
 
@@ -80,8 +83,9 @@ public class ControladorRunTest {
         assertEquals(mar, runCreado.getMar());
         assertEquals(3, runCreado.getCebo());
 
-        verify(servicioRun).guardarRun(runCreado);
+        verify(servicioRunMock).guardarRun(runCreado);
         verify(session).setAttribute("run", runCreado);
     }
+
 }
 
