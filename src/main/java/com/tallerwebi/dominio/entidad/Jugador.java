@@ -14,7 +14,6 @@ public class Jugador extends UsuarioAuth {
 
     private static final Double MONEDAS_INICIALES = 200.0;
 
-
     private String alias;
     private double monedas;
     private String nombre;
