@@ -35,8 +35,10 @@ public class ControladorMapa {
     @RequestMapping("/mapa")
     public ModelAndView irAVistaMapa() {
         ModelMap modelMap = new ModelMap();
+        //Jugador jugador = new Jugador();
         List<Mar> listaMar = servicioMapa.obtenerTodaListaDeMares();
         modelMap.addAttribute("listaMar", listaMar);
+       // modelMap.addAttribute("jugador", jugador);
 
         return new ModelAndView("vistaMapa",modelMap);
     }
