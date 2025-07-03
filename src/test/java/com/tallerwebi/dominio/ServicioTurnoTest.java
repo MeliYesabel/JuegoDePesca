@@ -5,6 +5,7 @@ import com.tallerwebi.dominio.entidad.Run;
 import com.tallerwebi.dominio.entidad.Turno;
 import com.tallerwebi.dominio.excepcion.ObjetoInexistenteException;
 import com.tallerwebi.dominio.excepcion.ParametroInvalidoException;
+import com.tallerwebi.dominio.repositorio.RepositorioTurno;
 import com.tallerwebi.dominio.servicio.ServicioTurnoImpl;
 import com.tallerwebi.dominio.repositorio.RepositorioPez;
 import org.junit.jupiter.api.BeforeEach;
@@ -19,6 +20,7 @@ import static org.mockito.Mockito.mock;
 
 public class ServicioTurnoTest {
     private RepositorioPez repositorioPez;
+    private RepositorioTurno repositorioTurno;
     private ServicioTurnoImpl st;
     private Run run;
     private Mar mar;
@@ -26,7 +28,7 @@ public class ServicioTurnoTest {
     @BeforeEach
     public void setUp() {
         repositorioPez = mock(RepositorioPez.class);
-        st = new ServicioTurnoImpl(repositorioPez);
+        st = new ServicioTurnoImpl(repositorioPez, repositorioTurno);
 
     }
 

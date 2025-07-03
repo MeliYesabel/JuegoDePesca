@@ -16,4 +16,10 @@ public interface ServicioRun {
     Double calcularGanancia(Run run);
 
     Integer getCantidadTurnosJugados(Run run);
+
+    void guardarRun(Run run);
+
+    Run obtenerRun(Long idRun);
+
+    void agregarPezAListaPecesPescados(Pez pezSeleccionado, Long idRun);
 }

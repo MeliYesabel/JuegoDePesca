@@ -49,9 +49,4 @@ public class Rareza {
     public void setValor(Integer valor) {
         this.valor = valor;
     }
-
-    public double getProbabilidadAtrapado() {
-        return probabilidadAtrapar;
-    }
-
 }

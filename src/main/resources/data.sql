@@ -24,9 +24,9 @@ INSERT INTO Mar (id_mar,nombre,precio,descripcion,estadoBloqueado) VALUES
 (7,'Mitologia-China', 450.0, 'mar siete', TRUE);
 
 INSERT INTO Rareza (id_rareza, nombre, probabilidadAtrapar, valor) VALUES
-(1, 'Normal', 80.0, 10),
-(2, 'Raro', 50.0, 20),
-(3, 'Épico', 20.0, 40);
+(1, 'Normal', 0.8, 10),
+(2, 'Raro', 0.5, 20),
+(3, 'Épico', 0.2, 40);
 
 -- Mar 1 - Mitología griega
 INSERT INTO Pez (id_pez, nombre, id_rareza, id_mar) VALUES
@@ -39,7 +39,7 @@ INSERT INTO Pez (id_pez, nombre, id_rareza, id_mar) VALUES
 
 -- Mar 2 - Mitología Nórdica
 INSERT INTO Pez (id_pez, nombre, id_rareza, id_mar) VALUES
-                                                        (null, 'Pez Runa', 1, 2),
+                                                        (null, 'Pez RunatunN', 1, 2),
                                                         (null, 'Salmón de Thor', 1, 2),
                                                         (null, 'Bacalao de Freyja', 1, 2),
                                                         (null, 'Serpiente del Fiordo', 2, 2),

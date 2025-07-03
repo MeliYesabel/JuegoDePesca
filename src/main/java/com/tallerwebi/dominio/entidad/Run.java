@@ -1,6 +1,8 @@
 package com.tallerwebi.dominio.entidad;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Run {
@@ -10,8 +12,8 @@ public class Run {
     private Integer cebo;
     @ManyToOne
     private Mar mar;
-   // @OneToMany
-    //private List<Pez> pecesPescados;
+   @OneToMany
+    private List<Pez> pecesPescados = new ArrayList<>();
    @ManyToOne
    private Jugador jugador;
     //@OneToMany
@@ -37,9 +39,10 @@ public class Run {
     public void setMar(Mar mar) {
         this.mar = mar;
     }
-   /* public void setPecesPescados(List<Pez> pecesPescados) {
+   public void setPecesPescados(List<Pez> pecesPescados) {
         this.pecesPescados = pecesPescados;
     }
+    /*
     public void setHistorialTurnos(List<Turno> historialTurnos) {
         this.historialTurnos = historialTurnos;
     }
@@ -56,6 +59,10 @@ public class Run {
         }
     }
 
+    public List<Pez> getPecesPescados() {
+        return pecesPescados;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -69,5 +76,17 @@ public class Run {
 
     public void setJugador(Jugador jugador) {
         this.jugador = jugador;
+    }
+
+    public void agregarPecesPescados(Pez pezSeleccionado) {
+        pecesPescados.add(pezSeleccionado);
+    }
+
+    public Integer obtenerganacia() {
+        Integer ganancia = 0;
+        for (Pez pez : pecesPescados) {
+            ganancia += pez.getRareza().getValor();
+        }
+        return ganancia;
     }
 }
