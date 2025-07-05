@@ -104,5 +104,38 @@ public class ControladorTienda {
     }
 
 
+    @RequestMapping(value = "/comprarCarnada", method = RequestMethod.POST)
+    public ModelAndView comprarCarnada(HttpSession session,@RequestParam Integer cant_carnada) {
+        ModelMap model = new ModelMap();
+
+        // Recupero el jugador desde la sesión (que ya debería estar guardado)
+        //Jugador jugador = (Jugador) session.getAttribute("jugador");
+        Long idUsuarioLogueado =(Long)  session.getAttribute("idUsuarioLogueado");
+        Jugador jugador = servicioJugador.buscarJugadorPorId(idUsuarioLogueado);
+
+        if(jugador == null){
+            model.put("error","No hay sesiones activas para este jugador");
+            return new ModelAndView("vistaTienda.html", model);// en vez de dirigirte a tienda que lo haga a login
+        }
+
+        try {
+           // servicioTienda.comprarObjeto(jugador, idObjeto);
+            servicioTienda.comprarCarnada(jugador,cant_carnada);
+            model.put("mensaje", "¡Compra realizada con éxito!");
+            model.put("jugador", jugador);  // para actualizar info
+            return new ModelAndView("vistaObjeto.html", model);
+
+        } catch (ParametroInvalidoException  | MonedasInsuficientesException  e) {
+            model.put("error", e.getMessage());
+            model.put("jugador", jugador);
+            return new ModelAndView("vistaCompraSinExito.html", model);
+        }
+
+
+
+
+    }
+
+
 
 }

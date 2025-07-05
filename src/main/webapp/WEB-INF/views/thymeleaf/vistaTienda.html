@@ -52,6 +52,16 @@
             </form>
         </li>
     </ul>
+
+ <!--   <form th:action="@{/comprarCarnada}" method="post">
+        <input type="hidden" name="cant_carnada" value="1" />
+        <button type="submit">Comprar 1 Carnada</button>
+    </form> con este se compra de a una carnada a la vez-->
+    <form th:action="@{/comprarCarnada}" method="post">
+        <label for="cant_carnada">Cantidad de carnada:</label>
+        <input type="number" id="cant_carnada" name="cant_carnada" min="1" required>
+        <button type="submit">Comprar</button>
+    </form>
 </main>
 </body>
 </html>

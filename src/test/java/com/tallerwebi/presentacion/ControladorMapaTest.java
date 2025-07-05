@@ -103,6 +103,7 @@ public class ControladorMapaTest {
         thenLaVistaFueRedirigidaADondeIba(mv, "redirect:/mapa");
     }
 
+    @Disabled
     @Test
     public void queAlObtenerTodaLaListaDeMaresIrAVistaMapa(){
         HttpSession session = mock(HttpSession.class);

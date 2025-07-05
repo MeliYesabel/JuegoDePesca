@@ -63,6 +63,32 @@ public class ServicioTiendaImpl implements ServicioTienda {
 
     }
 
+    @Override
+    public Boolean comprarCarnada(Jugador jugador, Integer cantCarnada) {
+
+        //Integer cantCarnada = jugador.getCant_carnada();
+
+        if(jugador==null && cantCarnada==null){
+            throw new ParametroInvalidoException("El jugador o la cantidad de carnada no pueden ser nulos");
+        }
+
+        if(jugador.getMonedas() < 10 * cantCarnada){ //cada carnada vale 10 monedas
+            throw new MonedasInsuficientesException("monedas insuficientes");
+        }
+
+        jugador.setMonedas(jugador.getMonedas() - 10 * cantCarnada);
+
+        Integer cantidadActual = jugador.getCant_carnada();
+        if (cantidadActual == null) {
+            cantidadActual = 0;
+        }
+
+        jugador.setCant_carnada(cantidadActual + cantCarnada);
+        repositorioJugador.guardarJugador(jugador);
+
+        return Boolean.TRUE;
+    }
+
 
 
     public Objeto buscarObjeto(Integer idObjeto) {
@@ -96,6 +122,8 @@ public class ServicioTiendaImpl implements ServicioTienda {
           this.listaObjetos =  repositorioObjeto.obtenerTodosLosObjetos();
         }
     }
+
+
 
 
     public List<Objeto> getListaObjetos() {
