@@ -76,6 +76,8 @@ public class ControladorTiendaTest {
         assertThat(modelAndView.getViewName(), equalToIgnoringCase("vistaObjeto.html"));
     }
 
+
+
     @Test
     public void dadoQueCuandoComproUnObjetoYMeDevuelveFalseQueMeDevuelvaLaVistaCompraSinExitoHtml() {
         // Simulo jugador logueado
@@ -90,41 +92,21 @@ public class ControladorTiendaTest {
         assertThat(modelAndView.getViewName(), equalToIgnoringCase("vistaCompraSinExito.html"));
     }
 
-
-   /* @Test
-    public void dadoQueCuandoComproUnObjetoYMeDevuelveFalseQueMeDevuelvaLaVistaCompraSinExitoHtml(){//si falla la compra de un objeto vuelva a la tienda
-        when(servicioTienda.comprarObjeto(jugador,objeto.getIdObjeto())).thenThrow(new MonedasInsuficientesException("No hay monedas"));
-                //.thenReturn(false);
-        ModelAndView modelAndView = controladorTienda.comprarObjeto(session,1L);
-        assertThat(modelAndView.getViewName(), equalToIgnoringCase("vistaCompraSinExito.html"));// en realidad seria vista compra sin exito
-    }*/
- /*  @Test
-    public void queElUsuarioPuedaComprarMonedas() {
-
+    @Test
+    public void dadoQueComproCarnadaExitosamenteQueMeLleveALaVistaCompraCarnadaExitosa(){
+        // jugador.setMonedas(30.0);
+        when(servicioJugador.buscarJugadorPorId(1L)).thenReturn(jugador);
+        when(servicioTienda.comprarCarnada(jugador,3)).thenReturn(true);
+        ModelAndView modelAndView = controladorTienda.comprarCarnada(session,3);
+        assertThat(modelAndView.getViewName(), equalToIgnoringCase("vistaCompraCarnadaExitosa.html"));
     }
-
-
-
 
     @Test
-   public void queElUsuarioPuedaComprarUnObjeto(){
-        givenNoExisteUsuario();
-        ModelAndView mod = whenComprarObjeto(jugador,idObjeto);
-        thenObjetoCompradoConExito(mod);
-
+    public void dadoQueComproCarnadaSinExitoQueMeLleveALaVistaCompraCarnadaSinExitoso(){
+        when(servicioJugador.buscarJugadorPorId(1L)).thenReturn(jugador);
+        when(servicioTienda.comprarCarnada(jugador,3)).thenThrow(new MonedasInsuficientesException("No hay monedas"));
+        ModelAndView modelAndView = controladorTienda.comprarCarnada(session,3);
+        assertThat(modelAndView.getViewName(), equalToIgnoringCase("vistaCompraCarnadaSinExitoso.html"));
     }
 
-    private void thenObjetoCompradoConExito() {
-    }
-
-    private ModelAndView whenComprarObjeto(Jugador jugador,Integer idObjeto) {
-        ControladorTienda controladorTienda = new ControladorTienda(servicioTienda);
-        ModelAndView mav = controladorTienda.comprarObjeto(jugador,idObjeto);
-        return mav;
-
-
-    }
-
-    private void givenNoExisteUsuario() {
-    }*/
 }
