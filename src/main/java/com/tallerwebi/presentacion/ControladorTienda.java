@@ -121,14 +121,14 @@ public class ControladorTienda {
         try {
            // servicioTienda.comprarObjeto(jugador, idObjeto);
             servicioTienda.comprarCarnada(jugador,cant_carnada);
-            model.put("mensaje", "¡Compra realizada con éxito!");
+            model.put("mensaje", "¡Carnada comprada Exitosamente!");
             model.put("jugador", jugador);  // para actualizar info
-            return new ModelAndView("vistaObjeto.html", model);
+            return new ModelAndView("vistaCompraCarnadaExitosa.html", model);// vistaObjeto.html
 
         } catch (ParametroInvalidoException  | MonedasInsuficientesException  e) {
             model.put("error", e.getMessage());
             model.put("jugador", jugador);
-            return new ModelAndView("vistaCompraSinExito.html", model);
+            return new ModelAndView("vistaCompraCarnadaSinExitoso.html", model);//vistaCompraCarnadaSinExitoso vistaCompraSinExito.html
         }
 
 

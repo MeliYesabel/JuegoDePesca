@@ -59,23 +59,6 @@ public class ServicioTiendaImplTest {
 
     }
 
-    @Test
-    public void queAlComprarUnaCantidadDeCarnadasSeLeSumeLaCantidadAlJugador(){
-        jugador.setMonedas(150.0);
-        servicioTienda.comprarCarnada(jugador,3);
-        Integer valorEsperado = 3;
-        Integer valorObtenido = jugador.getCant_carnada();
-        assertEquals(valorEsperado,valorObtenido);
-    }
-
-    @Test
-    public void queAlComprarUnaCantidadDeCarnadasSeLeReste10MonedasPorCadaCarnadaAlJugador(){
-        jugador.setMonedas(150.0);
-        servicioTienda.comprarCarnada(jugador,3);
-        Double valorEsperado = 120.0;
-        Double valorObtenido = jugador.getMonedas();
-        assertEquals(valorEsperado,valorObtenido);
-    }
 
     @Test
     public void queNoSePuedaComprarUnObjetoSiNoTieneMonedasSuficientes() {
@@ -111,6 +94,25 @@ when(repositorioObjeto.buscarObjeto(1L)).thenReturn(objeto);
         assertThrows(ParametroInvalidoException.class, () -> {
             servicioTienda.comprarObjeto(jugador, null);
         });
+    }
+
+
+    @Test
+    public void queAlComprarUnaCantidadDeCarnadasSeLeSumeLaCantidadAlJugador(){
+        jugador.setMonedas(150.0);
+        servicioTienda.comprarCarnada(jugador,3);
+        Integer valorEsperado = 3;
+        Integer valorObtenido = jugador.getCant_carnada();
+        assertEquals(valorEsperado,valorObtenido);
+    }
+
+    @Test
+    public void queAlComprarUnaCantidadDeCarnadasSeLeReste10MonedasPorCadaCarnadaAlJugador(){
+        jugador.setMonedas(150.0);
+        servicioTienda.comprarCarnada(jugador,3);
+        Double valorEsperado = 120.0;
+        Double valorObtenido = jugador.getMonedas();
+        assertEquals(valorEsperado,valorObtenido);
     }
 
 
