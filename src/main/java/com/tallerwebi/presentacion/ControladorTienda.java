@@ -63,6 +63,7 @@ public class ControladorTienda {
         model.put("claveTienda","Esta es la tienda");
         model.put("jugador", jugador);
         model.put("objetosDisponibles", servicioTienda.getListaObjetos());
+        model.put("puedeReclamar", servicioJugador.puedeReclamarMonedas(jugador));
 
 
 
@@ -136,6 +137,27 @@ public class ControladorTienda {
 
     }
 
+    @RequestMapping(value = "/reclamar-monedas", method = RequestMethod.POST)
+public ModelAndView reclamarMonedas(HttpSession session) {
+        Long idUsuarioLogueado =(Long)  session.getAttribute("idUsuarioLogueado");
+        Jugador jugador = servicioJugador.buscarJugadorPorId(idUsuarioLogueado);
+        ModelMap model = new ModelMap();
+        if(servicioJugador.puedeReclamarMonedas(jugador)){
+            servicioJugador.reclamarMonedas(idUsuarioLogueado);
+
+            jugador = servicioJugador.buscarJugadorPorId(idUsuarioLogueado);
+            model.put("mensajeReclamo","!Reclamaste tus monedas¡");
+        } else{
+            model.put("mensajeReclamo","Espera unos segundos");
+        }
+        model.put("jugador", jugador);
+        model.put("puedeReclamar",servicioJugador.puedeReclamarMonedas(jugador));
+
+        model.put("objetosDisponibles", servicioTienda.getListaObjetos());
+        model.put("claveTienda", "Bienvenido a la tienda");
+
+        return new ModelAndView("vistaTienda.html", model);
+    }
 
 
 }

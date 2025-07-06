@@ -1,6 +1,7 @@
 package com.tallerwebi.dominio.entidad;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +20,7 @@ public class Jugador extends UsuarioAuth {
     private String nombre;
     private Integer cant_carnada;
     private Integer ceboEquipado;
+    private LocalDateTime ultimoReclamoDeMonedas; //se lo agregue para hacer el reclamo de monedas
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "jugador_id")
     private List<Objeto> objetosComprados = new ArrayList<>();
@@ -110,6 +112,22 @@ public class Jugador extends UsuarioAuth {
 
     public void sumarGanancia(Integer ganancia) {
     this.monedas += ganancia;
+    }
+
+    public LocalDateTime getUltimoReclamoDeMonedas() {
+        return ultimoReclamoDeMonedas;
+    }
+
+    public List<JugadorMar> getMares() {
+        return mares;
+    }
+
+    public void setUltimoReclamoDeMonedas(LocalDateTime ultimoReclamoDeMonedas) {
+        this.ultimoReclamoDeMonedas = ultimoReclamoDeMonedas;
+    }
+
+    public void setMares(List<JugadorMar> mares) {
+        this.mares = mares;
     }
 }
 

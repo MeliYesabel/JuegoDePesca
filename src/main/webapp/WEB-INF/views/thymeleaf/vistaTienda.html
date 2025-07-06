@@ -62,6 +62,12 @@
         <input type="number" id="cant_carnada" name="cant_carnada" min="1" required>
         <button type="submit">Comprar</button>
     </form>
+
+    <form th:action="@{/reclamar-monedas}" method="post">
+        <button type="submit" >Reclamar Monedas </button>
+    </form>
+
+    <p th:text="${mensajeReclamo}"></p>
 </main>
 </body>
 </html>
