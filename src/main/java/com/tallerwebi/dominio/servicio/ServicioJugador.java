@@ -15,4 +15,5 @@ public interface ServicioJugador {
     Boolean puedeReclamarMonedas(Jugador jugador);
 
     void reclamarMonedas(Long idUsuarioLogueado);
+     Long segundosParaProximoReclamo(Jugador jugador);
 }

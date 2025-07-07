@@ -57,17 +57,35 @@
         <input type="hidden" name="cant_carnada" value="1" />
         <button type="submit">Comprar 1 Carnada</button>
     </form> con este se compra de a una carnada a la vez-->
-    <form th:action="@{/comprarCarnada}" method="post">
-        <label for="cant_carnada">Cantidad de carnada:</label>
+    <!--<form th:action="@{/comprarCarnada}" method="post" class="textoBlanco">
+        <label for="cant_carnada" >Cantidad de carnada:</label>
         <input type="number" id="cant_carnada" name="cant_carnada" min="1" required>
         <button type="submit">Comprar</button>
-    </form>
+    </form>-->
+
+    <ul>
+        <li class="item-carnada">
+            <img th:src="@{'/img/carnada.jpg'}" alt="Carnada" width="100" />
+            <form th:action="@{/comprarCarnada}" method="post" class="form-carnada">
+                <label for="cant_carnada" class="label-carnada">Cantidad de carnada:</label>
+                <input type="number" id="cant_carnada" name="cant_carnada" min="1" required class="input-carnada">
+                <button type="submit">Comprar</button>
+            </form>
+        </li>
+    </ul>
+
+
 
     <form th:action="@{/reclamar-monedas}" method="post">
         <button type="submit" >Reclamar Monedas </button>
     </form>
 
     <p th:text="${mensajeReclamo}"></p>
+
+    <div th:if="${segundosRestantes > 0}">
+        <p>Podés reclamar monedas en <span th:text="${segundosRestantes}">15</span> segundos.</p>
+    </div>
+
 </main>
 </body>
 </html>

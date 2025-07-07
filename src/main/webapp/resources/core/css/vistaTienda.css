@@ -105,6 +105,37 @@ li::before {
     flex-shrink: 0;
 }
 
+.item-carnada {
+    max-width: 50%;
+    min-width: 60%;
+    background-color: #ffffffaa;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.form-carnada {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.label-carnada {
+    color: #004d40;
+}
+
+.input-carnada {
+    padding: 5px;
+    font-size: 12px;
+}
+
+
+
 
 form button {
     margin-left: auto;

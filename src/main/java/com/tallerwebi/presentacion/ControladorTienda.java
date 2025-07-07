@@ -150,8 +150,10 @@ public ModelAndView reclamarMonedas(HttpSession session) {
         } else{
             model.put("mensajeReclamo","Espera unos segundos");
         }
+
         model.put("jugador", jugador);
         model.put("puedeReclamar",servicioJugador.puedeReclamarMonedas(jugador));
+        model.put("segundosRestantes",servicioJugador.segundosParaProximoReclamo(jugador));
 
         model.put("objetosDisponibles", servicioTienda.getListaObjetos());
         model.put("claveTienda", "Bienvenido a la tienda");

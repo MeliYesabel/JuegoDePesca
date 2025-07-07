@@ -93,5 +93,16 @@ public class ServicioJugadorImpl implements ServicioJugador {
         repositorioJugador.guardarJugador(jugador);
     }
 
+    @Override
+    public Long segundosParaProximoReclamo(Jugador jugador) {
+        if (jugador.getUltimoReclamoDeMonedas() == null) {
+            return 0L;
+        }
+        LocalDateTime ahora = LocalDateTime.now();
+        Long segundosDesdeUltimoReclamo = Duration.between(jugador.getUltimoReclamoDeMonedas(), ahora).getSeconds();
+        return Math.max(15 - segundosDesdeUltimoReclamo, 0);
+    }
+
+
 
 }
