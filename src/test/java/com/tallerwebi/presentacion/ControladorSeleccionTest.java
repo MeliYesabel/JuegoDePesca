@@ -3,6 +3,7 @@ package com.tallerwebi.presentacion;
 import com.tallerwebi.dominio.entidad.Jugador;
 import com.tallerwebi.dominio.servicio.ServicioJugador;
 import com.tallerwebi.dominio.servicio.ServicioMapa;
+import com.tallerwebi.dominio.servicio.ServicioRun;
 import com.tallerwebi.dominio.servicio.ServicioSeleccion;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.web.servlet.ModelAndView;
@@ -19,10 +20,11 @@ public class ControladorSeleccionTest {
     public ServicioSeleccion servicioSeleccion = mock(ServicioSeleccion.class);
     public ServicioMapa servicioMapa = mock(ServicioMapa.class);
     public ServicioJugador servicioJugador = mock(ServicioJugador.class);
+    public ServicioRun servicioRun = mock(ServicioRun.class);
 
     @BeforeEach
     public void init() {
-        controladorSeleccion = new ControladorSeleccion(servicioSeleccion,servicioMapa,servicioJugador);
+        controladorSeleccion = new ControladorSeleccion(servicioSeleccion,servicioMapa,servicioJugador,servicioRun);
     }
 
     /*comprobar este test xq en el controller como esta setteando debo buscar la manera para que despues vualva as er original

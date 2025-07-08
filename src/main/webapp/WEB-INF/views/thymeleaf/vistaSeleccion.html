@@ -37,7 +37,14 @@
             <h2 th:text="${mar.nombre}">nombre mar </h2>
         </div>
         <div >
-           <p>Cantidad de Carnada :  <strong th:text="${runCebo}"></strong> </p> <button type="submit" class="btn btn-primary" > mas </button>
+            <p>Cantidad de Carnada :  <strong th:text="${runCebo}"></strong> </p>
+
+            <form th:action="@{/sumar-cebos}" method="post">
+                <button type="submit" class="btn btn-primary">Más</button>
+            </form>
+
+            <p th:if="${exito}" th:text="${exito}" class="text-danger"></p>
+            <p th:if="${mensajeError}" th:text="${mensajeError}" class="text-danger"></p>
         </div>
         <div >
             <!--FALTA LOGICA MAS ADELANTE -->
@@ -48,11 +55,11 @@
             <p>Junta la sufientes cantidad de monedas para poder desbloquar y conocer otros mares! </p>
         </div>
         <div class="d-flex justify-content-center gap-2">
+            <a th:href="@{/mapa}" class="btn btn-secondary">Volver a Mapa</a>
             <form th:action="@{/run}" method="post">
                 <input type="hidden" name="idMar" th:value="${mar.id_mar}"/>
                 <button type="submit" class="btn btn-primary">Siguiente</button>
             </form>
-            <a th:href="@{/mapa}" class="btn btn-secondary">Volver a Mapa</a>
         </div>
     </div>
   </div>

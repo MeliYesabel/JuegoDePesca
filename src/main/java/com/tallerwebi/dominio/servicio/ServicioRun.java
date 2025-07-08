@@ -22,4 +22,6 @@ public interface ServicioRun {
     Run obtenerRun(Long idRun);
 
     void agregarPezAListaPecesPescados(Pez pezSeleccionado, Long idRun);
+
+    void agregarCebo(Run run, Integer cebo);
 }

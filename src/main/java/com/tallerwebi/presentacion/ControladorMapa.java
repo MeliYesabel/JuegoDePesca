@@ -2,6 +2,7 @@ package com.tallerwebi.presentacion;
 
 import com.tallerwebi.dominio.entidad.Jugador;
 import com.tallerwebi.dominio.entidad.Mar;
+import com.tallerwebi.dominio.entidad.Run;
 import com.tallerwebi.dominio.excepcion.NoSePuedodesbloquearElMarException;
 import com.tallerwebi.presentacion.dto.UsuarioSesionDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,6 +63,7 @@ public class ControladorMapa {
     @RequestMapping("/marSeleccionado/{nombreMar}")
     public ModelAndView redireccionSegunSiEstaBloqueadoONo(HttpSession session, @PathVariable ("nombreMar") String nombreMar) {
         ModelMap mm = new ModelMap();
+        Run runSimulado = new Run();
 
         /*utilizo una session devuelve un long */
         Long idUsuarioLogueado =(Long)  session.getAttribute("idUsuarioLogueado");
@@ -82,8 +84,16 @@ public class ControladorMapa {
              return new ModelAndView("vistaMarBloqueado",mm);
          }
 
-        // si pasa_todo guardo el mar para que se pueda mostar sus datos por pantalla
+        // run session
+        Run run = new Run();
+        run.setMar(mar);
+        run.setJugador(jugador);
+        run.getCebo();
+
+        session.setAttribute("run", run);
+
         mm.put("mar", mar);
+        mm.put("runCebo",runSimulado.getCebo());
 
         return new ModelAndView("vistaSeleccion",mm);
     }

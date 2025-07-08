@@ -6,6 +6,9 @@ import java.util.List;
 
 @Entity
 public class Run {
+
+    public static final Integer CEBO_INICIAL = 1;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,6 +23,13 @@ public class Run {
     //private List<Turno> historialTurnos;
 
     public Run() {
+        this.cebo = CEBO_INICIAL;
+    }
+
+    public Run(Mar mar,Jugador jugador,Integer cebo ) {
+        this.mar = mar;
+        this.cebo = cebo;
+        this.jugador = jugador;
     }
 
     public Run(Mar mar, Integer cebo) {
@@ -27,6 +37,9 @@ public class Run {
         this.cebo = cebo;
     }
 
+    public Integer getCeboInicial(){
+        return cebo;
+    }
     public Integer getCebo() {
         return cebo;
     }

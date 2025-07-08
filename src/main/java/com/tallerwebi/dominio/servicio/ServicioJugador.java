@@ -16,4 +16,8 @@ public interface ServicioJugador {
 
     void reclamarMonedas(Long idUsuarioLogueado);
      Long segundosParaProximoReclamo(Jugador jugador);
+
+    Integer obtenerCantDeCebos(Jugador jugador);
+
+    void guardar(Jugador jugador);
 }
