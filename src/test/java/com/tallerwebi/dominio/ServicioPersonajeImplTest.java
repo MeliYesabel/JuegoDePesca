@@ -11,8 +11,9 @@ import com.tallerwebi.dominio.servicio.ServicioTiendaImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import java.time.LocalDateTime;
+
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -74,5 +75,37 @@ public class ServicioPersonajeImplTest {
         assertThrows(ObjetoInexistenteException.class, ()->
                 servicioJugador.equipaCaniaAPersonaje(jugador,1L));
 
+    }
+
+    @Test
+    public void queAlReclamarMonedasSeLeAgreguenALasMonedasDelJugador(){
+        jugador.setId(1L);
+        jugador.setMonedas(200.0);
+       when(repositorioJugador.buscarjugadorPorId(1L)).thenReturn(jugador);
+       servicioJugador.reclamarMonedas(jugador.getId());
+       Double valorEsperado = 400.0;
+       Double valorObtenido = jugador.getMonedas();
+       assertEquals(valorEsperado,valorObtenido);
+    }
+
+    @Test
+    public void queElJugadorPuedaReclamarMonedasSiNuncaReclamoAntes(){
+       jugador.setId(1L);
+       jugador.setUltimoReclamoDeMonedas(null);
+       assertTrue(servicioJugador.puedeReclamarMonedas(jugador));
+    }
+
+    @Test
+    public void quePuedaReclamarSiPasaronMasDe15Segundos(){
+       jugador.setId(1L);
+       jugador.setUltimoReclamoDeMonedas(LocalDateTime.now().minusSeconds(15));
+       assertTrue(servicioJugador.puedeReclamarMonedas(jugador));
+    }
+
+    @Test
+    public void queNoPuedaReclamarSiPasaronMenosDe15Segundos(){
+       jugador.setId(1L);
+       jugador.setUltimoReclamoDeMonedas(LocalDateTime.now().minusSeconds(10));
+       assertFalse(servicioJugador.puedeReclamarMonedas(jugador));
     }
 }

@@ -9,6 +9,8 @@ import com.tallerwebi.dominio.repositorio.RepositorioObjeto;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.Duration;
+import java.time.LocalDateTime;
 
 @Service
 @Transactional
@@ -72,4 +74,35 @@ public class ServicioJugadorImpl implements ServicioJugador {
     public RepositorioObjeto getRepositorioObjeto() {
         return repositorioObjeto;
     }
+
+    @Override
+    public Boolean puedeReclamarMonedas(Jugador jugador) {
+        LocalDateTime ahora = LocalDateTime.now();
+
+        if(jugador.getUltimoReclamoDeMonedas()==null || Duration.between(jugador.getUltimoReclamoDeMonedas(), ahora).getSeconds() >= 15){
+            return Boolean.TRUE;
+        }
+        return Boolean.FALSE;
+    }
+
+    @Override
+    public void reclamarMonedas(Long idUsuarioLogueado) {
+        Jugador jugador = repositorioJugador.buscarjugadorPorId(idUsuarioLogueado);
+        jugador.setMonedas(jugador.getMonedas()+200);
+        jugador.setUltimoReclamoDeMonedas(LocalDateTime.now());
+        repositorioJugador.guardarJugador(jugador);
+    }
+
+    @Override
+    public Long segundosParaProximoReclamo(Jugador jugador) {
+        if (jugador.getUltimoReclamoDeMonedas() == null) {
+            return 0L;
+        }
+        LocalDateTime ahora = LocalDateTime.now();
+        Long segundosDesdeUltimoReclamo = Duration.between(jugador.getUltimoReclamoDeMonedas(), ahora).getSeconds();
+        return Math.max(15 - segundosDesdeUltimoReclamo, 0);
+    }
+
+
+
 }

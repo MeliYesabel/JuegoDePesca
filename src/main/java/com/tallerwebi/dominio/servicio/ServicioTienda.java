@@ -12,4 +12,6 @@ public interface ServicioTienda {
     void agregarObjetoDisponible(Objeto objeto);
     List<Objeto> getListaObjetos();
     void inicializarTienda();
+
+    Boolean comprarCarnada(Jugador jugador, Integer cantCarnada);
 }

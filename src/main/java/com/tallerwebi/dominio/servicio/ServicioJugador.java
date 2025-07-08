@@ -11,4 +11,9 @@ public interface ServicioJugador {
     Jugador inicializarJugador();
     RepositorioJugador getRepositorioJugador();
     RepositorioObjeto getRepositorioObjeto();
+
+    Boolean puedeReclamarMonedas(Jugador jugador);
+
+    void reclamarMonedas(Long idUsuarioLogueado);
+     Long segundosParaProximoReclamo(Jugador jugador);
 }
