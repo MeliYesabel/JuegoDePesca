@@ -95,14 +95,19 @@ public class ControladorPersonaje {
         }
 
         try {
-            servicioJugador.equipaCaniaAPersonaje(jugador, idObjeto);
+          Boolean equipada =  servicioJugador.equipaCaniaAPersonaje(jugador, idObjeto);
+
+          if(equipada){
+              jugador = servicioJugador.buscarJugadorPorId(jugador.getId());
+              model.put("mensaje", "Caña equipada correctamente");
+          }
 
             // Recargo jugador luego de equipar para reflejar cambios
           //  jugador = repositorioJugador.buscarJugador(jugador.getId());
-            servicioJugador.getRepositorioJugador().buscarJugador(jugador.getId());
+           // servicioJugador.getRepositorioJugador().buscarJugador(jugador.getId());
             //session.setAttribute("jugador", jugador);
 
-            model.put("mensaje", "Caña equipada correctamente");
+
         } catch (ParametroInvalidoException | ObjetoInexistenteException e) {
             model.put("error", e.getMessage());
         }
