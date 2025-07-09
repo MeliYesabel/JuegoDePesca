@@ -3,17 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Mapa</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link rel="stylesheet" th:href="@{/css/estiloVistaMapa.css}" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+        <link rel="stylesheet" th:href="@{/css/estiloVistaMapa.css}" />
 
 </head>
 <body>
 
   <header class="container-fluid">
     <ul class="nav justify-content-end mt-2 p-4">
+
+        <li class="nav-item">
+            <p class="btn btn-primary me-2">Monedas: <span th:text="${monedas}"></span></p>
+        </li>
         <li class="nav-item">
             <a class="btn btn-primary me-2" th:href="@{/logros}">Libro de Coleccion</a>
         </li>
@@ -21,8 +25,9 @@
             <a class="btn btn-primary me-2"  th:href="@{/tienda}">Tienda</a>
         </li>
         <li class="nav-item">
-            <a class="btn btn-primary me-2" href="#">Usuario</a><!-- cual es la vista del usuario y si vista logros sera asi o libro de colecciones -->
+            <a class="btn btn-primary me-2" th:href="@{/personaje}">Personaje</a>
         </li>
+
     </ul>
   </header>
 
@@ -36,40 +41,6 @@
           <a th:href="@{/marSeleccionado/{nombreMar}(nombreMar=${mar.nombre})}" th:text="${mar.nombre}">Nombre del mar</a>
       </li>
   </ul>
-
-
-  <!-- Agregar de forma Correcta los mares en el html usando lo que tengo en la base de datos  -->
-  <!-- <div class="container-fluid mapa-container">
-     <div class="row">
-         <div class="col-2">1.1</div>
-         <div class="col-2">1.2</div>
-         <div class="col-2"><a th:href="@{/vistaMarBloqueado.html}">"Poseidon"</a></div>
-         <div class="col-2">1.4</div>
-         <div class="col-2">1.5</div>
-   de esta forma puedo recorrer los mares <div th:each="mar : ${listaMares}">
-   <a th:href="@{/marSeleccionado(id_jugador=${jugador.id_jugador}, id_mar=${mar.id_jugador})}"
-      th:text="${mar.nombre}">Nombre del Mar</a>
- </div>
-     </div>
-     <div class="row">
-         <div class="col-2">1.1</div>
-         <div class="col-2"><a th:href="@{/marSeleccionado(id_jugador=${jugador.id_jugador}, id_mar=${mar.id_mar})}">"Njorock"</a></div>
-         <div class="col-2">1.3</div>
-         <div class="col-2">1.4</div>
-         <div class="col-2"><a th:action="@{/marSeleccionado}">"Susanoo"</a></div>
-         <div class="col-2"></div>
-     </div>
-     <div class="row">
-         <div class="col-2"><a th:action="@{/marSeleccionado}">"Yemaya"</a></div>
-         <div class="col-2">1.2</div>
-         <div class="col-2"><a th:action="@{/marSeleccionado}">"Tlaloc"</a></div>
-         <div class="col-2">1.4</div>
-         <div class="col-2">1.5</div>
-         <div class="col-2"><a th:action="@{/marSeleccionado}">"Varuna"</a></div>
-     </div>
-   </div>-->
-
-
 
   </body>
 </html>

@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Personaje</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/vistaPersonaje.css}">
 </head>
 <body>
 
@@ -16,13 +18,18 @@
 </header>
 
 <main>
-    <p th:text="${clavePersonaje}"></p>
 
+    <div class="encabezado">
+    <p th:text="${clavePersonaje}" id="clavePersonaje"></p>
+    </div>
 
     
-    <div>
+    <div class="contenido-centrado">
         <a th:href="@{/objeto}">
-            <button>Cañas</button>
+            <button>
+                <img th:src="@{/img/caña-madera.png}" alt="Caña" class="icono-cania" />
+               <p>Cañas</p>
+            </button>
         </a>
     </div>
 </main>

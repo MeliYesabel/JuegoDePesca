@@ -4,6 +4,7 @@ import com.tallerwebi.dominio.entidad.Jugador;
 import com.tallerwebi.dominio.entidad.Objeto;
 import com.tallerwebi.dominio.servicio.ServicioJugadorImpl;
 import com.tallerwebi.infraestructura.RepositorioJugadorImpl;
+import com.tallerwebi.presentacion.dto.UsuarioSesionDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.web.servlet.ModelAndView;
@@ -23,6 +24,8 @@ private ServicioJugadorImpl servicioJugador;
 private ControladorPersonaje controladorPersonaje;
 private HttpSession session;
 private RepositorioJugadorImpl repositorioJugador;
+//private UsuarioSesionDto usuarioSesionDtoDtoDto;
+
 
 @BeforeEach
 public void setUp() {
@@ -30,29 +33,41 @@ public void setUp() {
     objeto = new Objeto();
     servicioJugador = mock(ServicioJugadorImpl.class);
     repositorioJugador = mock(RepositorioJugadorImpl.class);
-    controladorPersonaje = new ControladorPersonaje(servicioJugador,repositorioJugador);
+    controladorPersonaje = new ControladorPersonaje(servicioJugador);
     session = mock(HttpSession.class);
+    //usuarioSesionDtoDtoDto = new UsuarioSesionDto(1L,"gonza","admin");
 
 }
 
-@Test
+
+    @Test
     public void dadoQueEstoyEnLaVistaPersonajeQueCuandoToqueElBotonCaniaMeDuvuelvaLaVistaObjetosDelJugador() {
+        // Arrange
+        jugador.setId(1L);
+        objeto.setIdObjeto(1L);
+        jugador.agregarObjeto(objeto);
+        //usuarioSesionDtoDtoDto.setId(1L);
 
-    jugador.setId(1L);
-    objeto.setIdObjeto(1L);
-    jugador.agregarObjeto(objeto);
+        // Mocks
+      //  when(session.getAttribute("idUsuarioLogueado")).thenReturn(usuarioSesionDtoDtoDto);
+        when(session.getAttribute("idUsuarioLogueado")).thenReturn(1L);
+        when(servicioJugador.buscarJugadorPorId(1L)).thenReturn(jugador);
+        when(servicioJugador.equipaCaniaAPersonaje(jugador, objeto.getIdObjeto())).thenReturn(true);
+        when(repositorioJugador.buscarJugador(1L)).thenReturn(jugador);
+        when(servicioJugador.getRepositorioJugador()).thenReturn(repositorioJugador);
 
-    when(session.getAttribute("jugador")).thenReturn(jugador);
-    when(repositorioJugador.buscarJugador(1L)).thenReturn(jugador);
-    when(servicioJugador.equipaCaniaAPersonaje(jugador,objeto.getIdObjeto())).thenReturn(true);
-    ModelAndView model = controladorPersonaje.equiparCania(session,objeto.getIdObjeto());
-    assertThat(model.getViewName(), equalToIgnoringCase("objetoDelJugador.html"));
-}
+
+        ModelAndView model = controladorPersonaje.equiparCania(session, objeto.getIdObjeto());
+
+
+        assertThat(model.getViewName(), equalToIgnoringCase("objetoDelJugador.html"));
+    }
 
 @Test
     public void dadoQueEstoyEnLaVistaPersonajeYelJugadorEsNullQueCuandoToqueElBotonCaniaMeDevuelvaLaVistaPersonaje(){
-    when(repositorioJugador.buscarJugador(1L)).thenReturn(jugador);
-    when(servicioJugador.equipaCaniaAPersonaje(jugador,objeto.getIdObjeto())).thenReturn(true);
+   // when(session.getAttribute("idUsuarioLogueado")).thenReturn(usuarioSesionDtoDtoDto);
+    when(session.getAttribute("idUsuarioLogueado")).thenReturn(1L);
+    when(servicioJugador.buscarJugadorPorId(1L)).thenReturn(null); // <-- jugador null
     ModelAndView model = controladorPersonaje.equiparCania(session,objeto.getIdObjeto());
     assertThat(model.getViewName(), equalToIgnoringCase("vistaPersonaje.html"));
 }

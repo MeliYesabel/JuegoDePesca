@@ -13,51 +13,48 @@
 <body>
 
   <header class="container-fluid">
-      <!--modedas :500 (se descontarian si el jugador quiere ir a la tienda y proveerce de carnadas )-->
-      <!--carnadas :5 (este sse descantaria dependiendo si el jugador quiere mas carnadas para su mar )-->
-    <ul class="nav justify-content-end mt-2 p-4">
-        <li class="nav-item">
-            <a class="btn btn-primary me-2" th:href="@{/logros}">Libro de Coleccion</a>
-        </li>
-        <li class="nav-item">
-            <a class="btn btn-primary me-2"  th:href="@{/tienda}">Tienda</a>
-        </li>
-        <li class="nav-item">
-            <a class="btn btn-primary me-2" href="#">Usuario</a><!-- cual es la vista del usuario y si vista logros sera asi o libro de colecciones -->
-        </li>
-    </ul>
+      <ul class="nav justify-content-end mt-2 p-4">
+
+          <li class="nav-item">
+              <p class="btn btn-primary me-2">Monedas: <span th:text="${monedas}"></span></p>
+          </li>
+          <li class="nav-item">
+              <a class="btn btn-primary me-2" th:href="@{/logros}">Libro de Coleccion</a>
+          </li>
+          <li class="nav-item">
+              <a class="btn btn-primary me-2"  th:href="@{/tienda}">Tienda</a>
+          </li>
+          <li class="nav-item">
+              <a class="btn btn-primary me-2" th:href="@{/personaje}">Personaje</a>
+          </li>
+
+      </ul>
   </header>
 
   <div class="container mar-desbloqueado-container ">
     <div class="row fondo">
         <div >
-            <!--aca deberia ser de forma dinamica -->
             <h2 th:text="${mar.nombre}">nombre mar </h2>
         </div>
         <div >
-            <!-- el boton te permite ingrementar la canitdad de carnadas que a suvez se descuenten de que tenga el usuario-->
-            <!-- el 3 tiene que ser una variable? la cual debe incrementar pero no puede quedarse a menos de tres
-             no seria mejor que el jugador tenga las carnadas asi si llega a cero este puede ir a comprarlas en vez que vengan por defalut-->
-            <p>Cantidad de Carnada : 3 </p> <button type="submit" class="btn btn-primary" > mas </button>
+           <p>Cantidad de Carnada :  <strong th:text="${runCebo}"></strong> </p> <button type="submit" class="btn btn-primary" > mas </button>
         </div>
         <div >
             <!--FALTA LOGICA MAS ADELANTE -->
+            <!--SOLO AGREGAR CARNADAS STATIC FINAL DE RUN TRAERLO -->
             <p>Elige el jugador</p>
         </div>
         <div >
             <p>Junta la sufientes cantidad de monedas para poder desbloquar y conocer otros mares! </p>
         </div>
-        <div>
-            <!-- tendria que redirigirte a run-->
+        <div class="d-flex justify-content-center gap-2">
             <form th:action="@{/run}" method="post">
                 <input type="hidden" name="idMar" th:value="${mar.id_mar}"/>
-                <button type="submit" class="btn btn-primary">Empezar</button>
+                <button type="submit" class="btn btn-primary">Siguiente</button>
             </form>
+            <a th:href="@{/mapa}" class="btn btn-secondary">Volver a Mapa</a>
         </div>
     </div>
   </div>
-
-
-
 </body>
 </html>

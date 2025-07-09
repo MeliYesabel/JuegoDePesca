@@ -20,6 +20,7 @@ import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 /*agregar a clase de tipo test + database : (siempre)*/
 @ExtendWith(SpringExtension.class)
@@ -28,18 +29,54 @@ import static org.hamcrest.Matchers.equalTo;
 
 public class RepasitorioMarTest {
 
-    /*para que se una a la base de datos*/
     @Autowired
     private SessionFactory sessionFactory;
 
-    /*repo de interfaz donde busca los metodos a usar */
     @Autowired
     private RepositorioMar repo;
 
     @Test
     @Transactional
     @Rollback
+    public void queMeDevuelvaNullSiElJugadorMarBuscadoNOFueEncontrado() {
+        Mar mar = new Mar("Poseidon", 0.0, "Mitologia Griega", true);
+        mar.setId_mar(1L);
+        sessionFactory.getCurrentSession().save(mar);
+        Jugador jugador = new Jugador("Anahi","anis",30.0,1);
+        sessionFactory.getCurrentSession().save(jugador);
+        JugadorMar jugadorMar= new JugadorMar(jugador,mar,true);
+        sessionFactory.getCurrentSession().save(jugadorMar);
+
+        JugadorMar obtener = repo.obtenerElJugadorMarBuscado(null,jugador);
+
+        assertNull(obtener);
+    }
+
+    @Test
+    @Transactional
+    @Rollback
+    public void queSePuedaObtenerElJugadorMarBuscadoSiLoEncuantraQueMeDevuelvaElObjeto() {
+        Mar mar = new Mar("Poseidon", 0.0, "Mitologia Griega", true);
+        mar.setId_mar(1L);
+        sessionFactory.getCurrentSession().save(mar);
+        Jugador jugador = new Jugador("Anahi","anis",30.0,1);
+        sessionFactory.getCurrentSession().save(jugador);
+        JugadorMar jugadorMar= new JugadorMar(jugador,mar,true);
+        sessionFactory.getCurrentSession().save(jugadorMar);
+
+        JugadorMar obtener = repo.obtenerElJugadorMarBuscado(mar,jugador);
+
+        assertThat(obtener, equalTo(jugadorMar));
+    }
+
+
+    @Test
+    @Transactional
+    @Rollback
     public void obtenerElEstadoDelMarSolicitadoQueMeDeVerdeSiEstaBloqueadosegunElJugador() {
+
+        // no puedo hacer un given ya que para comprobar de la base de datos
+        //esos objetos los necesito de aca
 
         Mar mar = new Mar("Poseidon", 0.0, "Mitologia Griega", true);
         mar.setId_mar(1L);
@@ -53,7 +90,6 @@ public class RepasitorioMarTest {
         assertThat(estado,equalTo(true));
     }
 
-/**/
     @Test
     @Transactional
     @Rollback

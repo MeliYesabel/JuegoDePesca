@@ -1,6 +1,8 @@
 package com.tallerwebi.presentacion;
 
 import com.tallerwebi.dominio.entidad.Pez;
+import com.tallerwebi.dominio.entidad.Run;
+import com.tallerwebi.dominio.entidad.Turno;
 import com.tallerwebi.dominio.servicio.ServicioRun;
 import com.tallerwebi.dominio.servicio.ServicioTurno;
 import org.springframework.stereotype.Controller;
@@ -23,28 +25,39 @@ public class ControladorTurno {
         this.servicioTurno = servicioTurno;
     }
 
-
     @RequestMapping("/turno")
     public ModelAndView iniciarTurno(HttpSession session) {
         ModelMap model = new ModelMap();
-        Long idMar = 0L;
-        List<Pez> peces = servicioTurno.obtenerTresPecesDelMar(idMar);
-        model.addAttribute("peces", peces);
+
+        Turno turno = (Turno) session.getAttribute("turnoActual");
+
+        if (turno == null) {
+            turno = servicioTurno.crearUnTurno();
+            List<Pez> peces = servicioTurno.obtenerTresPecesAleatorios();
+            turno.setPecesGenerados(peces);
+            session.setAttribute("turnoActual", turno);
+        }
+
+        model.addAttribute("peces", turno.getPecesGenerados());
         return new ModelAndView("vistaTurno.html", model);
     }
 
 
-    @RequestMapping("/pescar")
-    public ModelAndView mostrarOpcionesDePesca(ModelMap model) {
-        List<Pez> peces = servicioTurno.obtenerTresPecesAleatorios();
-        model.addAttribute("peces", peces);
-        return new ModelAndView("vistaTurno", model);
-    }
+    @RequestMapping("/turno/resultado")
+    public ModelAndView seleccionarPez(@RequestParam("id") Long idPez, ModelMap model, HttpSession session) {
+        Run run = (Run) session.getAttribute("run");
+        Pez pezSeleccionado = servicioTurno.pescarPezPorId(idPez);
+        Boolean pesco = servicioTurno.pesca(pezSeleccionado);
 
-    @RequestMapping("/pescar/seleccionar")
-    public ModelAndView seleccionarPez(@RequestParam("id") Long idPez, ModelMap model) {
-        Pez pezPescado = servicioTurno.pescarPezPorId(idPez);
-        model.addAttribute("pezPescado", pezPescado);
-        return new ModelAndView("pezPescadoVista.html", model);
+        model.addAttribute("pesco", pesco);
+        model.addAttribute("pez", pezSeleccionado);
+
+        if (pesco) {
+            run.agregarPecesPescados(pezSeleccionado);
+            session.setAttribute("run", run);
+        }
+
+        session.removeAttribute("turnoActual");
+        return new ModelAndView("pezPescadoVista", model);
     }
 }

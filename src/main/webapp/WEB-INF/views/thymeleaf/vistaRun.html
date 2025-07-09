@@ -3,14 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Empezar a jugar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/estiloRun.css}">
 </head>
 <body>
-
+<div class="contenedor row">
 <span>Resumen elementos seleccionados</span>
 <span>Caña equipada</span>
 <span>Cantidad de cebo</span>
-<br>
-<a th:href="@{/turno}">Empezar</a> |
-<a th:href="@{/mapa}">Volver</a> |
+
+<a th:href="@{/turno}" class="btn btn-primary">Empezar</a>
+<a th:href="@{/mapa}" class="btn btn-primary">Volver</a>
+</div>
 </body>
 </html>

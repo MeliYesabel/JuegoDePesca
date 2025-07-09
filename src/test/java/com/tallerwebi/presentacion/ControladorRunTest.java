@@ -1,7 +1,9 @@
 package com.tallerwebi.presentacion;
 
 import com.tallerwebi.dominio.entidad.Jugador;
+import com.tallerwebi.dominio.entidad.Mar;
 import com.tallerwebi.dominio.entidad.Run;
+import com.tallerwebi.dominio.servicio.ServicioJugador;
 import com.tallerwebi.dominio.servicio.ServicioMapa;
 import com.tallerwebi.dominio.servicio.ServicioRun;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,17 +19,22 @@ public class ControladorRunTest {
 
     private ServicioMapa servicioMapaMock;
     private ServicioRun servicioRunMock;
+    private ServicioJugador servicioJugadorMock;
     private ControladorRun controladorRun;
     private HttpSession session;
-
-    private Run run;
+    private ServicioRun servicioRun;
+    private ServicioMapa servicioMapa;
+    private ControladorRun controlador;
     private Jugador jugador;
+    private Mar mar;
+    private Run run;
 
     @BeforeEach
     public void setUp() {
         servicioRunMock = mock(ServicioRun.class);
         servicioMapaMock = mock(ServicioMapa.class);
-        controladorRun = new ControladorRun(servicioRunMock, servicioMapaMock);
+        servicioJugadorMock = mock(ServicioJugador.class);
+        controladorRun = new ControladorRun(servicioRunMock, servicioMapaMock,servicioJugadorMock);
         session = mock(HttpSession.class);
 
         jugador = new Jugador();
@@ -37,6 +44,8 @@ public class ControladorRunTest {
         run.setId(1L);
         run.setJugador(jugador);
         run.setCebo(2);
+
+        mar = new Mar();
     }
 
     @Test
@@ -57,6 +66,30 @@ public class ControladorRunTest {
         ModelAndView mav = controladorRun.verificarCeboJugador(session);
 
         assertEquals("redirect:/resumen", mav.getViewName());
+    }
+
+    @Test
+    public void testIniciarRun_creaRunYRedirigeAVistaRun() {
+        Mar mar = new Mar();
+        mar.setId_mar(1L);
+        Long idMar = 1L;
+        Long idUsuarioDto  = 3L;
+
+        when(session.getAttribute("idUsuarioLogueado")).thenReturn(idUsuarioDto);
+        when(servicioJugadorMock.buscarJugadorPorId(idUsuarioDto)).thenReturn(jugador);
+        when(servicioMapaMock.obtenerMarPorId(1L)).thenReturn(mar);
+
+        ModelAndView mav = controladorRun.iniciarRun(idMar, session);
+
+        assertEquals("vistaRun", mav.getViewName());
+
+        Run runCreado = (Run) mav.getModel().get("run");
+        assertEquals(jugador, runCreado.getJugador());
+        assertEquals(mar, runCreado.getMar());
+        assertEquals(3, runCreado.getCebo());
+
+        verify(servicioRunMock).guardarRun(runCreado);
+        verify(session).setAttribute("run", runCreado);
     }
 
 }

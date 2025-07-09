@@ -3,6 +3,7 @@ package com.tallerwebi.presentacion;
 import com.tallerwebi.dominio.entidad.Jugador;
 import com.tallerwebi.dominio.entidad.Mar;
 import com.tallerwebi.dominio.entidad.Run;
+import com.tallerwebi.dominio.servicio.ServicioJugador;
 import com.tallerwebi.dominio.servicio.ServicioMapa;
 import com.tallerwebi.dominio.servicio.ServicioRun;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,37 +22,23 @@ public class ControladorRun {
     * si da verdadero te redirige a vista->  "Run"*/
 
     private ServicioRun servicioRun;
+    private ServicioJugador servicioJugador;
     private Run run = new Run();
     private ServicioMapa servicioMapa;
 
     @Autowired
-    public ControladorRun(ServicioRun servicioRun,  ServicioMapa servicioMapa) {
+    public ControladorRun(ServicioRun servicioRun,  ServicioMapa servicioMapa,ServicioJugador servicioJugador) {
+        this.servicioJugador = servicioJugador;
         this.servicioRun = servicioRun;
         this.servicioMapa = servicioMapa;
     }
 
-    // PRIMER INGRESO a /Run: se muestra pantalla de inicio
-   /* @RequestMapping("/run")
-    public ModelAndView iniciarPartida(HttpSession session) {
-        ModelMap model = new ModelMap();
-
-        //Run run = (Run) session.getAttribute("run");
-        //model.put("run", run);
-        //Jugador jugador = (Jugador) session.getAttribute("jugador");
-        //model.put("jugador", jugador);
-        //model.put("cantidadCebo", jugador.getCantidadCeboSeleccionado());
-        //model.put("cantidadCebo", run.getCebo());
-        return new ModelAndView("vistaRun.html", model);
-    }*/                                                         // comento para ir a run desde el boton empezar
-
     @RequestMapping("/verificar-cebo")
     public ModelAndView verificarCeboJugador(HttpSession session) {
         Run run = (Run) session.getAttribute("run");
-/*
-        if (run == null || run.getJugador() == null) {
-            return new ModelAndView("redirect:/run"); // vuelve al inicio si falta algo
-        }
-*/
+        Integer cebo = run.getCebo();
+        run.setCebo(cebo -1);
+        session.setAttribute("run", run);
         if (servicioRun.hayCeboJugador(run)) {
             return new ModelAndView("redirect:/turno");
         } else {
@@ -60,18 +47,18 @@ public class ControladorRun {
     }
     @PostMapping("/run")
     public ModelAndView iniciarRun(@RequestParam("idMar") Long idMar, HttpSession session) {
-        Jugador jugador = (Jugador) session.getAttribute("jugador");
+        Long idUsuarioLogueado =(Long)  session.getAttribute("idUsuarioLogueado");
+        Jugador jugador = servicioJugador.buscarJugadorPorId(idUsuarioLogueado);
 
-       /* if (jugador == null) {
-            return new ModelAndView("redirect:/login"); // o algún manejo de error
-        }*///por el momento no lo pongo hasta juntar lo de login
-
-
+        Integer cantidadCebo =  3; // hard codeo, aca van los cebo seteados previamente
         Mar marSeleccionado = servicioMapa.obtenerMarPorId(idMar);
 
         Run run = new Run();
+        run.setCebo(cantidadCebo);
         run.setJugador(jugador);
         run.setMar(marSeleccionado);
+        run.setCebo(run.getCebo());
+        servicioRun.guardarRun(run);
 
         session.setAttribute("run", run);
 
@@ -79,5 +66,4 @@ public class ControladorRun {
         mav.addObject("run", run);
         return mav;
     }
-
 }

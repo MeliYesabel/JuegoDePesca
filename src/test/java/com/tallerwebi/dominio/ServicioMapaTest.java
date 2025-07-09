@@ -3,6 +3,9 @@ package com.tallerwebi.dominio;
 import com.tallerwebi.dominio.entidad.Jugador;
 import com.tallerwebi.dominio.entidad.JugadorMar;
 import com.tallerwebi.dominio.entidad.Mar;
+import com.tallerwebi.dominio.excepcion.NoSePuedodesbloquearElMarException;
+import com.tallerwebi.dominio.repositorio.RepositorioJugador;
+import com.tallerwebi.dominio.repositorio.RepositorioJugadorMar;
 import com.tallerwebi.dominio.repositorio.RepositorioMar;
 import com.tallerwebi.dominio.servicio.ServicioMapa;
 import com.tallerwebi.dominio.servicio.ServicioMapaImplement;
@@ -15,19 +18,112 @@ import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 public class ServicioMapaTest {
 
     ServicioMapa servicioMapa;
     RepositorioMar repositorioMar = mock(RepositorioMar.class);
+    RepositorioJugador repositorioJugador = mock(RepositorioJugador.class);
+  //  RepositorioJugadorMar repositorioJugadorMar = mock(RepositorioJugadorMar.class);
 
     @BeforeEach
     public void init() {
-        servicioMapa = new ServicioMapaImplement(repositorioMar);
+        servicioMapa = new ServicioMapaImplement(repositorioMar,repositorioJugador);
+    }
+
+    @Test
+    public void queSiElJugadorSuperaLaCantidadDeMonedasDelCostoDelMArPuedaComprarlo(){
+        //given
+        Mar mar = new Mar("Poseidon",100.0,"Mitologia Griega",true);
+        Jugador jugador = new Jugador("Anahi","anis",300.0,1);
+        JugadorMar jugadorMar= new JugadorMar(jugador,mar,true);
+
+        when(repositorioMar.obtenerElJugadorMarBuscado(mar, jugador)).thenReturn(jugadorMar);
+
+        //when
+        Boolean estado = servicioMapa.desbloquearMarSegunElJugador(mar,jugador);
+
+        //then
+        assertThat(estado,is(true));
+    }
+
+    @Test
+    public void queSiElJugadorTieneLaMismaCantidadDeMonedasQueElCostoDelMArPuedaComprarlo(){
+        //given
+        Mar mar = new Mar("Poseidon",100.0,"Mitologia Griega",true);
+        Jugador jugador = new Jugador("Anahi","anis",100.0,1);
+        JugadorMar jugadorMar= new JugadorMar(jugador,mar,true);
+
+        when(repositorioMar.obtenerElJugadorMarBuscado(mar, jugador)).thenReturn(jugadorMar);
+
+        //when
+        Boolean estado = servicioMapa.desbloquearMarSegunElJugador(mar,jugador);
+
+        //then
+        assertThat(estado,is(true));
+    }
+
+    @Test
+    public void queNOSePuedaCambiarElEstadoDeUnMarSiElJugadorNOTieneSuficientesMonedas(){
+        //given
+        Mar mar = new Mar("Poseidon",200.0,"Mitologia Griega",true);
+        Jugador jugador = new Jugador("Anahi","anis",100.0,1);
+        JugadorMar jugadorMar= new JugadorMar(jugador,mar,true);
+
+        when(repositorioMar.obtenerElJugadorMarBuscado(mar, jugador)).thenReturn(jugadorMar);
+
+        //when y then -> paar comfirmar una exception
+        assertThrows(NoSePuedodesbloquearElMarException.class, () -> {
+            servicioMapa.desbloquearMarSegunElJugador(mar, jugador);
+        });
+    }
+
+    @Test
+    public void queSePuedaCambiarElEstadoDeUnJugadorMarBloqueadoADesbloqueado(){
+        //given
+        Mar mar = new Mar("Poseidon",200.0,"Mitologia Griega",true);
+        Jugador jugador = new Jugador("Anahi","anis",100.0,1);
+        JugadorMar jugadorMar= new JugadorMar(jugador,mar,true);
+
+        when(repositorioMar.obtenerElJugadorMarBuscado(mar, jugador)).thenReturn(jugadorMar);
+
+        // when
+        Boolean desbloqueo = servicioMapa.cambiarElEstadoDelMarADesbloqueado(mar,jugador);
+
+        // then
+        assertThat(desbloqueo,is(true));
+        assertThat(jugadorMar.getEstadoBloqueado(),is(false));
+    }
+
+    @Test
+    public void queSePuedaDescontarLasMonedasDelJugadorCuandoCompreUnMar(){
+        Mar mar = new Mar("Poseidon",200.0,"Mitologia Griega",true);
+        Jugador jugador = new Jugador("Anahi","anis",300.0,1);
+
+        Double precio = servicioMapa.descontarLasMonedasDelJugador(mar,jugador);
+
+        assertThat(precio,is(100.0));
+        assertThat(jugador.getMonedas(),is(100.0));
+    }
+
+    @Test
+    public void obtenerElEstadoMarSegunElJugadorQueMeDeVerDeElEstadoEstaBloqueado() {
+        //given
+        Mar mar = new Mar("Poseidon",0.0,"Mitologia Griega",true);
+
+        Jugador jugador = new Jugador("Anahi","anis",30.0,1);
+
+     //   JugadorMar jugadorMar= new JugadorMar(jugador,mar,true);
+
+        when(repositorioMar.obtenerElEstadoMarDelJugador(mar,jugador)).thenReturn(true);
+
+        //when
+        boolean estado = servicioMapa.obtenerElEstadoDelMarSegunELJugador(mar,jugador);
+
+        //then
+        assertThat(estado,is(true));
     }
 
     @Test
@@ -69,30 +165,6 @@ public class ServicioMapaTest {
 
         );
         return listaMar;
-    }
-
-
-    @Test
-    public void obtenerElEstadoMarSegunElJugadorQueMeDeVerDeElEstadoEstaBloqueado() {
-        //given
-        Mar mar = new Mar("Poseidon",0.0,"Mitologia Griega",true);
-
-        Jugador jugador = new Jugador("Anahi","anis",30.0,1);
-
-        JugadorMar jugadorMar= new JugadorMar(jugador,mar,true);
-
-        when(repositorioMar.obtenerElEstadoMarDelJugador(mar,jugador)).thenReturn(true);
-
-        //when
-        boolean estado = servicioMapa.obtenerElEstadoDelMarSegunELJugador(mar,jugador);
-
-        //then
-        assertThat(estado,is(true));
-
-    }
-
-    private Mar whenObtenerElEstadoDeUnMarPorNombre(String nombre) {
-        return servicioMapa.obtenerElEstadoDeUnMarPorNombre(nombre);
     }
 
 }

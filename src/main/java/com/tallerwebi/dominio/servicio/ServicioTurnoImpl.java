@@ -6,6 +6,7 @@ import com.tallerwebi.dominio.entidad.Run;
 import com.tallerwebi.dominio.excepcion.ObjetoInexistenteException;
 import com.tallerwebi.dominio.excepcion.ParametroInvalidoException;
 import com.tallerwebi.dominio.repositorio.RepositorioPez;
+import com.tallerwebi.dominio.repositorio.RepositorioTurno;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -17,10 +18,12 @@ import java.util.stream.Collectors;
 @Transactional
 public class ServicioTurnoImpl implements ServicioTurno {
 
+    private final RepositorioTurno repositorioTurno;
     private RepositorioPez repositorioPez;
 
-    public ServicioTurnoImpl(RepositorioPez repositorioPez) {
+    public ServicioTurnoImpl(RepositorioPez repositorioPez, RepositorioTurno repositorioTurno) {
         this.repositorioPez = repositorioPez;
+        this.repositorioTurno = repositorioTurno;
     }
     @Override
     public Turno crearUnTurno(Run run) {
@@ -33,15 +36,17 @@ public class ServicioTurnoImpl implements ServicioTurno {
     }
 
     @Override
+    public Turno crearUnTurno() {
+        Turno turno = new Turno();
+        repositorioTurno.guardarTurno(turno);
+        return turno;
+    }
+
+    @Override
     public List<Pez> tomarTresPecesParaElTurno(Run run) {
         List<Pez> todosLosPecesDelMar = run.getMar().getPeces();
         Collections.shuffle(todosLosPecesDelMar); // se mesclan
         return todosLosPecesDelMar.subList(0, 3);
-    }
-
-    @Override
-    public List<Pez> guardarLosTresPecesParaElTurno(Run run) {
-        return List.of();
     }
 
     @Override
@@ -51,11 +56,6 @@ public class ServicioTurnoImpl implements ServicioTurno {
             return pecesGenerados.get(posicionDelPez);
         }
         throw new ObjetoInexistenteException("No existe");
-    }
-
-    @Override
-    public void restarCeboEquipado() {
-
     }
 
     @Override
@@ -75,10 +75,12 @@ public Pez pescarPezPorId(Long id) {
     }
 
     @Override
-    public List<Pez> obtenerTresPecesDelMar(Long idMar) {
-        List<Pez> todosLosPecesDelMar = repositorioPez.buscarPorIdMar(idMar);
-        Collections.shuffle(todosLosPecesDelMar);
-        return todosLosPecesDelMar.stream().limit(3).collect(Collectors.toList());
+    public Boolean pesca(Pez pezSeleccionado) {
+        double probabilidad = pezSeleccionado.getRareza().getProbabilidadAtrapar();
+        double aleatorio = Math.random();
+
+        return aleatorio < probabilidad;
     }
+
 
 }

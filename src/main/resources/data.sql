@@ -10,51 +10,43 @@ INSERT INTO Jugador(id,monedas) VALUES
 INSERT INTO Admin(id) values (3);
 
 --objetos
-INSERT INTO Objeto(precioObjeto,nombre)VALUES
-(100.0,'CAÑA MADERA'),
-(150.0,'CAÑA METAL');
+INSERT INTO Objeto(precioObjeto,nombre,nombreImagen)VALUES
+(100.0,'CAÑA MADERA','caña-madera.png'),
+(150.0,'CAÑA METAL','caña-metal.jpg');
+
 --mares
 INSERT INTO Mar (id_mar,nombre,precio,descripcion,estadoBloqueado) VALUES
-(1,'Mitologia griega', 0.0, 'mar uno', FALSE),
-(2,'Mitologia Nordica', 150.0, 'mar dos', TRUE),
-(3,'Mitologia Japonesa', 200.0, 'mar tres', TRUE),
-(4,'Mitologia Yoruba', 250.0, 'mar cuatro', TRUE),
-(5,'Mitologia Indu', 300.0, 'mar cinco', TRUE),
-(6,'Mitologia Azteca', 350.0, 'mar seis', TRUE),
-(7,'Mitologia China', 450.0, 'mar siete', TRUE);
+(1,'Mitologia-griega', 0.0, 'mar uno', FALSE),
+(2,'Mitologia-Nordica', 150.0, 'mar dos', TRUE),
+(3,'Mitologia-Japonesa', 200.0, 'mar tres', TRUE),
+(4,'Mitologia-Yoruba', 250.0, 'mar cuatro', TRUE),
+(5,'Mitologia-Indu', 300.0, 'mar cinco', TRUE),
+(6,'Mitologia-Azteca', 350.0, 'mar seis', TRUE),
+(7,'Mitologia-China', 450.0, 'mar siete', TRUE);
 
 INSERT INTO Rareza (id_rareza, nombre, probabilidadAtrapar, valor) VALUES
-(1, 'Normal', 80.0, 10),
-(2, 'Raro', 50.0, 20),
-(3, 'Épico', 20.0, 40);
+(1, 'Normal', 0.8, 10),
+(2, 'Raro', 0.5, 20),
+(3, 'Épico', 0.2, 40);
 
 -- Mar 1 - Mitología griega
 INSERT INTO Pez (id_pez, nombre, id_rareza, id_mar) VALUES
-                                                        (null, 'Delfín Helénico', 1, 1),
-                                                        (null, 'Trucha de Atenea', 1, 1),
-                                                        (null, 'Carpa de Apolo', 1, 1),
-                                                        (null, 'Sirena Menor', 2, 1),
-                                                        (null, 'Hipocampo Menor', 2, 1),
-                                                        (null, 'Kraken Mítico', 3, 1);
+(null, 'Delfín Helénico', 1, 1),
+(null, 'Trucha de Atenea', 1, 1),
+(null, 'Carpa de Apolo', 1, 1),
+(null, 'Sirena Menor', 2, 1),
+(null, 'Hipocampo Menor', 2, 1),
+(null, 'Kraken Mítico', 3, 1);
 
 -- Mar 2 - Mitología Nórdica
 INSERT INTO Pez (id_pez, nombre, id_rareza, id_mar) VALUES
-                                                        (null, 'Pez Runa', 1, 2),
+ (null, 'Pez RunatunN', 1, 2),
                                                         (null, 'Salmón de Thor', 1, 2),
                                                         (null, 'Bacalao de Freyja', 1, 2),
                                                         (null, 'Serpiente del Fiordo', 2, 2),
                                                         (null, 'Anguila de Hielo', 2, 2),
                                                        (null, 'Jörmungandr Joven', 3, 2);
 
---Estos datos estan huerfanos
-/*(1,'Mitologia griega', 0.0, 'mar uno', FALSE),
-(2,'Mitologia Nordica', 150.0, 'mar dos', TRUE),
-(3,'Mitologia Japonesa', 200.0, 'mar tres', TRUE),
-(4,'Mitologia Yoruba', 250.0, 'mar cuatro', TRUE),
-(5,'Mitologia Indu', 300.0, 'mar cinco', TRUE),
-(6,'Mitologia Asteca', 350.0, 'mar seis', TRUE),
-(7,'Mitologia China', 450.0, 'mar siete', TRUE);
-*/
 --tabla jugadorMar jugador:bart@gmail.com contra:Barto123!
 INSERT INTO JugadorMar(id_jugador,id_mar,estadoBloqueado)VALUES
 (2,1,false),

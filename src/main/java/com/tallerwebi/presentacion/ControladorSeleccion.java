@@ -2,6 +2,8 @@ package com.tallerwebi.presentacion;
 
 import com.tallerwebi.dominio.entidad.Jugador;
 import com.tallerwebi.dominio.entidad.Mar;
+import com.tallerwebi.dominio.entidad.Run;
+import com.tallerwebi.dominio.servicio.ServicioJugador;
 import com.tallerwebi.dominio.servicio.ServicioMapa;
 import com.tallerwebi.dominio.servicio.ServicioSeleccion;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,18 +20,26 @@ public class ControladorSeleccion {
     /*interfaz de servicio*/
     private ServicioSeleccion servicioSeleccion;
     private ServicioMapa servicioMapa;
+    private ServicioJugador servicioJugador;
 
     /*creo el contructor para usar la interfaz de servicio*/
     @Autowired
-    public ControladorSeleccion(ServicioSeleccion servicioSeleccion,ServicioMapa servicioMapa) {
+    public ControladorSeleccion(ServicioSeleccion servicioSeleccion,ServicioMapa servicioMapa, ServicioJugador servicioJugador) {
         this.servicioSeleccion = servicioSeleccion;
         this.servicioMapa = servicioMapa;
+        this.servicioJugador = servicioJugador;
     }
 
    public ModelAndView validacionesDelJuegoAntesDeCambiarDeVistaARun(HttpSession session,@PathVariable ("nombreMar") String nombreMar){
        ModelMap modelMap = new ModelMap();
-       Jugador j = (Jugador) session.getAttribute("jugador");
+       Long idUsuarioLogueado =(Long)  session.getAttribute("idUsuarioLogueado");
+       Jugador jugador = servicioJugador.buscarJugadorPorId(idUsuarioLogueado);
+
        Mar mar = servicioMapa.obtenerUnMarPorNombre(nombreMar);
+       Run run = new Run(mar,0);
+
+
+
 
       /* j.setCant_carnada(0);
        if (j.getCant_carnada() ==0){
@@ -43,6 +53,8 @@ public class ControladorSeleccion {
            return new ModelAndView("vistaSeleccion", modelMap);
        }*/
        modelMap.put("mar",mar);
+       modelMap.put("runCebo",run.getCebo());
+
 
        return new ModelAndView("vistaRun",modelMap);
    }
