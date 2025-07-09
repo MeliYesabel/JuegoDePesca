@@ -77,7 +77,7 @@ public class ServicioPersonajeImplTest {
 
     }
 
-    @Test
+   /* @Test
     public void queAlReclamarMonedasSeLeAgreguenALasMonedasDelJugador(){
         jugador.setId(1L);
         jugador.setMonedas(200.0);
@@ -107,5 +107,5 @@ public class ServicioPersonajeImplTest {
        jugador.setId(1L);
        jugador.setUltimoReclamoDeMonedas(LocalDateTime.now().minusSeconds(10));
        assertFalse(servicioTienda.puedeReclamarMonedas(jugador));
-    }
+    }*/
 }

@@ -11,6 +11,8 @@ import com.tallerwebi.dominio.servicio.ServicioTiendaImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDateTime;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -115,11 +117,44 @@ when(repositorioObjeto.buscarObjeto(1L)).thenReturn(objeto);
         assertEquals(valorEsperado,valorObtenido);
     }
 
-    @Test
-    public void queSePuedasReclamarMonedasSiPasaronLos15Segundos(){
 
-        //servicioTienda.
+
+    @Test
+    public void queElJugadorPuedaReclamarMonedasSiNuncaReclamoAntes(){
+        jugador.setId(1L);
+        jugador.setUltimoReclamoDeMonedas(null);
+        assertTrue(servicioTienda.puedeReclamarMonedas(jugador));
     }
+
+    @Test
+    public void quePuedaReclamarSiPasaronMasDe15Segundos(){
+        jugador.setId(1L);
+        jugador.setUltimoReclamoDeMonedas(LocalDateTime.now().minusSeconds(15));
+        assertTrue(servicioTienda.puedeReclamarMonedas(jugador));
+    }
+
+    @Test
+    public void queNoPuedaReclamarSiPasaronMenosDe15Segundos(){
+        jugador.setId(1L);
+        jugador.setUltimoReclamoDeMonedas(LocalDateTime.now().minusSeconds(10));
+        assertFalse(servicioTienda.puedeReclamarMonedas(jugador));
+    }
+
+
+
+    @Test
+    public void queSeTeSumen200MonedasAlReclamarMonedas(){
+        when(repositorioJugador.buscarjugadorPorId(1L)).thenReturn(jugador);
+        servicioTienda.reclamarMonedas(1L);
+        Double valorEsperado = 400.0;
+        Double valorObtenido = jugador.getMonedas();
+        assertEquals(valorEsperado,valorObtenido);
+    }
+
+
+
+
+
 
 
 

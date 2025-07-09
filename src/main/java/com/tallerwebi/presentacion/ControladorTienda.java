@@ -24,12 +24,7 @@ public class ControladorTienda {
 
     private ServicioTienda servicioTienda;
     private ServicioJugador servicioJugador;
-   // private RepositorioObjeto repositorioObjeto;
 
-    /*@Autowired
-    RepositorioJugador repositorioJugador;
-    @Autowired
-    SessionFactory sessionFactory;*/
 
     @Autowired
     public ControladorTienda(ServicioTienda servicioTienda,ServicioJugador servicioJugador) {
@@ -37,7 +32,7 @@ public class ControladorTienda {
 
         this.servicioJugador = servicioJugador;
 
-       // this.repositorioJugador = new RepositorioJugadorImpl(); //lo agregue ahora
+
     }
 
 
@@ -67,7 +62,7 @@ public class ControladorTienda {
 
 
 
-        return new ModelAndView("vistaTienda.html", model);//no poner html al final
+        return new ModelAndView("vistaTienda.html", model);
     }
 
 
@@ -83,7 +78,7 @@ public class ControladorTienda {
 
         if(jugador == null){
             model.put("error","No hay sesiones activas para este jugador");
-            return new ModelAndView("vistaTienda.html", model);// en vez de dirigirte a tienda que lo haga a login
+            return new ModelAndView("vistaTienda.html", model);
         }
 
         try {
@@ -116,7 +111,7 @@ public class ControladorTienda {
 
         if(jugador == null){
             model.put("error","No hay sesiones activas para este jugador");
-            return new ModelAndView("vistaTienda.html", model);// en vez de dirigirte a tienda que lo haga a login
+            return new ModelAndView("vistaTienda.html", model);
         }
 
         try {
@@ -124,12 +119,12 @@ public class ControladorTienda {
             servicioTienda.comprarCarnada(jugador,cant_carnada);
             model.put("mensaje", "¡Carnada comprada Exitosamente!");
             model.put("jugador", jugador);  // para actualizar info
-            return new ModelAndView("vistaCompraCarnadaExitosa.html", model);// vistaObjeto.html
+            return new ModelAndView("vistaCompraCarnadaExitosa.html", model);
 
         } catch (ParametroInvalidoException  | MonedasInsuficientesException  e) {
             model.put("error", e.getMessage());
             model.put("jugador", jugador);
-            return new ModelAndView("vistaCompraCarnadaSinExitoso.html", model);//vistaCompraCarnadaSinExitoso vistaCompraSinExito.html
+            return new ModelAndView("vistaCompraCarnadaSinExitoso.html", model);
         }
 
 
