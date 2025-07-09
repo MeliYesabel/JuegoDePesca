@@ -75,7 +75,7 @@ public class ServicioJugadorImpl implements ServicioJugador {
         return repositorioObjeto;
     }
 
-    @Override
+   /* @Override
     public Boolean puedeReclamarMonedas(Jugador jugador) {
         LocalDateTime ahora = LocalDateTime.now();
 
@@ -101,7 +101,7 @@ public class ServicioJugadorImpl implements ServicioJugador {
         LocalDateTime ahora = LocalDateTime.now();
         Long segundosDesdeUltimoReclamo = Duration.between(jugador.getUltimoReclamoDeMonedas(), ahora).getSeconds();
         return Math.max(15 - segundosDesdeUltimoReclamo, 0);
-    }
+    }*/
 
 
 

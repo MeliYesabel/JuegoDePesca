@@ -12,8 +12,8 @@ public interface ServicioJugador {
     RepositorioJugador getRepositorioJugador();
     RepositorioObjeto getRepositorioObjeto();
 
-    Boolean puedeReclamarMonedas(Jugador jugador);
+   /* Boolean puedeReclamarMonedas(Jugador jugador);
 
     void reclamarMonedas(Long idUsuarioLogueado);
-     Long segundosParaProximoReclamo(Jugador jugador);
+     Long segundosParaProximoReclamo(Jugador jugador);*/
 }

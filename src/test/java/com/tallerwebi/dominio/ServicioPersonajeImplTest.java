@@ -82,7 +82,7 @@ public class ServicioPersonajeImplTest {
         jugador.setId(1L);
         jugador.setMonedas(200.0);
        when(repositorioJugador.buscarjugadorPorId(1L)).thenReturn(jugador);
-       servicioJugador.reclamarMonedas(jugador.getId());
+        servicioTienda.reclamarMonedas(jugador.getId());
        Double valorEsperado = 400.0;
        Double valorObtenido = jugador.getMonedas();
        assertEquals(valorEsperado,valorObtenido);
@@ -92,20 +92,20 @@ public class ServicioPersonajeImplTest {
     public void queElJugadorPuedaReclamarMonedasSiNuncaReclamoAntes(){
        jugador.setId(1L);
        jugador.setUltimoReclamoDeMonedas(null);
-       assertTrue(servicioJugador.puedeReclamarMonedas(jugador));
+       assertTrue(servicioTienda.puedeReclamarMonedas(jugador));
     }
 
     @Test
     public void quePuedaReclamarSiPasaronMasDe15Segundos(){
        jugador.setId(1L);
        jugador.setUltimoReclamoDeMonedas(LocalDateTime.now().minusSeconds(15));
-       assertTrue(servicioJugador.puedeReclamarMonedas(jugador));
+       assertTrue(servicioTienda.puedeReclamarMonedas(jugador));
     }
 
     @Test
     public void queNoPuedaReclamarSiPasaronMenosDe15Segundos(){
        jugador.setId(1L);
        jugador.setUltimoReclamoDeMonedas(LocalDateTime.now().minusSeconds(10));
-       assertFalse(servicioJugador.puedeReclamarMonedas(jugador));
+       assertFalse(servicioTienda.puedeReclamarMonedas(jugador));
     }
 }

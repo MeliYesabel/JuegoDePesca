@@ -115,6 +115,12 @@ when(repositorioObjeto.buscarObjeto(1L)).thenReturn(objeto);
         assertEquals(valorEsperado,valorObtenido);
     }
 
+    @Test
+    public void queSePuedasReclamarMonedasSiPasaronLos15Segundos(){
+
+        //servicioTienda.
+    }
+
 
 
 

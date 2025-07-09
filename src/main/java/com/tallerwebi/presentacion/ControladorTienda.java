@@ -63,7 +63,7 @@ public class ControladorTienda {
         model.put("claveTienda","Esta es la tienda");
         model.put("jugador", jugador);
         model.put("objetosDisponibles", servicioTienda.getListaObjetos());
-        model.put("puedeReclamar", servicioJugador.puedeReclamarMonedas(jugador));
+        model.put("puedeReclamar", servicioTienda.puedeReclamarMonedas(jugador));
 
 
 
@@ -142,8 +142,8 @@ public ModelAndView reclamarMonedas(HttpSession session) {
         Long idUsuarioLogueado =(Long)  session.getAttribute("idUsuarioLogueado");
         Jugador jugador = servicioJugador.buscarJugadorPorId(idUsuarioLogueado);
         ModelMap model = new ModelMap();
-        if(servicioJugador.puedeReclamarMonedas(jugador)){
-            servicioJugador.reclamarMonedas(idUsuarioLogueado);
+        if(servicioTienda.puedeReclamarMonedas(jugador)){
+            servicioTienda.reclamarMonedas(idUsuarioLogueado);
 
             jugador = servicioJugador.buscarJugadorPorId(idUsuarioLogueado);
             model.put("mensajeReclamo","!Reclamaste tus monedas¡");
@@ -152,8 +152,8 @@ public ModelAndView reclamarMonedas(HttpSession session) {
         }
 
         model.put("jugador", jugador);
-        model.put("puedeReclamar",servicioJugador.puedeReclamarMonedas(jugador));
-        model.put("segundosRestantes",servicioJugador.segundosParaProximoReclamo(jugador));
+        model.put("puedeReclamar",servicioTienda.puedeReclamarMonedas(jugador));
+        model.put("segundosRestantes",servicioTienda.segundosParaProximoReclamo(jugador));
 
         model.put("objetosDisponibles", servicioTienda.getListaObjetos());
         model.put("claveTienda", "Bienvenido a la tienda");
