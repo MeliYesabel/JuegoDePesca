@@ -25,13 +25,31 @@
 
     
     <div class="contenido-centrado">
+
+        <div class="opcion-personaje">
         <a th:href="@{/objeto}">
-            <button>
+            <button class="boton-hover">
                 <img th:src="@{/img/caña-madera.png}" alt="Caña" class="icono-cania" />
                <p>Cañas</p>
             </button>
         </a>
+        </div>
+
+      <!--  <div class="opcion-personaje">
+            <button disabled  class="boton-deshabilitado">
+                <img th:src="@{/img/carnada.jpg}" alt="Carnada" class="icono-cania" />
+                <p>Carnada: <span th:text="${jugador.cant_carnada}">0</span></p>
+            </button>
+        </div>-->
+
+
+      <!--  <p class="bloque-carnada">
+            <img th:src="@{/img/carnada.jpg}" alt="Carnada" class="icono-cania" width="50px" height="50px"/>
+            Carnada: <span th:text="${jugador.cant_carnada}">0</span>
+        </p>-->
+
     </div>
+    <p style="color: white">Cantidad Carnada: <span th:text="${jugador.cant_carnada}" style="color: white">0</span> </p>
 </main>
 </body>
 </html>

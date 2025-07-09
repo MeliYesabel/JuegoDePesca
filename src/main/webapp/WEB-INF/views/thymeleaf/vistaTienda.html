@@ -19,6 +19,7 @@
 </header>
 
 <main>
+    <div class="div-main">
     <!-- Título o mensaje de bienvenida -->
     <p th:text="${claveTienda}" class="titulo">Bienvenido a la tienda</p>
 
@@ -80,10 +81,14 @@
         <button type="submit" >Reclamar Monedas </button>
     </form>
 
-    <p th:text="${mensajeReclamo}"></p>
+   <!-- <p th:text="${mensajeReclamo}" class="text-white"></p>-->
+
+    <p th:if="${mensajeReclamo}" th:text="${mensajeReclamo}" style="color:white"></p>
 
     <div th:if="${segundosRestantes > 0}">
-        <p>Podés reclamar monedas en <span th:text="${segundosRestantes}">15</span> segundos.</p>
+        <p style="color:white">Podés reclamar monedas en <span th:text="${segundosRestantes}" style="color:white" >15</span> segundos.</p>
+    </div>
+
     </div>
 
 </main>
