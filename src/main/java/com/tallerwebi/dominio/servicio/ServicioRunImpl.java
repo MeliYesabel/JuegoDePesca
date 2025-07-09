@@ -62,4 +62,9 @@ public class ServicioRunImpl implements ServicioRun {
         repositorioRun.obtenerRunPorId(idRun).agregarPecesPescados(pezSeleccionado);
     }
 
+    @Override
+    public void agregarCebo(Run run, Integer cebo) {
+        run.setCebo(run.getCeboInicial() + cebo);
+    }
+
 }

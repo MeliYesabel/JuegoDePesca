@@ -109,14 +109,14 @@ public class ControladorMapaTest {
         HttpSession session = mock(HttpSession.class);
 
         // session
-        UsuarioSesionDto usuarioSesion = new UsuarioSesionDto(3L,"Anahi","PERSCADOR");
+        Long idUsuarioDto = 3L;
         Jugador jugador = new Jugador("Anahi","anis",30.0,1);
         jugador.setId(3L);
 
 
         List<Mar> listaMar = givenInstanciaDeTodosLosMares();
         //mock
-        when(session.getAttribute("usuarioLogueado")).thenReturn(usuarioSesion);
+        when(session.getAttribute("idUsuarioLogueado")).thenReturn(idUsuarioDto);
         when(servicioJugador.buscarJugadorPorId(3L)).thenReturn(jugador);
         when(servicioMapa.obtenerTodaListaDeMares()).thenReturn(listaMar);
         //when

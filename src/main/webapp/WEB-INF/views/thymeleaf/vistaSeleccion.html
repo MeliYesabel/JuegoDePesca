@@ -37,23 +37,41 @@
             <h2 th:text="${mar.nombre}">nombre mar </h2>
         </div>
         <div >
-           <p>Cantidad de Carnada :  <strong th:text="${runCebo}"></strong> </p> <button type="submit" class="btn btn-primary" > mas </button>
+            <p>Cantidad de Carnada :  <strong th:text="${runCebo}"></strong> </p>
+
+            <form th:action="@{/sumar-cebos}" method="post">
+                <button type="submit" class="btn btn-primary">Más</button>
+            </form>
+
+            <p th:if="${mensajeError}" th:text="${mensajeError}" class="text-danger"></p>
         </div>
+     <!--   <div >
+            <p>Elige una caña</p>
+        </div>-->
         <div >
-            <!--FALTA LOGICA MAS ADELANTE -->
-            <!--SOLO AGREGAR CARNADAS STATIC FINAL DE RUN TRAERLO -->
-            <p>Elige el jugador</p>
+            <p>Junta  suficientes peces para poder desbloquar y conocer otros mares! </p>
         </div>
-        <div >
-            <p>Junta la sufientes cantidad de monedas para poder desbloquar y conocer otros mares! </p>
-        </div>
-        <div class="d-flex justify-content-center gap-2">
+      <div class="d-flex justify-content-center gap-2">
+            <a th:href="@{/volver}" class="btn btn-secondary">Volver a Mapa</a>
             <form th:action="@{/run}" method="post">
                 <input type="hidden" name="idMar" th:value="${mar.id_mar}"/>
                 <button type="submit" class="btn btn-primary">Siguiente</button>
             </form>
-            <a th:href="@{/mapa}" class="btn btn-secondary">Volver a Mapa</a>
-        </div>
+
+      </div>
+      <!--    <form th:action="@{/run}" method="post">
+            <input type="hidden" name="idMar" th:value="${mar.id_mar}"/>
+
+            <div class="d-flex justify-content-center gap-2">
+
+                <button type="submit" name="accion" value="volver" class="btn btn-secondary">Volver a Mapa</button>
+
+
+                <button type="submit" name="accion" value="siguiente" class="btn btn-primary">Siguiente</button>
+            </div>
+        </form>-->
+
+
     </div>
   </div>
 </body>
