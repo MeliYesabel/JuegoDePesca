@@ -105,7 +105,7 @@ public class ServicioJugadorImpl implements ServicioJugador {
 
     @Override
     public Integer obtenerCantDeCebos(Jugador jugador) {
-        return null;
+        return jugador.getCant_carnada();
     }
 
     @Override

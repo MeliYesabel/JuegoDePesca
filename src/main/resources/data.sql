@@ -12,7 +12,7 @@ INSERT INTO Admin(id) values (3);
 --objetos
 INSERT INTO Objeto(precioObjeto,nombre,nombreImagen)VALUES
 (100.0,'CAÑA MADERA','caña-madera.png'),
-(150.0,'CAÑA METAL','caña-metal.jpg');
+(150.0,'CAÑA METAL','caña-metal (1).png');
 
 --mares
 INSERT INTO Mar (id_mar,nombre,precio,descripcion,estadoBloqueado) VALUES

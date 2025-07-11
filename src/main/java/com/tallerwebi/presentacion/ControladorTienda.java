@@ -55,7 +55,7 @@ public class ControladorTienda {
             return new ModelAndView("vistaTienda.html", model);
         }
 
-        model.put("claveTienda","Esta es la tienda");
+        //model.put("claveTienda","Esta es la tienda");
         model.put("jugador", jugador);
         model.put("objetosDisponibles", servicioTienda.getListaObjetos());
         model.put("puedeReclamar", servicioTienda.puedeReclamarMonedas(jugador));
@@ -151,7 +151,7 @@ public ModelAndView reclamarMonedas(HttpSession session) {
         model.put("segundosRestantes",servicioTienda.segundosParaProximoReclamo(jugador));
 
         model.put("objetosDisponibles", servicioTienda.getListaObjetos());
-        model.put("claveTienda", "Bienvenido a la tienda");
+        //model.put("claveTienda", "Bienvenido a la tienda");
 
         return new ModelAndView("vistaTienda.html", model);
     }

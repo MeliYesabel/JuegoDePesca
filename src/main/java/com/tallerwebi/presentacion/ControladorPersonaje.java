@@ -49,7 +49,7 @@ public class ControladorPersonaje {
         }*/
 
         model.put("jugador", jugador);
-        model.put("clavePersonaje", "Esta es la pantalla personaje");
+       // model.put("clavePersonaje", "Esta es la pantalla personaje");
         return new ModelAndView("vistaPersonaje.html", model);
     }
 

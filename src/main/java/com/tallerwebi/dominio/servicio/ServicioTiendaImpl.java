@@ -47,11 +47,11 @@ public class ServicioTiendaImpl implements ServicioTienda {
         }
 
         if(jugador.getObjetosComprados().contains(objeto)){
-            throw new ObjetoYaCompradoException("El jugador ya esta tiene este objeto");
+            throw new ObjetoYaCompradoException("El jugador ya tiene este objeto");
         }
 
         if(jugador.getMonedas() < objeto.getPrecioObjeto()){
-            throw new MonedasInsuficientesException("monedas insuficientes");
+            throw new MonedasInsuficientesException("Monedas insuficientes");
         }
 
                     jugador.setMonedas(jugador.getMonedas() - objeto.getPrecioObjeto());
@@ -75,7 +75,7 @@ public class ServicioTiendaImpl implements ServicioTienda {
         }
 
         if(jugador.getMonedas() < 10 * cantCarnada){ //cada carnada vale 10 monedas
-            throw new MonedasInsuficientesException("monedas insuficientes");
+            throw new MonedasInsuficientesException("Monedas insuficientes");
         }
 
         jugador.setMonedas(jugador.getMonedas() - 10 * cantCarnada);
