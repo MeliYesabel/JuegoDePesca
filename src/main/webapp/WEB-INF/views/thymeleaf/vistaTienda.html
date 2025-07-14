@@ -10,21 +10,12 @@
 
 </head>
 <body>
-<!--
-<header>
-    <nav>
-        <a th:href="@{/mapa}">Mapa</a> |
-        <a th:href="@{/tienda}">Tienda</a> |
-        <a th:href="@{/logros}">Logros</a>
-        <a th:href="@{/personaje}">Personaje</a>
-    </nav>
-</header>
--->
+
 <header class="container-fluid">
     <ul class="nav justify-content-end mt-2 p-4">
 
         <li class="nav-item">
-            <p class="btn btn-primary me-2">Monedas: <span th:text="${monedas}"></span></p>
+            <p class="btn btn-primary me-2">Monedas: <span th:text="${jugador != null ? jugador.monedas : 0}"></span></p>
         </li>
         <li class="nav-item">
             <a class="btn btn-primary me-2" th:href="@{/logros}">Libro de Coleccion</a>
@@ -54,14 +45,7 @@
         <p th:text="${error}"></p>
     </div>
 
-    <!-- Monedas del jugador -->
-    <p class="titulo">
-        Monedas actuales:
-        <span th:text="${jugador != null ? jugador.monedas : 0}" class="titulo">0</span>
-    </p>
-
     <!-- Lista de objetos disponibles -->
-    <h2 class="titulo">Objetos disponibles:</h2>
     <ul class="claseUl">
         <li class="claseLi" th:each="objeto : ${objetosDisponibles}" >
             <img th:src="@{'/img/' + ${objeto.nombreImagen}}" alt="Imagen del objeto" width="100" />

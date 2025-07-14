@@ -9,7 +9,10 @@
 body{
     background-image: url('../img/piso-madera.jpg');
 }
-
+.nav{
+    font-size: 12px;
+}
+/*
 nav {
     background-color: #0288d1;
     padding: 10px;
@@ -27,7 +30,7 @@ nav a {
 
 nav a:hover {
     color: #ffeb3b;
-}
+}*/
 
 main{
     display:flex;
@@ -40,17 +43,21 @@ a{
     text-decoration: none;
     color:black;
 }
+.letra{
+    color: black;
+}
 
 a:hover{
     color:white;
 }
 
-ul {
+.claseUl {
     list-style: none;
     margin-top: 20px;
+    display: contents;
 }
 
-li {
+.claseLi{
     max-width: 50%;
     min-width:60%;
     background-color: #ffffffaa;
@@ -66,7 +73,7 @@ li {
 }
 
 
-li::before {
+.claseLi::before {
     content: "";
     width: 64px;
     height: 64px;

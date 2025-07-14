@@ -10,7 +10,7 @@ body{
     background-image: url('../img/muelle.jpg');
 }
 
-
+/*
 nav {
     background-color: #0288d1;
     padding: 10px;
@@ -28,7 +28,7 @@ nav a {
 
 nav a:hover {
     color: #ffeb3b;
-}
+}*/
 
 main{
 
@@ -49,6 +49,9 @@ main{
 #clavePersonaje{
     font-size: 50px;
     color:white;
+}
+.nav{
+    font-size: 12px;
 }
 
 .contenido-centrado {
@@ -106,7 +109,7 @@ button img.icono-cania {
     object-fit: contain;
 }
 
-div a{
+div .claseA{
     text-decoration: none;
 
 }

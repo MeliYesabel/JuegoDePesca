@@ -73,8 +73,9 @@ main span {
     color: #004d40;
 }
 
-
-
+.nav{
+    font-size: 12px;
+}
 
 .claseUl {
     list-style: none;

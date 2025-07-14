@@ -11,7 +11,7 @@ html,body{
     background-image: url('../img/fondo-tienda2.jpg');
 
 }
-
+/*
 nav {
     background-color: #0288d1;
     padding: 10px;
@@ -30,7 +30,10 @@ nav a {
 nav a:hover {
     color: #ffeb3b;
 }
-
+*/
+.nav{
+    font-size: 12px;
+}
 main{
 
     display: flex;

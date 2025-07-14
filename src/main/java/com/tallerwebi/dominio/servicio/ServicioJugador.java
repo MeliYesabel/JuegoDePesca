@@ -14,7 +14,6 @@ public interface ServicioJugador {
      Integer obtenerCantDeCebos(Jugador jugador);
      void guardar(Jugador jugador);
 
-    void guardar(Jugador jugador);
 
 
 
