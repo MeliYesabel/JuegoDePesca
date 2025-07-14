@@ -66,7 +66,7 @@ public class ControladorRun {
 
         //session.setAttribute("run", run);
         mm.put("cebos", run.getCebo());
-        mm.put("activa",jugador.getCaniaActiva());
+        mm.put("activa",jugador.getCaniaActiva().getNombreImagen());
         ModelAndView mav = new ModelAndView("vistaRun",mm);
         mav.addObject("run", run);
         return mav;
