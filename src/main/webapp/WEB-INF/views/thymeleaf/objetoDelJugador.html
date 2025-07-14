@@ -15,7 +15,7 @@
             <p class="btn btn-primary me-2">Monedas: <span th:text="${jugador.monedas}"></span></p>
         </li>
         <li class="nav-item">
-            <a class="btn btn-primary me-2" th:href="@{/logros}">Libro de Coleccion</a>
+            <a class="btn btn-primary me-2" th:href="@{/mapa}">Mapa</a>
         </li>
         <li class="nav-item">
             <a class="btn btn-primary me-2"  th:href="@{/tienda}">Tienda</a>
@@ -28,30 +28,30 @@
 </header>
 
 <main>
-<!--<h2> Objetos del Jugador</h2>-->
-<ul class="claseUl">
-    <li class="claseLi" th:each="objeto : ${objetosDelJugador}">
-        <img th:src="@{'/img/' + ${objeto.nombreImagen}}" alt="Imagen del objeto" width="100" />
-        Objeto: <span th:text="${objeto.nombre}">1</span>
+    <!--<h2> Objetos del Jugador</h2>-->
+    <ul class="claseUl">
+        <li class="claseLi" th:each="objeto : ${objetosDelJugador}">
+            <img th:src="@{'/img/' + ${objeto.nombreImagen}}" alt="Imagen del objeto" width="100" />
+            Objeto: <span th:text="${objeto.nombre}">1</span>
 
-        <form th:action="@{/equipar}" method="post">
-            <input type="hidden" name="idObjeto" th:value="${objeto.idObjeto}">
-            <button type="submit">Equipar</button>
-        </form>
-    </li>
-</ul>
+            <form th:action="@{/equipar}" method="post">
+                <input type="hidden" name="idObjeto" th:value="${objeto.idObjeto}">
+                <button type="submit">Equipar</button>
+            </form>
+        </li>
+    </ul>
 
-<p class="letra">
-    Caña activa:
-    <span th:if="${caniaActiva != null}" th:text="${jugador.caniaActiva.nombre}"></span>
-    <span th:if="${caniaActiva == null}">Ninguna </span>
+    <p class="letra">
+        CaÃ±a activa:
+        <span th:if="${caniaActiva != null}" th:text="${jugador.caniaActiva.nombre}"></span>
+        <span th:if="${caniaActiva == null}">Ninguna </span>
 
-</p>
+    </p>
 
     <br>
     <br>
     <br>
-<a th:href="@{/personaje}">Volver al personaje</a>
+    <a th:href="@{/personaje}">Volver al personaje</a>
 </main>
 </body>
 </html>

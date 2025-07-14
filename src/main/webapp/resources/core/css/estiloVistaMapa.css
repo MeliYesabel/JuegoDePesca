@@ -66,3 +66,12 @@ a{
     background-color: rgba(0, 0, 0, 0.3); /* fondo semitransparente */
     height: 100%; /* hace que ocupe toda la altura de la fila */
 }
+main{
+    display: flex;
+    flex-direction: column;
+}
+.mitologias{
+    margin: 5px;
+    padding: 5px;
+
+}

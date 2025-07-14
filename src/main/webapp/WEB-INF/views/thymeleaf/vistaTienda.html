@@ -18,7 +18,7 @@
             <p class="btn btn-primary me-2">Monedas: <span th:text="${jugador != null ? jugador.monedas : 0}"></span></p>
         </li>
         <li class="nav-item">
-            <a class="btn btn-primary me-2" th:href="@{/logros}">Libro de Coleccion</a>
+            <a class="btn btn-primary me-2" th:href="@{/mapa}">Mapa</a>
         </li>
         <li class="nav-item">
             <a class="btn btn-primary me-2"  th:href="@{/tienda}">Tienda</a>
@@ -71,19 +71,21 @@
 
     <ul class="claseUl">
         <li class="item-carnada">
-            <img th:src="@{'/img/carnada.jpg'}" alt="Carnada" width="100" />
+            <div class="imagenCarnada">
+            <img th:src="@{'/img/carnada.jpg'}" alt="Carnada" width="100"  />
             <form th:action="@{/comprarCarnada}" method="post" class="form-carnada">
-                <label for="cant_carnada" class="label-carnada">Cantidad de carnada:</label>
+                <label for="cant_carnada" class="label-carnada">CANTIDAD DE CARNADA Precio: 10.0</label>
                 <input type="number" id="cant_carnada" name="cant_carnada" min="1" required class="input-carnada">
                 <button type="submit">Comprar</button>
             </form>
+            </div>
         </li>
     </ul>
 
 
 
     <form th:action="@{/reclamar-monedas}" method="post">
-        <button type="submit" >Reclamar Monedas </button>
+        <button type="submit" class="botonReclamarMonedas">Reclamar Monedas </button>
     </form>
 
    <!-- <p th:text="${mensajeReclamo}" class="text-white"></p>-->
