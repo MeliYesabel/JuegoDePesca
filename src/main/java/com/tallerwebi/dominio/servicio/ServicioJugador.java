@@ -11,6 +11,8 @@ public interface ServicioJugador {
     Jugador inicializarJugador();
     RepositorioJugador getRepositorioJugador();
     RepositorioObjeto getRepositorioObjeto();
+     Integer obtenerCantDeCebos(Jugador jugador);
+     void guardar(Jugador jugador);
 
     void guardar(Jugador jugador);
 

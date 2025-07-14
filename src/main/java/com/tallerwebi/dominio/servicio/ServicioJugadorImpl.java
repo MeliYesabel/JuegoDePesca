@@ -103,6 +103,10 @@ public class ServicioJugadorImpl implements ServicioJugador {
         return Math.max(15 - segundosDesdeUltimoReclamo, 0);
     }*/
 
+    @Override
+    public Integer obtenerCantDeCebos(Jugador jugador) {
+        return jugador.getCant_carnada();
+    }
 
     @Override
     public void guardar(Jugador jugador) {
