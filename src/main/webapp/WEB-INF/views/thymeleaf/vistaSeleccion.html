@@ -43,16 +43,21 @@
                 <button type="submit" class="btn btn-primary">Más</button>
             </form>
 
-            <!--restar-->
+            <!-- Error -->
+            <div th:if="${mensajeError}" style="color: red;">
+                <p th:text="${mensajeError}"></p>
 
-            <p th:if="${mensajeError}" th:text="${mensajeError}" class="text-danger"></p>
+            </div>
+            <!--  <a th:href="@{/tienda}">Ir a tienda</a>-->
+
         </div>
      <!--   <div >
             <p>Elige una caña</p>
         </div>-->
         <div >
-            <p>Junta  suficientes peces para poder desbloquar y conocer otros mares! </p>
+            <p>Junta peces para desbloquar y conocer otros mares! </p>
         </div>
+
          <div class="d-flex justify-content-center gap-2">
                <a th:href="@{/volver}" class="btn btn-secondary">Volver</a>
                <form th:action="@{/run}" method="post">
@@ -60,16 +65,7 @@
                    <button type="submit" class="btn btn-primary">Siguiente</button>
             </form>
 
-    </div>
-
-           <!-- <form th:action="@{/run}" method="post">
-               <input type="hidden" name="idMar" th:value="${mar.id_mar}"/>
-               <div class="d-flex justify-content-center gap-2">
-                   <button type="submit" name="accion" value="volver" class="btn btn-secondary">Volver a Mapa</button>
-                   <button type="submit" name="accion" value="siguiente" class="btn btn-primary">Siguiente</button>
-               </div>
-           </form>-->
-
+         </div>
 
     </div>
   </div>
