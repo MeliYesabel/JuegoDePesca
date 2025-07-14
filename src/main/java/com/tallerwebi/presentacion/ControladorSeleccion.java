@@ -8,10 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
@@ -59,69 +56,50 @@ public class ControladorSeleccion {
 
         //agrego cebo
         servicioRun.agregarCebo(run,1);
+
         // actualizo en la session
         session.setAttribute("run", run);
 
-
-        Integer cant_jugador_inicio = jugador.getCant_carnada();
 
         // resto cebo
         jugador.setCant_carnada(jugador.getCant_carnada()-1);
         servicioJugador.guardar(jugador);
 
+        //
+        Integer cebosAgregados = (Integer) session.getAttribute("cebosAgregados");
 
-        // si toca el boton me tendria que descontar la cantida de cebos del jugador
-        // si toco el boton mapa no los descuenta
+        if (cebosAgregados == null) {
+            cebosAgregados = 0;
+        }
 
-        /*hacer un atributo cebos perdidos en donde se guarda la cantida y si pasa algo para que no los pierda
-        * */
+        cebosAgregados++;
+
+        session.setAttribute("cebosAgregados", cebosAgregados);
+
 
         mm.put("runCebo", run.getCebo());
         mm.put("mar",run.getMar());
 
-
         return new ModelAndView("vistaSeleccion",mm);
    }
 
-
-   /*
-   * en el boton siguiente ahi actualizo al jugador
-   *  //
-   * */
-
    // como hacer para que nose pierdan las carnadas
     @RequestMapping("/volver")
-    public ModelAndView volver(){
-        ModelMap mm= new ModelMap();
-        mm.put("volver","¿Estás seguro que querés volver al mapa? Perderás los cebos agregados.");
-        return new ModelAndView("confirmacionVolver",mm);
+    public ModelAndView volver(HttpSession session){
+        Long idUsuarioLogueado =(Long)  session.getAttribute("idUsuarioLogueado");
+        Jugador jugador = servicioJugador.buscarJugadorPorId(idUsuarioLogueado);
+        Integer cebosTiene = jugador.getCant_carnada();
 
+        Integer cebosUsados = (Integer) session.getAttribute("cebosAgregados");
+        if (cebosUsados != null) {
+            jugador.setCant_carnada(cebosTiene + cebosUsados);
+            servicioJugador.guardar(jugador);
+            session.removeAttribute("cebosAgregados");
+            session.removeAttribute("run");
+
+        }
+        return new ModelAndView("redirect:/mapa");
    }
 
 
-   public ModelAndView validacionesDelJuegoAntesDeCambiarDeVistaARun(HttpSession session,@PathVariable ("nombreMar") String nombreMar){
-       ModelMap modelMap = new ModelMap();
-       Long idUsuarioLogueado =(Long)  session.getAttribute("idUsuarioLogueado");
-       Jugador jugador = servicioJugador.buscarJugadorPorId(idUsuarioLogueado);
-
-       Mar mar = servicioMapa.obtenerUnMarPorNombre(nombreMar);
-
-
-
-      /* j.setCant_carnada(0);
-       if (j.getCant_carnada() ==0){
-           modelMap.put("errorCantCarnada","El jugador no tiene carnadas");
-           return new ModelAndView("vistaSeleccion", modelMap);
-       }
-
-       j.setCant_carnada(6);
-       if (!servicioSeleccion.laCantidadDeCarnadaEsMenorQueCindo(j.getCant_carnada())){
-           modelMap.put("errorCantCarnada","El jugador no puede tener mas de cinco carnada");
-           return new ModelAndView("vistaSeleccion", modelMap);
-       }*/
-       modelMap.put("mar",mar);
-
-
-       return new ModelAndView("vistaRun",modelMap);
-   }
 }

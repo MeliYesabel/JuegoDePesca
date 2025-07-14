@@ -19,7 +19,7 @@
               <p class="btn btn-primary me-2">Monedas: <span th:text="${monedas}"></span></p>
           </li>
           <li class="nav-item">
-              <a class="btn btn-primary me-2" th:href="@{/logros}">Libro de Coleccion</a>
+              <a class="btn btn-primary me-2" th:href="@{/mapa}">Mapa</a>
           </li>
           <li class="nav-item">
               <a class="btn btn-primary me-2"  th:href="@{/tienda}">Tienda</a>
@@ -53,22 +53,22 @@
         <div >
             <p>Junta  suficientes peces para poder desbloquar y conocer otros mares! </p>
         </div>
-        <!--  <div class="d-flex justify-content-center gap-2">
-               <a th:href="@{/volver}" class="btn btn-secondary">Volver a Mapa</a>
+         <div class="d-flex justify-content-center gap-2">
+               <a th:href="@{/volver}" class="btn btn-secondary">Volver</a>
                <form th:action="@{/run}" method="post">
                    <input type="hidden" name="idMar" th:value="${mar.id_mar}"/>
                    <button type="submit" class="btn btn-primary">Siguiente</button>
             </form>
 
-    </div>-->
+    </div>
 
-           <form th:action="@{/run}" method="post">
+           <!-- <form th:action="@{/run}" method="post">
                <input type="hidden" name="idMar" th:value="${mar.id_mar}"/>
                <div class="d-flex justify-content-center gap-2">
                    <button type="submit" name="accion" value="volver" class="btn btn-secondary">Volver a Mapa</button>
                    <button type="submit" name="accion" value="siguiente" class="btn btn-primary">Siguiente</button>
                </div>
-           </form>
+           </form>-->
 
 
     </div>
