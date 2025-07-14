@@ -8,6 +8,7 @@ import com.tallerwebi.dominio.servicio.ServicioMapa;
 import com.tallerwebi.dominio.servicio.ServicioRun;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -47,22 +48,26 @@ public class ControladorRun {
     }
     @PostMapping("/run")
     public ModelAndView iniciarRun(@RequestParam("idMar") Long idMar, HttpSession session) {
+        ModelMap mm = new ModelMap();
         Long idUsuarioLogueado =(Long)  session.getAttribute("idUsuarioLogueado");
         Jugador jugador = servicioJugador.buscarJugadorPorId(idUsuarioLogueado);
+        Run run =(Run) session.getAttribute("run");
 
-        Integer cantidadCebo =  3; // hard codeo, aca van los cebo seteados previamente
+        Integer cantidadCebo = run.getCebo(); // hard codeo, aca van los cebo seteados previamente
+
         Mar marSeleccionado = servicioMapa.obtenerMarPorId(idMar);
 
-        Run run = new Run();
-        run.setCebo(cantidadCebo);
+       // Run run = new Run();
+       // run.setCebo(cantidadCebo);
         run.setJugador(jugador);
         run.setMar(marSeleccionado);
         run.setCebo(run.getCebo());
         servicioRun.guardarRun(run);
 
-        session.setAttribute("run", run);
-
-        ModelAndView mav = new ModelAndView("vistaRun");
+        //session.setAttribute("run", run);
+        mm.put("cebos", run.getCebo());
+        mm.put("activa",jugador.getCaniaActiva());
+        ModelAndView mav = new ModelAndView("vistaRun",mm);
         mav.addObject("run", run);
         return mav;
     }

@@ -11,9 +11,9 @@
 </head>
 <body>
 <div class="contenedor row">
-<span>Resumen elementos seleccionados</span>
-<span>Caña equipada</span>
-<span>Cantidad de cebo</span>
+<span>Resumen</span>
+<span>Caña equipada<strong th:text="${activa}"></strong></span>
+<span>Cantidad de cebo: <strong th:text="${cebos}"></strong></span>
 
 <a th:href="@{/turno}" class="btn btn-primary">Empezar</a>
 <a th:href="@{/mapa}" class="btn btn-primary">Volver</a>
