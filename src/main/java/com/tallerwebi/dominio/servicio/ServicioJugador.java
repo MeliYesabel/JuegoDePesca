@@ -12,6 +12,8 @@ public interface ServicioJugador {
     RepositorioJugador getRepositorioJugador();
     RepositorioObjeto getRepositorioObjeto();
 
+    void guardar(Jugador jugador);
+
 
 
 }

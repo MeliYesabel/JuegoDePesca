@@ -32,6 +32,8 @@ body {
 }
 a{
     color: white;
+    text-decoration: none;
+    padding: 5px;
 }
 .col-2 {
     border: 1px solid rgba(255,255,255,0.4);

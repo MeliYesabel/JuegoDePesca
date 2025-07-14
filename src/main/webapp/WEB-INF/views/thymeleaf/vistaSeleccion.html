@@ -43,6 +43,8 @@
                 <button type="submit" class="btn btn-primary">Más</button>
             </form>
 
+            <!--restar-->
+
             <p th:if="${mensajeError}" th:text="${mensajeError}" class="text-danger"></p>
         </div>
      <!--   <div >
@@ -51,25 +53,22 @@
         <div >
             <p>Junta  suficientes peces para poder desbloquar y conocer otros mares! </p>
         </div>
-      <div class="d-flex justify-content-center gap-2">
-            <a th:href="@{/volver}" class="btn btn-secondary">Volver a Mapa</a>
-            <form th:action="@{/run}" method="post">
-                <input type="hidden" name="idMar" th:value="${mar.id_mar}"/>
-                <button type="submit" class="btn btn-primary">Siguiente</button>
+        <!--  <div class="d-flex justify-content-center gap-2">
+               <a th:href="@{/volver}" class="btn btn-secondary">Volver a Mapa</a>
+               <form th:action="@{/run}" method="post">
+                   <input type="hidden" name="idMar" th:value="${mar.id_mar}"/>
+                   <button type="submit" class="btn btn-primary">Siguiente</button>
             </form>
 
-      </div>
-      <!--    <form th:action="@{/run}" method="post">
-            <input type="hidden" name="idMar" th:value="${mar.id_mar}"/>
+    </div>-->
 
-            <div class="d-flex justify-content-center gap-2">
-
-                <button type="submit" name="accion" value="volver" class="btn btn-secondary">Volver a Mapa</button>
-
-
-                <button type="submit" name="accion" value="siguiente" class="btn btn-primary">Siguiente</button>
-            </div>
-        </form>-->
+           <form th:action="@{/run}" method="post">
+               <input type="hidden" name="idMar" th:value="${mar.id_mar}"/>
+               <div class="d-flex justify-content-center gap-2">
+                   <button type="submit" name="accion" value="volver" class="btn btn-secondary">Volver a Mapa</button>
+                   <button type="submit" name="accion" value="siguiente" class="btn btn-primary">Siguiente</button>
+               </div>
+           </form>
 
 
     </div>

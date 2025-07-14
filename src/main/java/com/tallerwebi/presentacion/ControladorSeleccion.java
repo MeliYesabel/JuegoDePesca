@@ -53,19 +53,28 @@ public class ControladorSeleccion {
             mm.put("runCebo", run.getCebo());
             mm.put("mar", run.getMar());
             mm.put("jugador", jugador);
+            mm.put("monedas", jugador.getMonedas());
             return new ModelAndView("vistaSeleccion", mm);
         }
 
         //agrego cebo
         servicioRun.agregarCebo(run,1);
+        // actualizo en la session
         session.setAttribute("run", run);
+
+
+        Integer cant_jugador_inicio = jugador.getCant_carnada();
 
         // resto cebo
         jugador.setCant_carnada(jugador.getCant_carnada()-1);
         servicioJugador.guardar(jugador);
 
+
         // si toca el boton me tendria que descontar la cantida de cebos del jugador
         // si toco el boton mapa no los descuenta
+
+        /*hacer un atributo cebos perdidos en donde se guarda la cantida y si pasa algo para que no los pierda
+        * */
 
         mm.put("runCebo", run.getCebo());
         mm.put("mar",run.getMar());
@@ -73,6 +82,12 @@ public class ControladorSeleccion {
 
         return new ModelAndView("vistaSeleccion",mm);
    }
+
+
+   /*
+   * en el boton siguiente ahi actualizo al jugador
+   *  //
+   * */
 
    // como hacer para que nose pierdan las carnadas
     @RequestMapping("/volver")

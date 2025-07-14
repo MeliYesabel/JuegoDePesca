@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <title>Tienda</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/vistaTienda.css}">
 
 
 </head>
 <body>
+<!--
 <header>
     <nav>
         <a th:href="@{/mapa}">Mapa</a> |
@@ -16,6 +18,25 @@
         <a th:href="@{/logros}">Logros</a>
         <a th:href="@{/personaje}">Personaje</a>
     </nav>
+</header>
+-->
+<header class="container-fluid">
+    <ul class="nav justify-content-end mt-2 p-4">
+
+        <li class="nav-item">
+            <p class="btn btn-primary me-2">Monedas: <span th:text="${monedas}"></span></p>
+        </li>
+        <li class="nav-item">
+            <a class="btn btn-primary me-2" th:href="@{/logros}">Libro de Coleccion</a>
+        </li>
+        <li class="nav-item">
+            <a class="btn btn-primary me-2"  th:href="@{/tienda}">Tienda</a>
+        </li>
+        <li class="nav-item">
+            <a class="btn btn-primary me-2" th:href="@{/personaje}">Personaje</a>
+        </li>
+
+    </ul>
 </header>
 
 <main>
@@ -41,8 +62,8 @@
 
     <!-- Lista de objetos disponibles -->
     <h2 class="titulo">Objetos disponibles:</h2>
-    <ul>
-        <li th:each="objeto : ${objetosDisponibles}" >
+    <ul class="claseUl">
+        <li class="claseLi" th:each="objeto : ${objetosDisponibles}" >
             <img th:src="@{'/img/' + ${objeto.nombreImagen}}" alt="Imagen del objeto" width="100" />
           <!--  Objeto ID: <span th:text="${objeto.idObjeto} + ${objeto.nombre} " >1</span> - -->
             <span th:text="${objeto.nombre} " >1</span>

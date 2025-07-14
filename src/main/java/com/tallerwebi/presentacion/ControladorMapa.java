@@ -45,6 +45,7 @@ public class ControladorMapa {
         }*/
 
         List<Mar> listaMar = servicioMapa.obtenerTodaListaDeMares();
+        
 
         modelMap.addAttribute("listaMar", listaMar);
         modelMap.addAttribute("jugador", jugador);
@@ -81,6 +82,7 @@ public class ControladorMapa {
         if (estado){
              mm.put("marError", "El mar seleccionado esta bloqueado");
              mm.put("mar",mar);
+             mm.put("monedas",jugador.getMonedas());
              return new ModelAndView("vistaMarBloqueado",mm);
          }
 
@@ -94,6 +96,7 @@ public class ControladorMapa {
 
         mm.put("mar", mar);
         mm.put("runCebo",runSimulado.getCebo());
+        mm.addAttribute("monedas", jugador.getMonedas());
 
         return new ModelAndView("vistaSeleccion",mm);
     }
@@ -112,11 +115,12 @@ public class ControladorMapa {
                servicioMapa.desbloquearMarSegunElJugador(mar,jugador);
             }catch (NoSePuedodesbloquearElMarException e){
                 mm.put("mar",mar);
-                mm.put("jugadorMonedas",jugador.getMonedas());
+                mm.put("monedas",jugador.getMonedas());
                 mm.put("errorAlDesbloquear",e.getMessage());
                 return new ModelAndView("vistaMarBloqueado",mm);
             }
 
+       // mm.put("jugadorMonedas",jugador.getMonedas());
         return new ModelAndView("redirect:/mapa");
     }
 
