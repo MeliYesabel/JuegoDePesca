@@ -36,17 +36,13 @@
       <p th:text="${marError}" style="color:red"></p>
   </div>
 
-  <!--<ul>
-      <li th:each="mar : ${listaMar}">
-          <a th:href="@{/marSeleccionado/{nombreMar}(nombreMar=${mar.nombre})}" th:text="${mar.nombre}">Nombre del mar</a>
-      </li>
-  </ul>-->
   <main>
-  <div th:each="mar : ${listaMar}">
+    <div class="mito" th:each="mar : ${listaMar}">
       <a class="mitologias" th:href="@{/marSeleccionado/{nombreMar}(nombreMar=${mar.nombre})}"
          th:text="${mar.nombre}">
       </a>
-  </div>
+    </div>
   </main>
+
   </body>
 </html>
