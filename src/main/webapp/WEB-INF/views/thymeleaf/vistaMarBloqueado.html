@@ -47,17 +47,16 @@
         <div th:unless="${errorAlDesbloquear}">
             <p>¿Deseás desbloquear este mar?</p>
             <div class="d-flex justify-content-center gap-2">
+                <a th:href="@{/mapa}"  class="btn btn-warning">No</a>
                 <form th:action="@{/marBloqueado/{nombreMar}(nombreMar=${mar.nombre})}" method="post">
                     <button type="submit" class="btn btn-primary">Sí</button>
                 </form>
-
-                <a th:href="@{/mapa}" class="btn btn-secondary">No</a>
             </div>
         </div>
 
         <!-- Si HAY error -->
         <div th:if="${errorAlDesbloquear}">
-            <a th:href="@{/mapa}" class="btn btn-warning">Volver al mapa</a>
+            <a th:href="@{/mapa}" class="btn btn-warning">Volver a mapa</a>
         </div>
 
 
