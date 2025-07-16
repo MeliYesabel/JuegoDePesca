@@ -11,7 +11,45 @@
 
 </head>
 <body>
+<style>
+    .tracking-in-contract-bck-top {
+        -webkit-animation: tracking-in-contract-bck-top 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+        animation: tracking-in-contract-bck-top 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+    }
+    @-webkit-keyframes tracking-in-contract-bck-top {
+        0% {
+            letter-spacing: 1em;
+            -webkit-transform: translateZ(400px) translateY(-300px);
+            transform: translateZ(400px) translateY(-300px);
+            opacity: 0;
+        }
+        40% {
+            opacity: 0.6;
+        }
+        100% {
+            -webkit-transform: translateZ(0) translateY(0);
+            transform: translateZ(0) translateY(0);
+            opacity: 1;
+        }
+    }
+    @keyframes tracking-in-contract-bck-top {
+        0% {
+            letter-spacing: 1em;
+            -webkit-transform: translateZ(400px) translateY(-300px);
+            transform: translateZ(400px) translateY(-300px);
+            opacity: 0;
+        }
+        40% {
+            opacity: 0.6;
+        }
+        100% {
+            -webkit-transform: translateZ(0) translateY(0);
+            transform: translateZ(0) translateY(0);
+            opacity: 1;
+        }
+    }
 
+</style>
   <header class="container-fluid">
       <ul class="nav justify-content-end mt-2 p-4">
 
@@ -34,7 +72,7 @@
   <div class="container mar-desbloqueado-container ">
     <div class="row fondo">
         <div >
-            <h2 th:text="${mar.nombre}">nombre mar </h2>
+            <h2  class="tracking-in-contract-bck-top" th:text="${mar.nombre}">nombre mar </h2>
         </div>
         <div >
             <p>Cantidad de Carnada :  <strong th:text="${runCebo}"></strong> </p>
@@ -49,17 +87,13 @@
 
             </div>
             <!--  <a th:href="@{/tienda}">Ir a tienda</a>-->
-
         </div>
-     <!--   <div >
-            <p>Elige una caña</p>
-        </div>-->
         <div >
             <p>Junta peces para desbloquar y conocer otros mares! </p>
         </div>
 
          <div class="d-flex justify-content-center gap-2">
-               <a th:href="@{/volver}" class="btn btn-secondary">Volver</a>
+               <a th:href="@{/volver}" class="btn btn-warning">Volver</a>
                <form th:action="@{/run}" method="post">
                    <input type="hidden" name="idMar" th:value="${mar.id_mar}"/>
                    <button type="submit" class="btn btn-primary">Siguiente</button>
@@ -69,5 +103,6 @@
 
     </div>
   </div>
+
 </body>
 </html>
