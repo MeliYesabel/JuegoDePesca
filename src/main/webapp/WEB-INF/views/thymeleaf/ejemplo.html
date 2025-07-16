@@ -6,45 +6,27 @@
 </head>
 <body>
 <style>
-    .tracking-in-contract-bck-top {
-        -webkit-animation: tracking-in-contract-bck-top 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
-        animation: tracking-in-contract-bck-top 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
-    }
-    @-webkit-keyframes tracking-in-contract-bck-top {
-        0% {
-            letter-spacing: 1em;
-            -webkit-transform: translateZ(400px) translateY(-300px);
-            transform: translateZ(400px) translateY(-300px);
-            opacity: 0;
-        }
-        40% {
-            opacity: 0.6;
-        }
-        100% {
-            -webkit-transform: translateZ(0) translateY(0);
-            transform: translateZ(0) translateY(0);
-            opacity: 1;
-        }
-    }
-    @keyframes tracking-in-contract-bck-top {
-        0% {
-            letter-spacing: 1em;
-            -webkit-transform: translateZ(400px) translateY(-300px);
-            transform: translateZ(400px) translateY(-300px);
-            opacity: 0;
-        }
-        40% {
-            opacity: 0.6;
-        }
-        100% {
-            -webkit-transform: translateZ(0) translateY(0);
-            transform: translateZ(0) translateY(0);
-            opacity: 1;
-        }
+    .slide-in-bottom {
+        background-color: #8a8ac8;
+        padding: 20px;
+        animation: slide-in-bottom 0.5s ease-out both;
     }
 
+    @keyframes slide-in-bottom {
+        0% {
+            transform: translateY(100px);
+            opacity: 0;
+        }
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
 </style>
-<h2 class="tracking-in-contract-bck-top">¡Hola Mundo con animación!</h2>
+
+<div class="slide-in-bottom">
+    Hola, soy un div animado.
+</div>
 
 
 </body>

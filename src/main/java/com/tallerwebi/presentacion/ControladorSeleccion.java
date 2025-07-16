@@ -79,7 +79,7 @@ public class ControladorSeleccion {
 
         mm.put("runCebo", run.getCebo());
         mm.put("mar",run.getMar());
-
+        mm.put("monedas", jugador.getMonedas());
         return new ModelAndView("vistaSeleccion",mm);
    }
 
