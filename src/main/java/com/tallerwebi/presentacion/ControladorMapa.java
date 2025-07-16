@@ -31,6 +31,10 @@ public class ControladorMapa {
         this.servicioMapa = servicioMapa;
         this.servicioJugador = servicioJugador;
     }
+    @RequestMapping("/ejemplo")
+    public ModelAndView ejemplo(ModelMap model) {
+        return new ModelAndView("ejemplo");
+    }
 
     /*redirecciones*/
     @RequestMapping("/mapa")

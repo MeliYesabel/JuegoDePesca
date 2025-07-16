@@ -1,0 +1,1396 @@
+[33mcommit 37c68f11fba257a8c8e63b789310b3db94faf281[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mestilo[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Mon Jul 14 21:44:31 2025 -0300
+
+    vista mapa y botones estilo
+
+[33mcommit 0902db30b52ce220cbeffcd7e46a6e74591a392e[m
+Merge: b9c17d6 f629da9
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Mon Jul 14 20:50:59 2025 -0300
+
+    Merge branch 'main' of https://github.com/MeliYesabel/JuegoDePesca
+
+[33mcommit b9c17d649539182fd77d05e224f1c4268041e88a[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Mon Jul 14 20:50:15 2025 -0300
+
+    por las dudas
+
+[33mcommit f629da970b687a4307a3179b49427350d0640bb1[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Mon Jul 14 20:48:47 2025 -0300
+
+    vista run estilo
+
+[33mcommit a06eb3879fad11be92c9d18797f15eaa05fc365a[m
+Merge: 0ec5611 cda7087
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Mon Jul 14 20:13:21 2025 -0300
+
+    Merge branch 'main' of https://github.com/MeliYesabel/JuegoDePesca
+
+[33mcommit 0ec56117f7b80443451382bb8d83f8b21a84caf5[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Mon Jul 14 20:13:09 2025 -0300
+
+    en resumen ya se muestra la cantidad de cebos correspondientes
+
+[33mcommit cda708725b1470fcd10667b43672aced977fd1ce[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Mon Jul 14 19:58:57 2025 -0300
+
+    corrijo mensajes
+
+[33mcommit 35d94c910f16abecb219af6f400e12b623dd7e77[m[33m ([m[1;31morigin/gonzaSeis[m[33m)[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Mon Jul 14 18:36:39 2025 -0300
+
+    arreglo estilo de tienda
+
+[33mcommit 4d991ece07e25e441a92bc4de589e7c15b0e4391[m[33m ([m[1;32mgonzaSeis[m[33m)[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Mon Jul 14 17:47:41 2025 -0300
+
+    mini arreglos de estilo
+
+[33mcommit a410459b29050d352744201a0297c40837e42096[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Mon Jul 14 13:24:27 2025 -0300
+
+    cambie header y ya no pierde los cebos si se arrepiente
+
+[33mcommit 365d1f800010e7a8639bd4641003474dd2ebbfb8[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Sun Jul 13 22:36:38 2025 -0300
+
+    los header son todos los mismos
+
+[33mcommit c85750b1eae4b0fbd3b3bdad9c18ff4fec9eb020[m
+Merge: 97b5bcf 1bf4165
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Sun Jul 13 21:54:04 2025 -0300
+
+    merge de main
+
+[33mcommit 97b5bcf059ede1132575948d45a77aa0f655b3f2[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Sun Jul 13 21:52:18 2025 -0300
+
+    modificaciones
+
+[33mcommit 1bf4165dc4338bc8ecec8a815f0131e02603e296[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Fri Jul 11 20:47:48 2025 -0300
+
+    corrijo detalles
+
+[33mcommit b7dbfc4d83847b76984544a81a1cbc89e998c3d3[m
+Merge: 4b92afd 4bf84a0
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Wed Jul 9 20:46:56 2025 -0300
+
+    merge con rama anahi
+
+[33mcommit 4bf84a013aea835a71a15c147af5595d8516aef8[m[33m ([m[1;31morigin/anahi[m[33m, [m[1;32manahi[m[33m)[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Wed Jul 9 20:43:44 2025 -0300
+
+    minis arreglos
+
+[33mcommit 4b92afde05eca45a3eceb1677c3c52c5d6c9df16[m[33m ([m[1;31morigin/gonzaCuatro[m[33m)[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Wed Jul 9 12:38:30 2025 -0300
+
+    arreglo algunos test del ServicioTienda
+
+[33mcommit f7698fed02f4b69e98f1a8c3d2820cb9d82fe10b[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Wed Jul 9 11:16:00 2025 -0300
+
+    muevo de lugar los metodos puedeReclamarMonedas,reclamarMonedas y segundoParaProximoReclamo
+
+[33mcommit ce1a7d6bd29349f64beebdc2b00a44dfdb46586d[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Tue Jul 8 21:21:25 2025 -0300
+
+    pongo en el apartado personaje cuanta carnada tiene
+
+[33mcommit 7d376b4e88334ee68e7c67ea692dc8c44ffde67d[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Tue Jul 8 19:09:36 2025 -0300
+
+    funcion de comprar cebos, descontar  y no dejar sumar si el jugador no tiene cebos no sumar, faltan test
+
+[33mcommit 43d602d09fd0789d66bee71cac8f11a209790061[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Tue Jul 8 19:08:50 2025 -0300
+
+    arreglo problemas en el momento de equipar una caña
+
+[33mcommit 5056ae375960e07cfa388a14be3e841ac970d0f9[m
+Merge: 715e763 54935eb
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Tue Jul 8 08:44:08 2025 -0300
+
+    Merge remote-tracking branch 'origin/gonzaCuatro' into anahi
+
+[33mcommit 715e763aad0486da67c945b29dad4439345fdbed[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Tue Jul 8 08:40:39 2025 -0300
+
+    arregle test que e daba error
+
+[33mcommit 54935eb2dbcf40ccbe8befc4ef5dee056e26f55a[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Mon Jul 7 20:15:39 2025 -0300
+
+    hago el  metodo segundosParaProximoRelamo en ServicioJugador, y emprolijo el css de la tienda
+
+[33mcommit 3675c767f2553a0881576838f1c2bd1c697d0711[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Sun Jul 6 18:13:01 2025 -0300
+
+    agrego algunos test en la clase ServicioPersonajeTest
+
+[33mcommit 1384812e5720b8bfc4466af4b788892d41a5eb63[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Sun Jul 6 17:52:36 2025 -0300
+
+    agrego una nueva funcionalidad de reclamo de monedas en la tienda, agregue en ControladorTienda un metodo reclamarMonedas, en ServicioJugador dos metodos, puedeReclamarMonedas y reclamarMonedas
+
+[33mcommit 534d05e31f855cf7607cee7f588f908885ffa997[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Sun Jul 6 13:23:37 2025 -0300
+
+    agrego dos test del ControladorTienda: dadoQueComproCarnadaExitosamenteQueMeLleveALaVistaCompraCarnadaExitosa y dadoQueComproCarnadaSinExitoQueMeLleveALaVistaCompraCarnadaSinExitoso
+
+[33mcommit cc9e51aab180ec4cd9c73f7b429ab4d933859251[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Sun Jul 6 13:01:28 2025 -0300
+
+     agrego las vistas: vistaCompraCarnadaExitosa.html, vistaCompraCarnadaSinExitoso
+
+[33mcommit 4a2834302ec0ea717d2b9a01cb1f6ab0f918b0d6[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Sat Jul 5 19:33:14 2025 -0300
+
+    agrego dos test en la clase ServicioTiendaImplTest, queAlComprarUnaCantidadDeCarnadasSeLeSumeLaCantidadAlJugador(),queAlComprarUnaCantidadDeCarnadasSeLeReste10MonedasPorCadaCarnadaAlJugador()
+
+[33mcommit 658b8ca6fa6acd238b77d48ccbdfb204313f0802[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Sat Jul 5 19:22:18 2025 -0300
+
+    agrego metodo comprarCarnada en el Controlador y en el ServicioTienda
+
+[33mcommit 295ce752adf665f5115ca0fea3bf52603e73567d[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Thu Jul 3 10:24:22 2025 -0300
+
+    se muestra la cant de monedaque tiene el ugador, ademas de que se actuaiza si se compra algo
+
+[33mcommit ce2307c129bd0c0cb5b50a08f6d1160d8b7ab536[m
+Merge: a736e86 2e31ffd
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Thu Jul 3 09:50:35 2025 -0300
+
+    merge con ramam anahiaSpritncutro, mostrar monedas
+
+[33mcommit 2e31ffdc0deda99316c49263a2191345a8ad5620[m[33m ([m[1;31morigin/anahiSprintCuatro[m[33m, [m[1;32manahiSprintCuatro[m[33m)[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Thu Jul 3 09:47:34 2025 -0300
+
+    mostrar cant de monedas
+
+[33mcommit a736e86cb41cd42c9ce63040eba0f49bb916837f[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Thu Jul 3 09:38:18 2025 -0300
+
+    modifico ControladorLogin para que en vez de traer el UsuarioDto directamente, traiga su id, refactorizo clases:ControladorTienda,ControladorPersonaje,ControladorMapa,ControladorRun, y tambien refactorizo los test de todas esas clases
+
+[33mcommit 40ebff8cc3129cab70e85ff7cdfe94b4c0647119[m
+Merge: 5faf6a3 17db2a0
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Thu Jul 3 08:38:12 2025 -0300
+
+    Merge branch 'main' of https://github.com/MeliYesabel/JuegoDePesca
+
+[33mcommit 5faf6a357487b7691402231a73520a440fff5fbf[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Thu Jul 3 08:37:54 2025 -0300
+
+    mini cambios
+
+[33mcommit 0c91b847c5ee060ae4c456ecc94ac47e3180d7e0[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Thu Jul 3 08:29:57 2025 -0300
+
+    redireccion de vista tienda
+
+[33mcommit 8639056ddb1a5b3c0755dc10d8661c5b7d76d461[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Thu Jul 3 08:26:03 2025 -0300
+
+    ahora si se descuenta las monedas de un jugador ya registrado
+
+[33mcommit 17db2a05a63418a86e4108d51529ee5dd177f60c[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Wed Jul 2 23:41:55 2025 -0300
+
+    soluciono errores de mergeo
+
+[33mcommit ae9924138f9762be35c3faa931aa237eedeaa237[m
+Merge: 6ebbb25 d300893
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Wed Jul 2 23:31:17 2025 -0300
+
+    mergeo main con gonzaDos
+
+[33mcommit d3008937fb0d404e35ac1918dd7ec673c240172b[m[33m ([m[1;31morigin/gonzaDos[m[33m)[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Wed Jul 2 23:26:27 2025 -0300
+
+    por las dudas
+
+[33mcommit 6ebbb25d8d97cb40efa631e68cea6c0a6b62e5ba[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Wed Jul 2 23:24:29 2025 -0300
+
+    arreglo de test
+
+[33mcommit 31835f6cb2d10b7424a3ac57db753d107e922e09[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Wed Jul 2 23:21:55 2025 -0300
+
+    limpee target
+
+[33mcommit a2c5b68b6d5f4adf5b3abbc7af622ac59de7611b[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Wed Jul 2 22:58:03 2025 -0300
+
+    arreglo de test, ahora verdes
+
+[33mcommit 7f2724332f388c5cd82e742f612807857ccf0489[m
+Merge: bccd64f e1a9782
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Wed Jul 2 22:38:29 2025 -0300
+
+    merge con rama runCorrecciones
+
+[33mcommit bccd64fb7c91e10513f7bb38785853d3da0be6b3[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Wed Jul 2 22:32:29 2025 -0300
+
+    nota
+
+[33mcommit b453133c95aad40344dff5baaffb1919864fbe22[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Wed Jul 2 22:25:59 2025 -0300
+
+    agregar modificacion en vista mapa
+
+[33mcommit a0569b88671c0c3204db3e4e1cd3569ee0a41f7b[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Wed Jul 2 16:26:31 2025 -0300
+
+    arregle test que daban mal xq cambie las redirecciones ahora dan verde
+
+[33mcommit e1a9782b0c6aa4600524bc89d1cfd0369056b48c[m[33m ([m[1;31morigin/runCorrecciones[m[33m)[m
+Author: MeliYesabel <melinayesabel@gmail.com>
+Date:   Wed Jul 2 15:08:02 2025 -0300
+
+    ahora se puede ver el resumen de cada partida y se actualizan la cantidad ganada en las monedas de jugador.
+
+[33mcommit 832578161bd8dec08afc80862451d125210b1646[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Tue Jul 1 21:27:10 2025 -0300
+
+    agrego el css de objetoDelJugador
+
+[33mcommit dfd4a7895f44d00c07e478b4e351567888f49693[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Tue Jul 1 19:24:17 2025 -0300
+
+    hice el css de la vistaPersonaje
+
+[33mcommit 632dd54ebdddcec7f695118a80b0c5104c1a2597[m
+Author: MeliYesabel <melinayesabel@gmail.com>
+Date:   Tue Jul 1 17:49:19 2025 -0300
+
+    agrego css a vistas run y turno
+
+[33mcommit c50929d95c0cb2aa92ba236fee22b4ef93e68c9f[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Tue Jul 1 11:15:46 2025 -0300
+
+    le hago el css a la viistaObjeto
+
+[33mcommit 3ce2db8ab4e8f3b2ce453805c31ba408a15b4b7a[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Tue Jul 1 11:02:34 2025 -0300
+
+    agrego css de vistaCompraSinExito
+
+[33mcommit 04474de1ec1b0c61d828fd2e3b29a716eae47489[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Mon Jun 30 19:49:58 2025 -0300
+
+    le agregue estilo a la vistaTienda
+
+[33mcommit 784bba903fe4baf64703213778eab5df5fe269ef[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Sat Jun 28 22:17:02 2025 -0300
+
+    seque el repositorio que tenia inyectado ControladorTienda y  arregle los test de ControladorTienda
+
+[33mcommit 6401ca6821c99b08fc1bb98df83d3208125c8ef8[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Sat Jun 28 21:25:38 2025 -0300
+
+    funcionalidad:si el amr esta bloqueado puedo desbloquearlo y no tengo las suficiente monedas me tira un error
+
+[33mcommit 52a2c07b627b9134461e61a563a96d26afc86f86[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Sat Jun 28 20:43:07 2025 -0300
+
+    saco el repositorio que tenia mi ControladorPersonaje, refactorizo la clase y dejo andando sus test
+
+[33mcommit dbdaf2c9911e45b141f45510937d6d715cb98ea5[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Sat Jun 28 19:31:52 2025 -0300
+
+    test de controllador, que si puede desbloquear o no redirija corecctamente a cada pagina
+
+[33mcommit a2ccab4d07387de5fe2ee75c81c7c606643ea844[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Sat Jun 28 19:07:39 2025 -0300
+
+    test de servicio mapa que verifican que el usuario pueda o no desbloquear un mar
+
+[33mcommit 3f8b6fa1c1c91e2d53446da9c9bc3c56834e8a8a[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Sat Jun 28 17:42:48 2025 -0300
+
+    agregue test a repositorio Mar me dieron verdes los cuales uno me devuelve un jugadorMar y el otro null
+
+[33mcommit 251aa82d28be84221e77c51abf048aeedd619710[m
+Merge: 5d8da4d 1556cf7
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Sat Jun 28 15:41:29 2025 -0300
+
+    merge con anahiCuatro
+
+[33mcommit 5d8da4daeb93158f0ee10e49bdd0158fc678eb10[m
+Author: MeliYesabel <melinayesabel@gmail.com>
+Date:   Sat Jun 28 15:37:20 2025 -0300
+
+    organizacion de archivos
+
+[33mcommit c7e0a06917502d3e8be062f86af92b0e240a6dbf[m
+Author: MeliYesabel <melinayesabel@gmail.com>
+Date:   Sat Jun 28 15:24:35 2025 -0300
+
+    la main funciona
+
+[33mcommit cde9932dc52cca90a782cd10cbc70144a9963d15[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Sat Jun 28 14:53:47 2025 -0300
+
+    arreglo los test del ControladorPersonajeTest
+
+[33mcommit 845498750dc6e04ce7fb569cf568755e01ef0ab6[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Thu Jun 26 22:25:04 2025 -0300
+
+    refactorizo ControladorTienda y ControladorPersonaje
+
+[33mcommit 1556cf7ef233d9cf8da4d789d56f55b59b73f3fc[m[33m ([m[1;31morigin/anahiCuatro[m[33m)[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Thu Jun 26 20:23:45 2025 -0300
+
+    agregue test y if si no existe el mar lanzar un error no existe mar
+
+[33mcommit 350750ccac7e429e3fb5205b53702e2c69958dde[m
+Author: jsalvaguitian <jsalvaguitian@frba.utn.edu.ar>
+Date:   Thu Jun 26 02:52:14 2025 -0300
+
+    probando si es por este archivo con datos falsos
+
+[33mcommit f0db8dffae4018d7062c4dc51f74fb2c84c4e812[m
+Author: jsalvaguitian <jsalvaguitian@frba.utn.edu.ar>
+Date:   Thu Jun 26 02:39:57 2025 -0300
+
+    probando si github action funciona bien en su entorno
+
+[33mcommit 5962d90ebf8849492b0d8a17f295a4a7b6fc6a7b[m
+Author: jsalvaguitian <jsalvaguitian@frba.utn.edu.ar>
+Date:   Thu Jun 26 01:37:01 2025 -0300
+
+    Arregle los errores que tenia el data.sql
+
+[33mcommit 8e526c04f5172302c187ac9b89409deb73863651[m
+Merge: 74b3f22 560d86d
+Author: jsalvaguitian <jsalvaguitian@frba.utn.edu.ar>
+Date:   Wed Jun 25 16:12:24 2025 -0300
+
+    Merge branch 'main' of https://github.com/MeliYesabel/JuegoDePesca
+
+[33mcommit 74b3f2247afa5c6815e0e2a16ee9693fbab5c146[m
+Merge: 258fbe8 b8f2b0c
+Author: jsalvaguitian <jsalvaguitian@frba.utn.edu.ar>
+Date:   Wed Jun 25 16:06:16 2025 -0300
+
+    Merge branch 'autenticacion-v2'
+
+[33mcommit 560d86dc9dd044ffa7af63bb3dc2fde6abac0d08[m
+Author: MeliYesabel <melinayesabel@gmail.com>
+Date:   Wed Jun 25 16:05:48 2025 -0300
+
+    corrijo tests
+
+[33mcommit b8f2b0c42dfb26feabfd9717404c73f3b87e4e92[m
+Author: jsalvaguitian <jsalvaguitian@frba.utn.edu.ar>
+Date:   Wed Jun 25 16:01:17 2025 -0300
+
+    tengo que arreglar un bug en cambiar contrasenia
+
+[33mcommit 258fbe8141a5effa9c51316254341e2d31a1ae1a[m
+Merge: 3a5d29f 99d4fc7
+Author: MeliYesabel <melinayesabel@gmail.com>
+Date:   Wed Jun 25 15:50:02 2025 -0300
+
+    merge run
+
+[33mcommit 3a5d29f2a49d6417352388dc169554903e4c7c38[m
+Author: MeliYesabel <melinayesabel@gmail.com>
+Date:   Wed Jun 25 15:48:09 2025 -0300
+
+    limpio target
+
+[33mcommit 99d4fc7254bc64c7b1d987d5761ba22d6ed87666[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Wed Jun 25 15:27:43 2025 -0300
+
+    arreglo de test mios y otros salteados despues veo
+
+[33mcommit 8f64ef5ef00ea428acc2861b4ddae3907b75639d[m
+Merge: d463bd2 e4320af
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Wed Jun 25 15:07:23 2025 -0300
+
+    Merge branch 'anahiTres'
+
+[33mcommit e4320af96a14f2e0386878e98d613e259812ff28[m[33m ([m[1;31morigin/anahiTres[m[33m)[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Wed Jun 25 15:07:03 2025 -0300
+
+    limpie target para evitar conflictos con la main
+
+[33mcommit d463bd2f14ec25729f559bb59a7f5614f7635953[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Wed Jun 25 15:03:07 2025 -0300
+
+    limpie target para hacer merge
+
+[33mcommit a0e595d0b24c66b115bd83d04133854a1f51a528[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Wed Jun 25 14:57:57 2025 -0300
+
+    base de datos cambie id de mares que se estaban repitiendo y eso me producia error, ahora anda correctamente
+
+[33mcommit 838e34d58e971b0ab76320a5c6f915d0ac0796eb[m[33m ([m[1;31morigin/run[m[33m)[m
+Author: MeliYesabel <melinayesabel@gmail.com>
+Date:   Wed Jun 25 14:56:46 2025 -0300
+
+    se puede jugar un turno y tenemos el la vuelta completa del juego enlazada
+
+[33mcommit 8ebac4ed72e315dbfbe0f67e28af0ee5defd8aaa[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Wed Jun 25 14:40:11 2025 -0300
+
+    arreglos de test rotos
+
+[33mcommit 09c785bd4927fbabd71ff959cae9b2979484cb6f[m
+Author: jsalvaguitian <jsalvaguitian@frba.utn.edu.ar>
+Date:   Wed Jun 25 12:40:07 2025 -0300
+
+    se agrega la dependencia de JavaMail en la pom.xml
+
+[33mcommit 809ccdd5e6ce545ff8f738213206675458faa858[m
+Author: MeliYesabel <melinayesabel@gmail.com>
+Date:   Wed Jun 25 10:42:56 2025 -0300
+
+    base de datos con mar con id, 3 rarezas y 6 peces para cada mar
+
+[33mcommit 1e452e1cf786b4d8fd06527d2d07feb3378d339a[m
+Author: jsalvaguitian <jsalvaguitian@frba.utn.edu.ar>
+Date:   Wed Jun 25 09:51:53 2025 -0300
+
+    haciendo repositorio, servicio del TokenRecuperacion por mail
+
+[33mcommit e0e6e7a247abea72839cb560995c5ce888e01fb0[m
+Author: jsalvaguitian <jsalvaguitian@frba.utn.edu.ar>
+Date:   Wed Jun 25 05:27:55 2025 -0300
+
+    creo la tabla para guardar todos los token para la recuperacion de contrasenia via mail
+
+[33mcommit e442c6146bbe2fd7c2e07e38fe5f763ab74d1bd1[m
+Author: jsalvaguitian <jsalvaguitian@frba.utn.edu.ar>
+Date:   Wed Jun 25 03:36:14 2025 -0300
+
+    se hace el tdd del controlador de recuperar contrasenia y el metodo post
+
+[33mcommit 8665eaebd0a68bc65571d8d89250e24b37b950ca[m
+Author: jsalvaguitian <jsalvaguitian@frba.utn.edu.ar>
+Date:   Wed Jun 25 03:34:42 2025 -0300
+
+    Se quita archivos compilados y actualizar .gitignore
+
+[33mcommit aa1beaff1b05ca81899617a83c9791cf9196a0d2[m
+Author: MeliYesabel <melinayesabel@gmail.com>
+Date:   Wed Jun 25 00:18:32 2025 -0300
+
+    Se redirige a turno cuando tiene cebo y cuando no a resumen, se implemetaron los test correspondientes
+
+[33mcommit 26a38f5983afb3719b47bc7fbeaa84a53b08ac4d[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Tue Jun 24 21:18:43 2025 -0300
+
+    importe algunas clases que me causaban errores
+
+[33mcommit 581eac0a1e89a3d0da0eb2d16bef73351e661f57[m
+Merge: c7289cc 37bdb80
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Tue Jun 24 21:10:22 2025 -0300
+
+    mergeo la rama main con la de sprintTres
+
+[33mcommit c7289cc8e64b2ef21b466e195642bfd4290a4845[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Tue Jun 24 20:55:11 2025 -0300
+
+    salteamos test que dan rojo con el comando @Disabled mas adelante arrreglarlo
+
+[33mcommit 37bdb806631346240e55f948986f50e25d240ce8[m[33m ([m[1;31morigin/preMainNueva[m[33m)[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Tue Jun 24 20:15:54 2025 -0300
+
+    agrego  las clases ControladorPersonajeTest,ServicioJugadorTest, hago test de esas clases y agrego algunos test en RepositorioObjetoTest y en RepositorioJugadorTest
+
+[33mcommit a50dec85a20192bddffaa44c5be6d098ad056bd5[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Mon Jun 23 10:59:10 2025 -0300
+
+    arreglo problemas y dejo la funcionalidad equiparCania funcionando de manera correcta, arregle problemas con el Jugador
+
+[33mcommit ef221a8bba6922670dd056e7121783dcfce2c652[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Sat Jun 21 20:45:46 2025 -0300
+
+    comente la parte del run igualemente no habia metodos que lo llamaran
+
+[33mcommit b8e8feea99efb01ad0878e1cd3c97a1b2ecae42d[m
+Merge: 25ea5ed 5392474
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Sat Jun 21 20:25:03 2025 -0300
+
+    merge de main-preMainNueva
+
+[33mcommit 5392474d2b9d4760b06b33578d2480db273c01d4[m[33m ([m[1;32mpreMainNueva[m[33m)[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Sat Jun 21 20:08:17 2025 -0300
+
+    ultimos arreglos de merge con premain-anahiDos,ya hice prueba todo anda bien
+
+[33mcommit 617d6f75ae45aa651316e1f3d02eb06b568681e6[m
+Merge: 75f62b2 a7dc158
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Sat Jun 21 17:14:43 2025 -0300
+
+    merge con premain y anahiDOs
+
+[33mcommit 75f62b2bfe02825faf0bb3336a4a8baf1340cbb9[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Sat Jun 21 16:58:35 2025 -0300
+
+    cambio los int que habia en id de objeto por long y refactorizo las clases que lo contienen
+
+[33mcommit 117ada34f86f8e4b9626190a7ec8056cc539dca9[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Sat Jun 21 16:44:24 2025 -0300
+
+    arreglo la clase Jugador
+
+[33mcommit ad1a163e77fed164d698654e3ada8d3abf810613[m
+Merge: 53bc206 494192b
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Sat Jun 21 16:41:13 2025 -0300
+
+    mergeo la rama tienda con main
+
+[33mcommit a7dc15855511ddee3616862c99972e74f0223636[m[33m ([m[1;31morigin/anahiDos[m[33m)[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Sat Jun 21 14:56:19 2025 -0300
+
+    redirecciones de seleccion a vista tienda y logros
+
+[33mcommit b0a070c749f6fe3ffc9d5b6b2eba16555e9b2377[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Sat Jun 21 14:26:25 2025 -0300
+
+    ahora andan todo correctamente
+
+[33mcommit 494192b4702ddd306ff7e8929989a47ebcd35480[m
+Author: jsalvaguitian <jsalvaguitian@frba.utn.edu.ar>
+Date:   Sat Jun 21 14:04:13 2025 -0300
+
+    se deja el hibernate config por defecto bd en memoria
+
+[33mcommit 47b76e7ca52f434a8f57e4b20c44c1ddaa58f801[m
+Author: jsalvaguitian <jsalvaguitian@frba.utn.edu.ar>
+Date:   Sat Jun 21 13:53:28 2025 -0300
+
+    se hizo el login
+
+[33mcommit 3cc67ae6380ea7a513f314cb9a2965d7588feeb0[m
+Author: jsalvaguitian <jsalvaguitian@frba.utn.edu.ar>
+Date:   Fri Jun 20 19:48:19 2025 -0300
+
+    se hizo el metodo logout
+
+[33mcommit e9b02671e0f22dfbf322c749d9df1501e0a1b8af[m
+Author: jsalvaguitian <jsalvaguitian@frba.utn.edu.ar>
+Date:   Fri Jun 20 18:26:52 2025 -0300
+
+    se hizo el metodo post de login
+
+[33mcommit 4f7fb202260b0395d8469d549be66ce418f203f9[m
+Author: jsalvaguitian <jsalvaguitian@frba.utn.edu.ar>
+Date:   Fri Jun 20 16:51:57 2025 -0300
+
+    se registra el jugador con monedas iniciales 200
+
+[33mcommit 6e3cca2096a96d66e28e31cc7635d6d7c8425b68[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Fri Jun 20 16:01:51 2025 -0300
+
+    funciona la vista mar a vista seleccion faltaria la comprobarlo
+
+[33mcommit 16c8d8aeb0a3543b07fd863001d40450299d8466[m
+Author: jsalvaguitian <jsalvaguitian@frba.utn.edu.ar>
+Date:   Fri Jun 20 16:00:36 2025 -0300
+
+    se arreglo la redireccion del mensaje de registro exitosos del usuario hacia el login
+
+[33mcommit d412d8d187d90cb441b596d760c274705beb6807[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Fri Jun 20 11:42:22 2025 -0300
+
+    agregue los respectivs test de controllador,servicio y repo para que funcione la vista mar y sea de forma dinamica recorriendo todos los mares que se encuentran en la base de datos
+
+[33mcommit 28d490560a9350fd7bedfb3def0317f77424239e[m
+Author: jsalvaguitian <jsalvaguitian@frba.utn.edu.ar>
+Date:   Fri Jun 20 03:08:35 2025 -0300
+
+    se esta haciendo tdd del repo
+
+[33mcommit a7cfe0c78764d2b0fc7bd514d4d487473682a4fe[m
+Author: jsalvaguitian <jsalvaguitian@frba.utn.edu.ar>
+Date:   Thu Jun 19 22:27:09 2025 -0300
+
+    se genera el hasheado de las passwords para los usuarios aplicando Spring Security y se crea el repositorio de registro
+
+[33mcommit 55ada880215d87d9c32b7c9e418e3f7a4ccf637d[m
+Author: jsalvaguitian <jsalvaguitian@frba.utn.edu.ar>
+Date:   Thu Jun 19 21:08:25 2025 -0300
+
+    se creo 2 test en ServicioRegistroTest
+
+[33mcommit f1f4fe40bcf05aa14a55cd0f733715f946b0fb24[m
+Author: jsalvaguitian <jsalvaguitian@frba.utn.edu.ar>
+Date:   Thu Jun 19 16:15:34 2025 -0300
+
+    tdd de servicio de registro
+
+[33mcommit adeb2bcf067478e5ca7e5f9bd68d765a69a2089a[m
+Author: jsalvaguitian <jsalvaguitian@frba.utn.edu.ar>
+Date:   Thu Jun 19 12:56:31 2025 -0300
+
+    se hizo el registro controlador, repositorio incompleto, servicio incompleto y tdd del controlador del registro
+
+[33mcommit d54b764fc8bdf8948e64a048df3e1e07019b1984[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Thu Jun 19 11:53:33 2025 -0300
+
+    solucione el error peor hastas ahora no se linkea
+
+[33mcommit 53bc206477d0b2b4508d65a500868284fee5ac61[m[33m ([m[1;31morigin/tienda[m[33m, [m[1;32mtienda[m[33m)[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Thu Jun 19 11:33:57 2025 -0300
+
+    se agrego la clase RepositorioJugadorTest y se agrego la vistaPersonaje
+
+[33mcommit a16ba02e8b450c101993e86125a724342a311c0f[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Thu Jun 19 09:46:39 2025 -0300
+
+    agregue los respectivos test ára probar que si el jugador tiene mar desbloqueado o no se muestro o no
+
+[33mcommit cf83d764380a0b1b76e8b5cea03ebcf1d0044e7d[m
+Author: jsalvaguitian <jsalvaguitian@frba.utn.edu.ar>
+Date:   Wed Jun 18 13:03:54 2025 -0300
+
+    se crearon los endpoint para mostrar las vistas login, registro y recuperar password v2
+
+[33mcommit a92946481745eaf4d8a484c272af51ce517417cb[m
+Author: jsalvaguitian <jsalvaguitian@frba.utn.edu.ar>
+Date:   Wed Jun 18 13:01:25 2025 -0300
+
+    se crearon los endpoint para mostrar las vistas login, registro y recuperar password
+
+[33mcommit b9c18a99be751d8c748b7b8117af3c498e63f579[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Wed Jun 18 11:17:52 2025 -0300
+
+    el test servicio usuario != null da verde
+
+[33mcommit 60bc4d23246910985d80494ea53ae48b84465d7e[m
+Author: jsalvaguitian <jsalvaguitian@frba.utn.edu.ar>
+Date:   Wed Jun 18 01:54:09 2025 -0300
+
+    se crea el controlador login, esta en proceso
+
+[33mcommit 5cfb0952238dec5d5fb3a31d87b822facd2a06cb[m
+Author: jsalvaguitian <jsalvaguitian@frba.utn.edu.ar>
+Date:   Wed Jun 18 01:32:40 2025 -0300
+
+    se actualiza la vista login, registro y recupero contrasenia
+
+[33mcommit 47cc5fce015c5b476209c63559984ac45b451faf[m
+Author: jsalvaguitian <jsalvaguitian@frba.utn.edu.ar>
+Date:   Wed Jun 18 01:24:14 2025 -0300
+
+    creacion de las vistas recuperar contrasenia y registro
+
+[33mcommit 2e5d4f54b1bd5c9c4ab1568c656c656975628b91[m
+Author: jsalvaguitian <jsalvaguitian@frba.utn.edu.ar>
+Date:   Wed Jun 18 01:18:44 2025 -0300
+
+    se creo la vista del login
+
+[33mcommit 47cc6a09eacffcaf314f1aa039901bf4b1b8d521[m
+Author: jsalvaguitian <jsalvaguitian@frba.utn.edu.ar>
+Date:   Mon Jun 16 21:20:13 2025 -0300
+
+    dejo el HibernateConfig por defecto en bd en memoria
+
+[33mcommit b27f2a2d495991599ab4890747c1ea2468bf1fd5[m
+Author: jsalvaguitian <jsalvaguitian@frba.utn.edu.ar>
+Date:   Mon Jun 16 21:14:28 2025 -0300
+
+    se agrega la clase usuarioAuth, admin, y configure el script sql
+
+[33mcommit c5adbaab9389a40f76ec9d4a2bf0d4db66bf48c6[m
+Merge: 75ac42c 0e4664a
+Author: jsalvaguitian <jsalvaguitian@frba.utn.edu.ar>
+Date:   Mon Jun 16 20:12:39 2025 -0300
+
+    arreglando sql
+
+[33mcommit 75ac42caf7fa264b9a36d992ba24fd28f58c4688[m
+Author: jsalvaguitian <jsalvaguitian@frba.utn.edu.ar>
+Date:   Mon Jun 16 19:54:59 2025 -0300
+
+    cambiando hash validos
+
+[33mcommit 2bec5a11fc1ae5bee396f3a8cf09d51c7ebed108[m
+Author: jsalvaguitian <jsalvaguitian@frba.utn.edu.ar>
+Date:   Mon Jun 16 19:10:13 2025 -0300
+
+    spring-2-Crear entidades UsuarioAuth, Admin y refactorizar Jugador
+
+[33mcommit 0e4664ad84bc43d873904cdd9a48a6ac9f9f8e0a[m
+Merge: 1305bbd de3f959
+Author: gonzamirko <gonza_lauty@outlook.com>
+Date:   Mon Jun 16 18:00:00 2025 -0300
+
+    Merge pull request #10 from MeliYesabel/tienda
+    
+    Tienda
+
+[33mcommit de3f959b80d00a0a74b2ed2e3066d3991cd20d81[m[33m ([m[1;31morigin/partidaa[m[33m)[m
+Merge: ac97cfb 1305bbd
+Author: gonzamirko <gonza_lauty@outlook.com>
+Date:   Mon Jun 16 17:58:06 2025 -0300
+
+    Merge branch 'main' into tienda
+
+[33mcommit ac97cfbb46681d141a1424ef02429595cc88dc3d[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Mon Jun 16 17:54:46 2025 -0300
+
+    implemente cosas en vista equipamiento, vista personaje, corregi error de la tienda, agregue una excepcion para que no se pueda comprar el objeto si ya lo compraste
+
+[33mcommit 1305bbd5d117def4dbe41bf48c8cd17b86bcda71[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Sun Jun 15 22:19:11 2025 -0300
+
+    arreglo error de configuracion de base de datos
+
+[33mcommit 445ff7dc414a6a25f306625f44e05e6cd4c3daba[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Sun Jun 15 21:39:42 2025 -0300
+
+    agrego repositorio, servicio, controlador del jugador
+
+[33mcommit c5730fa00f6b86748c08a87422ad63a3c4f75022[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Sun Jun 15 11:17:44 2025 -0300
+
+    viendo de donde es el error
+
+[33mcommit 4d1d3d4eedfcbb7f4bc770c15bc3f46d42b1c89b[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Sat Jun 14 16:54:59 2025 -0300
+
+    agrego la interface  RepositorioJugador y la clase  RepositorioJugadorImpl
+
+[33mcommit 6c95bc6f3247bbc568297a0c81565c9b2a6c3744[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Sat Jun 14 16:40:56 2025 -0300
+
+    refactorizo el metodo irTienda
+
+[33mcommit 25ea5ed1e4d5d758c5664c9de7d4543dc90e7624[m[33m ([m[1;32msegundoSprintMapa[m[33m)[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Thu Jun 12 10:22:36 2025 -0300
+
+    cambios pequeños
+
+[33mcommit 5d92b8fb1902b8cf45089b8b124ed980eea452a4[m
+Merge: 229c880 bc82e2b
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Thu Jun 12 10:13:01 2025 -0300
+
+    merge con origin main
+
+[33mcommit bc82e2b58e12ca845cffff86863b5036cfdb0379[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Thu Jun 12 09:43:36 2025 -0300
+
+    agrego carpetas .idea y .target y muevo la carpeta .gitIgnore afuera de la .idea
+
+[33mcommit cfb31c85afc785d39c5b51b3d5f645c11b7df34d[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Thu Jun 12 09:11:04 2025 -0300
+
+    Eliminadas carpetas .idea, target y .gitignore del repositorio
+
+[33mcommit 229c8804bbd884d1e286fd07ed74ad9edc70b2ab[m
+Merge: 44ae644 7267dfd
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Wed Jun 11 23:02:37 2025 -0300
+
+    Resuelvo conflictos de fusión
+
+[33mcommit 44ae644842ad9a072e049a0400686f8a4037db6c[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Wed Jun 11 22:57:02 2025 -0300
+
+    agregue mis ultimos cambios
+
+[33mcommit 7267dfdb773a0d04478489e6ec766756e30f2842[m
+Author: MeliYesabel <melinayesabel@gmail.com>
+Date:   Wed Jun 11 22:27:44 2025 -0300
+
+    Comento para solucionar juntos en el siguiente meet
+
+[33mcommit b6112fb3e105561ca0ede620df9a983ded9dace7[m
+Author: MeliYesabel <melinayesabel@gmail.com>
+Date:   Wed Jun 11 22:11:51 2025 -0300
+
+    Soluciono error de compilacion en controladorRun
+
+[33mcommit 20d5a43fa6d0846460ded486227b28c3dedefebf[m
+Merge: 59a7dd7 05d60cd
+Author: MeliYesabel <melinayesabel@gmail.com>
+Date:   Wed Jun 11 18:24:44 2025 -0300
+
+    se soluciona merge?
+
+[33mcommit 05d60cde8bf805ac985a09a921af9d65c4c84dbd[m[33m ([m[1;31morigin/partida[m[33m)[m
+Author: MeliYesabel <melinayesabel@gmail.com>
+Date:   Wed Jun 11 16:29:42 2025 -0300
+
+    respos run, pez creacion de clases de repositorio
+
+[33mcommit 075a88ea57a8a184c4a78468d88e586841643b6f[m[33m ([m[1;31morigin/primerSprintMapa[m[33m, [m[1;31morigin/primerSprint[m[33m, [m[1;32mprimerSprint[m[33m)[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Wed Jun 11 11:12:44 2025 -0300
+
+    agregue como estaba desde un principio el .gitignore y saque el target
+
+[33mcommit 59a7dd7d93a3ef39845df17d35a1481ace58f00a[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Wed Jun 11 10:07:56 2025 -0300
+
+    cambio algunas clases de lugar
+
+[33mcommit 3f5e7e6d0fa051c2190d8cd93ad0ca1e1193e96a[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Tue Jun 10 23:39:04 2025 -0300
+
+    comento el test siElJugadorNOTieneSuficientesMonedasParaDesbloquearElMarDebeCambiardePaginaAVistaSeleccion()
+
+[33mcommit 75e7f885787590f045450c2eb763437a826a9c97[m
+Merge: 0edebb3 ab4c3d1
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Tue Jun 10 23:29:56 2025 -0300
+
+    Merge branch 'tienda'
+    
+    # Conflicts:
+    #       target/classes/com/tallerwebi/presentacion/ControladorLogin.class
+    #       target/classes/com/tallerwebi/presentacion/ControladorLoginEjemplo.class
+    #       target/classes/com/tallerwebi/presentacion/ControladorRegistro.class
+    #       target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+    #       target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+    #       target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst
+    #       target/test-classes/com/tallerwebi/presentacion/ControladorLoginTest.class
+
+[33mcommit ab4c3d10da303412c1265d293c47478c6bde4695[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Tue Jun 10 23:17:20 2025 -0300
+
+    implemento RepositorioObjeto, RepositorioJugador, y los test del RepositorioObjeto, RepositorioJugador
+
+[33mcommit 9fd43a67f908b3563a3167079685f9d41542be95[m
+Merge: e2e1960 f528e62
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Tue Jun 10 11:14:54 2025 -0300
+
+    arreglos para merge entre primersprintmapa y tienda
+
+[33mcommit e2e196078816330317fd1ec0bfdf86879b53a506[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Tue Jun 10 11:05:15 2025 -0300
+
+    errores de target los estoy guardando pero mas adelante se debe cambiar
+
+[33mcommit c24fea04212453d82b868f73b2495907f8e17814[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Tue Jun 10 10:54:22 2025 -0300
+
+    Ignorar carpeta target
+
+[33mcommit 0a4b880f141ae0dfe5365e307e89eb62093d12ee[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Tue Jun 10 10:52:50 2025 -0300
+
+    Modificado ControladorLogin
+
+[33mcommit 6b51781bdfee4cbe55b794b2beae62be3f1fd045[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Sun Jun 8 22:12:46 2025 -0300
+
+    implemento la vista repositorio para objetos y incluyo el repositorio en las otras vistas
+
+[33mcommit 247d9ff94ee8e830997cfa179b6bb71508101d75[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Sat Jun 7 20:19:19 2025 -0300
+
+    WIP: cambios antes del rebase
+
+[33mcommit 4e43cc16b1b9e8418a588da7cd27599e4115fc15[m
+Merge: 3d7abbd 0edebb3
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Sat Jun 7 19:35:13 2025 -0300
+
+    arreglo manual con la rama main
+
+[33mcommit 3d7abbdd949279a1d7be1e5db96fc937a3b7664b[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Sat Jun 7 19:16:14 2025 -0300
+
+    test verde que me de el precio si el mar esta bloquado
+
+[33mcommit fe6cd74d9e31c39fc28c230f25e69f1c60746ad5[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Sat Jun 7 16:59:47 2025 -0300
+
+    test verde buscar por nombre
+
+[33mcommit 5db4a5cd2c991762dd98845947811061b101d84c[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Sat Jun 7 16:36:42 2025 -0300
+
+    test verde obtener mares bloqueados
+
+[33mcommit cf7c0222f7092b652e9cf8a347f979e1c91af297[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Sat Jun 7 16:31:38 2025 -0300
+
+    agregue test  que me devuelve los mares desbloqueado y da verde
+
+[33mcommit f5cde2407167de3c7e4c4a93e56f2a9da78e1691[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Sat Jun 7 16:12:59 2025 -0300
+
+    agregue test con base de datos que pueda obtener todos los mares presente y me dio exitoso
+
+[33mcommit 7476c95274b9b2e5a3f7edf61b0753ac1cb5b61c[m
+Author: MeliYesabel <melinayesabel@gmail.com>
+Date:   Sat Jun 7 14:56:12 2025 -0300
+
+    Test del Repo de Pez
+
+[33mcommit a4fd6902edf34ebea88c1e63c7c313b4833040a5[m
+Merge: 19fb8dc dac9167
+Author: MeliYesabel <melinayesabel@gmail.com>
+Date:   Sat Jun 7 12:21:46 2025 -0300
+
+    solucion conflicto de merge
+
+[33mcommit dac916716386f8939ff69b8cdf2a9e319a370ee4[m
+Author: MeliYesabel <melinayesabel@gmail.com>
+Date:   Sat Jun 7 12:18:35 2025 -0300
+
+    commit para cambiar de rama
+
+[33mcommit 19fb8dcd47a20eaf1fc921fbefcd38d512abe2f5[m
+Author: MeliYesabel <melinayesabel@gmail.com>
+Date:   Sat Jun 7 12:13:19 2025 -0300
+
+    commit para cambiar de rama
+
+[33mcommit f5fdefa554eefa8f60c433bef8ca18a5a8d6aa89[m
+Merge: 853964b f528e62
+Author: MeliYesabel <melinayesabel@gmail.com>
+Date:   Tue Jun 3 23:02:18 2025 -0300
+
+    agrego limites de numeros que se tienen que agregar
+
+[33mcommit 853964b75dd9d7f334feee9d910907f4109357f3[m
+Author: MeliYesabel <melinayesabel@gmail.com>
+Date:   Tue Jun 3 23:00:33 2025 -0300
+
+    target
+
+[33mcommit f528e629dfc6ee25643305c0c07049167fba84bd[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Tue Jun 3 22:41:47 2025 -0300
+
+    corrijo errores de direccion
+
+[33mcommit 5dd1527a5171726e21659ea6a5e4715ee18c3378[m
+Author: MeliYesabel <melinayesabel@gmail.com>
+Date:   Tue Jun 3 21:14:09 2025 -0300
+
+    Agrego metodos para que los peces aparescan
+
+[33mcommit e00b85e334ebca7fc91e5fca8bcda9701f35fa4d[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Sat May 31 22:29:45 2025 -0300
+
+    agregue el controller,servicio y los test de cada uno que son de vista seleccion, todos me dieron verde excepto uno que despues lo veo
+
+[33mcommit 64d70b7783b8b3c91c1d81e134a97915cd18bea4[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Sat May 31 21:22:54 2025 -0300
+
+    arregle los anteriores errores que me aparecia. y comprobe denuevo todos los test y me dieron verde
+
+[33mcommit b866d7f9c7529f6baccdaf5d7a54fff89839a181[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Sat May 31 20:19:52 2025 -0300
+
+    agregue un test controller que verifica que si el mar esta bloqueado no vaya a seleccion
+
+[33mcommit a05008fc2b026e6bc98c93a51a0da4ee505fdd37[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Sat May 31 19:03:21 2025 -0300
+
+    agregue la relacion con base de datos que vimos el jueves,tuve que cambiar los otras entidades para poder usar el mar
+
+[33mcommit 8c8a6a0f1dcaf8fb9360c6f39c47f402b3f1f57d[m
+Author: MeliYesabel <melinayesabel@gmail.com>
+Date:   Wed May 28 22:28:50 2025 -0300
+
+    Crea turno y excepciones
+
+[33mcommit 32e37f684e05414668b5ae4c8cb6ab46f463fee3[m
+Author: MeliYesabel <melinayesabel@gmail.com>
+Date:   Wed May 28 20:25:01 2025 -0300
+
+    test de servicios de run y turno
+
+[33mcommit 1c1cc173fe0e0ad79073a0380f6794e8f613a285[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Sun May 25 21:02:37 2025 -0300
+
+    comentarios que debo arreglar, entre ellas la redireccion de la vista tienda de gonza
+
+[33mcommit 09faaab0c244b84ce8bcc01508a82eec5210725e[m
+Merge: 8d29f9d 1304aab
+Author: MeliYesabel <melinayesabel@gmail.com>
+Date:   Sun May 25 19:46:34 2025 -0300
+
+    resulvo conflicto en el merge de tienda con mis avances a primerSprint
+
+[33mcommit 8d29f9d0edc4e32b7bfcb5219a2362f776bc4ce1[m
+Author: MeliYesabel <melinayesabel@gmail.com>
+Date:   Sun May 25 19:41:46 2025 -0300
+
+    agrego archivo .idea/misc.xlm para que me deje mergear
+
+[33mcommit 1304aabf09bf3798c509302d00871c4ef3875731[m
+Author: MeliYesabel <melinayesabel@gmail.com>
+Date:   Sun May 25 19:34:47 2025 -0300
+
+    agrego controladores y servicios de run y tienda
+
+[33mcommit fa04e9530241db671fc89190bf91d54afde17dd7[m
+Merge: f29daaf a4c8c56
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Sun May 25 19:31:45 2025 -0300
+
+    Merge branch 'Anahi' into primerSprint, resolviendo conflictos
+
+[33mcommit 56dd7cd1969dfca59fd54e64a76350a2fc037f58[m
+Author: MeliYesabel <melinayesabel@gmail.com>
+Date:   Sun May 25 16:04:25 2025 -0300
+
+    creo las clases rareza pez y mar para run y turnos.
+
+[33mcommit 7d58a3a2f1ff36aa989ae532f04e6a7fa5525a0c[m
+Author: MeliYesabel <melinayesabel@gmail.com>
+Date:   Sun May 25 15:50:26 2025 -0300
+
+    me pide commit
+
+[33mcommit f29daafcfe42f5b7b3b65fb1871b9b18e79640a5[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Sun May 25 12:42:46 2025 -0300
+
+    resuelvo conflictos del pull request
+
+[33mcommit 0ac91e2edaa2dcd161bea49d59442dc028ed9a15[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Sun May 25 12:41:17 2025 -0300
+
+    Remove target folder from version control
+
+[33mcommit a4c8c56bf5704658e5d88a7962d5eb878d83f760[m[33m ([m[1;31morigin/Anahi[m[33m)[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Fri May 23 21:19:10 2025 -0300
+
+    hice un poco de frondend de las anteriores vista y puso letra pixeleada
+
+[33mcommit d2d648158bf7e3c895c8f10af7b662275d22067d[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Fri May 23 20:20:11 2025 -0300
+
+    al controlador mapa le agregue una exception que me verifica desde el servidor si el usuario tiene la cantidad de monedas suficientes para cambiar de pagina hasta hora todos los test me dan verde
+
+[33mcommit b8ae8acce4f51a7edfc08139e163476127b5fec2[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Fri May 23 19:26:06 2025 -0300
+
+    agregue test de servicio que se fija si el usuario tiene sufientes monedas para que despues pueda cambiar de pagina
+
+[33mcommit dc9cd389980b339a2d0ed409d1bfe1cb160802cd[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Fri May 23 17:37:53 2025 -0300
+
+    probe si el jugador tiene suficiente monedas que si pase de pagina correctamente
+
+[33mcommit 33d1c64f15b017462fde18b88c8fa018a7688c11[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Fri May 23 17:03:59 2025 -0300
+
+    agregue un test, que si el jugador no tiene monedas no me permita cambiar de pag y me lance un mensaje error
+
+[33mcommit 94cdf4ae0786a5f61fa462bb1cd08adda58e0dd2[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Thu May 22 11:29:20 2025 -0300
+
+    solicione problemas de img, y agregue las clases que se necesitan para hacer los servicios de mapa
+
+[33mcommit f035a627eccd46cdd1c543ec6330fa93f3573d58[m
+Merge: 497c7f6 1b12a9f
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Thu May 22 09:54:22 2025 -0300
+
+    intente de merge tienda
+
+[33mcommit 497c7f6dc9a33589905013e5fe827dd96b6883af[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Tue May 20 11:04:22 2025 -0300
+
+    guardar cambios antes del rebase
+
+[33mcommit 21f12739df1d441ec039cf705348e2992b214887[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Tue May 20 11:01:39 2025 -0300
+
+    eliminado target del repo y agregado al gitignore
+
+[33mcommit 8ca92ea590b99d0f5743ed14f935ba023a260607[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Tue May 20 10:23:52 2025 -0300
+
+    separe el css en la carpeta respectiva
+
+[33mcommit 3fe5bfc3a54638ab9c23a85ea81c5ebfc06b69fa[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Mon May 19 16:48:49 2025 -0300
+
+    arregle y termine los test del controllador de vistas,al no tner tanta logica no agregue el servicio ni el interfaz ya que es algo simple de redireccion de paginas
+
+[33mcommit 1b12a9f67516ddf37160b0b774b237a756f980ed[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Sun May 18 19:31:30 2025 -0300
+
+    borro metodos innecesarios y clases
+
+[33mcommit 67651fc24df8becec79b9b59833ee959749b961a[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Sun May 18 18:39:39 2025 -0300
+
+    creo tdd para navegacion de tienda, manejos de excepciones, servicio de tienda, clase Jugador,Objeto, ServicioTienda,ServicioTiendaImpl,vistaCompraSinExito,vistaObjeto
+
+[33mcommit 99d111d9ff9c75a0c003199a33d45457437920b5[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Sat May 17 22:18:54 2025 -0300
+
+    puse fondo de la vista mapa y agregue los distontos mares por los cuales se navegan, hay cosas que solo agregue para guiarme que despues van a ser modificadas
+
+[33mcommit 8efda59442ad52d1a108c89e6630f45be487daf5[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Fri May 16 22:32:48 2025 -0300
+
+    corregi los contradores respectivos del nav, ademas de agregar un nav
+
+[33mcommit 0edebb338af1e1597cc1820fbc5b6b1fa228557a[m
+Author: jsalvaguitian <jsalvaguitian@frba.utn.edu.ar>
+Date:   Sun May 11 10:48:52 2025 -0300
+
+    Se crea el controlador de escena de juego
+
+[33mcommit 76ff2384676fd39d1db979c3671f2d95d7ada41b[m
+Author: jsalvaguitian <jsalvaguitian@frba.utn.edu.ar>
+Date:   Thu May 8 04:35:07 2025 -0300
+
+    Se hizo el test simple del controladorRegistro y su vista de registro
+
+[33mcommit e2db85764198cbf050802d419cacbd03e8614449[m
+Merge: e95efe7 f172b9f
+Author: anahilaurani <165704912+anahilaurani@users.noreply.github.com>
+Date:   Wed May 7 18:05:17 2025 -0300
+
+    Merge pull request #3 from MeliYesabel/Anahi
+    
+    Anahi
+
+[33mcommit f172b9fa62337e2b7b187626d39d7ed5a53fc08b[m
+Merge: f9113fd e95efe7
+Author: anahilaurani <165704912+anahilaurani@users.noreply.github.com>
+Date:   Wed May 7 18:04:56 2025 -0300
+
+    Merge branch 'main' into Anahi
+
+[33mcommit e95efe72ff0a3a1932acda58640c1e78a50c5fd4[m
+Merge: 5cbd647 de3a82e
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Wed May 7 17:44:02 2025 -0300
+
+    resuelvo merge de vistaLogro
+
+[33mcommit 5cbd647e6b058b1d2a189173ada8066f92a4494a[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Wed May 7 17:41:01 2025 -0300
+
+    se agrego el controlador de logros y se mejoraron las vistas mapa,logros y tienda
+
+[33mcommit de3a82eb7c12cc5339e9c4a149e117a978be2a21[m
+Merge: 4bc1a9f e8244cb
+Author: MeliYesabel <144385090+MeliYesabel@users.noreply.github.com>
+Date:   Wed May 7 17:31:52 2025 -0300
+
+    Merge pull request #2 from MeliYesabel/Meli
+    
+    Meli
+
+[33mcommit e8244cb1a6cc81b80615e6f23751c40b809361a9[m
+Merge: 305bb95 4bc1a9f
+Author: MeliYesabel <144385090+MeliYesabel@users.noreply.github.com>
+Date:   Wed May 7 17:31:40 2025 -0300
+
+    Merge branch 'main' into Meli
+
+[33mcommit f9113fd24b90d793abd7b7260d4e5371cb89d733[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Wed May 7 17:12:28 2025 -0300
+
+    Cambios en .idea/.gitignore
+
+[33mcommit 64753c9bf3684d58337506d80eb76d64dda977ca[m
+Merge: 4bc1a9f b9e4b0b
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Wed May 7 17:01:22 2025 -0300
+
+    soluciono conflictos del merge
+
+[33mcommit 0b7f50ca8c4b9464cc588676cf3122c920e39c04[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Wed May 7 16:51:10 2025 -0300
+
+    paginas html
+
+[33mcommit 305bb95aeb0a18d15191bc5de1d7dfb0903b3348[m
+Author: MeliYesabel <melinayesabel@gmail.com>
+Date:   Wed May 7 16:36:26 2025 -0300
+
+    subo html de logros
+
+[33mcommit ce47e2599af8bd0dcb366941fceca25141dfa78b[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Wed May 7 16:03:45 2025 -0300
+
+    paginas controller
+
+[33mcommit b9e4b0b8b90dd29e6d7883e1f4c3a1bd55fb4ea1[m
+Author: MeliYesabel <melinayesabel@gmail.com>
+Date:   Wed May 7 15:56:36 2025 -0300
+
+    error
+
+[33mcommit 689344e7cf8af6cb2579eabc9595f9538d078506[m
+Author: angela quelca <anahi.laurani@gmail.com>
+Date:   Wed May 7 15:26:43 2025 -0300
+
+    primero
+
+[33mcommit 4bc1a9ffffd1055dc380a742162bbb8c7e61a7a7[m[33m ([m[1;31morigin/Gonza[m[33m)[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Wed May 7 15:12:54 2025 -0300
+
+    Se agrego el controlador de Tienda
+
+[33mcommit 8d342cf50bbe4180a890438000162a1e0b957e1f[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Sun May 4 19:38:00 2025 -0300
+
+    se agrega la base y el controlador del mapa
+
+[33mcommit dc47e13f99a170ebc282baf32d3af63b935113c1[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Sun May 4 18:37:30 2025 -0300
+
+    Base del Proyecto
+
+[33mcommit 989a6f6a03fa1be5c7773f66b27f6ff6cdd2bc5f[m
+Author: Gonzalo Greatti <gonza_lauty@outlook.com>
+Date:   Sun May 4 18:26:03 2025 -0300
+
+    first commit

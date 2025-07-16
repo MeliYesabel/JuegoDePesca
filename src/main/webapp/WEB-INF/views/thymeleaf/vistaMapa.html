@@ -36,12 +36,20 @@
       <p th:text="${marError}" style="color:red"></p>
   </div>
 
-  <main>
-    <div class="mito" th:each="mar : ${listaMar}">
-      <a class="mitologias" th:href="@{/marSeleccionado/{nombreMar}(nombreMar=${mar.nombre})}"
-         th:text="${mar.nombre}">
-      </a>
-    </div>
+  <main class="mainMapa">
+      <div class="tilt-in-bl">
+          <img th:src="@{'/img/tsunami1.png'}" alt="foto_ola" width="500px">
+      </div>
+      <div class="mito">
+        <div  th:each="mar : ${listaMar}">
+         <a class="mitologias" th:href="@{/marSeleccionado/{nombreMar}(nombreMar=${mar.nombre})}"
+          th:text="${mar.nombre}">
+         </a>
+        </div>
+      </div>
+      <div class="olaDos">
+          <img th:src="@{'/img/tsunami2.png'}" alt="foto_ola" width="500px">
+      </div>
   </main>
 
   </body>
