@@ -12,7 +12,7 @@ public class Resumen {
     private Long id;
     @OneToMany
     private List<Pez> pecesPescados;
-    private Double totalGanado;
+    private Integer totalGanado;
     private int turnosJugados;
 
     @ManyToOne(optional = true) // Si querés saber en qué mar fue
@@ -20,7 +20,7 @@ public class Resumen {
 
     public Resumen() {}
 
-    public Resumen(List<Pez> pecesPescados, Double totalGanado, int turnosJugados) {
+    public Resumen(List<Pez> pecesPescados, Integer totalGanado, int turnosJugados) {
         this.pecesPescados = pecesPescados;
         this.totalGanado = totalGanado;
         this.turnosJugados = turnosJugados;
@@ -40,11 +40,11 @@ public class Resumen {
         this.pecesPescados = pecesPescados;
     }
 
-    public Double getTotalGanado() {
+    public Integer getTotalGanado() {
         return totalGanado;
     }
 
-    public void setTotalGanado(Double totalGanado) {
+    public void setTotalGanado(Integer totalGanado) {
         this.totalGanado = totalGanado;
     }
 

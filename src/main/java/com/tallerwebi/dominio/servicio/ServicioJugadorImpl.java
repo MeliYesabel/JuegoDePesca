@@ -66,7 +66,7 @@ public class ServicioJugadorImpl implements ServicioJugador {
     }
 
     public RepositorioJugador getRepositorioJugador() {
-        return repositorioJugador;
+        return this.repositorioJugador;
     }
 
     public RepositorioObjeto getRepositorioObjeto() {

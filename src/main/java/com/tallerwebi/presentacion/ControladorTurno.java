@@ -28,6 +28,9 @@ public class ControladorTurno {
     @RequestMapping("/turno")
     public ModelAndView iniciarTurno(HttpSession session) {
         ModelMap model = new ModelMap();
+        Run run = (Run) session.getAttribute("run");
+
+        Integer cantidadCebo = run.getCebo();
 
         Turno turno = (Turno) session.getAttribute("turnoActual");
 
@@ -37,6 +40,8 @@ public class ControladorTurno {
             turno.setPecesGenerados(peces);
             session.setAttribute("turnoActual", turno);
         }
+
+        model.put("cantidadCarnada", cantidadCebo);
 
         model.addAttribute("peces", turno.getPecesGenerados());
         return new ModelAndView("vistaTurno.html", model);

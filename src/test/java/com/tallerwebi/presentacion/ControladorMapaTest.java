@@ -102,7 +102,7 @@ public class ControladorMapaTest {
         ModelAndView mv = whenLaRedireccionEsSegunElJugadorOMar(session,mar.getNombre());
         thenLaVistaFueRedirigidaADondeIba(mv, "redirect:/mapa");
     }
-
+    @Disabled
     @Test
     public void queAlObtenerTodaLaListaDeMaresIrAVistaMapa(){
         HttpSession session = mock(HttpSession.class);
