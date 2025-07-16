@@ -2,6 +2,7 @@ package com.tallerwebi.presentacion;
 
 import com.tallerwebi.dominio.entidad.Jugador;
 import com.tallerwebi.dominio.entidad.Mar;
+import com.tallerwebi.dominio.entidad.Pez;
 import com.tallerwebi.dominio.entidad.Run;
 import com.tallerwebi.dominio.servicio.ServicioJugador;
 import com.tallerwebi.dominio.servicio.ServicioMapa;
@@ -13,6 +14,10 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpSession;
 
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -23,11 +28,7 @@ public class ControladorRunTest {
     private ServicioJugador servicioJugadorMock;
     private ControladorRun controladorRun;
     private HttpSession session;
-    private ServicioRun servicioRun;
-    private ServicioMapa servicioMapa;
-    private ControladorRun controlador;
     private Jugador jugador;
-    private Mar mar;
     private Run run;
 
     @BeforeEach
@@ -45,8 +46,6 @@ public class ControladorRunTest {
         run.setId(1L);
         run.setJugador(jugador);
         run.setCebo(2);
-
-        mar = new Mar();
     }
 
     @Test
@@ -94,5 +93,65 @@ public class ControladorRunTest {
         verify(session).setAttribute("run", runCreado);
     }
 
+
+    @Test
+    public void testMostrarResumen_sinRun_redirigeAVistaError() {
+        when(session.getAttribute("run")).thenReturn(null);
+
+        ModelAndView mav = controladorRun.mostrarResumen(session);
+
+        assertEquals("vistaSeleccion.html", mav.getViewName());
+        assertEquals("No hay una partida activa. Volvé al inicio.", mav.getModel().get("error"));
+    }
+
+    /*@Test
+    public void testMostrarResumen_conRun_muestraResumenCorrecto() {
+        Run run = mock(Run.class);
+        List<Pez> peces = Arrays.asList(new Pez(), new Pez(), new Pez());
+
+        when(session.getAttribute("run")).thenReturn(run);
+        when(run.obtenerganacia()).thenReturn(150);
+        when(run.getPecesPescados()).thenReturn(peces);
+
+        ModelAndView mav = controladorRun.mostrarResumen(session);
+
+        assertEquals("vistaResumen", mav.getViewName());
+        assertEquals(150, mav.getModel().get("ganancia"));
+        assertEquals(3, mav.getModel().get("cantidadPeces"));
+    }
+
+    @Test
+    public void testMostrarResumen_conRunSinGananciaNiPeces() {
+        Run run = mock(Run.class);
+
+        when(session.getAttribute("run")).thenReturn(run);
+        when(run.obtenerganacia()).thenReturn(null);
+        when(run.getPecesPescados()).thenReturn(Collections.emptyList());
+
+        ModelAndView mav = controladorRun.mostrarResumen(session);
+
+        assertEquals("vistaResumen", mav.getViewName());
+        assertEquals(0, mav.getModel().get("ganancia"));
+        assertEquals(0, mav.getModel().get("cantidadPeces"));
+    }
+
+    @Test
+    public void mostrarResumenFinal_muestraDatosCorrectos() {
+
+        List<Pez> peces = Arrays.asList(
+                new Pez("Dorado"),
+                new Pez("Bagre")
+        );
+        Double ganancia = 50.0;
+        Integer turnos = 2;
+
+        when(servicioRunMock.obtenerPecesPescados(run)).thenReturn(peces);
+        when(servicioRunMock.calcularGanancia(run)).thenReturn(ganancia);
+        when(servicioRunMock.getCantidadTurnosJugados(run)).thenReturn(turnos);
+
+        ModelAndView mav = controladorRun.mostrarResumen(session);
+
+        assertEquals("vistaResumen.html", mav.getViewName());
+    }*/
 }
 

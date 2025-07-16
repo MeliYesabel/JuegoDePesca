@@ -1,8 +1,6 @@
 package com.tallerwebi.presentacion;
 
-import com.tallerwebi.dominio.entidad.Jugador;
-import com.tallerwebi.dominio.entidad.Mar;
-import com.tallerwebi.dominio.entidad.Run;
+import com.tallerwebi.dominio.entidad.*;
 import com.tallerwebi.dominio.servicio.ServicioJugador;
 import com.tallerwebi.dominio.servicio.ServicioMapa;
 import com.tallerwebi.dominio.servicio.ServicioRun;
@@ -15,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 public class ControladorRun {
@@ -61,7 +60,6 @@ public class ControladorRun {
        // run.setCebo(cantidadCebo);
         run.setJugador(jugador);
         run.setMar(marSeleccionado);
-        run.setCebo(run.getCebo());
         servicioRun.guardarRun(run);
 
         //session.setAttribute("run", run);
@@ -70,5 +68,31 @@ public class ControladorRun {
         ModelAndView mav = new ModelAndView("vistaRun",mm);
         mav.addObject("run", run);
         return mav;
+    }
+
+    @RequestMapping("/resumen")
+    public ModelAndView mostrarResumen(HttpSession session) {
+        ModelMap model = new ModelMap();
+        Run run = (Run) session.getAttribute("run");
+
+        Long idUsuarioLogueado =(Long)  session.getAttribute("idUsuarioLogueado");
+        Jugador jugador = servicioJugador.buscarJugadorPorId(idUsuarioLogueado);
+
+        if (run == null) {
+            model.put("error", "No hay una partida activa. Volvé al inicio.");
+            return new ModelAndView("vistaSeleccion.html", model);
+        }
+
+        Integer ganancia = run.obtenerganacia();
+        model.put("ganancia", ganancia != null ? ganancia : 0);
+
+        List<Pez> pecesPescados = run.getPecesPescados();
+        Integer cantidadPecesPescados = (pecesPescados != null) ? pecesPescados.size() : 0;
+        model.put("cantidadPeces", cantidadPecesPescados);
+
+        jugador.sumarGanancia(ganancia);
+        servicioJugador.getRepositorioJugador().actualizarDatosDeJugadorYaExistente(jugador);
+
+        return new ModelAndView("vistaResumen", model);
     }
 }

@@ -10,22 +10,13 @@
     <link rel="stylesheet" th:href="@{/css/estiloRun.css}">
 </head>
 <body>
-<div class="contenedor ">
-    <div>
-        <span>Resumen</span>
-    </div>
-<!--<span>Caña equipada<strong th:text="${activa}"></strong></span>-->
-     <div class="resumen">
-         <span>Caña equipada:</span>
-         <img th:src="@{'/img/'+ ${activa}}" width="100" height="auto">
-         <span>Cantidad de cebo: <strong th:text="${cebos}"></strong></span>
-     </div>
+<div class="contenedor row">
+<span>Resumen elementos seleccionados</span>
+<span>Caña equipada</span>
+<span>Cantidad de carnada</span>
 
-     <div>
-         <a th:href="@{/mapa}" class="btn btn-warning">Volver a mapa</a>
-         <a th:href="@{/turno}" class="btn btn-primary">Empezar</a>
-     </div>
-
+<a th:href="@{/turno}" class="btn btn-primary">Empezar</a>
+<a th:href="@{/mapa}" class="btn btn-primary">Volver</a>
 </div>
 </body>
 </html>
